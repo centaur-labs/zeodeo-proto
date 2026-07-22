@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeodeo Classic Litter Tray</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Montserrat:wght@700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* Values below match assets/DESIGN.md - real zeodeo.co.uk site style guide */
+  :root{
+    --text-color:#404E65;
+    --accent-color:#31ACD8;
+    --accent-color-2:#FF5B4B;
+    --background-color:#6ECDED;
+    --new-badge-color:#93C240;
+    --border-color:#EAEAEA;
+    --card-bg:#FFFFFF;
+    --font-text:'Open Sans',sans-serif;
+    --font-header:'Montserrat',sans-serif;
+    --font-big-header:'Fredoka',sans-serif;
+    --radius-s:4px;
+    --radius-card:8px;
+    --container:390px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:var(--font-text);
+    background:#fff;
+    color:var(--text-color);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:var(--font-header);
+    line-height:1.15;
+    color:var(--text-color);
+  }
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 20px;}
+
+  /* ---------- Section 1: Hero ---------- */
+  .hero{
+    position:relative;
+    max-width:var(--container);
+    margin:0 auto;
+  }
+  .hero__card{
+    background:var(--card-bg);
+    padding:16px 16px 24px;
+    text-align:left;
+  }
+  .hero__breadcrumb{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    font-family:var(--font-text);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#9A9A9A;
+    margin-bottom:12px;
+  }
+  .hero__breadcrumb-sep{margin:0 4px;}
+  .hero__stock{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    font-size:10px;
+    letter-spacing:0.5px;
+    color:var(--new-badge-color);
+    white-space:nowrap;
+  }
+  .hero__gallery{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:20px;
+  }
+  .hero__main-photo{
+    position:relative;
+    overflow:hidden;
+    border-radius:var(--radius-card);
+    margin-bottom:10px;
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#FAFAFA;
+  }
+  .hero__badge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:var(--new-badge-color);
+    color:#fff;
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:5px 12px;
+    border-radius:999px;
+    z-index:2;
+  }
+  .hero__image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 30%;
+  }
+  .hero__thumbs{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:8px;
+  }
+  .hero__thumb{
+    width:100%;
+    aspect-ratio:1/1;
+    padding:0;
+    border-radius:8px;
+    border:2px solid var(--border-color);
+    background:#FAFAFA;
+    overflow:hidden;
+    cursor:pointer;
+  }
+  .hero__thumb.is-active{border-color:var(--accent-color);}
+  .hero__thumb img{width:100%;height:100%;object-fit:cover;}
+  .hero__title{
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:36px;
+    line-height:41.4px;
+    margin-bottom:10px;
+  }
+  .hero__subtitle{
+    font-family:var(--font-text);
+    font-size:15px;
+    line-height:24px;
+    color:var(--text-color);
+    margin-bottom:16px;
+  }
+  .hero__specs{
+    font-size:15px;
+    line-height:1.7;
+    margin-bottom:16px;
+  }
+  .hero__specs strong{font-weight:700;}
+  .hero__price-row{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    margin-bottom:16px;
+  }
+  .hero__price{
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:30px;
+    line-height:30px;
+    color:var(--accent-color-2);
+  }
+  .hero__colors{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:16px;
+    flex-wrap:wrap;
+  }
+  .hero__colors-label{
+    font-family:var(--font-text);
+    font-weight:700;
+    font-size:13px;
+    color:var(--text-color);
+  }
+  .hero__swatches{display:flex;gap:8px;}
+  .hero__colors-selected{
+    font-family:var(--font-text);
+    font-size:13px;
+    color:var(--text-color);
+  }
+  .hero__buy-row{
+    display:flex;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .hero__qty{
+    display:flex;
+    align-items:center;
+    border:1px solid var(--border-color);
+    border-radius:var(--radius-s);
+    flex:0 0 auto;
+  }
+  .hero__qty-btn{
+    width:40px;
+    height:48px;
+    border:none;
+    background:none;
+    font-size:18px;
+    color:var(--text-color);
+    cursor:pointer;
+  }
+  .hero__qty-input{
+    width:32px;
+    height:48px;
+    border:none;
+    border-left:1px solid var(--border-color);
+    border-right:1px solid var(--border-color);
+    text-align:center;
+    font-family:var(--font-text);
+    font-size:15px;
+    color:var(--text-color);
+  }
+  .hero__cta{flex:1;}
+  .hero__category{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#9A9A9A;
+    margin-bottom:16px;
+  }
+  .hero__category-link{
+    color:var(--text-color);
+    font-weight:700;
+    text-decoration:none;
+  }
+  .hero__meta-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding-top:12px;
+    border-top:1px solid var(--border-color);
+    flex-wrap:wrap;
+  }
+  .hero__wishlist{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:none;
+    border:none;
+    font-family:var(--font-text);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--text-color);
+    cursor:pointer;
+    padding:0;
+  }
+  .hero__share{display:flex;align-items:center;gap:10px;}
+  .hero__share-label{
+    font-family:var(--font-text);
+    font-size:11px;
+    font-weight:400;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#9A9A9A;
+  }
+  .hero__share a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:28px;
+    height:28px;
+    color:var(--text-color);
+  }
+  .btn{
+    display:inline-block;
+    width:100%;
+    max-width:340px;
+    padding:13px 24px 14px;
+    border:none;
+    border-radius:var(--radius-s);
+    font-family:var(--font-text);
+    font-weight:700;
+    font-size:14px;
+    line-height:16px;
+    cursor:pointer;
+    text-align:center;
+    min-height:48px;
+  }
+  .btn--primary{
+    background:var(--accent-color-2);
+    color:#fff;
+    transition:background 0.15s ease;
+  }
+  .btn--primary:active{
+    background:#E04B3D;
+  }
+
+  /* ---------- Shared section wrapper ---------- */
+  .section{
+    max-width:var(--container);
+    margin:0 auto;
+    padding:8px 0 24px;
+  }
+  .section__card{
+    background:var(--card-bg);
+    padding:24px 0;
+  }
+  .section__inner{
+    max-width:680px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .section__eyebrow{
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--text-color);
+    text-align:center;
+    margin-bottom:8px;
+  }
+  .section__title{
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:26px;
+    line-height:1.2;
+    text-align:center;
+    color:var(--text-color);
+    margin-bottom:20px;
+  }
+
+  /* ---------- Section 2: How it works ---------- */
+  .how__image-wrap{
+    border-radius:var(--radius-s);
+    overflow:hidden;
+    margin-bottom:24px;
+    background:#F4F4F4;
+  }
+  .how__image{
+    width:100%;
+    height:auto;
+  }
+  .how__steps{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .how__step{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.5s ease, transform 0.5s ease;
+  }
+  .how__step.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .how__step-icon{
+    flex:0 0 auto;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:rgba(49,172,216,0.12);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .how__step-icon svg{
+    width:22px;
+    height:22px;
+    stroke:var(--accent-color);
+  }
+  .how__step-text{
+    font-family:var(--font-text);
+    font-size:15px;
+    line-height:22px;
+    color:var(--text-color);
+    padding-top:8px;
+  }
+  .how__step-text strong{
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:14px;
+    display:block;
+    margin-bottom:2px;
+  }
+
+  /* ---------- Section 3: Benefits ---------- */
+  .benefits__grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+  .benefit{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:8px;
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.5s ease, transform 0.5s ease;
+  }
+  .benefit.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .benefit__icon{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:rgba(49,172,216,0.12);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 auto;
+  }
+  .benefit__icon svg{
+    width:22px;
+    height:22px;
+    stroke:var(--accent-color);
+  }
+  .benefit__icon img{
+    width:22px;
+    height:22px;
+  }
+  .benefit__label{
+    font-family:var(--font-text);
+    font-weight:700;
+    font-size:13px;
+    line-height:17px;
+    color:var(--text-color);
+  }
+
+  /* ---------- Section 4: Calculator ---------- */
+  .calc__hint{
+    font-family:var(--font-text);
+    font-size:14px;
+    text-align:center;
+    color:var(--text-color);
+    margin-bottom:16px;
+  }
+  .calc__toggle{
+    display:flex;
+    border:1px solid var(--border-color);
+    border-radius:999px;
+    overflow:hidden;
+    margin-bottom:20px;
+  }
+  .calc__toggle-btn{
+    flex:1;
+    padding:10px 8px;
+    border:none;
+    background:#fff;
+    font-family:var(--font-text);
+    font-weight:700;
+    font-size:13px;
+    color:var(--text-color);
+    cursor:pointer;
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .calc__toggle-btn.is-active{
+    background:var(--accent-color);
+    color:#fff;
+  }
+  .calc__result{
+    display:flex;
+    gap:12px;
+  }
+  .calc__result-item{
+    flex:1;
+    background:rgba(49,172,216,0.08);
+    border-radius:var(--radius-s);
+    padding:16px 8px;
+    text-align:center;
+  }
+  .calc__result-value{
+    display:block;
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:26px;
+    color:var(--accent-color-2);
+  }
+  .calc__result-value.pulse{
+    animation:calcPulse 0.3s ease;
+  }
+  @keyframes calcPulse{
+    0%{transform:scale(1.18);}
+    100%{transform:scale(1);}
+  }
+  .calc__result-label{
+    display:block;
+    font-family:var(--font-text);
+    font-size:12px;
+    line-height:16px;
+    color:var(--text-color);
+    margin-top:4px;
+  }
+
+  /* ---------- Section 5: Trust ---------- */
+  .trust__bridge{
+    font-family:var(--font-text);
+    font-size:15px;
+    line-height:22px;
+    color:var(--text-color);
+    text-align:center;
+    background:rgba(147,194,64,0.12);
+    border-radius:var(--radius-s);
+    padding:16px;
+    margin-bottom:20px;
+  }
+  .trust__bridge strong{
+    font-family:var(--font-header);
+    font-weight:700;
+  }
+  .trust__payments{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:20px;
+  }
+  .trust__payments img{
+    max-height:32px;
+    width:auto;
+    border-radius:3px;
+  }
+  .trust__signals{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+  }
+  .trust__signal{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  }
+  .trust__signal img{
+    max-height:32px;
+    width:auto;
+  }
+  .trust__signal span{
+    font-family:var(--font-text);
+    font-size:12px;
+    color:var(--text-color);
+  }
+
+  /* ---------- Section 6: Compatibility ---------- */
+  .steps__list{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    margin-bottom:20px;
+  }
+  .steps__item{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.5s ease, transform 0.5s ease;
+  }
+  .steps__item.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .steps__number{
+    flex:0 0 auto;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:var(--accent-color);
+    color:#fff;
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .steps__text{
+    font-family:var(--font-text);
+    font-size:14px;
+    line-height:20px;
+    color:var(--text-color);
+    padding-top:4px;
+  }
+  .steps__text strong{
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:14px;
+    display:block;
+    margin-bottom:2px;
+  }
+  .steps__stat{
+    text-align:center;
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:18px;
+    color:var(--accent-color-2);
+    background:rgba(255,91,75,0.08);
+    border-radius:var(--radius-s);
+    padding:14px;
+  }
+
+  /* ---------- Section 7: Pricing ---------- */
+  .pricing__placeholder-note{
+    text-align:center;
+    font-family:var(--font-text);
+    font-size:12px;
+    font-weight:700;
+    color:#8A6100;
+    background:#FDF1D6;
+    border:1px dashed #E3B94C;
+    border-radius:var(--radius-s);
+    padding:8px 10px;
+    margin-bottom:16px;
+  }
+  .pricing__options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:20px;
+  }
+  .pricing__option{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:2px;
+    width:100%;
+    text-align:left;
+    background:#fff;
+    border:2px solid var(--border-color);
+    border-radius:var(--radius-card);
+    padding:12px 14px;
+    cursor:pointer;
+    font-family:var(--font-text);
+  }
+  .pricing__option.is-selected{
+    border-color:var(--accent-color-2);
+    background:rgba(255,91,75,0.05);
+  }
+  .pricing__option-name{
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:14px;
+    color:var(--text-color);
+  }
+  .pricing__option-desc{
+    font-size:12px;
+    color:var(--text-color);
+    opacity:0.75;
+  }
+  .pricing__option-price{
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:20px;
+    color:var(--accent-color-2);
+    margin-top:4px;
+  }
+  .swatch{
+    width:27px;
+    height:27px;
+    border-radius:50%;
+    border:2px solid transparent;
+    box-shadow:0px 4px 2px -2px rgba(238,238,238,1);
+    cursor:pointer;
+    padding:0;
+  }
+  .swatch.is-selected{
+    border-color:var(--accent-color);
+  }
+  .pricing__delivery{
+    text-align:center;
+    font-family:var(--font-text);
+    font-weight:700;
+    font-size:13px;
+    color:#5E7A2E;
+    background:rgba(147,194,64,0.12);
+    border-radius:var(--radius-s);
+    padding:10px;
+  }
+
+  /* ---------- Section 8: FAQ ---------- */
+  .faq__list{
+    border-top:1px solid var(--border-color);
+  }
+  .faq__item{
+    border-bottom:1px solid var(--border-color);
+  }
+  .faq__question{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    background:none;
+    border:none;
+    padding:14px 2px;
+    text-align:left;
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:14px;
+    color:var(--text-color);
+    cursor:pointer;
+  }
+  .faq__icon{
+    flex:0 0 auto;
+    font-family:var(--font-text);
+    font-size:20px;
+    line-height:1;
+    color:var(--accent-color-2);
+    transition:transform 0.2s ease;
+  }
+  .faq__item.is-open .faq__icon{
+    transform:rotate(45deg);
+  }
+  .faq__answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.25s ease;
+  }
+  .faq__item.is-open .faq__answer{
+    max-height:220px;
+  }
+  .faq__answer p{
+    padding:0 2px 14px;
+    font-family:var(--font-text);
+    font-size:14px;
+    line-height:20px;
+    color:var(--text-color);
+  }
+
+  /* ---------- Final CTA + sticky bar ---------- */
+  .final__cta{
+    text-align:center;
+  }
+  .final__price{
+    font-family:var(--font-text);
+    font-size:15px;
+    color:var(--text-color);
+    margin:0 auto 18px;
+  }
+  body{
+    padding-bottom:78px;
+  }
+  .sticky-cta{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#fff;
+    border-top:1px solid var(--border-color);
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    transform:translateY(100%);
+    transition:transform 0.25s ease;
+    z-index:50;
+    box-shadow:0 -2px 10px rgba(0,0,0,0.08);
+  }
+  .sticky-cta.is-visible{
+    transform:translateY(0);
+  }
+  .sticky-cta__info{
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+  }
+  .sticky-cta__name{
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:11px;
+    color:var(--text-color);
+    white-space:nowrap;
+  }
+  .sticky-cta__price{
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:17px;
+    color:var(--accent-color-2);
+  }
+  .sticky-cta .btn{
+    width:auto;
+    flex:0 0 auto;
+    padding:12px 20px;
+    font-size:13px;
+    min-height:44px;
+  }
+
+  @media (min-width:768px){
+    :root{--container:1170px;}
+    body{background:var(--background-color);}
+    .page-canvas{
+      max-width:1170px;
+      margin:0 auto;
+      padding:32px;
+      background:var(--card-bg);
+    }
+    .hero{max-width:none;padding:0;margin-bottom:16px;}
+    .section{max-width:none;padding:0;}
+    .hero__card{
+      padding:0;
+      display:grid;
+      grid-template-columns:1fr 488px;
+      gap:32px;
+      align-items:start;
+    }
+    .hero__gallery{
+      flex-direction:row-reverse;
+      gap:16px;
+      margin-bottom:0;
+    }
+    .hero__main-photo{margin-bottom:0;flex:1;}
+    .hero__thumbs{
+      display:flex;
+      flex-direction:column;
+      overflow-y:auto;
+      max-height:530px;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
+    }
+    .hero__thumbs::-webkit-scrollbar{display:none;width:0;height:0;}
+    .hero__thumb{width:80px;height:80px;flex:0 0 auto;aspect-ratio:auto;}
+    .hero__info{padding-top:0;}
+    .hero__title{margin-bottom:16px;}
+    .hero__subtitle{font-size:16px;margin-bottom:24px;}
+    .hero__specs{font-size:15px;margin-bottom:24px;}
+    .hero__price-row{margin-bottom:24px;}
+    .hero__colors{margin-bottom:24px;}
+    .swatch{width:32px;height:32px;}
+    .how__steps{flex-direction:row;gap:16px;}
+    .how__step{flex-direction:column;align-items:center;text-align:center;}
+    .how__step-text{padding-top:0;}
+    .benefit__label{font-size:14px;}
+    .calc__toggle-btn{font-size:14px;padding:12px 8px;}
+    .calc__result-value{font-size:30px;}
+    .pricing__options{flex-direction:row;}
+    .pricing__option{flex:1;}
+  }
+</style>
+</head>
+<body>
+
+<div class="page-canvas">
+
+<!-- ================= SECTION 1: HERO ================= -->
+<header class="hero">
+  <div class="hero__card">
+    <div class="hero__gallery">
+      <div class="hero__main-photo">
+        <span class="hero__badge">New</span>
+        <img
+          class="hero__image"
+          id="heroMainImage"
+          src="../assets/product/hero-tray-white-cat.jpg"
+          alt="Cat sitting calmly in the Zeodeo Classic Litter Tray"
+          fetchpriority="high"
+          loading="eager"
+        >
+      </div>
+      <div class="hero__thumbs" id="heroThumbs">
+        <button type="button" class="hero__thumb is-active" id="heroThumbColor" data-full="../assets/product/hero-tray-white-cat.jpg" aria-label="Photo 1: cat in the tray">
+          <img id="heroThumbColorImg" src="../assets/product/hero-tray-white-cat.jpg" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="../assets/infographics/03-dimensions.png" aria-label="Photo 2: dimensions">
+          <img src="../assets/infographics/03-dimensions.png" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="../assets/product/render-tray-oysterwhite-drawer-open.png" aria-label="Photo 3: drawer open">
+          <img src="../assets/product/render-tray-oysterwhite-drawer-open.png" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="../assets/product/render-tray-oysterwhite-exploded.png" aria-label="Photo 4: two-layer cutaway">
+          <img src="../assets/product/render-tray-oysterwhite-exploded.png" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="../assets/product/scoop-zeodeo.png" aria-label="Photo 5: included scoop">
+          <img src="../assets/product/scoop-zeodeo.png" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="../assets/product/pellets-white-bg.png" aria-label="Photo 6: zeolite pellets">
+          <img src="../assets/product/pellets-white-bg.png" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="../assets/product/hero-lineup-3-colors.jpg" aria-label="Photo 7: available colours">
+          <img src="../assets/product/hero-lineup-3-colors.jpg" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="../assets/product/package-absorbing-pads.png" aria-label="Photo 8: absorbent pads pack">
+          <img src="../assets/product/package-absorbing-pads.png" alt="" loading="lazy">
+        </button>
+      </div>
+    </div>
+
+    <div class="hero__info">
+      <p class="hero__breadcrumb">
+        <span>Shop <span class="hero__breadcrumb-sep">→</span> Cat Litter Tray</span>
+        <span class="hero__stock"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg>In stock</span>
+      </p>
+
+      <h1 class="hero__title">The Litter Tray That Keeps Your Home Fresh</h1>
+      <p class="hero__subtitle">Two-layer system traps odours and locks away liquid - no more daily scrubbing.</p>
+
+      <p class="hero__specs">
+        <strong>Type:</strong> Classic open<br>
+        <strong>Dimensions:</strong> 55 × 40 × 26 cm<br>
+        <strong>Ideal for cats weighing:</strong> Up to 8 kg<br>
+        <strong>What's in the package:</strong> Litter tray, scoop, zeolite pellets, absorbent pads - enough for 30 days' use
+      </p>
+
+      <div class="hero__price-row">
+        <span class="hero__price" id="heroPrice">£69.00</span>
+      </div>
+
+      <div class="hero__colors">
+        <span class="hero__colors-label">Colour:</span>
+        <div class="hero__swatches">
+          <button class="swatch is-selected" style="background:#EDE8DD" data-color="White" data-image="../assets/product/hero-tray-white-cat.jpg" aria-label="White" type="button"></button>
+          <button class="swatch" style="background:#9099A1" data-color="Grey" data-image="../assets/product/hero-tray-grey-cat.jpg" aria-label="Grey" type="button"></button>
+          <button class="swatch" style="background:#3B3F45" data-color="Black" data-image="../assets/product/hero-tray-black-cat.jpg" aria-label="Black" type="button"></button>
+        </div>
+        <span class="hero__colors-selected" id="colorSelectedLabel">White</span>
+      </div>
+
+      <div class="hero__buy-row">
+        <div class="hero__qty">
+          <button type="button" class="hero__qty-btn" id="heroQtyMinus" aria-label="Decrease quantity">−</button>
+          <input type="text" class="hero__qty-input" id="heroQtyInput" value="1" inputmode="numeric" aria-label="Quantity">
+          <button type="button" class="hero__qty-btn" id="heroQtyPlus" aria-label="Increase quantity">+</button>
+        </div>
+        <button class="btn btn--primary hero__cta" type="button">Add to Basket</button>
+      </div>
+
+      <p class="hero__category">Category: <a href="#" class="hero__category-link">Cat Litter Tray</a></p>
+
+      <div class="hero__meta-row">
+        <button type="button" class="hero__wishlist">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.5 8.4 2.3 5 5.8 5c2 0 3.4 1 4.2 2.3C10.8 6 12.2 5 14.2 5c3.5 0 5.3 3.4 3.8 6.7C19.5 16.4 12 21 12 21z"/></svg>
+          Add to Wishlist
+        </button>
+        <div class="hero__share">
+          <span class="hero__share-label">Share</span>
+          <a href="#" aria-label="Share on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.2-1.5 1.6-1.5h1.6V3.7C15.9 3.6 14.9 3.5 13.7 3.5c-2.5 0-4.2 1.5-4.2 4.3v2.1H6.8V13h2.7v8h4z"/></svg></a>
+          <a href="#" aria-label="Share on Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.3 1.7-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.2 4.6a4.1 4.1 0 0 0 1.3 5.5c-.6 0-1.3-.2-1.8-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.9.1 4.1 4.1 0 0 0 3.9 2.9A8.3 8.3 0 0 1 2 18.6a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg></a>
+          <a href="#" aria-label="Share on Pinterest"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.3c0-.8 0-1.8.2-2.6l1.4-6s-.3-.7-.3-1.7c0-1.6.9-2.8 2.1-2.8 1 0 1.5.7 1.5 1.6 0 1-.6 2.5-1 3.9-.2 1.1.6 2 1.7 2 2 0 3.5-2.1 3.5-5.2 0-2.7-2-4.6-4.7-4.6-3.2 0-5.1 2.4-5.1 4.9 0 1 .3 1.9.9 2.6l-.3 1.2c0 .2-.2.2-.4.1-1.2-.5-1.9-2.1-1.9-3.5 0-2.8 2-5.4 5.9-5.4 3.1 0 5.5 2.2 5.5 5.1 0 3.1-1.9 5.5-4.7 5.5-.9 0-1.8-.5-2.1-1l-.6 2.2c-.2.8-.7 1.9-1.1 2.5A10 10 0 1 0 12 2z"/></svg></a>
+          <a href="#" aria-label="Share on WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18.2a8.1 8.1 0 0 1-4.2-1.2l-.3-.2-3 .9.9-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.5-1.3.1-.1 0-.3 0-.4L9.4 8.4c-.1-.2-.3-.2-.5-.2h-.4c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= SECTION 2: HOW IT WORKS ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner">
+    <p class="section__eyebrow">How it works</p>
+    <h2 class="section__title">Two Layers Do the Work</h2>
+
+    <div class="how__image-wrap">
+      <img
+        class="how__image"
+        src="../assets/product/render-tray-oysterwhite-exploded.png"
+        alt="Cross-section of the Zeodeo Classic Litter Tray showing zeolite pellets on top and an absorbent pad below"
+        loading="lazy"
+        width="1480"
+        height="2160"
+      >
+    </div>
+
+    <div class="how__steps">
+      <div class="how__step" data-reveal>
+        <span class="how__step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 8h12a2.5 2.5 0 1 0-2-4"/><path d="M3 16h15a2.5 2.5 0 1 1-2 4"/></svg>
+        </span>
+        <p class="how__step-text"><strong>Zeolite pellets</strong>Trap odours, absorb moisture, dust-free</p>
+      </div>
+      <div class="how__step" data-reveal>
+        <span class="how__step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg>
+        </span>
+        <p class="how__step-text"><strong>Absorbent pad below</strong>Locks away liquid</p>
+      </div>
+      <div class="how__step" data-reveal>
+        <span class="how__step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>
+        </span>
+        <p class="how__step-text"><strong>Scoop solids as needed</strong>No daily deep-clean</p>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 3: BENEFITS ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner">
+    <div class="benefits__grid">
+      <div class="benefit" data-reveal>
+        <span class="benefit__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7V5a3 3 0 0 1 6 0v2"/><rect x="4" y="7" width="16" height="13" rx="2"/></svg>
+        </span>
+        <p class="benefit__label">Comfortable up to 8kg</p>
+      </div>
+      <div class="benefit" data-reveal>
+        <span class="benefit__icon">
+          <img src="../assets/icons/paw-print.svg" alt="" loading="lazy">
+        </span>
+        <p class="benefit__label">Fits 2-3 cats</p>
+      </div>
+      <div class="benefit" data-reveal>
+        <span class="benefit__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20h6a3 3 0 0 0 3-3v-1a4 4 0 0 0-4-4H8a2 2 0 0 0-2 2v6z"/><path d="M11 12V6a2 2 0 1 1 4 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>
+        </span>
+        <p class="benefit__label">No more hoovering</p>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 4: CALCULATOR ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner">
+    <p class="section__eyebrow">Plan your supply</p>
+    <h2 class="section__title">How Many Cats?</h2>
+    <p class="calc__hint">Tap to see your monthly essentials.</p>
+
+    <div class="calc__toggle" role="group" aria-label="Number of cats sharing this tray">
+      <button class="calc__toggle-btn is-active" data-cats="1" type="button">1 Cat</button>
+      <button class="calc__toggle-btn" data-cats="2" type="button">2 Cats</button>
+      <button class="calc__toggle-btn" data-cats="3" type="button">3 Cats</button>
+    </div>
+
+    <div class="calc__result">
+      <div class="calc__result-item">
+        <span class="calc__result-value" id="calcPads">4</span>
+        <span class="calc__result-label">pads a month</span>
+      </div>
+      <div class="calc__result-item">
+        <span class="calc__result-value" id="calcGranules">1</span>
+        <span class="calc__result-label">pack of pellets a month</span>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 5: TRUST ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner">
+    <p class="section__eyebrow">Why trust zeodeo</p>
+    <blockquote class="trust__bridge">
+      Made with the same zeolite pellets already trusted by <strong>200+ Amazon UK reviewers</strong>.
+    </blockquote>
+
+    <div class="trust__payments">
+      <img src="../assets/site-reference/payment-trust/visa-1.webp" alt="Visa" loading="lazy">
+      <img src="../assets/site-reference/payment-trust/mastercard-1.webp" alt="Mastercard" loading="lazy">
+      <img src="../assets/site-reference/payment-trust/maestro.webp" alt="Maestro" loading="lazy">
+      <img src="../assets/site-reference/payment-trust/google.webp" alt="Google Pay" loading="lazy">
+    </div>
+
+    <div class="trust__signals">
+      <div class="trust__signal">
+        <img src="../assets/site-reference/payment-trust/dpdgroup-1.webp" alt="DPD" loading="lazy">
+        <span>UK delivery</span>
+      </div>
+      <div class="trust__signal">
+        <img src="../assets/site-reference/payment-trust/trustpilot.png" alt="Trustpilot" loading="lazy">
+        <span>Reviewed on Trustpilot</span>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 6: COMPATIBILITY ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner">
+    <p class="section__eyebrow">Settling in</p>
+    <h2 class="section__title">Will My Cat Take to It?</h2>
+
+    <div class="steps__list">
+      <div class="steps__item" data-reveal>
+        <span class="steps__number">1</span>
+        <p class="steps__text"><strong>Place it alongside</strong>Put the new tray next to the old one.</p>
+      </div>
+      <div class="steps__item" data-reveal>
+        <span class="steps__number">2</span>
+        <p class="steps__text"><strong>Add a familiar scent</strong>Mix in a little of the old litter.</p>
+      </div>
+      <div class="steps__item" data-reveal>
+        <span class="steps__number">3</span>
+        <p class="steps__text"><strong>Switch over</strong>Once they're using it consistently, remove the old tray.</p>
+      </div>
+    </div>
+
+    <p class="steps__stat">95% of cats settle in with no issues.</p>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 7: PRICING ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner">
+    <p class="section__eyebrow">Choose your kit</p>
+    <h2 class="section__title">Pricing</h2>
+
+    <p class="pricing__placeholder-note">PLACEHOLDER - price &amp; colour names not yet confirmed for this new product, see plan.md</p>
+
+    <div class="pricing__options">
+      <button class="pricing__option is-selected" type="button" data-price="£69.00" data-name="Starter Kit">
+        <span class="pricing__option-name">Starter Kit</span>
+        <span class="pricing__option-desc">Tray + scoop + pellets + pads - 30 days supply</span>
+        <span class="pricing__option-price">£69.00</span>
+      </button>
+      <button class="pricing__option" type="button" data-price="£49.00" data-name="Tray Only">
+        <span class="pricing__option-name">Tray Only</span>
+        <span class="pricing__option-desc">Just the litter tray</span>
+        <span class="pricing__option-price">£49.00</span>
+      </button>
+    </div>
+
+    <p class="pricing__delivery">Free UK delivery on orders over £39</p>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 8: FAQ ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner">
+    <p class="section__eyebrow">Questions</p>
+    <h2 class="section__title">FAQ</h2>
+
+    <div class="faq__list">
+      <div class="faq__item">
+        <button class="faq__question" type="button">
+          What if my cat has softer stools?
+          <span class="faq__icon">+</span>
+        </button>
+        <div class="faq__answer">
+          <p>Discard soiled pellets straightaway. If it happens often, get in touch with us before you buy.</p>
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__question" type="button">
+          How often do I replace the pellets and pad?
+          <span class="faq__icon">+</span>
+        </button>
+        <div class="faq__answer">
+          <p>Pad: about once a week. Pellets: about once a month, and always within 60 days to keep the tray working properly.</p>
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__question" type="button">
+          Will my cat take to a new tray?
+          <span class="faq__icon">+</span>
+        </button>
+        <div class="faq__answer">
+          <p>Yes, in 95% of cases straightaway. If they're unsure, place the new tray next to the old one for a few days.</p>
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__question" type="button">
+          What size cat is this suitable for?
+          <span class="faq__icon">+</span>
+        </button>
+        <div class="faq__answer">
+          <p>Comfortable for cats up to 8kg, and works well for 2-3 cats sharing one tray.</p>
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__question" type="button">
+          Is delivery free?
+          <span class="faq__icon">+</span>
+        </button>
+        <div class="faq__answer">
+          <p>Yes, free UK delivery on orders over £39.</p>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="section">
+  <div class="section__card final__cta">
+   <div class="section__inner">
+    <h2 class="section__title" style="margin-bottom:8px;">Ready for a Fresher Home?</h2>
+    <p class="final__price" id="finalPrice">Classic Litter Tray - £69.00 inc. VAT</p>
+    <button class="btn btn--primary">Add to Basket</button>
+   </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ================= STICKY ADD-TO-BASKET BAR ================= -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta__info">
+    <span class="sticky-cta__name">Classic Litter Tray</span>
+    <span class="sticky-cta__price" id="stickyPrice">£69.00 inc. VAT</span>
+  </div>
+  <button class="btn btn--primary" type="button">Add to Basket</button>
+</div>
+
+<script>
+  (function(){
+    var mainImage = document.getElementById('heroMainImage');
+    var thumbs = document.querySelectorAll('.hero__thumb');
+    thumbs.forEach(function(thumb){
+      thumb.addEventListener('click', function(){
+        thumbs.forEach(function(t){ t.classList.remove('is-active'); });
+        thumb.classList.add('is-active');
+        if(mainImage){ mainImage.src = thumb.dataset.full; }
+      });
+    });
+
+    var qtyInput = document.getElementById('heroQtyInput');
+    var qtyMinus = document.getElementById('heroQtyMinus');
+    var qtyPlus = document.getElementById('heroQtyPlus');
+    function clampQty(value){ return Math.min(99, Math.max(1, value)); }
+    if(qtyMinus && qtyPlus && qtyInput){
+      qtyMinus.addEventListener('click', function(){
+        qtyInput.value = clampQty((parseInt(qtyInput.value, 10) || 1) - 1);
+      });
+      qtyPlus.addEventListener('click', function(){
+        qtyInput.value = clampQty((parseInt(qtyInput.value, 10) || 1) + 1);
+      });
+      qtyInput.addEventListener('change', function(){
+        qtyInput.value = clampQty(parseInt(qtyInput.value, 10) || 1);
+      });
+    }
+  })();
+
+  (function(){
+    var steps = document.querySelectorAll('[data-reveal]');
+    if(!('IntersectionObserver' in window)){
+      steps.forEach(function(el){ el.classList.add('is-visible'); });
+    } else {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, {threshold:0.2});
+      steps.forEach(function(el){ io.observe(el); });
+    }
+  })();
+
+  (function(){
+    var calcData = {
+      1: {pads:'4', granules:'1'},
+      2: {pads:'6-10', granules:'1'},
+      3: {pads:'8-12', granules:'1-2'}
+    };
+    var toggleBtns = document.querySelectorAll('.calc__toggle-btn');
+    var padsEl = document.getElementById('calcPads');
+    var granulesEl = document.getElementById('calcGranules');
+
+    function pulse(el){
+      el.classList.remove('pulse');
+      void el.offsetWidth;
+      el.classList.add('pulse');
+    }
+
+    toggleBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        toggleBtns.forEach(function(b){ b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        var data = calcData[btn.dataset.cats];
+        padsEl.textContent = data.pads;
+        granulesEl.textContent = data.granules;
+        pulse(padsEl);
+        pulse(granulesEl);
+      });
+    });
+  })();
+
+  (function(){
+    var options = document.querySelectorAll('.pricing__option');
+    var heroPrice = document.getElementById('heroPrice');
+    var stickyPrice = document.getElementById('stickyPrice');
+    var finalPrice = document.getElementById('finalPrice');
+
+    function applyPrice(opt){
+      var price = opt.dataset.price;
+      var name = opt.dataset.name;
+      if(heroPrice){ heroPrice.textContent = price; }
+      if(stickyPrice){ stickyPrice.textContent = price + ' inc. VAT'; }
+      if(finalPrice){ finalPrice.textContent = 'Classic Litter Tray - ' + price + ' inc. VAT'; }
+    }
+
+    options.forEach(function(opt){
+      opt.addEventListener('click', function(){
+        options.forEach(function(o){ o.classList.remove('is-selected'); });
+        opt.classList.add('is-selected');
+        applyPrice(opt);
+      });
+    });
+
+    var swatches = document.querySelectorAll('.swatch');
+    var colorLabel = document.getElementById('colorSelectedLabel');
+    var mainImage = document.getElementById('heroMainImage');
+    var thumbColor = document.getElementById('heroThumbColor');
+    var thumbColorImg = document.getElementById('heroThumbColorImg');
+    var allThumbs = document.querySelectorAll('.hero__thumb');
+    swatches.forEach(function(sw){
+      sw.addEventListener('click', function(){
+        swatches.forEach(function(s){ s.classList.remove('is-selected'); });
+        sw.classList.add('is-selected');
+        if(colorLabel){ colorLabel.textContent = sw.dataset.color; }
+
+        var image = sw.dataset.image;
+        if(image){
+          if(thumbColor){ thumbColor.dataset.full = image; }
+          if(thumbColorImg){ thumbColorImg.src = image; }
+          if(mainImage){ mainImage.src = image; }
+          allThumbs.forEach(function(t){ t.classList.remove('is-active'); });
+          if(thumbColor){ thumbColor.classList.add('is-active'); }
+        }
+      });
+    });
+  })();
+
+  (function(){
+    var faqItems = document.querySelectorAll('.faq__item');
+    faqItems.forEach(function(item){
+      var question = item.querySelector('.faq__question');
+      question.addEventListener('click', function(){
+        var wasOpen = item.classList.contains('is-open');
+        faqItems.forEach(function(i){ i.classList.remove('is-open'); });
+        if(!wasOpen){ item.classList.add('is-open'); }
+      });
+    });
+  })();
+
+  (function(){
+    var hero = document.querySelector('.hero');
+    var stickyCta = document.getElementById('stickyCta');
+    if(!hero || !stickyCta) return;
+
+    if(!('IntersectionObserver' in window)){
+      stickyCta.classList.add('is-visible');
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          stickyCta.classList.remove('is-visible');
+        } else {
+          stickyCta.classList.add('is-visible');
+        }
+      });
+    }, {threshold:0});
+    io.observe(hero);
+  })();
+</script>
+
+</body>
+</html>
