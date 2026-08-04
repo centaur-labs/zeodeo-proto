@@ -1,0 +1,1928 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZeoDeo - Interactive Blocks: Variants for Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Montserrat:wght@700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+<!-- Google Model Viewer (3D & AR support) - used by Block 8, Variant D -->
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+<style>
+  /* Registered so the browser can smoothly transition the mask-image position/size below (Block 1, Variant E spotlight) */
+  @property --gx{syntax:'<percentage>';inherits:false;initial-value:50%;}
+  @property --gy{syntax:'<percentage>';inherits:false;initial-value:50%;}
+  @property --gw{syntax:'<percentage>';inherits:false;initial-value:30%;}
+  @property --gh{syntax:'<percentage>';inherits:false;initial-value:30%;}
+
+  :root{
+    --text-color:#404E65;
+    --accent-color:#31ACD8;
+    --accent-color-2:#FF5B4B;
+    --background-color:#6ECDED;
+    --new-badge-color:#93C240;
+    --border-color:#EAEAEA;
+    --card-bg:#FFFFFF;
+    --font-text:'Open Sans',sans-serif;
+    --font-header:'Montserrat',sans-serif;
+    --font-big-header:'Fredoka',sans-serif;
+    --radius-s:4px;
+    --radius-card:8px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:var(--font-text);
+    background:#F0F3F6;
+    color:var(--text-color);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:90px;
+  }
+  h1,h2,h3{font-family:var(--font-header);line-height:1.15;color:var(--text-color);}
+  img{max-width:100%;display:block;}
+
+  /* ---------- Intro / doc chrome (internal, not site content) ---------- */
+  .doc-header{
+    padding:28px 20px 24px;
+  }
+  .doc-header__inner{max-width:1180px;margin:0 auto;}
+  .doc-header__title{
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:26px;
+    color:var(--text-color);
+    margin-bottom:8px;
+  }
+  .doc-header__desc{
+    font-size:14px;
+    line-height:1.6;
+    color:#5A6B85;
+    max-width:720px;
+  }
+  .doc-nav{
+    background:#fff;
+    border-bottom:1px solid var(--border-color);
+    position:sticky;
+    top:0;
+    z-index:40;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+  .doc-nav__inner{
+    max-width:1180px;
+    margin:0 auto;
+    padding:10px 8px;
+    display:flex;
+    gap:8px;
+  }
+  .doc-nav a{
+    font-family:var(--font-text);
+    font-weight:700;
+    font-size:12px;
+    color:var(--text-color);
+    text-decoration:none;
+    background:#F4F4F4;
+    padding:7px 12px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .doc-nav a:hover{background:rgba(49,172,216,0.15);}
+
+  .lab{max-width:1180px;margin:0 auto;padding:36px 20px;}
+  .lab__block{margin-bottom:56px;scroll-margin-top:60px;}
+  .lab__block-head{margin-bottom:16px;}
+  .lab__eyebrow{
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--accent-color);
+    margin-bottom:4px;
+  }
+  .lab__title{
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:24px;
+    margin-bottom:8px;
+  }
+  .lab__note{
+    font-size:13px;
+    line-height:1.55;
+    color:#5A6B85;
+    background:#fff;
+    border:1px dashed #C9D3DE;
+    border-radius:var(--radius-s);
+    padding:10px 14px;
+    max-width:760px;
+  }
+  .lab__note strong{color:var(--text-color);}
+
+  .variants{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-top:20px;
+    align-items:flex-start;
+  }
+  .device{
+    width:100%;
+    max-width:360px;
+    background:var(--card-bg);
+    border-radius:14px;
+    box-shadow:0 2px 14px rgba(30,40,60,0.10);
+    overflow:hidden;
+    position:relative;
+    border:1px solid var(--border-color);
+  }
+  .device--wide{flex:0 0 100%;width:100%;max-width:none;}
+  .device__label{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:10px 14px;
+    background:#F7F9FA;
+    border-bottom:1px solid var(--border-color);
+  }
+  .device__label-text{
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:12px;
+    color:var(--text-color);
+  }
+  .device__label-sub{
+    display:block;
+    font-family:var(--font-text);
+    font-weight:400;
+    font-size:11px;
+    color:#8A97A8;
+    margin-top:1px;
+  }
+  .pick-btn{
+    flex:0 0 auto;
+    font-family:var(--font-text);
+    font-weight:700;
+    font-size:11px;
+    color:var(--text-color);
+    background:#fff;
+    border:1px solid var(--border-color);
+    border-radius:999px;
+    padding:6px 10px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .pick-btn:hover{border-color:var(--accent-color);}
+  .device.is-picked .pick-btn{
+    background:var(--new-badge-color);
+    border-color:var(--new-badge-color);
+    color:#fff;
+  }
+  /* Headerless cards (no label bar / pick button): whole card is the click target. */
+  .device--headerless{cursor:pointer;}
+  .device__body{padding:18px 16px 20px;}
+
+  .section__eyebrow{
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--text-color);
+    margin-bottom:6px;
+  }
+  .section__title{
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:19px;
+    line-height:1.2;
+    color:var(--text-color);
+    margin-bottom:12px;
+  }
+  .btn{
+    display:inline-block;
+    width:100%;
+    padding:12px 18px 13px;
+    border:none;
+    border-radius:var(--radius-s);
+    font-family:var(--font-text);
+    font-weight:700;
+    font-size:13px;
+    cursor:pointer;
+    text-align:center;
+  }
+  .btn--primary{background:var(--accent-color-2);color:#fff;}
+  .btn--primary:active{background:#E04B3D;}
+  .btn--ghost{background:#fff;border:1px solid var(--border-color);color:var(--text-color);}
+
+  /* ================= BLOCK 1: Anatomy - Variant E (spotlight hover/tap + side panel, chosen for the final build) ================= */
+
+  .anat2__layout{display:flex;flex-wrap:wrap;gap:24px;align-items:stretch;}
+  .anat2__stage{
+    position:relative;border-radius:var(--radius-s);overflow:hidden;aspect-ratio:1/1;
+    touch-action:manipulation;flex:1 1 300px;max-width:440px;
+  }
+  .anat2__stage img{width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;}
+  /* Soft spotlight: one dark layer, masked with a radial gradient so the "hole" fades out gradually
+     instead of a hard-edged shape. The mask itself (not a second element) is what moves and resizes. */
+  .anat2__dim{
+    position:absolute;inset:0;pointer-events:none;z-index:3;
+    background:rgba(18,20,24,0.15);
+    opacity:0;
+    -webkit-mask-image:radial-gradient(ellipse var(--gw) var(--gh) at var(--gx) var(--gy), transparent 0%, transparent 55%, black 100%);
+    mask-image:radial-gradient(ellipse var(--gw) var(--gh) at var(--gx) var(--gy), transparent 0%, transparent 55%, black 100%);
+    transition:opacity .35s ease,
+      --gx .5s cubic-bezier(.4,0,.2,1), --gy .5s cubic-bezier(.4,0,.2,1),
+      --gw .5s cubic-bezier(.4,0,.2,1), --gh .5s cubic-bezier(.4,0,.2,1);
+  }
+  .anat2__dim.is-active{opacity:1;}
+  .anat2__pin{
+    position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;
+    border-radius:50%;background:var(--accent-color-2);color:#fff;border:3px solid rgba(255,255,255,0.92);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-header);font-weight:700;font-size:12px;line-height:1;
+    cursor:pointer;z-index:5;box-shadow:0 2px 10px rgba(0,0,0,0.35);padding:0;
+    transition:background .2s ease, color .2s ease, transform .2s ease;
+  }
+  .anat2__pin::before{
+    content:'';position:absolute;inset:-3px;border-radius:50%;border:2px solid var(--accent-color-2);
+    animation:anat2Pulse 2.2s ease-out infinite;
+  }
+  .anat2__pin.is-active{background:#fff;color:var(--accent-color-2);transform:translate(-50%,-50%) scale(1.08);}
+  .anat2__pin.is-active::before{animation:none;opacity:0;}
+  .anat2__pin:focus-visible{outline:2px solid #fff;outline-offset:2px;}
+  @keyframes anat2Pulse{
+    0%{box-shadow:0 0 0 0 rgba(255,91,75,0.55);}
+    100%{box-shadow:0 0 0 14px rgba(255,91,75,0);}
+  }
+  /* Consumables (pellets/pad) get the brand blue instead of coral, to read as "product" vs "tray part" */
+  .anat2__pin--product{background:var(--accent-color);}
+  .anat2__pin--product::before{border-color:var(--accent-color);animation-name:anat2PulseBlue;}
+  .anat2__pin--product.is-active{color:var(--accent-color);}
+  @keyframes anat2PulseBlue{
+    0%{box-shadow:0 0 0 0 rgba(49,172,216,0.55);}
+    100%{box-shadow:0 0 0 14px rgba(49,172,216,0);}
+  }
+  .anat2__panel{flex:1 1 240px;border-radius:var(--radius-s);padding:20px;display:flex;flex-direction:column;justify-content:center;}
+  .anat2__panel-lead{font-size:13px;color:var(--text-color);opacity:.65;margin-bottom:14px;}
+  .anat2__legend{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .anat2__legend li{display:flex;align-items:center;gap:10px;font-family:var(--font-header);font-weight:700;font-size:13.5px;color:var(--text-color);}
+  .anat2__legend-num{
+    flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:#fff;border:1px solid var(--border-color);
+    color:var(--accent-color-2);font-size:11.5px;display:flex;align-items:center;justify-content:center;
+  }
+  .anat2__legend-num--product{color:var(--accent-color);}
+  .anat2__panel-active{opacity:0;transform:translateY(4px);transition:opacity .25s ease, transform .25s ease;display:none;}
+  .anat2__panel-active.is-visible{opacity:1;transform:translateY(0);display:flex;gap:12px;align-items:flex-start;}
+  .anat2__panel-num{
+    flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--accent-color-2);color:#fff;
+    font-family:var(--font-header);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;
+  }
+  .anat2__panel-num.is-product{background:var(--accent-color);}
+  .anat2__panel-active > div{flex:1 1 auto;min-width:0;}
+  .anat2__panel-title{display:block;font-family:var(--font-header);font-weight:700;font-size:14.5px;margin-bottom:4px;color:var(--text-color);}
+  .anat2__panel-text{font-size:13px;line-height:1.5;color:var(--text-color);}
+  .anat2__panel-photo{
+    flex:0 0 auto;width:56px;height:56px;object-fit:contain;background:#fff;
+    border:1px solid var(--border-color);border-radius:var(--radius-s);padding:6px;align-self:center;
+  }
+  @media (max-width:600px){.anat2__stage{flex:1 1 100%;max-width:none;}.anat2__panel{flex:1 1 100%;}}
+
+  /* ================= BLOCK 2: Calculator ================= */
+
+  /* ---------- Block 2, Variant E: real site style (DESIGN.md) ---------- */
+  .calcE__sub{font-size:13px;line-height:1.5;color:var(--text-color);opacity:.7;margin-bottom:18px;max-width:60ch;}
+  .calcE__opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+  .calcE__opt{
+    border:1px solid var(--border-color);background:#fff;border-radius:999px;padding:9px 16px;
+    font-family:var(--font-text);font-size:13px;color:var(--text-color);cursor:pointer;transition:all 0.15s ease;
+  }
+  .calcE__opt.is-active{background:var(--accent-color);border-color:var(--accent-color);color:#fff;font-weight:700;}
+  .calcE__stage{background:#F8F8F8;border-radius:var(--radius-card);padding:20px;}
+  .calcE__result{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .calcE__line{
+    font-family:var(--font-header);font-weight:700;font-size:10.5px;text-transform:uppercase;
+    letter-spacing:.06em;color:var(--text-color);opacity:.55;margin-bottom:6px;
+  }
+  .calcE__value{font-size:14px;color:var(--text-color);line-height:1.4;}
+  .calcE__cta{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    border-top:1px solid var(--border-color);padding-top:16px;margin-top:16px;
+  }
+  .calcE__price{font-family:var(--font-big-header);font-weight:600;font-size:22px;color:var(--accent-color-2);}
+  .calcE__cta .btn{width:auto;padding:13px 22px 14px;}
+
+  /* ================= BLOCK 3: Before/After slider ================= */
+  .baf{position:relative;aspect-ratio:4/3;border-radius:var(--radius-s);overflow:hidden;margin-bottom:10px;user-select:none;}
+  .baf__after{position:absolute;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;}
+  .baf__after img{width:100%;height:100%;object-fit:cover;}
+  .baf__before{position:absolute;inset:0;overflow:hidden;clip-path:inset(0 48% 0 0);}
+  .baf__before img{width:100%;height:100%;object-fit:cover;}
+  .baf__tag{
+    position:absolute;top:10px;font-family:var(--font-header);font-weight:700;font-size:10.5px;
+    letter-spacing:0.5px;text-transform:uppercase;padding:4px 10px;border-radius:999px;color:#fff;z-index:3;
+  }
+  .baf__tag--before{left:10px;background:#8A7A55;}
+  .baf__tag--after{right:10px;background:var(--new-badge-color);}
+  .baf__handle{
+    position:absolute;top:0;bottom:0;width:3px;background:#fff;left:52%;
+    box-shadow:0 0 6px rgba(0,0,0,0.3);z-index:4;cursor:ew-resize;
+  }
+  .baf__handle::after{
+    content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:38px;height:38px;border-radius:50%;background:#fff;
+    box-shadow:0 2px 8px rgba(0,0,0,0.25);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2331ACD8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 8l-4 4 4 4'/%3E%3Cpath d='M16 8l4 4-4 4'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:center;background-size:20px;
+  }
+
+  /* ---------- Block 3, Variant B: dark stage ---------- */
+  .bafD__panel{background:#17181A;color:#EDE9E1;border-radius:var(--radius-card);padding:22px 20px;}
+  .bafD__eyebrow{
+    font-family:Consolas,'SFMono-Regular','Liberation Mono',monospace;font-size:10.5px;letter-spacing:1px;
+    text-transform:uppercase;color:#5BB6CC;margin-bottom:8px;
+  }
+  .bafD__title{font-family:var(--font-header);font-weight:700;font-size:19px;color:#F4F1EA;margin-bottom:8px;}
+  .bafD__sub{font-size:12.5px;line-height:1.5;color:#A9A297;margin-bottom:20px;max-width:60ch;}
+  .bafD__stage{background:#1E2022;border:1px solid #2B2D2F;border-radius:var(--radius-card);overflow:hidden;}
+  /* 2:1 was too wide a banner for the portrait "after" photo - centre-cropping it hid the clean floor
+     at the bottom entirely. 16:10 leaves enough vertical room to show the cat AND the floor together. */
+  .bafD__slider{aspect-ratio:16/10;border-radius:0;margin-bottom:0;}
+  .bafD__slider .baf__after img{object-position:center 90%;}
+  .bafD__tag{
+    position:absolute;bottom:14px;font-family:Consolas,'SFMono-Regular',monospace;font-size:10.5px;
+    letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.92);color:#17181A;
+    padding:5px 10px;border-radius:999px;z-index:3;
+  }
+  .bafD__tag--before{left:14px;}
+  .bafD__tag--after{right:14px;}
+
+  /* ================= BLOCK 4: Care tabs - real site style (DESIGN.md), pill tabs + one card per tab + benefits ================= */
+  .careD__panel{background:var(--card-bg);border-radius:var(--radius-card);}
+  .careD__title{font-family:var(--font-big-header);font-weight:600;font-size:19px;color:var(--text-color);margin-bottom:16px;}
+  .careD__stage{background:#F8F8F8;border-radius:var(--radius-card);padding:20px;}
+  .careD__tabs{display:inline-flex;gap:4px;background:#fff;border:1px solid var(--border-color);border-radius:999px;padding:4px;margin-bottom:18px;}
+  .careD__tab{border:none;background:transparent;padding:9px 18px;border-radius:999px;font-family:var(--font-text);font-size:13.5px;color:var(--text-color);opacity:.65;cursor:pointer;}
+  .careD__tab.is-active{background:var(--accent-color);color:#fff;font-weight:700;opacity:1;}
+  .careD__cards{display:none;}
+  .careD__cards.is-active{display:block;}
+  .careD__card{display:flex;align-items:center;gap:14px;border:1px solid var(--border-color);border-radius:var(--radius-s);padding:16px;background:#fff;}
+  .careD__card-photo{width:44px;height:44px;object-fit:contain;flex:0 0 auto;background:#F4F4F4;border-radius:var(--radius-s);padding:6px;}
+  .careD__card b{display:block;font-family:var(--font-header);font-size:14px;color:var(--text-color);margin-bottom:2px;}
+  .careD__card span{font-size:13px;color:var(--text-color);opacity:.7;line-height:1.5;}
+  .careD__benefits{margin-top:16px;padding-top:16px;border-top:1px solid var(--border-color);display:flex;flex-direction:column;gap:10px;}
+  .careD__benefit{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--text-color);line-height:1.5;}
+  .careD__benefit-icon{
+    flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:var(--new-badge-color);color:#fff;
+    font-size:11px;display:flex;align-items:center;justify-content:center;margin-top:1px;
+  }
+
+  /* ================= BLOCK 5: Unboxing - flat-lay ================= */
+  .ubD__panel{background:#17181A;color:#EDE9E1;border-radius:var(--radius-card);padding:22px 20px;}
+  .ubD__title{font-family:var(--font-header);font-weight:700;font-size:19px;color:#F4F1EA;margin-bottom:8px;}
+  .ubD__sub{font-size:12.5px;line-height:1.5;color:#A9A297;margin-bottom:20px;max-width:60ch;}
+  .ubD__stage{background:#1E2022;border:1px solid #2B2D2F;border-radius:var(--radius-card);padding:20px;}
+  .ubD__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .ubD__tile{opacity:0;transform:translateY(24px);transition:opacity .5s ease, transform .5s ease;}
+  .ubD__tile.in{opacity:1;transform:translateY(0);}
+  .ubD__tile--hero{grid-column:1/-1;}
+  .ubD__tile-photo{position:relative;background:#fff;border-radius:6px;overflow:hidden;aspect-ratio:4/5;}
+  .ubD__tile--hero .ubD__tile-photo{aspect-ratio:2.2/1;}
+  .ubD__tile-photo img{width:100%;height:100%;object-fit:contain;display:block;}
+  .ubD__pin{
+    position:absolute;top:10px;right:10px;width:24px;height:24px;border-radius:50%;background:#6FBA72;border:2px solid #17181A;
+    cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.4);z-index:2;padding:0;
+  }
+  .ubD__pin::after{content:"+";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#0F1011;font-size:14px;line-height:1;font-weight:700;}
+  .ubD__tile-name{margin-top:10px;font-family:var(--font-header);font-weight:700;font-size:12.5px;color:#EDE9E1;text-align:center;}
+  .ubD__tile-callout{
+    margin-top:4px;font-size:11.5px;line-height:1.45;color:#A9A297;text-align:center;
+    max-height:0;opacity:0;overflow:hidden;transition:max-height .3s ease, opacity .25s ease;
+  }
+  .ubD__tile-callout.show{max-height:60px;opacity:1;}
+  @media (max-width:560px){
+    .ubD__grid{grid-template-columns:repeat(2,1fr);}
+  }
+
+  /* ================= BLOCK 6: Bundle savings toggle ================= */
+  .bundle__toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;background:#F4F4F4;border-radius:999px;padding:4px;}
+  .bundle__toggle-btn{
+    border:none;background:none;border-radius:999px;padding:9px 6px;font-family:var(--font-text);font-weight:700;
+    font-size:12px;color:var(--text-color);cursor:pointer;transition:all 0.15s ease;
+  }
+  .bundle__toggle-btn.is-active{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.12);color:var(--accent-color-2);}
+  .bundle__lines{margin-bottom:12px;}
+  .bundle__line{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;color:var(--text-color);}
+  .bundle__line.is-strike .bundle__line-price{text-decoration:line-through;opacity:0.5;}
+  .bundle__total{
+    display:flex;justify-content:space-between;align-items:baseline;padding-top:10px;
+    border-top:1px solid var(--border-color);margin-bottom:6px;
+  }
+  .bundle__total-label{font-family:var(--font-header);font-weight:700;font-size:13px;}
+  .bundle__total-price{font-family:var(--font-big-header);font-weight:600;font-size:24px;color:var(--accent-color-2);}
+  .bundle__save{
+    text-align:center;font-family:var(--font-header);font-weight:700;font-size:12px;color:#fff;
+    background:var(--new-badge-color);border-radius:999px;padding:6px 10px;margin-bottom:14px;display:none;
+  }
+  .bundle__save.is-visible{display:block;}
+
+  /* ================= BLOCK 7: Timeline steps ================= */
+  .timeline__track{position:relative;overflow:hidden;border-radius:var(--radius-s);}
+  .timeline__slides{display:flex;transition:transform 0.3s ease;}
+  .timeline__slide{flex:0 0 100%;display:flex;gap:28px;align-items:center;}
+  .timeline__img{flex:0 0 340px;aspect-ratio:1/1;background:#F4F4F4;border-radius:var(--radius-s);overflow:hidden;}
+  .timeline__img img{width:100%;height:100%;object-fit:cover;}
+  .timeline__content{flex:1 1 auto;min-width:0;}
+  .timeline__day{
+    display:inline-block;font-family:var(--font-header);font-weight:700;font-size:11px;letter-spacing:0.5px;
+    text-transform:uppercase;color:#fff;background:var(--accent-color);border-radius:999px;padding:4px 12px;margin-bottom:8px;
+  }
+  .timeline__headline{font-family:var(--font-big-header);font-weight:600;font-size:22px;margin-bottom:8px;}
+  .timeline__text{font-size:14px;line-height:1.55;color:var(--text-color);max-width:48ch;}
+  .timeline__nav{display:flex;align-items:center;justify-content:space-between;margin-top:18px;}
+  @media (max-width:680px){
+    .timeline__slide{flex-direction:column;align-items:stretch;gap:12px;}
+    .timeline__img{flex:0 0 auto;}
+  }
+  .timeline__arrow{
+    width:34px;height:34px;border-radius:50%;border:1px solid var(--border-color);background:#fff;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+  }
+  .timeline__dots{display:flex;gap:6px;}
+  .timeline__dot{width:7px;height:7px;border-radius:50%;background:var(--border-color);}
+  .timeline__dot.is-active{background:var(--accent-color-2);}
+
+
+  /* ================= BLOCK 8: Specs / colour + size ================= */
+  .specs__img{aspect-ratio:1/1;background:#F4F4F4;border-radius:var(--radius-s);overflow:hidden;margin-bottom:14px;}
+  .specs__img img{width:100%;height:100%;object-fit:cover;transition:opacity 0.15s ease;}
+  .specs__swatches{display:flex;gap:10px;margin-bottom:8px;align-items:center;}
+  .specs__swatch{
+    width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;
+    box-shadow:0 1px 4px rgba(0,0,0,0.15);
+  }
+  .specs__swatch.is-selected{border-color:var(--accent-color);}
+  .specs__colour-name{font-family:var(--font-text);font-weight:700;font-size:12.5px;color:var(--text-color);margin-bottom:14px;}
+  .specs__dims{display:flex;gap:10px;}
+  .specs__dim{flex:1;background:rgba(49,172,216,0.08);border-radius:var(--radius-s);padding:10px 4px;text-align:center;}
+  .specs__dim-value{display:block;font-family:var(--font-big-header);font-weight:600;font-size:17px;color:var(--text-color);}
+  .specs__dim-label{display:block;font-size:10px;color:var(--text-color);opacity:0.65;}
+
+  /* ---------- Block 8, Variant B: dark stage + "Analog reference" note ---------- */
+  .specsD__panel{background:#17181A;color:#EDE9E1;border-radius:var(--radius-card);padding:22px 20px;}
+  .specsD__eyebrow{
+    font-family:Consolas,'SFMono-Regular','Liberation Mono',monospace;font-size:10.5px;letter-spacing:1px;
+    text-transform:uppercase;color:#5BB6CC;margin-bottom:8px;
+  }
+  .specsD__title{font-family:var(--font-header);font-weight:700;font-size:19px;color:#F4F1EA;margin-bottom:8px;}
+  .specsD__sub{font-size:12.5px;line-height:1.5;color:#A9A297;margin-bottom:20px;max-width:60ch;}
+  .specsD__stage{background:#1E2022;border:1px solid #2B2D2F;border-radius:var(--radius-card);padding:24px;}
+  .specsD__grid{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;}
+  .specsD__img-wrap{position:relative;background:#fff;border-radius:6px;padding:20px;overflow:hidden;}
+  .specsD__img-wrap img{display:block;width:100%;transition:opacity .14s ease, filter .3s ease;}
+  .specsD__swatches{display:flex;gap:10px;margin-bottom:16px;}
+  .specsD__swatch{width:32px;height:32px;border-radius:50%;border:2px solid #33352F;cursor:pointer;}
+  .specsD__swatch.is-active{border-color:#6FBA72;}
+  .specsD__name{font-size:16px;color:#F4F1EA;margin-bottom:4px;}
+  .specsD__desc{font-size:13px;color:#A9A297;margin-bottom:18px;line-height:1.5;}
+  .specsD__specs{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px;}
+  .specsD__specs div{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-top:1px solid #2B2D2F;}
+  .specsD__specs b{font-family:Consolas,'SFMono-Regular',monospace;font-size:14px;color:#EDE9E1;}
+  .specsD__specs span{color:#726B60;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;}
+  @media (max-width:640px){.specsD__grid{grid-template-columns:1fr;}}
+
+  /* ---------- Block 8, Variant D: 3D model-viewer ---------- */
+  .specsD__warn{
+    display:flex;gap:8px;align-items:flex-start;margin-top:16px;padding:10px 12px;
+    background:#332B12;border:1px solid #6B551E;border-radius:var(--radius-s);
+    font-size:12px;line-height:1.5;color:#E3C77A;
+  }
+  .specsD__warn code{color:#F4D998;}
+
+  /* ================= BLOCK 9: Moisture path animation ================= */
+  .moist__tabs{display:flex;gap:6px;margin-bottom:14px;border-bottom:2px solid var(--border-color);}
+  .moist__tab{
+    flex:1;background:none;border:none;padding:9px 4px 10px;font-family:var(--font-text);font-weight:700;
+    font-size:12.5px;color:#9A9A9A;cursor:pointer;position:relative;
+  }
+  .moist__tab.is-active{color:var(--accent-color-2);}
+  .moist__tab.is-active::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--accent-color-2);}
+  .moist__panel{display:none;}
+  .moist__panel.is-active{display:block;}
+  .moist__stage{
+    position:relative;aspect-ratio:5/4;background:#F4F4F4;border-radius:var(--radius-s);overflow:hidden;margin-bottom:8px;
+  }
+  .moist__odour-badge{
+    position:absolute;top:8px;right:8px;z-index:6;
+    display:inline-flex;align-items:center;gap:5px;
+    font-family:var(--font-text);font-weight:700;font-size:9.5px;letter-spacing:0.2px;
+    color:#4A7A2E;background:rgba(255,255,255,0.9);border:1px solid rgba(147,194,64,0.5);
+    padding:3px 9px;border-radius:999px;
+  }
+  .moist__odour-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--new-badge-color);flex:0 0 auto;}
+  .moist__layer{position:absolute;left:0;right:0;overflow:hidden;}
+  .moist__layer--pellets{
+    top:14%;height:38%;
+    background-image:linear-gradient(180deg, rgba(49,172,216,0.18), rgba(49,172,216,0.18)), url("../../assets/product/pellets-macro-1.webp");
+    background-size:cover;
+    background-position:center;
+    border-bottom:2px solid #9FD2E6;
+  }
+  .moist__layer--pad{
+    top:52%;height:34%;
+    background-image:url("../../assets/derived/pad-quilt-texture.webp");
+    background-size:cover;
+    background-position:center;
+    border-bottom:2px solid #BFE0C4;
+  }
+  .moist__layer--pellets-full{
+    position:absolute;inset:0;
+    background-image:linear-gradient(180deg, rgba(49,172,216,0.1), rgba(49,172,216,0.1)), url("../../assets/product/pellets-macro-1.webp");
+    background-size:cover;
+    background-position:center;
+  }
+  .moist__pad-fill{
+    position:absolute;left:0;right:0;bottom:0;height:0%;
+    background:linear-gradient(180deg, rgba(49,172,216,0.35), rgba(49,172,216,0.72));
+    mix-blend-mode:multiply;
+    transition:height 0.3s linear;
+    z-index:1;
+  }
+  .moist__pellets-fade{
+    position:absolute;left:0;right:0;bottom:0;height:0%;
+    background:linear-gradient(180deg, rgba(110,110,100,0.25), rgba(80,78,70,0.6));
+    mix-blend-mode:multiply;
+    transition:height 0.3s linear;
+    z-index:1;
+  }
+  .moist__scoop{
+    position:absolute;left:50%;top:-30%;width:110px;height:110px;z-index:2;opacity:0;
+    transform:translateX(-50%) rotate(-8deg);
+  }
+  .moist__scoop img{
+    width:100%;height:100%;object-fit:contain;
+    mix-blend-mode:multiply;
+    filter:drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+  }
+  .moist__scoop.is-sliding{animation:moistScoopDip 2.6s ease-in-out;}
+  @keyframes moistScoopDip{
+    0%{top:-30%;opacity:0;transform:translateX(-50%) rotate(-8deg);}
+    12%{opacity:1;}
+    38%{top:34%;transform:translateX(-50%) rotate(8deg);}
+    62%{top:34%;transform:translateX(-50%) rotate(10deg);}
+    88%{opacity:1;}
+    100%{top:-30%;opacity:0;transform:translateX(-50%) rotate(-8deg);}
+  }
+  .moist__flash{
+    position:absolute;inset:0;background:rgba(147,194,64,0.6);opacity:0;
+    transition:opacity 0.2s ease;pointer-events:none;z-index:3;
+  }
+  .moist__flash.is-visible{opacity:1;}
+  .moist__label{
+    position:absolute;left:8px;top:8px;font-family:var(--font-text);font-weight:700;font-size:10px;color:var(--text-color);
+    background:rgba(255,255,255,0.85);padding:2px 8px;border-radius:999px;z-index:2;
+  }
+  .moist__drop{
+    position:absolute;left:50%;top:4%;width:14px;height:18px;transform:translateX(-50%);
+    background:var(--accent-color);border-radius:50% 50% 50% 0;transform:translateX(-50%) rotate(45deg);
+    opacity:0;z-index:4;
+  }
+  .moist__drop.is-playing{animation:dropFall 0.9s ease-in forwards;}
+  @keyframes dropFall{
+    0%{opacity:1;top:4%;}
+    55%{opacity:1;top:30%;}
+    56%{top:30%;}
+    100%{opacity:0;top:64%;}
+  }
+  .moist__callout{
+    position:absolute;left:50%;top:8px;transform:translateX(-50%) translateY(-6px);
+    background:var(--accent-color-2);color:#fff;font-family:var(--font-header);font-weight:700;font-size:11px;
+    padding:6px 12px;border-radius:999px;opacity:0;white-space:nowrap;
+    transition:opacity 0.25s ease, transform 0.25s ease;z-index:5;
+  }
+  .moist__callout.is-visible{opacity:1;transform:translateX(-50%) translateY(0);}
+  .moist__ruler{margin-bottom:10px;}
+  .moist__ruler-track{position:relative;height:7px;background:var(--border-color);border-radius:4px;overflow:hidden;margin-bottom:5px;}
+  .moist__ruler-fill{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--accent-color);border-radius:4px;transition:width 0.3s linear;}
+  .moist__ruler-labels{display:flex;justify-content:space-between;font-size:9.5px;color:var(--text-color);}
+  .moist__ruler-labels span{opacity:0.55;}
+  .moist__ruler-labels span.moist__ruler-current{font-weight:700;opacity:1;color:var(--accent-color-2);}
+  .moist__caption{text-align:center;font-size:12.5px;color:var(--text-color);margin-bottom:10px;}
+
+
+  /* ---------- Block 9, Variant C: real cutaway photo + pad fill-over-time ---------- */
+  .cutaway__stage{
+    position:relative;overflow:hidden;border-radius:var(--radius-s);background:#F4F4F4;
+    aspect-ratio:1038/414;margin-bottom:14px;
+  }
+  .cutaway__stage img{width:100%;height:100%;object-fit:cover;display:block;}
+  .cutaway__pad-region{position:absolute;left:4%;right:4%;top:64%;height:34%;overflow:hidden;}
+
+  /* ---------- Block 9, Variant D: real assembled tray, X-ray glow + pad fill-over-time ---------- */
+  .xray__stage{
+    position:relative;overflow:hidden;border-radius:var(--radius-s);background:#F4F4F4;
+    aspect-ratio:817/860;margin-bottom:14px;
+  }
+  .xray__stage img{width:100%;height:100%;object-fit:cover;display:block;}
+  .xray__odour-pulse{
+    position:absolute;left:40%;top:22%;width:36px;height:36px;transform:translate(-50%,-50%);
+    border-radius:50%;pointer-events:none;
+    animation:xrayPulse 2.4s ease-out infinite;
+  }
+  @keyframes xrayPulse{
+    0%{box-shadow:0 0 0 0 rgba(255,255,255,0.55);}
+    100%{box-shadow:0 0 0 22px rgba(255,255,255,0);}
+  }
+  .xray__pad-region{position:absolute;left:2%;width:36%;top:63%;height:20%;overflow:hidden;}
+
+  /* ---------- Block 9, Variant E: dark stage, scroll-triggered ---------- */
+  .moistD__panel{background:#17181A;color:#EDE9E1;border-radius:var(--radius-card);padding:22px 20px;}
+  .moistD__eyebrow{
+    font-family:Consolas,'SFMono-Regular','Liberation Mono',monospace;font-size:10.5px;letter-spacing:1px;
+    text-transform:uppercase;color:#5BB6CC;margin-bottom:8px;
+  }
+  .moistD__title{font-family:var(--font-header);font-weight:700;font-size:19px;color:#F4F1EA;margin-bottom:8px;}
+  .moistD__sub{font-size:12.5px;line-height:1.5;color:#A9A297;margin-bottom:20px;max-width:60ch;}
+  .moistD__stage{background:#1E2022;border:1px solid #2B2D2F;border-radius:var(--radius-card);overflow:hidden;}
+  .moistD__img-wrap{position:relative;}
+  .moistD__img-wrap img{width:100%;display:block;}
+  .moistD__drop{
+    position:absolute;left:50%;top:8%;width:10px;height:10px;border-radius:50% 50% 50% 0;background:#5BB6CC;
+    transform:translate(-50%,0) rotate(45deg);opacity:0;
+  }
+  .moistD__img-wrap.play .moistD__drop{animation:moistDDropFall 2.6s ease-in forwards;}
+  @keyframes moistDDropFall{
+    0%{opacity:0;top:8%;}
+    8%{opacity:1;}
+    55%{opacity:1;top:46%;}
+    58%{opacity:0;top:46%;}
+    100%{opacity:0;top:46%;}
+  }
+  .moistD__replay{
+    margin:16px 24px;border:1px solid #33352F;background:#17181A;border-radius:999px;padding:9px 16px;
+    font-family:var(--font-text);font-size:12.5px;color:#A9A297;cursor:pointer;
+  }
+  .moistD__steps{padding:4px 24px 22px;display:flex;flex-direction:column;}
+  .moistD__step{display:flex;gap:14px;padding:14px 0;border-top:1px solid #2B2D2F;opacity:.35;transition:opacity .5s ease;}
+  .moistD__step:first-child{border-top:none;}
+  .moistD__step.on{opacity:1;}
+  .moistD__step-n{font-family:Consolas,'SFMono-Regular',monospace;font-size:12px;color:#5BB6CC;flex:none;width:20px;}
+  .moistD__step b{display:block;font-size:14px;color:#EDE9E1;margin-bottom:2px;}
+  .moistD__step span{font-size:13px;color:#A9A297;}
+
+  /* ---------- Sticky picks bar ---------- */
+  .picks-bar{
+    position:fixed;left:0;right:0;bottom:0;background:#28313F;color:#fff;z-index:50;
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    box-shadow:0 -2px 12px rgba(0,0,0,0.25);
+  }
+  .picks-bar__count{font-family:var(--font-header);font-weight:700;font-size:13px;}
+  .picks-bar__count span{color:var(--new-badge-color);}
+  .picks-bar__copy{
+    font-family:var(--font-text);font-weight:700;font-size:12px;color:#28313F;background:#fff;
+    border:none;border-radius:999px;padding:9px 16px;cursor:pointer;white-space:nowrap;
+  }
+  .picks-bar__copy.is-copied{background:var(--new-badge-color);color:#fff;}
+
+  @media (min-width:768px){
+    .lab__block-head{max-width:760px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="doc-header__inner">
+    <h1 class="doc-header__title">Interactive Blocks - Variants for Review</h1>
+    <p class="doc-header__desc">Прототипы вариантов интерактивных блоков для карточки Litter Tray. Не финальная страница - страница-сравнение: покликайте каждый вариант, нажмите "Выбрать" на понравившихся, внизу соберётся список решений, который можно скопировать.</p>
+  </div>
+</div>
+
+<nav class="doc-nav">
+  <div class="doc-nav__inner">
+    <a href="#block-anatomy">1. Anatomy</a>
+    <a href="#block-calc">2. Calculator</a>
+    <a href="#block-baf">3. Before/After</a>
+    <a href="#block-care">4. Care tabs</a>
+    <a href="#block-unboxing">5. Unboxing</a>
+    <a href="#block-bundle">6. Bundle</a>
+    <a href="#block-timeline">7. Timeline</a>
+    <a href="#block-specs">8. Specs</a>
+    <a href="#block-moist">9. Moisture</a>
+  </div>
+</nav>
+
+<div class="lab">
+
+  <!-- ============ BLOCK 1: ANATOMY HOTSPOTS ============ -->
+  <section class="lab__block" id="block-anatomy" data-block-group="anatomy">
+    <div class="lab__block-head">
+      <h2 class="lab__title">Анатомия лотка</h2>
+    </div>
+    <div class="variants">
+      <!-- Variant E -->
+      <div class="device device--wide">
+        <div class="device__body">
+          <p class="section__eyebrow">How it works</p>
+          <h3 class="section__title">The Anatomy of ZeoDeo</h3>
+          <div class="anat2__layout">
+            <div class="anat2__stage" id="anat2Stage">
+              <img src="../../assets/product/render-tray-oysterwhite-exploded.webp" alt="Exploded view of the tray: raised rim, pellet tray, base shell and pull-out pad drawer">
+              <div class="anat2__dim" id="anat2Dim"></div>
+              <button class="anat2__pin" type="button" data-layer="rim" style="left:76%;top:13%;">1</button>
+              <button class="anat2__pin" type="button" data-layer="grid" style="left:82%;top:45%;">2</button>
+              <button class="anat2__pin" type="button" data-layer="base" style="left:80%;top:64%;">3</button>
+              <button class="anat2__pin" type="button" data-layer="drawer" style="left:20%;top:83%;">4</button>
+              <button class="anat2__pin anat2__pin--product" type="button" data-layer="pellets" style="left:40%;top:53%;">5</button>
+              <button class="anat2__pin anat2__pin--product" type="button" data-layer="pad" style="left:40%;top:77%;">6</button>
+            </div>
+            <div class="anat2__panel" id="anat2Panel">
+              <div id="anat2PanelDefault">
+                <p class="anat2__panel-lead">Hover or tap a numbered pin to see how each layer works.</p>
+                <ul class="anat2__legend">
+                  <li><span class="anat2__legend-num">1</span>Raised rim</li>
+                  <li><span class="anat2__legend-num">2</span>Litter grid</li>
+                  <li><span class="anat2__legend-num">3</span>Outer shell</li>
+                  <li><span class="anat2__legend-num">4</span>Pad drawer</li>
+                  <li><span class="anat2__legend-num anat2__legend-num--product">5</span>Zeolite pellets</li>
+                  <li><span class="anat2__legend-num anat2__legend-num--product">6</span>Absorbent pad</li>
+                </ul>
+              </div>
+              <div class="anat2__panel-active" id="anat2PanelActive">
+                <span class="anat2__panel-num" id="anat2PanelNum"></span>
+                <div>
+                  <strong class="anat2__panel-title" id="anat2PanelTitle"></strong>
+                  <p class="anat2__panel-text" id="anat2PanelText"></p>
+                </div>
+                <img class="anat2__panel-photo" id="anat2PanelPhoto" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BLOCK 2: CALCULATOR (3 variants) ============ -->
+  <section class="lab__block" id="block-calc" data-block-group="calc">
+    <div class="lab__block-head">
+      <h2 class="lab__title">Умный калькулятор расхода</h2>
+    </div>
+    <div class="variants">
+
+      <!-- Variant E -->
+      <div class="device device--wide device--headerless" data-pick-name="Блок 2: Calculator - Variant E (реальный стиль сайта, без Analog reference)">
+        <div class="device__body">
+          <p class="section__eyebrow">Plan your supply</p>
+          <h3 class="section__title">Tailored for Your Household</h3>
+          <p class="calcE__sub">Tell us how many cats you have and we'll work out exactly how much you'll need each month.</p>
+          <div class="calcE__opts" id="calcEOpts">
+            <button class="calcE__opt" data-k="small" type="button">1 Small Cat</button>
+            <button class="calcE__opt" data-k="medium" type="button">1 Medium Cat</button>
+            <button class="calcE__opt is-active" data-k="two" type="button">2 Cats</button>
+            <button class="calcE__opt" data-k="three" type="button">3 Cats</button>
+          </div>
+          <div class="calcE__stage">
+            <div class="calcE__result">
+              <div>
+                <div class="calcE__line">Absorbent pads</div>
+                <div class="calcE__value" id="calcEPads">6-10 pads (change every 3-5 days)</div>
+              </div>
+              <div>
+                <div class="calcE__line">Zeolite pellets</div>
+                <div class="calcE__value" id="calcEPellets">1 pack per month</div>
+              </div>
+            </div>
+            <div class="calcE__cta">
+              <span class="calcE__price">£<span id="calcEPrice">34.97</span> / month</span>
+              <button class="btn btn--primary" id="calcECta" type="button">Add month supply to basket</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BLOCK 3: BEFORE/AFTER SLIDER ============ -->
+  <section class="lab__block" id="block-baf" data-block-group="baf">
+    <div class="lab__block-head">
+      <h2 class="lab__title">Слайдер "До / После"</h2>
+    </div>
+    <div class="variants">
+
+      <!-- Variant B -->
+      <div class="device device--headerless" style="max-width:720px;" data-pick-name="Блок 3: Before/After - Variant B (тёмная карточка)">
+        <div class="device__body">
+          <div class="bafD__panel">
+            <h3 class="bafD__title">The ZeoDeo Difference</h3>
+
+            <div class="bafD__stage">
+              <div class="baf bafD__slider">
+                <div class="baf__after">
+                  <img src="../../assets/derived/after-clean-tray.webp" alt="Clean bathroom floor around the ZeoDeo tray">
+                </div>
+                <span class="bafD__tag bafD__tag--after">ZeoDeo tray</span>
+                <div class="baf__before">
+                  <img src="../../assets/derived/before-scattered-litter.webp" alt="Cat walking through litter scattered around a conventional open tray">
+                </div>
+                <span class="bafD__tag bafD__tag--before">Typical open tray</span>
+                <div class="baf__handle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BLOCK 4: CARE TABS ============ -->
+  <section class="lab__block" id="block-care" data-block-group="care">
+    <div class="lab__block-head">
+      <h2 class="lab__title">Гайд по уходу</h2>
+    </div>
+    <div class="variants">
+
+      <!-- Variant B -->
+      <div class="device device--wide device--headerless" data-pick-name="Блок 4: Care guide (фирменный стиль, табы-капсулы + карточка с фото на каждый таб + преимущества)">
+        <div class="device__body">
+          <div class="careD__panel">
+            <h3 class="careD__title">Effortless Care</h3>
+
+            <div class="careD__stage">
+              <div class="careD__tabs">
+                <button class="careD__tab is-active" data-tab="daily" type="button">Daily</button>
+                <button class="careD__tab" data-tab="weekly" type="button">Weekly</button>
+                <button class="careD__tab" data-tab="monthly" type="button">Monthly</button>
+              </div>
+              <div class="careD__cards is-active" data-panel="daily">
+                <div class="careD__card">
+                  <img class="careD__card-photo" src="../../assets/product/scoop-zeodeo.webp" alt="">
+                  <b>Scoop any solids</b><span>No fixed schedule - just scoop as needed.</span>
+                </div>
+              </div>
+              <div class="careD__cards" data-panel="weekly">
+                <div class="careD__card">
+                  <img class="careD__card-photo" src="../../assets/product/package-absorbing-pads.webp" alt="">
+                  <b>Replace the pad</b><span>Simply swap in a fresh absorbent pad.</span>
+                </div>
+              </div>
+              <div class="careD__cards" data-panel="monthly">
+                <div class="careD__card">
+                  <img class="careD__card-photo" src="../../assets/product/pellets-white-bg.webp" alt="">
+                  <b>Replace the granules</b><span>Top up or fully replace the zeolite pellets.</span>
+                </div>
+              </div>
+
+              <div class="careD__benefits">
+                <div class="careD__benefit"><span class="careD__benefit-icon">&#10003;</span>Unlike traditional litter, there's no need to hoover any tracked particles around the house.</div>
+                <div class="careD__benefit"><span class="careD__benefit-icon">&#10003;</span>Enjoy zero litter-tray odour in the room, for a genuinely clean-feeling space.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BLOCK 5: UNBOXING (scroll reveal + parallax) ============ -->
+  <section class="lab__block" id="block-unboxing" data-block-group="unboxing">
+    <div class="lab__block-head">
+      <h2 class="lab__title">Интерактивная "Распаковка" Стартового набора</h2>
+    </div>
+    <div class="variants">
+      <div class="device device--wide device--headerless" style="max-width:640px;" data-pick-name="Блок 5: Unboxing - flat-lay">
+        <div class="device__body">
+          <div class="ubD__panel">
+            <h3 class="ubD__title">Unboxing the Starter Kit</h3>
+            <p class="ubD__sub">Everything in the kit, laid out flat. Tap the + on any piece for why it matters.</p>
+
+            <div class="ubD__stage" id="ubStage">
+              <div class="ubD__grid">
+                <div class="ubD__tile ubD__tile--hero" data-tile="tray">
+                  <div class="ubD__tile-photo">
+                    <img src="../../assets/product/render-tray-grey-drawer-open.webp" alt="ZeoDeo tray, drawer open">
+                    <button class="ubD__pin" type="button" aria-label="Tray details"></button>
+                  </div>
+                  <div class="ubD__tile-name">ZeoDeo Tray</div>
+                  <div class="ubD__tile-callout">The reusable base - everything else here just tops it up.</div>
+                </div>
+                <div class="ubD__tile" data-tile="scoop">
+                  <div class="ubD__tile-photo">
+                    <img src="../../assets/product/scoop-zeodeo.webp" alt="Scoop">
+                    <button class="ubD__pin" type="button" aria-label="Scoop details"></button>
+                  </div>
+                  <div class="ubD__tile-name">Scoop</div>
+                  <div class="ubD__tile-callout">Included free, sized for the twice-daily scoop.</div>
+                </div>
+                <div class="ubD__tile" data-tile="pellets">
+                  <div class="ubD__tile-photo">
+                    <img src="../../assets/product/pellets-white-bg.webp" alt="Zeolite pellets pack">
+                    <button class="ubD__pin" type="button" aria-label="Pellets details"></button>
+                  </div>
+                  <div class="ubD__tile-name">Zeolite Pellets</div>
+                  <div class="ubD__tile-callout">1 pack = about a month of odour-free running.</div>
+                </div>
+                <div class="ubD__tile" data-tile="pads">
+                  <div class="ubD__tile-photo">
+                    <img src="../../assets/product/package-absorbing-pads.webp" alt="Absorbing pads pack">
+                    <button class="ubD__pin" type="button" aria-label="Pads details"></button>
+                  </div>
+                  <div class="ubD__tile-name">Absorbent Pads</div>
+                  <div class="ubD__tile-callout">10 pads = 2+ months of cover for one cat.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BLOCK 6: BUNDLE SAVINGS TOGGLE ============ -->
+  <section class="lab__block" id="block-bundle" data-block-group="bundle">
+    <div class="lab__block-head">
+      <h2 class="lab__title">Калькулятор выгоды: Bundle vs По отдельности</h2>
+    </div>
+    <div class="variants">
+      <div class="device device--headerless" data-pick-name="Блок 6: Bundle savings toggle">
+        <div class="device__body">
+          <p class="section__eyebrow">Choose your kit</p>
+          <h3 class="section__title">Bundle and Save</h3>
+          <div class="bundle__toggle">
+            <button class="bundle__toggle-btn is-active" data-mode="kit" type="button">Starter Kit</button>
+            <button class="bundle__toggle-btn" data-mode="separate" type="button">Buy Separately</button>
+          </div>
+          <div class="bundle__lines" id="bundleLines">
+            <div class="bundle__line" data-line="tray"><span>Litter tray</span><span class="bundle__line-price">£49.00</span></div>
+            <div class="bundle__line" data-line="pellets"><span>Zeolite pellets</span><span class="bundle__line-price">£12.99</span></div>
+            <div class="bundle__line" data-line="pads"><span>Absorbent pads</span><span class="bundle__line-price">£8.99</span></div>
+          </div>
+          <div class="bundle__total">
+            <span class="bundle__total-label" id="bundleTotalLabel">Starter Kit price</span>
+            <span class="bundle__total-price" id="bundleTotalPrice">£69.00</span>
+          </div>
+          <p class="bundle__save" id="bundleSave">Save 8% vs buying separately</p>
+          <button class="btn btn--primary" type="button">Add to Basket</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BLOCK 7: TIMELINE ============ -->
+  <section class="lab__block" id="block-timeline" data-block-group="timeline">
+    <div class="lab__block-head">
+      <h2 class="lab__title">Таймлайн приучения кота</h2>
+    </div>
+    <div class="variants">
+      <div class="device device--wide device--headerless" data-pick-name="Блок 7: Timeline / your first month">
+        <div class="device__body">
+          <p class="section__eyebrow">Getting started</p>
+          <h3 class="section__title">Your First Month with ZeoDeo</h3>
+          <div class="timeline__track">
+            <div class="timeline__slides" id="timelineSlides">
+              <div class="timeline__slide">
+                <div class="timeline__img"><img src="../../assets/product/cats.webp" alt="Settling in on day one"></div>
+                <div class="timeline__content">
+                  <span class="timeline__day">Day 1</span>
+                  <p class="timeline__headline">Easy Start</p>
+                  <p class="timeline__text">Mix a little of your cat's old litter with the new pellets to help them settle in.</p>
+                </div>
+              </div>
+              <div class="timeline__slide">
+                <div class="timeline__img"><img src="../../assets/product/render-tray-oysterwhite-drawer-open.webp" alt="Pull-out drawer open"></div>
+                <div class="timeline__content">
+                  <span class="timeline__day">Day 7</span>
+                  <p class="timeline__headline">Effortless Clean</p>
+                  <p class="timeline__text">Pull out the drawer and swap the pad in seconds - no scrubbing, no mess.</p>
+                </div>
+              </div>
+              <div class="timeline__slide">
+                <div class="timeline__img"><img src="../../assets/product/pellets-white-bg.webp" alt="Fresh pellets"></div>
+                <div class="timeline__content">
+                  <span class="timeline__day">Day 30</span>
+                  <p class="timeline__headline">Full Refresh</p>
+                  <p class="timeline__text">Top up or replace the pellets - your tray is working like new again.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline__nav">
+            <button class="timeline__arrow" id="timelinePrev" type="button" aria-label="Previous">‹</button>
+            <div class="timeline__dots" id="timelineDots">
+              <span class="timeline__dot is-active"></span>
+              <span class="timeline__dot"></span>
+              <span class="timeline__dot"></span>
+            </div>
+            <button class="timeline__arrow" id="timelineNext" type="button" aria-label="Next">›</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BLOCK 8: SPECS VISUALIZER ============ -->
+  <section class="lab__block" id="block-specs" data-block-group="specs">
+    <div class="lab__block-head">
+      <h2 class="lab__title">Визуализатор габаритов и цвета</h2>
+    </div>
+    <div class="variants">
+      <div class="device" data-pick-name="Блок 8: Specs / colour visualizer">
+        <div class="device__label">
+          <span class="device__label-text">Variant A<span class="device__label-sub">Colour swap + size chips</span></span>
+          <button class="pick-btn" type="button">☆ Выбрать</button>
+        </div>
+        <div class="device__body">
+          <p class="section__eyebrow">Specs</p>
+          <h3 class="section__title">Fits Your Space</h3>
+          <div class="specs__img">
+            <img src="../../assets/product/hero-tray-white-cat.webp" alt="ZeoDeo tray in Oyster White">
+          </div>
+          <div class="specs__swatches">
+            <button class="specs__swatch is-selected" style="background:#EDE8DD" data-name="Oyster White" data-image="../../assets/product/hero-tray-white-cat.webp" type="button"></button>
+            <button class="specs__swatch" style="background:#9099A1" data-name="Stone Grey" data-image="../../assets/product/hero-tray-grey-cat.webp" type="button"></button>
+            <button class="specs__swatch" style="background:#3B3F45" data-name="Dark Anthracite" data-image="../../assets/product/hero-tray-black-cat.webp" type="button"></button>
+          </div>
+          <p class="specs__colour-name">Oyster White</p>
+          <div class="specs__dims">
+            <div class="specs__dim"><span class="specs__dim-value">55×40×26</span><span class="specs__dim-label">CM</span></div>
+            <div class="specs__dim"><span class="specs__dim-value">8kg</span><span class="specs__dim-label">MAX CAT WEIGHT</span></div>
+            <div class="specs__dim"><span class="specs__dim-value">2-3</span><span class="specs__dim-label">CATS</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Variant C -->
+      <div class="device" data-pick-name="Блок 8: Specs - Variant C (новые студийные рендеры)">
+        <div class="device__label">
+          <span class="device__label-text">Variant C<span class="device__label-sub">Copy of A - новые рендеры из new-photos/</span></span>
+          <button class="pick-btn" type="button">☆ Выбрать</button>
+        </div>
+        <div class="device__body">
+          <p class="section__eyebrow">Specs</p>
+          <h3 class="section__title">Fits Your Space</h3>
+          <div class="specs__img">
+            <img src="../../new-photos/oysterwhite.webp" alt="ZeoDeo tray in Oyster White">
+          </div>
+          <div class="specs__swatches">
+            <button class="specs__swatch is-selected" style="background:#EDE8DD" data-name="Oyster White" data-image="../../new-photos/oysterwhite.webp" type="button"></button>
+            <button class="specs__swatch" style="background:#9099A1" data-name="Stone Grey" data-image="../../new-photos/stonegrey.webp" type="button"></button>
+            <button class="specs__swatch" style="background:#3B3F45" data-name="Dark Anthracite" data-image="../../new-photos/anthracite.webp" type="button"></button>
+          </div>
+          <p class="specs__colour-name">Oyster White</p>
+          <div class="specs__dims">
+            <div class="specs__dim"><span class="specs__dim-value">55×40×26</span><span class="specs__dim-label">CM</span></div>
+            <div class="specs__dim"><span class="specs__dim-value">8kg</span><span class="specs__dim-label">MAX CAT WEIGHT</span></div>
+            <div class="specs__dim"><span class="specs__dim-value">2-3</span><span class="specs__dim-label">CATS</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Variant B -->
+      <div class="device device--wide device--headerless" data-pick-name="Блок 8: Specs - Variant B (тёмная карточка)">
+        <div class="device__body">
+          <div class="specsD__panel">
+            <h3 class="specsD__title">Dimensions &amp; Colourways</h3>
+            <p class="specsD__sub">Radio swatches swap the render; exact dimensions sit in the spec grid alongside it.</p>
+
+            <div class="specsD__stage">
+              <div class="specsD__grid">
+                <div class="specsD__img-wrap">
+                  <img id="specsDImg" src="../../new-photos/stonegrey-cat.webp" alt="ZeoDeo tray, Stone Grey">
+                </div>
+                <div>
+                  <div class="specsD__swatches" id="specsDSwatches">
+                    <button class="specsD__swatch" data-c="white" style="background:#EDE9DE;" aria-label="Oyster White" type="button"></button>
+                    <button class="specsD__swatch is-active" data-c="grey" style="background:#9C9691;" aria-label="Stone Grey" type="button"></button>
+                    <button class="specsD__swatch" data-c="dark" style="background:#2B2C2E;" aria-label="Dark Anthracite" type="button"></button>
+                  </div>
+                  <div class="specsD__name" id="specsDName">Stone Grey</div>
+                  <div class="specsD__desc" id="specsDDesc">Blends into most flooring; the most forgiving colourway for daily use.</div>
+                  <div class="specsD__specs">
+                    <div><b>55 &times; 40 &times; 26</b><span>Length &times; Width &times; Height, cm</span></div>
+                    <div><b>~25</b><span>Suits cats up to, kg est.</span></div>
+                    <div><b>3</b><span>Colourways</span></div>
+                    <div><b>2</b><span>Layers + drawer</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Variant D -->
+      <div class="device device--wide device--headerless" data-pick-name="Блок 8: Specs - Variant D (3D-модель, .glb-файлов пока нет)">
+        <div class="device__body">
+          <div class="specsD__panel">
+            <h3 class="specsD__title">Explore in 3D</h3>
+            <p class="specsD__sub">Drag to rotate, pinch to zoom - swatches swap the actual 3D model, not just a photo.</p>
+
+            <div class="specsD__stage">
+              <div class="specsD__grid">
+                <div class="specsD__img-wrap" style="height:380px;">
+                  <model-viewer
+                    id="specs3DModel"
+                    src="../../assets/product/zeodeo-tray-white.glb"
+                    alt="A 3D model of the ZeoDeo litter tray"
+                    camera-controls
+                    auto-rotate
+                    rotation-per-second="30deg"
+                    shadow-intensity="1.2"
+                    environment-image="neutral"
+                    style="width:100%;height:100%;outline:none;background-color:transparent;"
+                    interaction-prompt="hover">
+                  </model-viewer>
+                </div>
+                <div>
+                  <div class="specsD__swatches" id="specs3DSwatches">
+                    <button class="specsD__swatch is-active" data-colour="white" style="background:#EDE9DE;" aria-label="Oyster White" type="button"></button>
+                    <button class="specsD__swatch" data-colour="grey" style="background:#9C9691;" aria-label="Stone Grey" type="button"></button>
+                    <button class="specsD__swatch" data-colour="dark" style="background:#2B2C2E;" aria-label="Dark Anthracite" type="button"></button>
+                  </div>
+                  <div class="specsD__name" id="specs3DName">Oyster White</div>
+                  <div class="specsD__desc" id="specs3DDesc">Brightest option; shows surface dust first, easiest to spot when a wipe-down is due.</div>
+                  <div class="specsD__specs">
+                    <div><b>55 &times; 40 &times; 26</b><span>Length &times; Width &times; Height, cm</span></div>
+                    <div><b>~25</b><span>Suits cats up to, kg est.</span></div>
+                    <div><b>3</b><span>Colourways</span></div>
+                    <div><b>2</b><span>Layers + drawer</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="specsD__warn">
+              <span>⚠</span>
+              <span>Нужны файлы <code>zeodeo-tray-white.glb</code>, <code>zeodeo-tray-grey.glb</code>, <code>zeodeo-tray-dark.glb</code> в <code>assets/product/</code> - их пока нет в проекте, модель не подгрузится, пока их не добавят (3D-сканирование или экспорт из CAD/3D-редактора).</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BLOCK 9: MOISTURE PATH ANIMATION ============ -->
+  <section class="lab__block" id="block-moist" data-block-group="moist">
+    <div class="lab__block-head">
+      <h2 class="lab__title">Динамическая инфографика "путь влаги"</h2>
+    </div>
+    <div class="variants">
+      <div style="display:flex;flex-direction:column;gap:20px;width:100%;">
+      <div class="device device--headerless" data-pick-name="Блок 9: Moisture path animation">
+        <div class="device__body">
+          <p class="section__eyebrow">How it works</p>
+          <h3 class="section__title">Where the Liquid Goes</h3>
+
+          <div class="moist__tabs" role="group" aria-label="Choose layer">
+            <button class="moist__tab is-active" data-moist-tab="pad" type="button">Absorbent Pad</button>
+            <button class="moist__tab" data-moist-tab="pellets" type="button">Zeolite Pellets</button>
+          </div>
+
+          <div class="moist__panel is-active" data-moist-panel="pad">
+            <div class="moist__stage">
+              <span class="moist__odour-badge">Odour: contained</span>
+              <div class="moist__layer moist__layer--pellets"></div>
+              <div class="moist__layer moist__layer--pad" style="top:56%;">
+                <span class="moist__label">Absorbent pad</span>
+                <div class="moist__pad-fill" id="padFill"></div>
+                <div class="moist__flash" id="padFlash"></div>
+              </div>
+              <div class="moist__drop" id="padDrop"></div>
+              <div class="moist__callout" id="padCallout">Pad full - time to swap</div>
+            </div>
+            <div class="moist__ruler">
+              <div class="moist__ruler-track"><div class="moist__ruler-fill" id="padRulerFill"></div></div>
+              <div class="moist__ruler-labels">
+                <span>Day 1</span><span class="moist__ruler-current" id="padRulerCurrent">Day 1</span><span>Day 7</span>
+              </div>
+            </div>
+            <p class="moist__caption">Liquid drips through the pellets and locks into the pad below - the surface stays dry. Demo compresses about a week of use into a short loop.</p>
+          </div>
+
+          <div class="moist__panel" data-moist-panel="pellets">
+            <div class="moist__stage">
+              <span class="moist__odour-badge">Odour: contained</span>
+              <div class="moist__layer--pellets-full">
+                <span class="moist__label">Zeolite pellets</span>
+                <div class="moist__pellets-fade" id="pelletsFade"></div>
+                <span class="moist__scoop" id="pelletsScoop">
+                  <img src="../../assets/product/scoop-zeodeo.webp" alt="">
+                </span>
+                <div class="moist__flash" id="pelletsFlash"></div>
+              </div>
+              <div class="moist__callout" id="pelletsCallout">Time to refresh</div>
+            </div>
+            <div class="moist__ruler">
+              <div class="moist__ruler-track"><div class="moist__ruler-fill" id="pelletsRulerFill"></div></div>
+              <div class="moist__ruler-labels">
+                <span>Week 1</span><span class="moist__ruler-current" id="pelletsRulerCurrent">Week 1</span><span>Week 4</span>
+              </div>
+            </div>
+            <p class="moist__caption">A quick daily scoop keeps things tidy - the pellets keep working for about a month before a full refresh.</p>
+          </div>
+
+          <button class="btn btn--ghost" id="moistPlayPause" type="button">⏸ Pause</button>
+        </div>
+      </div>
+
+      <!-- Variant C: real cutaway cross-section photo + our pad fill-over-time animation -->
+      <div class="device device--headerless" data-pick-name="Блок 9: Moisture path - Variant C (настоящий разрез + заполнение пада)">
+        <div class="device__body">
+          <p class="section__eyebrow">How it works</p>
+          <h3 class="section__title">Cut Open: Where the Liquid Goes</h3>
+          <div class="cutaway__stage">
+            <img src="../../assets/derived/tray-cutaway-cross-section.webp" alt="Cross-section showing zeolite pellets on top and the absorbent pad below, with liquid draining through">
+            <div class="cutaway__pad-region">
+              <div class="moist__pad-fill" id="cutawayFill"></div>
+              <div class="moist__flash" id="cutawayFlash"></div>
+            </div>
+            <div class="moist__callout" id="cutawayCallout">Pad full - time to swap</div>
+          </div>
+          <div class="moist__ruler">
+            <div class="moist__ruler-track"><div class="moist__ruler-fill" id="cutawayRulerFill"></div></div>
+            <div class="moist__ruler-labels">
+              <span>Day 1</span><span class="moist__ruler-current" id="cutawayRulerCurrent">Day 1</span><span>Day 7</span>
+            </div>
+          </div>
+          <p class="moist__caption">The real cutaway shows how liquid drains through the pellets - the pad below fills up over the week until it's time to swap it.</p>
+          <button class="btn btn--ghost" id="cutawayPlayPause" type="button">⏸ Pause</button>
+        </div>
+      </div>
+
+      <!-- Variant D: real assembled tray with a glowing X-ray cutaway + pad fill-over-time -->
+      <div class="device device--headerless" data-pick-name="Блок 9: Moisture path - Variant D (реальный лоток + свечение)">
+        <div class="device__body">
+          <p class="section__eyebrow">How it works</p>
+          <h3 class="section__title">See Inside, Without Opening It</h3>
+          <div class="xray__stage">
+            <img src="../../assets/derived/tray-xray-assembled.webp" alt="Assembled tray with a glowing cutaway showing odour control, pellets and the pad below">
+            <span class="xray__odour-pulse"></span>
+            <div class="xray__pad-region">
+              <div class="moist__pad-fill" id="xrayFill"></div>
+              <div class="moist__flash" id="xrayFlash"></div>
+            </div>
+            <div class="moist__callout" id="xrayCallout">Pad full - time to swap</div>
+          </div>
+          <div class="moist__ruler">
+            <div class="moist__ruler-track"><div class="moist__ruler-fill" id="xrayRulerFill"></div></div>
+            <div class="moist__ruler-labels">
+              <span>Day 1</span><span class="moist__ruler-current" id="xrayRulerCurrent">Day 1</span><span>Day 7</span>
+            </div>
+          </div>
+          <p class="moist__caption">Odour stays under control while the pad quietly fills up over the week - a gentle reminder when it's time to swap.</p>
+          <button class="btn btn--ghost" id="xrayPlayPause" type="button">⏸ Pause</button>
+        </div>
+      </div>
+      </div>
+
+      <!-- Variant E -->
+      <div class="device device--wide device--headerless" data-pick-name="Блок 9: Moisture path - Variant E (тёмная карточка, scroll-triggered)">
+        <div class="device__body">
+          <div class="moistD__panel">
+            <p class="moistD__eyebrow">09 &middot; Scroll-triggered infographic</p>
+            <h3 class="moistD__title">The Path of Moisture &amp; Odour</h3>
+            <p class="moistD__sub">Scroll the diagram into view (or press replay) to watch the mechanic play out, captioned step by step.</p>
+
+            <div class="moistD__stage">
+              <div class="moistD__img-wrap" id="moistDWrap">
+                <img src="../../assets/derived/tray-cutaway-cross-section.webp" alt="Cross-section: liquid passing through pellets into the absorbent pad">
+                <div class="moistD__drop"></div>
+              </div>
+              <button class="moistD__replay" id="moistDReplay" type="button">Replay animation</button>
+              <div class="moistD__steps">
+                <div class="moistD__step" data-s="0"><span class="moistD__step-n">01</span><div><b>Liquid meets the zeolite layer</b><span>It drains straight through the pellets rather than clumping on the surface.</span></div></div>
+                <div class="moistD__step" data-s="1"><span class="moistD__step-n">02</span><div><b>Odour-causing compounds are locked in</b><span>The volcanic mineral structure binds ammonia at a molecular level.</span></div></div>
+                <div class="moistD__step" data-s="2"><span class="moistD__step-n">03</span><div><b>The pad seals it beneath</b><span>Residual moisture is captured below, keeping the pellet layer dry on top.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============ STICKY PICKS BAR ============ -->
+<div class="picks-bar">
+  <span class="picks-bar__count">Выбрано: <span id="picksCount">0</span></span>
+  <button class="picks-bar__copy" id="picksCopy" type="button">Скопировать список выбора</button>
+</div>
+
+<textarea id="picksClipboard" style="position:absolute;left:-9999px;top:-9999px;"></textarea>
+
+<script>
+  /* ---------- Block 1, Variant E: spotlight hover/tap + side panel ---------- */
+  (function(){
+    var stage = document.getElementById('anat2Stage');
+    if(!stage) return;
+    var pins = stage.querySelectorAll('.anat2__pin');
+    var dim = document.getElementById('anat2Dim');
+    var panelDefault = document.getElementById('anat2PanelDefault');
+    var panelActive = document.getElementById('anat2PanelActive');
+    var panelNum = document.getElementById('anat2PanelNum');
+    var panelTitle = document.getElementById('anat2PanelTitle');
+    var panelText = document.getElementById('anat2PanelText');
+    var panelPhoto = document.getElementById('anat2PanelPhoto');
+
+    /* Rough bounding box (as % of the square stage) around each floating part in the exploded render.
+       pellets/pad get their own tighter spot (right on the loose granules / the pad fabric itself) -
+       reusing the wider grid/drawer box made hovering 5/6 look identical to 2/4, like nothing happened. */
+    var regions = {
+      rim:     { left: 26, top: 0,  width: 74, height: 39 },
+      grid:    { left: 24, top: 35, width: 74, height: 32 },
+      base:    { left: 36, top: 53, width: 62, height: 39 },
+      drawer:  { left: 0,  top: 66, width: 64, height: 34 },
+      pellets: { left: 26, top: 41, width: 40, height: 20 },
+      pad:     { left: 14, top: 71, width: 40, height: 22 }
+    };
+    var numbers = { rim: '1', grid: '2', base: '3', drawer: '4', pellets: '5', pad: '6' };
+    /* img/imgAlt only set on the two set-up pins (pellets/pad) - these are the standalone products, handy cross-sell reminder */
+    var content = {
+      rim:     { title: 'Raised rim',   text: 'High sides stop pellets spilling out, even with enthusiastic digging.' },
+      grid:    { title: 'Litter grid',  text: 'The perforated grid holds the pellets in place and lets liquid drain straight through to the pad below.' },
+      base:    { title: 'Outer shell',  text: 'Solid base holds everything securely - built for cats up to 8kg.' },
+      drawer:  { title: 'Pad drawer',   text: 'Slides out in seconds for quick, mess-free access - no need to lift the whole tray.' },
+      pellets: { title: 'Zeolite pellets', text: 'Empty the full pack onto the grid - the pellets trap odour and moisture as your cat uses the tray.',
+                 img: '../../assets/product/pellets-white-bg.webp', imgAlt: 'ZeoDeo zeolite pellets pack' },
+      pad:     { title: 'Absorbent pad',   text: 'Unwrap a pad and lay it flat in the drawer, quilted side up - it locks liquid away underneath the pellets.',
+                 img: '../../assets/product/package-absorbing-pads.webp', imgAlt: 'ZeoDeo absorbent pads pack' }
+    };
+
+    function setActive(key){
+      pins.forEach(function(p){ p.classList.toggle('is-active', p.dataset.layer === key); });
+      if(key && regions[key]){
+        var r = regions[key];
+        dim.style.setProperty('--gx', (r.left + r.width / 2) + '%');
+        dim.style.setProperty('--gy', (r.top + r.height / 2) + '%');
+        dim.style.setProperty('--gw', (r.width / 2) + '%');
+        dim.style.setProperty('--gh', (r.height / 2) + '%');
+        dim.classList.add('is-active');
+
+        var c = content[key];
+        panelNum.textContent = numbers[key];
+        panelNum.classList.toggle('is-product', key === 'pellets' || key === 'pad');
+        panelTitle.textContent = c.title;
+        panelText.textContent = c.text;
+        if(c.img){
+          panelPhoto.src = c.img;
+          panelPhoto.alt = c.imgAlt || '';
+          panelPhoto.style.display = '';
+        } else {
+          panelPhoto.style.display = 'none';
+        }
+        panelDefault.style.display = 'none';
+        panelActive.classList.add('is-visible');
+      } else {
+        dim.classList.remove('is-active');
+        panelDefault.style.display = '';
+        panelActive.classList.remove('is-visible');
+      }
+    }
+
+    var active = null;
+    pins.forEach(function(pin){
+      pin.addEventListener('mouseenter', function(){ active = pin.dataset.layer; setActive(active); });
+      pin.addEventListener('focus', function(){ active = pin.dataset.layer; setActive(active); });
+      pin.addEventListener('click', function(){
+        active = (active === pin.dataset.layer) ? null : pin.dataset.layer;
+        setActive(active);
+      });
+    });
+    stage.addEventListener('mouseleave', function(){ active = null; setActive(null); });
+  })();
+
+  /* ---------- Block 2E: Calculator - real site style, same logic as D ---------- */
+  (function(){
+    var opts = document.querySelectorAll('#calcEOpts .calcE__opt');
+    if(!opts.length) return;
+    var data = {
+      small:  {pads:'4-6 pads (change every 5-7 days)',   pellets:'1 pack per month',  price:'24.98'},
+      medium: {pads:'6-8 pads (change every 4-6 days)',    pellets:'1 pack per month',  price:'34.97'},
+      two:    {pads:'6-10 pads (change every 3-5 days)',   pellets:'1 pack per month',  price:'34.97'},
+      three:  {pads:'10-14 pads (change every 2-4 days)',  pellets:'2 packs per month', price:'59.95'}
+    };
+    var padsOut = document.getElementById('calcEPads');
+    var pelletsOut = document.getElementById('calcEPellets');
+    var priceOut = document.getElementById('calcEPrice');
+    var ctaBtn = document.getElementById('calcECta');
+    function setCalc(k){
+      opts.forEach(function(b){ b.classList.toggle('is-active', b.dataset.k === k); });
+      var d = data[k];
+      padsOut.textContent = d.pads;
+      pelletsOut.textContent = d.pellets;
+      priceOut.textContent = d.price;
+    }
+    opts.forEach(function(b){ b.addEventListener('click', function(e){ e.stopPropagation(); setCalc(b.dataset.k); }); });
+    ctaBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var original = ctaBtn.textContent;
+      ctaBtn.textContent = 'Added ✓';
+      setTimeout(function(){ ctaBtn.textContent = original; }, 1400);
+    });
+  })();
+
+  /* ---------- Block 3: Before/After slider(s) ---------- */
+  (function(){
+    function initBaf(baf){
+      var before = baf.querySelector('.baf__before');
+      var handle = baf.querySelector('.baf__handle');
+      if(!before || !handle) return;
+      var dragging = false;
+      function setPos(clientX){
+        var rect = baf.getBoundingClientRect();
+        var pct = Math.min(100, Math.max(0, ((clientX - rect.left) / rect.width) * 100));
+        before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+        handle.style.left = pct + '%';
+      }
+      handle.addEventListener('pointerdown', function(e){ dragging = true; handle.setPointerCapture(e.pointerId); });
+      handle.addEventListener('pointerup', function(){ dragging = false; });
+      handle.addEventListener('pointermove', function(e){ if(dragging){ setPos(e.clientX); } });
+      baf.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(e.target === handle) return;
+        setPos(e.clientX);
+      });
+    }
+    document.querySelectorAll('.baf').forEach(initBaf);
+  })();
+
+  /* ---------- Block 4: Care tabs ---------- */
+  (function(){
+    var tabs = document.querySelectorAll('.careD__tab');
+    if(!tabs.length) return;
+    var panels = document.querySelectorAll('.careD__cards');
+    tabs.forEach(function(tab){
+      tab.addEventListener('click', function(e){
+        e.stopPropagation();
+        tabs.forEach(function(t){ t.classList.remove('is-active'); });
+        panels.forEach(function(p){ p.classList.remove('is-active'); });
+        tab.classList.add('is-active');
+        document.querySelector('.careD__cards[data-panel="' + tab.dataset.tab + '"]').classList.add('is-active');
+      });
+    });
+  })();
+
+  /* ---------- Block 6: Bundle savings toggle ---------- */
+  (function(){
+    var toggleBtns = document.querySelectorAll('.bundle__toggle-btn');
+    if(!toggleBtns.length) return;
+    var lines = document.querySelectorAll('.bundle__line');
+    var totalLabel = document.getElementById('bundleTotalLabel');
+    var totalPrice = document.getElementById('bundleTotalPrice');
+    var saveNote = document.getElementById('bundleSave');
+    var separateTotal = 49.00 + 12.99 + 8.99;
+    var kitPrice = 69.00;
+    var savePct = Math.round((1 - kitPrice / separateTotal) * 100);
+
+    toggleBtns.forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        toggleBtns.forEach(function(b){ b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        var isKit = btn.dataset.mode === 'kit';
+        lines.forEach(function(line){ line.classList.toggle('is-strike', isKit); });
+        totalLabel.textContent = isKit ? 'Starter Kit price' : 'Buying separately';
+        totalPrice.textContent = isKit ? ('£' + kitPrice.toFixed(2)) : ('£' + separateTotal.toFixed(2));
+        saveNote.textContent = 'Save ' + savePct + '% vs buying separately';
+        saveNote.classList.toggle('is-visible', isKit);
+      });
+    });
+  })();
+
+  /* ---------- Block 5: Unboxing - flat-lay scroll reveal ---------- */
+  (function(){
+    var stage = document.getElementById('ubStage');
+    if(!stage) return;
+    var tiles = stage.querySelectorAll('.ubD__tile');
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          tiles.forEach(function(tile, i){
+            setTimeout(function(){ tile.classList.add('in'); }, i * 120);
+          });
+          io.disconnect();
+        }
+      });
+    }, {threshold:.35});
+    io.observe(stage);
+
+    tiles.forEach(function(tile){
+      var pin = tile.querySelector('.ubD__pin');
+      var callout = tile.querySelector('.ubD__tile-callout');
+      if(!pin || !callout) return;
+      pin.addEventListener('click', function(e){
+        e.stopPropagation();
+        callout.classList.toggle('show');
+      });
+    });
+  })();
+
+  /* ---------- Block 7: Timeline slides ---------- */
+  (function(){
+    var slidesWrap = document.getElementById('timelineSlides');
+    if(!slidesWrap) return;
+    var slides = slidesWrap.querySelectorAll('.timeline__slide');
+    var dots = document.querySelectorAll('#timelineDots .timeline__dot');
+    var prev = document.getElementById('timelinePrev');
+    var next = document.getElementById('timelineNext');
+    var index = 0;
+    function render(){
+      slidesWrap.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach(function(d, i){ d.classList.toggle('is-active', i === index); });
+    }
+    prev.addEventListener('click', function(e){ e.stopPropagation(); index = (index - 1 + slides.length) % slides.length; render(); });
+    next.addEventListener('click', function(e){ e.stopPropagation(); index = (index + 1) % slides.length; render(); });
+    dots.forEach(function(dot, i){ dot.addEventListener('click', function(e){ e.stopPropagation(); index = i; render(); }); });
+  })();
+
+  /* ---------- Block 8: Specs / colour swatches (scoped per card, so several copies can coexist) ---------- */
+  (function(){
+    document.querySelectorAll('.specs__swatches').forEach(function(swatchesEl){
+      var scope = swatchesEl.closest('.device__body');
+      if(!scope) return;
+      var img = scope.querySelector('.specs__img img');
+      var name = scope.querySelector('.specs__colour-name');
+      var swatches = swatchesEl.querySelectorAll('.specs__swatch');
+      swatches.forEach(function(sw){
+        sw.addEventListener('click', function(){
+          swatches.forEach(function(s){ s.classList.remove('is-selected'); });
+          sw.classList.add('is-selected');
+          img.src = sw.dataset.image;
+          name.textContent = sw.dataset.name;
+        });
+      });
+    });
+  })();
+
+  /* ---------- Block 8, Variant B: dark stage colour swatches ---------- */
+  (function(){
+    var swatches = document.querySelectorAll('#specsDSwatches .specsD__swatch');
+    if(!swatches.length) return;
+    var data = {
+      white: {img:'../../new-photos/oysterwhite-cat.webp', name:'Oyster White', desc:'Brightest option; shows surface dust first, easiest to spot when a wipe-down is due.', filter:'none'},
+      grey:  {img:'../../new-photos/stonegrey-cat.webp', name:'Stone Grey', desc:'Blends into most flooring; the most forgiving colourway for daily use.', filter:'none'},
+      dark:  {img:'../../new-photos/anthracite-cat.webp', name:'Dark Anthracite', desc:'Premium, technical look for graphite interiors - hides scuffs best of the three.', filter:'none'}
+    };
+    var img = document.getElementById('specsDImg');
+    var name = document.getElementById('specsDName');
+    var desc = document.getElementById('specsDDesc');
+    swatches.forEach(function(sw){
+      sw.addEventListener('click', function(e){
+        e.stopPropagation();
+        swatches.forEach(function(s){ s.classList.remove('is-active'); });
+        sw.classList.add('is-active');
+        var d = data[sw.dataset.c];
+        img.style.opacity = 0;
+        setTimeout(function(){
+          img.src = d.img;
+          img.style.filter = d.filter;
+          img.style.opacity = 1;
+        }, 140);
+        name.textContent = d.name;
+        desc.textContent = d.desc;
+      });
+    });
+  })();
+
+  /* ---------- Block 8, Variant D: 3D model-viewer colour swatches ---------- */
+  (function(){
+    var swatches = document.querySelectorAll('#specs3DSwatches .specsD__swatch');
+    if(!swatches.length) return;
+    var model = document.getElementById('specs3DModel');
+    var nameEl = document.getElementById('specs3DName');
+    var descEl = document.getElementById('specs3DDesc');
+    var data = {
+      white: {modelSrc:'../../assets/product/zeodeo-tray-white.glb', name:'Oyster White', desc:'Brightest option; shows surface dust first, easiest to spot when a wipe-down is due.'},
+      grey:  {modelSrc:'../../assets/product/zeodeo-tray-grey.glb', name:'Stone Grey', desc:'Blends into most flooring; the most forgiving colourway for daily use.'},
+      dark:  {modelSrc:'../../assets/product/zeodeo-tray-dark.glb', name:'Dark Anthracite', desc:'Premium, technical look for graphite interiors - hides scuffs best of the three.'}
+    };
+    swatches.forEach(function(sw){
+      sw.addEventListener('click', function(e){
+        e.stopPropagation();
+        swatches.forEach(function(s){ s.classList.remove('is-active'); });
+        sw.classList.add('is-active');
+        var d = data[sw.dataset.colour];
+        nameEl.textContent = d.name;
+        descEl.textContent = d.desc;
+        model.style.transition = 'opacity 0.2s ease';
+        model.style.opacity = 0;
+        setTimeout(function(){
+          model.src = d.modelSrc;
+          setTimeout(function(){ model.style.opacity = 1; }, 150);
+        }, 200);
+      });
+    });
+    model.addEventListener('click', function(e){ e.stopPropagation(); });
+  })();
+
+  /* ---------- Block 9: Moisture path animation (tabbed: Pad drip / Pellets freshness) ---------- */
+  (function(){
+    var playPauseBtn = document.getElementById('moistPlayPause');
+    var tabs = document.querySelectorAll('.moist__tab');
+    if(!playPauseBtn || !tabs.length) return;
+
+    // Generic "fill up, pause, reset with a flash" cycle - shared by the pad (liquid)
+    // and pellets (freshness) demos, since both follow the same story shape at a different pace.
+    function createCycle(cfg){
+      var progress = 0;
+      var mode = 'stepping'; // 'stepping' | 'full-pause' | 'draining' | 'flash'
+      var timer = null;
+      var running = false;
+
+      function updateProgress(){
+        var pct = Math.min(100, (progress / cfg.totalSteps) * 100);
+        cfg.fillEl.style.height = pct + '%';
+        cfg.rulerFillEl.style.width = pct + '%';
+        var unit = Math.min(cfg.unitTotal, Math.max(1, Math.round((progress / cfg.totalSteps) * cfg.unitTotal)));
+        cfg.rulerCurrentEl.textContent = cfg.unitPrefix + ' ' + unit;
+      }
+
+      function step(){
+        if(!running) return;
+        mode = 'stepping';
+        if(cfg.onStep){ cfg.onStep(progress); }
+        progress++;
+        updateProgress();
+        if(progress >= cfg.totalSteps){
+          mode = 'full-pause';
+          cfg.calloutEl.classList.add('is-visible');
+          timer = setTimeout(drain, cfg.fullPause);
+        } else {
+          timer = setTimeout(step, cfg.stepInterval);
+        }
+      }
+
+      function drain(){
+        if(!running) return;
+        mode = 'draining';
+        cfg.calloutEl.classList.remove('is-visible');
+        progress = 0;
+        updateProgress();
+        timer = setTimeout(flash, cfg.drainDuration);
+      }
+
+      function flash(){
+        if(!running) return;
+        mode = 'flash';
+        cfg.flashEl.classList.add('is-visible');
+        timer = setTimeout(function(){
+          cfg.flashEl.classList.remove('is-visible');
+          timer = setTimeout(step, 250);
+        }, cfg.flashDuration);
+      }
+
+      return {
+        start: function(){
+          if(running) return;
+          running = true;
+          if(mode === 'draining'){ timer = setTimeout(drain, 80); }
+          else if(mode === 'flash'){ timer = setTimeout(flash, 80); }
+          else { timer = setTimeout(step, 80); }
+        },
+        stop: function(){
+          running = false;
+          clearTimeout(timer);
+        }
+      };
+    }
+
+    function retrigger(el, className){
+      el.classList.remove(className);
+      void el.offsetWidth;
+      el.classList.add(className);
+    }
+
+    var padDrop = document.getElementById('padDrop');
+    var padCycle = createCycle({
+      totalSteps:14, stepInterval:900, fullPause:1600, drainDuration:500, flashDuration:450,
+      unitTotal:7, unitPrefix:'Day',
+      fillEl: document.getElementById('padFill'),
+      flashEl: document.getElementById('padFlash'),
+      calloutEl: document.getElementById('padCallout'),
+      rulerFillEl: document.getElementById('padRulerFill'),
+      rulerCurrentEl: document.getElementById('padRulerCurrent'),
+      onStep: function(){ retrigger(padDrop, 'is-playing'); }
+    });
+
+    var pelletsScoop = document.getElementById('pelletsScoop');
+    var pelletsCycle = createCycle({
+      totalSteps:16, stepInterval:700, fullPause:1600, drainDuration:500, flashDuration:450,
+      unitTotal:4, unitPrefix:'Week',
+      fillEl: document.getElementById('pelletsFade'),
+      flashEl: document.getElementById('pelletsFlash'),
+      calloutEl: document.getElementById('pelletsCallout'),
+      rulerFillEl: document.getElementById('pelletsRulerFill'),
+      rulerCurrentEl: document.getElementById('pelletsRulerCurrent'),
+      onStep: function(progress){
+        if(progress % 4 === 0){ retrigger(pelletsScoop, 'is-sliding'); }
+      }
+    });
+
+    var cyclesByTab = {pad: padCycle, pellets: pelletsCycle};
+    var activeCycle = padCycle;
+    var isPlaying = true;
+
+    tabs.forEach(function(tab){
+      tab.addEventListener('click', function(e){
+        e.stopPropagation();
+        var target = tab.dataset.moistTab;
+        tabs.forEach(function(t){ t.classList.remove('is-active'); });
+        tab.classList.add('is-active');
+        document.querySelectorAll('.moist__panel').forEach(function(p){ p.classList.remove('is-active'); });
+        document.querySelector('.moist__panel[data-moist-panel="' + target + '"]').classList.add('is-active');
+
+        activeCycle.stop();
+        activeCycle = cyclesByTab[target];
+        if(isPlaying){ activeCycle.start(); }
+      });
+    });
+
+    playPauseBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      isPlaying = !isPlaying;
+      playPauseBtn.textContent = isPlaying ? '⏸ Pause' : '▶ Play';
+      if(isPlaying){ activeCycle.start(); } else { activeCycle.stop(); }
+    });
+
+    padCycle.start();
+  })();
+
+  /* ---------- Block 9, Variants C & D: static real photo + pad fill-over-time ---------- */
+  function setupPadFillDemo(ids){
+    var fill = document.getElementById(ids.fill);
+    var flash = document.getElementById(ids.flash);
+    var callout = document.getElementById(ids.callout);
+    var rulerFill = document.getElementById(ids.rulerFill);
+    var rulerCurrent = document.getElementById(ids.rulerCurrent);
+    var playPauseBtn = document.getElementById(ids.playPause);
+    if(!fill || !playPauseBtn) return;
+
+    var TOTAL_STEPS = 14, TOTAL_DAYS = 7;
+    var STEP_INTERVAL = 900, FULL_PAUSE = 1600, DRAIN_DURATION = 500, FLASH_DURATION = 450;
+    var progress = 0, mode = 'stepping', timer = null, running = true;
+
+    function updateProgress(){
+      var pct = Math.min(100, (progress / TOTAL_STEPS) * 100);
+      fill.style.height = pct + '%';
+      rulerFill.style.width = pct + '%';
+      var day = Math.min(TOTAL_DAYS, Math.max(1, Math.round((progress / TOTAL_STEPS) * TOTAL_DAYS)));
+      rulerCurrent.textContent = 'Day ' + day;
+    }
+
+    function step(){
+      if(!running) return;
+      mode = 'stepping';
+      progress++;
+      updateProgress();
+      if(progress >= TOTAL_STEPS){
+        mode = 'full-pause';
+        callout.classList.add('is-visible');
+        timer = setTimeout(drain, FULL_PAUSE);
+      } else {
+        timer = setTimeout(step, STEP_INTERVAL);
+      }
+    }
+
+    function drain(){
+      if(!running) return;
+      mode = 'draining';
+      callout.classList.remove('is-visible');
+      progress = 0;
+      updateProgress();
+      timer = setTimeout(flashFn, DRAIN_DURATION);
+    }
+
+    function flashFn(){
+      if(!running) return;
+      mode = 'flash';
+      flash.classList.add('is-visible');
+      timer = setTimeout(function(){
+        flash.classList.remove('is-visible');
+        timer = setTimeout(step, 250);
+      }, FLASH_DURATION);
+    }
+
+    playPauseBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      running = !running;
+      playPauseBtn.textContent = running ? '⏸ Pause' : '▶ Play';
+      if(running){
+        if(mode === 'draining'){ timer = setTimeout(drain, 80); }
+        else if(mode === 'flash'){ timer = setTimeout(flashFn, 80); }
+        else { timer = setTimeout(step, 80); }
+      } else {
+        clearTimeout(timer);
+      }
+    });
+
+    step();
+  }
+
+  setupPadFillDemo({
+    fill:'cutawayFill', flash:'cutawayFlash', callout:'cutawayCallout',
+    rulerFill:'cutawayRulerFill', rulerCurrent:'cutawayRulerCurrent', playPause:'cutawayPlayPause'
+  });
+  setupPadFillDemo({
+    fill:'xrayFill', flash:'xrayFlash', callout:'xrayCallout',
+    rulerFill:'xrayRulerFill', rulerCurrent:'xrayRulerCurrent', playPause:'xrayPlayPause'
+  });
+
+  /* ---------- Block 9, Variant E: scroll-triggered moisture path ---------- */
+  (function(){
+    var wrap = document.getElementById('moistDWrap');
+    if(!wrap) return;
+    var steps = document.querySelectorAll('.moistD__step');
+    var replayBtn = document.getElementById('moistDReplay');
+
+    function play(){
+      wrap.classList.remove('play');
+      steps.forEach(function(s){ s.classList.remove('on'); });
+      void wrap.offsetWidth;
+      wrap.classList.add('play');
+      steps.forEach(function(s, i){
+        setTimeout(function(){ s.classList.add('on'); }, 250 + i * 550);
+      });
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ play(); io.disconnect(); }
+      });
+    }, {threshold:.5});
+    io.observe(wrap);
+    replayBtn.addEventListener('click', function(e){ e.stopPropagation(); play(); });
+  })();
+
+  /* ---------- Pick / summary bar ---------- */
+  (function(){
+    var groups = document.querySelectorAll('[data-block-group]');
+    var picksCountEl = document.getElementById('picksCount');
+    var copyBtn = document.getElementById('picksCopy');
+    var clipboard = document.getElementById('picksClipboard');
+
+    function updateCount(){
+      var picked = document.querySelectorAll('.device.is-picked').length;
+      picksCountEl.textContent = picked;
+    }
+
+    groups.forEach(function(group){
+      var devices = group.querySelectorAll('.device[data-pick-name]');
+      devices.forEach(function(device){
+        var btn = device.querySelector('.pick-btn');
+        var trigger = btn || device;
+        trigger.addEventListener('click', function(){
+          var alreadyPicked = device.classList.contains('is-picked');
+          devices.forEach(function(d){
+            d.classList.remove('is-picked');
+            var dBtn = d.querySelector('.pick-btn');
+            if(dBtn) dBtn.textContent = '☆ Выбрать';
+          });
+          if(!alreadyPicked){
+            device.classList.add('is-picked');
+            if(btn) btn.textContent = '★ Выбрано';
+          }
+          updateCount();
+        });
+      });
+    });
+
+    copyBtn.addEventListener('click', function(){
+      var picked = document.querySelectorAll('.device.is-picked');
+      var lines = [];
+      if(picked.length === 0){
+        lines.push('Пока ничего не выбрано.');
+      } else {
+        picked.forEach(function(d){ lines.push('- ' + d.dataset.pickName); });
+      }
+      var text = 'ZeoDeo - выбор интерактивных блоков:\n' + lines.join('\n');
+      clipboard.value = text;
+      clipboard.style.display = 'block';
+      clipboard.select();
+      clipboard.setSelectionRange(0, text.length);
+      var copied = false;
+      try{ copied = document.execCommand('copy'); }catch(e){ copied = false; }
+      clipboard.style.display = 'none';
+      copyBtn.textContent = copied ? 'Скопировано!' : 'Не удалось скопировать';
+      copyBtn.classList.toggle('is-copied', copied);
+      setTimeout(function(){
+        copyBtn.textContent = 'Скопировать список выбора';
+        copyBtn.classList.remove('is-copied');
+      }, 2200);
+    });
+  })();
+</script>
+
+</body>
+</html>
