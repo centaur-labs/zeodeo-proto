@@ -481,6 +481,8 @@
   .specsD__grid{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;}
   .specsD__img-wrap{position:relative;background:#fff;border-radius:6px;padding:20px;overflow:hidden;}
   .specsD__img-wrap img{display:block;width:100%;transition:opacity .14s ease, filter .3s ease;}
+  .specsD__img-wrap--video{background:#0B0C0D;padding:0;}
+  .specsD__grid--video{grid-template-columns:1.6fr 1fr;}
   .specsD__video-badge{
     position:absolute;left:12px;top:12px;z-index:2;
     font-family:var(--font-text);font-weight:700;font-size:10.5px;letter-spacing:.02em;
@@ -1167,8 +1169,8 @@
             <p class="specsD__sub">Drag to rotate, pinch to zoom - swatches swap the actual 3D model, not just a photo.</p>
 
             <div class="specsD__stage">
-              <div class="specsD__grid">
-                <div class="specsD__img-wrap" style="height:380px;">
+              <div class="specsD__grid specsD__grid--video">
+                <div class="specsD__img-wrap specsD__img-wrap--video" style="height:520px;">
                   <video
                     id="specs3DVideo"
                     src="../assets/product/zeodeo-tray-oysterwhite-360-preview.mp4"
