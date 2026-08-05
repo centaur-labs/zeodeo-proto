@@ -7,8 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Montserrat:wght@700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-<!-- Google Model Viewer (3D & AR support) - used by Block 8, Variant D -->
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
 <style>
   /* Registered so the browser can smoothly transition the mask-image position/size below (Block 1, Variant E spotlight) */
   @property --gx{syntax:'<percentage>';inherits:false;initial-value:50%;}
@@ -483,6 +481,16 @@
   .specsD__grid{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;}
   .specsD__img-wrap{position:relative;background:#fff;border-radius:6px;padding:20px;overflow:hidden;}
   .specsD__img-wrap img{display:block;width:100%;transition:opacity .14s ease, filter .3s ease;}
+  .specsD__video-badge{
+    position:absolute;left:12px;top:12px;z-index:2;
+    font-family:var(--font-text);font-weight:700;font-size:10.5px;letter-spacing:.02em;
+    color:#fff;background:rgba(23,24,26,0.72);padding:4px 10px;border-radius:999px;
+  }
+  .specsD__video-badge--note{
+    top:40px;background:rgba(227,167,58,0.95);color:#332811;
+    opacity:0;pointer-events:none;transition:opacity .2s ease;
+  }
+  .specsD__video-badge--note.is-visible{opacity:1;}
   .specsD__swatches{display:flex;gap:10px;margin-bottom:16px;}
   .specsD__swatch{width:32px;height:32px;border-radius:50%;border:2px solid #33352F;cursor:pointer;}
   .specsD__swatch.is-active{border-color:#6FBA72;}
@@ -494,7 +502,7 @@
   .specsD__specs span{color:#726B60;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;}
   @media (max-width:640px){.specsD__grid{grid-template-columns:1fr;}}
 
-  /* ---------- Block 8, Variant D: 3D model-viewer ---------- */
+  /* ---------- Block 8, Variant D: 360deg preview video ---------- */
   .specsD__warn{
     display:flex;gap:8px;align-items:flex-start;margin-top:16px;padding:10px 12px;
     background:#332B12;border:1px solid #6B551E;border-radius:var(--radius-s);
@@ -1161,18 +1169,14 @@
             <div class="specsD__stage">
               <div class="specsD__grid">
                 <div class="specsD__img-wrap" style="height:380px;">
-                  <model-viewer
-                    id="specs3DModel"
-                    src="../assets/product/zeodeo-tray-white.glb"
-                    alt="A 3D model of the ZeoDeo litter tray"
-                    camera-controls
-                    auto-rotate
-                    rotation-per-second="30deg"
-                    shadow-intensity="1.2"
-                    environment-image="neutral"
-                    style="width:100%;height:100%;outline:none;background-color:transparent;"
-                    interaction-prompt="hover">
-                  </model-viewer>
+                  <video
+                    id="specs3DVideo"
+                    src="../assets/product/zeodeo-tray-oysterwhite-360-preview.mp4"
+                    style="width:100%;height:100%;object-fit:contain;background:transparent;"
+                    autoplay muted loop playsinline>
+                  </video>
+                  <span class="specsD__video-badge">360&deg; preview</span>
+                  <span class="specsD__video-badge specsD__video-badge--note" id="specs3DVideoNote">Preview filmed in Oyster White</span>
                 </div>
                 <div>
                   <div class="specsD__swatches" id="specs3DSwatches">
@@ -1194,7 +1198,7 @@
 
             <div class="specsD__warn">
               <span>⚠</span>
-              <span>Нужны файлы <code>zeodeo-tray-white.glb</code>, <code>zeodeo-tray-grey.glb</code>, <code>zeodeo-tray-dark.glb</code> в <code>assets/product/</code> - их пока нет в проекте, модель не подгрузится, пока их не добавят (3D-сканирование или экспорт из CAD/3D-редактора).</span>
+              <span>Сейчас вместо интерактивной 3D-модели - готовое видео с 360°-вращением (сняли черновой 3D-скан в Tripo3D), и только для Oyster White. Живой drag-to-rotate и переключение цвета появятся, когда будут готовы файлы <code>zeodeo-tray-white.glb</code>, <code>zeodeo-tray-grey.glb</code>, <code>zeodeo-tray-dark.glb</code> в <code>assets/product/</code>.</span>
             </div>
           </div>
         </div>
@@ -1688,17 +1692,18 @@
     });
   })();
 
-  /* ---------- Block 8, Variant D: 3D model-viewer colour swatches ---------- */
+  /* ---------- Block 8, Variant D: 360deg preview video + colour swatches ---------- */
   (function(){
     var swatches = document.querySelectorAll('#specs3DSwatches .specsD__swatch');
     if(!swatches.length) return;
-    var model = document.getElementById('specs3DModel');
+    var video = document.getElementById('specs3DVideo');
+    var videoNote = document.getElementById('specs3DVideoNote');
     var nameEl = document.getElementById('specs3DName');
     var descEl = document.getElementById('specs3DDesc');
     var data = {
-      white: {modelSrc:'../assets/product/zeodeo-tray-white.glb', name:'Oyster White', desc:'Brightest option; shows surface dust first, easiest to spot when a wipe-down is due.'},
-      grey:  {modelSrc:'../assets/product/zeodeo-tray-grey.glb', name:'Stone Grey', desc:'Blends into most flooring; the most forgiving colourway for daily use.'},
-      dark:  {modelSrc:'../assets/product/zeodeo-tray-dark.glb', name:'Dark Anthracite', desc:'Premium, technical look for graphite interiors - hides scuffs best of the three.'}
+      white: {name:'Oyster White', desc:'Brightest option; shows surface dust first, easiest to spot when a wipe-down is due.'},
+      grey:  {name:'Stone Grey', desc:'Blends into most flooring; the most forgiving colourway for daily use.'},
+      dark:  {name:'Dark Anthracite', desc:'Premium, technical look for graphite interiors - hides scuffs best of the three.'}
     };
     swatches.forEach(function(sw){
       sw.addEventListener('click', function(e){
@@ -1708,15 +1713,10 @@
         var d = data[sw.dataset.colour];
         nameEl.textContent = d.name;
         descEl.textContent = d.desc;
-        model.style.transition = 'opacity 0.2s ease';
-        model.style.opacity = 0;
-        setTimeout(function(){
-          model.src = d.modelSrc;
-          setTimeout(function(){ model.style.opacity = 1; }, 150);
-        }, 200);
+        videoNote.classList.toggle('is-visible', sw.dataset.colour !== 'white');
       });
     });
-    model.addEventListener('click', function(e){ e.stopPropagation(); });
+    video.addEventListener('click', function(e){ e.stopPropagation(); });
   })();
 
   /* ---------- Block 9: Moisture path animation (tabbed: Pad drip / Pellets freshness) ---------- */
