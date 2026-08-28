@@ -461,33 +461,6 @@
 
   /* ================= BLOCK 2: Calculator ================= */
 
-  /* ---------- Block 2, Variant E: real site style (DESIGN.md) ---------- */
-  .calcE__sub{font-size:13px;line-height:1.5;color:var(--text-color);opacity:.7;margin-bottom:18px;max-width:60ch;}
-  .calcE__opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
-  .calcE__opt{
-    border:1px solid var(--border-color);background:#fff;border-radius:999px;padding:9px 16px;
-    font-family:var(--font-text);font-size:13px;color:var(--text-color);cursor:pointer;transition:all 0.15s ease;
-  }
-  .calcE__opt.is-active{background:var(--accent-color);border-color:var(--accent-color);color:#fff;font-weight:700;}
-  .calcE__stage{background:#F8F8F8;border-radius:var(--radius-card);padding:20px;}
-  .calcE__result{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;}
-  .calcE__line{
-    font-family:var(--font-header);font-weight:700;font-size:10.5px;text-transform:uppercase;
-    letter-spacing:.06em;color:var(--text-color);opacity:.55;margin-bottom:6px;
-  }
-  .calcE__value{font-size:14px;color:var(--text-color);line-height:1.4;}
-  .calcE__cadence{
-    display:inline-block;font-family:var(--font-header);font-weight:700;font-size:12.5px;
-    color:#3F5A2E;background:#EAF6DF;border-radius:999px;padding:7px 14px;margin:0;
-  }
-  /* Pill and button now share one footer row instead of stacking - the button used to end up floating
-     far below the shorter "Zeolite pellets" column because it waited for the pill's own line to clear first. */
-  .calcE__cta{
-    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
-    border-top:1px solid var(--border-color);padding-top:16px;margin-top:16px;
-  }
-  .calcE__cta .btn{width:auto;padding:13px 22px 14px;}
-
   /* ---------- Block 2, доп. вариант: весь калькулятор в стиле mood-дудла (см. Блок 11) - светлый разворот, крупный тип, пилюли вместо тихой серой карточки ---------- */
   .calcMood{background:#DFF1F8;border-radius:24px;padding:52px 24px 48px;text-align:center;}
   /* Cat count doubles as the household-size indicator: 1 cat for Small/Medium, 2 for "2 Cats", 3 for "3 Cats" - the hidden ones are removed from flow (not just faded) so the visible cats stay centred instead of leaving gaps. */
@@ -745,20 +718,20 @@
   .tlPath__node:hover{border-color:var(--accent-color-2);}
   .tlPath__node.is-active{background:transparent;border-color:transparent;box-shadow:none;}
   .tlPath__node.is-done{background:var(--new-badge-color);border-color:var(--new-badge-color);color:#fff;}
-  /* Compact horizontal card - thumbnail beside the text instead of a full-width image on top, so all 4 steps still show their full description without the block running very tall */
+  /* Half-and-half card - image and text each take half the card width */
   .tlPath__card{
-    width:calc(50% - 34px);display:flex;align-items:center;gap:12px;text-align:left;
+    width:calc(50% - 34px);min-height:150px;display:flex;align-items:center;gap:12px;text-align:left;
     background:#fff;border:2px solid var(--border-color);border-radius:var(--radius-card);
     padding:10px;cursor:pointer;transition:.2s;font-family:var(--font-text);
   }
   .tlPath__card:hover{border-color:var(--accent-color-2);transform:translateY(-2px);}
   .tlPath__card.is-active{border-color:var(--accent-color-2);box-shadow:0 8px 20px rgba(255,91,75,.15);}
-  .tlPath__card-img{width:56px;height:56px;flex:0 0 auto;border-radius:var(--radius-s);overflow:hidden;background:#F4F4F4;}
+  .tlPath__card-img{width:0;flex:1 1 50%;height:130px;border-radius:var(--radius-s);overflow:hidden;background:#F4F4F4;}
   .tlPath__card-img img{width:100%;height:100%;object-fit:cover;display:block;}
-  .tlPath__card-body{min-width:0;}
+  .tlPath__card-body{flex:1 1 50%;min-width:0;}
   .tlPath__card-num{display:block;font-family:var(--font-header);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-color-2);margin-bottom:2px;}
-  .tlPath__card-title{display:block;font-family:var(--font-header);font-weight:700;font-size:13.5px;color:var(--text-color);margin-bottom:3px;}
-  .tlPath__card-text{font-size:12px;line-height:1.4;color:var(--text-color);opacity:.75;}
+  .tlPath__card-title{display:block;font-family:var(--font-header);font-weight:700;font-size:15.5px;color:var(--text-color);margin-bottom:4px;}
+  .tlPath__card-text{font-size:14px;line-height:1.5;color:var(--text-color);opacity:.75;}
   @media (max-width:680px){
     .tlPath__line{left:16px;}
     .tlPath__cat{left:16px;width:38px;}
@@ -769,37 +742,6 @@
     .tlPath__cat.is-flip{transform:translate(-50%,-50%);}
   }
 
-  /* ---------- Block 7, доп. вариант 2: "Как в буклете" - вертикальные full-width строки, референс assets/documents/instructions.pdf стр.4 ---------- */
-  .tlBk{border:2px solid var(--new-badge-color);border-radius:var(--radius-card);background:#FBFCF8;padding:6px;}
-  .tlBk__row{
-    display:flex;align-items:center;gap:16px;padding:14px;border-radius:6px;cursor:pointer;
-    transition:background .2s,box-shadow .2s;position:relative;
-  }
-  .tlBk__row + .tlBk__row{border-top:1px solid var(--border-color);}
-  .tlBk__row:hover{background:#F2F7EA;}
-  .tlBk__row.is-active{background:#FFF3F1;box-shadow:inset 3px 0 0 var(--accent-color-2);}
-  .tlBk__row.is-done .tlBk__media{opacity:.6;}
-  .tlBk__row.is-done .tlBk__title{opacity:.6;}
-  .tlBk__media{position:relative;width:84px;height:84px;flex:0 0 auto;border-radius:var(--radius-s);overflow:hidden;background:#F4F4F4;}
-  .tlBk__media img{width:100%;height:100%;object-fit:cover;display:block;}
-  .tlBk__body{min-width:0;flex:1;}
-  .tlBk__top{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:2px;}
-  .tlBk__num{font-family:var(--font-header);font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-color);opacity:.55;}
-  .tlBk__tag{display:none;font-family:var(--font-header);font-weight:700;font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:20px;}
-  .tlBk__tag--current{background:var(--accent-color-2);color:#fff;}
-  .tlBk__tag--next{background:#fff;border:1.5px solid var(--new-badge-color);color:var(--new-badge-color);}
-  .tlBk__row.is-active .tlBk__tag--current{display:inline-block;}
-  .tlBk__row.is-next .tlBk__tag--next{display:inline-block;}
-  .tlBk__title{display:block;font-family:var(--font-header);font-weight:700;font-size:14.5px;color:var(--text-color);margin-bottom:3px;}
-  .tlBk__text{font-size:12.5px;line-height:1.5;color:var(--text-color);opacity:.75;}
-  .tlBk__footer{
-    margin-top:6px;padding:12px 14px;text-align:center;font-family:var(--font-header);font-weight:700;
-    font-size:12px;color:var(--text-color);opacity:.65;border-top:1px solid var(--border-color);
-  }
-  @media (max-width:560px){
-    .tlBk__row{align-items:flex-start;}
-    .tlBk__media{width:64px;height:64px;}
-  }
 
 
 
@@ -904,28 +846,57 @@
   }
 
   /* ================= BLOCK 9: Moisture path animation ================= */
+  /* pad-fill is just a clipping container now - the liquid itself is a handful of organic
+     "stains" that soak in from the pellet layer above and spread/merge, instead of a flat
+     rectangle rising like a pool */
   .moist__pad-fill{
-    position:absolute;left:0;right:0;bottom:0;height:0%;
-    background:linear-gradient(180deg, rgba(49,172,216,0.35), rgba(49,172,216,0.72));
+    position:absolute;inset:0;overflow:hidden;z-index:1;pointer-events:none;
+    /* isolate the stains into their own group and multiply that group onto the photo ONCE -
+       without this, 5 overlapping multiply-blended stains compound darkness on top of each
+       other and the merged puddle turns almost black by day 6-7 */
+    isolation:isolate;
     mix-blend-mode:multiply;
-    transition:height 0.3s linear;
-    z-index:1;
+    /* soft-edged mask shaped like the pad's real outline (straight left/right sides, square
+       top corners, rounded bottom corners matching .cutaway__pad-region's own border-radius) -
+       blurred so the puddle fades out gently at every edge, but along the pad's actual
+       straight sides instead of an oval that curves the left/right edges inward */
+    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 101'%3E%3Cfilter id='f'%3E%3CfeGaussianBlur stdDeviation='14'/%3E%3C/filter%3E%3Cpath d='M0,0 L1000,0 L1000,87 A140,14 0 0 1 860,101 L180,101 A180,18 0 0 1 0,83 Z' fill='white' filter='url(%23f)'/%3E%3C/svg%3E");
+    mask-size:100% 100%;
+    mask-repeat:no-repeat;
+    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 101'%3E%3Cfilter id='f'%3E%3CfeGaussianBlur stdDeviation='14'/%3E%3C/filter%3E%3Cpath d='M0,0 L1000,0 L1000,87 A140,14 0 0 1 860,101 L180,101 A180,18 0 0 1 0,83 Z' fill='white' filter='url(%23f)'/%3E%3C/svg%3E");
+    -webkit-mask-size:100% 100%;
+    -webkit-mask-repeat:no-repeat;
   }
-  .moist__flash{
-    position:absolute;inset:0;background:rgba(147,194,64,0.6);opacity:0;
-    transition:opacity 0.2s ease;pointer-events:none;z-index:3;
+  .moist__stain{
+    position:absolute;top:-10%;left:var(--sx);width:52%;aspect-ratio:1/1;
+    transform:translate(-50%,-30%) scale(calc(var(--p,0) * var(--m,1)));
+    transform-origin:50% 28%;
+    border-radius:44% 56% 68% 32% / 45% 60% 40% 55%;
+    background:radial-gradient(circle at 50% 38%, rgba(49,172,216,.85), rgba(49,172,216,.62) 34%, rgba(49,172,216,.3) 62%, rgba(49,172,216,0) 88%);
+    filter:blur(calc(3px + var(--p,0) * 4px));
+    opacity:min(1, calc(var(--p,0) * 1.4));
+    transition:transform .6s cubic-bezier(.32,.9,.4,1), opacity .5s ease, filter .6s ease;
   }
-  .moist__flash.is-visible{opacity:1;}
+  .moist__stain:nth-child(1){--sx:8%; --m:.92; transition-delay:0s;}
+  .moist__stain:nth-child(2){--sx:31%; --m:1.1; transition-delay:.05s;}
+  .moist__stain:nth-child(3){--sx:54%; --m:.95; transition-delay:.02s;}
+  .moist__stain:nth-child(4){--sx:77%; --m:1.15; transition-delay:.08s;}
+  .moist__stain:nth-child(5){--sx:95%; --m:.9; transition-delay:.04s;}
   .moist__callout{
-    position:absolute;left:50%;top:8px;transform:translateX(-50%) translateY(-6px);
+    position:absolute;left:50%;top:8px;transform:translateX(-50%) translateY(-6px) scale(.85);
     background:var(--accent-color-2);color:#fff;font-family:var(--font-header);font-weight:700;font-size:11px;
     padding:6px 12px;border-radius:999px;opacity:0;white-space:nowrap;
-    transition:opacity 0.25s ease, transform 0.25s ease;z-index:5;
+    transition:opacity 0.25s ease, transform 0.35s cubic-bezier(.34,1.56,.64,1);z-index:5;
   }
-  .moist__callout.is-visible{opacity:1;transform:translateX(-50%) translateY(0);}
+  .moist__callout.is-visible{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}
   .moist__ruler{margin-bottom:10px;}
-  .moist__ruler-track{position:relative;height:7px;background:var(--border-color);border-radius:4px;overflow:hidden;margin-bottom:5px;}
-  .moist__ruler-fill{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--accent-color);border-radius:4px;transition:width 0.3s linear;}
+  .moist__ruler-track{
+    position:relative;height:7px;border-radius:4px;overflow:hidden;margin-bottom:5px;
+    background:
+      repeating-linear-gradient(to right, transparent 0, transparent calc(100%/7 - 1px), rgba(255,255,255,.85) calc(100%/7 - 1px), rgba(255,255,255,.85) calc(100%/7)),
+      var(--border-color);
+  }
+  .moist__ruler-fill{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--accent-color);border-radius:4px;transition:width 0.45s cubic-bezier(.3,.9,.4,1);}
   .moist__ruler-labels{display:flex;justify-content:space-between;font-size:9.5px;color:var(--text-color);}
   .moist__ruler-labels span{opacity:0.55;}
   .moist__ruler-labels span.moist__ruler-current{font-weight:700;opacity:1;color:var(--accent-color-2);}
@@ -938,7 +909,35 @@
     aspect-ratio:1038/414;margin-bottom:14px;
   }
   .cutaway__stage img{width:100%;height:100%;object-fit:cover;display:block;}
-  .cutaway__pad-region{position:absolute;left:4%;right:4%;top:64%;height:34%;overflow:hidden;}
+  /* inset + border-radius measured against the real pad's edges in the photo, not a generic rectangle */
+  .cutaway__pad-region{position:absolute;left:6.5%;right:8%;top:65%;height:21%;overflow:hidden;border-radius:0 0 14% 18%;}
+
+  /* falling drops that show liquid coming down through the pellets - each one lands at the
+     same x position where its matching .moist__stain later blooms in the pad below, so it
+     reads as "this is where the fill is coming from" rather than a generic decoration */
+  .moist__drops{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2;}
+  .moist__drop{
+    position:absolute;left:var(--sx);top:49%;width:7px;height:7px;
+    background:linear-gradient(160deg,#B7E7F4,#31ACD8);
+    border-radius:50% 50% 50% 0;
+    box-shadow:0 0 3px rgba(49,141,172,0.45);
+    transform:translate(-50%,0) rotate(45deg) scale(.5);
+    opacity:0;
+    animation:moistDropFall 2s cubic-bezier(.55,0,.85,.4) infinite;
+  }
+  .moist__drops.is-paused .moist__drop{animation-play-state:paused;}
+  .moist__drop:nth-child(1){--sx:13.3%; animation-delay:0s;}
+  .moist__drop:nth-child(2){--sx:32.9%; animation-delay:.5s;}
+  .moist__drop:nth-child(3){--sx:52.7%; animation-delay:1s;}
+  .moist__drop:nth-child(4){--sx:72.3%; animation-delay:1.4s;}
+  .moist__drop:nth-child(5){--sx:87.7%; animation-delay:.25s;}
+  @keyframes moistDropFall{
+    0%{opacity:0; top:48%; transform:translate(-50%,0) rotate(45deg) scale(.5);}
+    14%{opacity:1; transform:translate(-50%,0) rotate(45deg) scale(1);}
+    58%{opacity:1; top:63%;}
+    67%{opacity:0; top:64.5%; transform:translate(-50%,0) rotate(45deg) scale(.6);}
+    100%{opacity:0; top:64.5%;}
+  }
 
   /* ---------- Block 9, Variant E: dark stage, scroll-triggered ---------- */
   .moistD__panel{background:#17181A;color:#EDE9E1;border-radius:var(--radius-card);padding:16px 16px;}
@@ -967,8 +966,13 @@
   .moistD__step{display:flex;gap:10px;padding:10px 0;border-top:1px solid #2B2D2F;opacity:.35;transition:opacity .5s ease;}
   .moistD__step:first-child{border-top:none;}
   .moistD__step.on{opacity:1;}
-  .moistD__step-n{font-family:Consolas,'SFMono-Regular',monospace;font-size:11px;color:#5BB6CC;flex:none;width:18px;}
+  .moistD__step.done{opacity:.62;}
+  .moistD__step-n{font-family:Consolas,'SFMono-Regular',monospace;font-size:11px;color:#5BB6CC;flex:none;width:18px;transition:color .3s ease, transform .3s ease;}
+  .moistD__step.on .moistD__step-n{color:#7FD4E8;transform:scale(1.2);animation:moistStepPop .4s ease;}
+  .moistD__step.done .moistD__step-n{color:#6B8F72;}
+  @keyframes moistStepPop{0%{transform:scale(1);}55%{transform:scale(1.45);}100%{transform:scale(1.2);}}
   .moistD__step b{display:block;font-size:12.5px;color:#EDE9E1;margin-bottom:2px;}
+  .moistD__step.on b{color:#fff;}
   .moistD__step span{font-size:11.5px;color:#A9A297;line-height:1.4;}
 
   /* ---------- Block 9, V3: merged - real cutaway photo (Variant C) + dark step panel (Variant E), synced ---------- */
@@ -978,6 +982,44 @@
   .moistV3__ruler-labels{display:flex;justify-content:space-between;font-size:9.5px;color:#A9A297;margin-bottom:4px;}
   .moistV3__ruler-labels span.moistV3__ruler-current{font-weight:700;color:#5BB6CC;}
   @media (max-width:680px){.moistV3__grid{grid-template-columns:1fr;}}
+
+  /* wisps rising up and dissolving into the pellet layer - mirrors the moisture drops, reversed,
+     to show odour being pulled in and trapped rather than passing through like liquid */
+  .odorC__wisps{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2;}
+  .odorC__wisp{
+    position:absolute;width:22px;height:16px;left:var(--sx);top:60%;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 24'%3E%3Cpath d='M2 4 Q8 0 14 4 T26 4' stroke='%2392A84A' stroke-width='2.8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M2 12 Q8 8 14 12 T26 12' stroke='%2392A84A' stroke-width='2.8' fill='none' stroke-linecap='round' opacity='.75'/%3E%3Cpath d='M2 20 Q8 16 14 20 T26 20' stroke='%2392A84A' stroke-width='2.8' fill='none' stroke-linecap='round' opacity='.5'/%3E%3C/svg%3E");
+    background-size:contain;background-repeat:no-repeat;
+    transform:translate(-50%,-50%) scale(1);
+    opacity:0;
+    animation:odorCRise 2.6s ease-out infinite;
+  }
+  .odorC__wisp:nth-child(1){--sx:16%; animation-delay:0s;}
+  .odorC__wisp:nth-child(2){--sx:36%; animation-delay:.6s;}
+  .odorC__wisp:nth-child(3){--sx:58%; animation-delay:1.2s;}
+  .odorC__wisp:nth-child(4){--sx:80%; animation-delay:.3s;}
+  /* bigger + slightly bolder for the main merged variant, where it needs to read clearly at a glance */
+  .odorC__wisps.is-large .odorC__wisp{
+    width:42px;height:32px;
+    filter:drop-shadow(0 0 3px rgba(255,255,255,.8));
+  }
+  @keyframes odorCRise{
+    0%{opacity:0; top:62%; transform:translate(-50%,-50%) scale(1);}
+    18%{opacity:1;}
+    55%{opacity:.9; top:38%; transform:translate(-50%,-50%) scale(.75);}
+    100%{opacity:0; top:20%; transform:translate(-50%,-50%) scale(.3);}
+  }
+
+  /* Odour-level line chart, Day 1-7 */
+  .odorD__legend{display:flex;gap:20px;margin-bottom:14px;flex-wrap:wrap;}
+  .odorD__legend-item{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;color:var(--text-color);}
+  .odorD__legend-swatch{width:14px;height:3px;border-radius:2px;display:inline-block;}
+  .odorD__chart-wrap{width:100%;}
+  .odorD__chart-wrap svg{width:100%;height:auto;display:block;}
+  .odorD__stat-row{display:flex;gap:14px;margin-top:16px;flex-wrap:wrap;}
+  .odorD__stat{flex:1;min-width:160px;background:#F7F5F0;border-radius:10px;padding:12px 14px;}
+  .odorD__stat b{display:block;font-family:var(--font-header);font-size:19px;color:var(--text-color);margin-bottom:2px;}
+  .odorD__stat span{font-size:11px;color:#7C8698;line-height:1.4;}
 
   /* ================= BLOCK 10: Video reviews (shorts carousel) ================= */
   .shorts__wrap{position:relative;}
@@ -1016,6 +1058,20 @@
   .shorts__hint{
     display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-color);opacity:.6;margin-top:2px;
   }
+  .shortsModal{
+    position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;padding:24px;
+  }
+  .shortsModal.is-open{display:flex;}
+  .shortsModal__backdrop{position:absolute;inset:0;background:rgba(10,10,12,0.82);}
+  .shortsModal__box{position:relative;z-index:1;width:min(360px, 90vw);}
+  .shortsModal__frame{position:relative;width:100%;aspect-ratio:9/16;background:#000;border-radius:14px;overflow:hidden;}
+  .shortsModal__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .shortsModal__close{
+    position:absolute;top:-40px;right:0;width:32px;height:32px;border-radius:50%;border:none;
+    background:rgba(255,255,255,0.12);color:#fff;font-size:22px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:background .15s ease;
+  }
+  .shortsModal__close:hover{background:rgba(255,255,255,0.22);}
 
   @media (min-width:768px){
     .lab__block-head{max-width:760px;}
@@ -1210,15 +1266,13 @@
     <a href="#block-anatomy">1. Анатомия</a>
     <a href="#block-calc">2. Калькулятор</a>
     <a href="#block-baf">3. До/После</a>
-    <a href="#block-care">4. Уход</a>
-    <a href="#block-unboxing">5. Распаковка</a>
     <a href="#block-timeline">6. Таймлайн</a>
     <a href="#block-specs">7. Габариты</a>
     <a href="#block-moist">8. Влага</a>
-    <a href="#block-video-reviews">9. Видео-отзывы</a>
     <a href="#block-pillars">10. 4 Фишки</a>
     <a href="#block-hub">11. Баннер-хаб</a>
     <a href="#block-faq">12. FAQ</a>
+    <a href="#block-video-reviews">9. Видео-отзывы</a>
   </div>
 </nav>
 
@@ -1370,43 +1424,6 @@
       <h2 class="lab__title">Умный калькулятор расхода</h2>
     </div>
     <div class="variants">
-
-      <!-- Variant E -->
-      <div class="device device--wide device--headerless">
-        <div class="device__body">
-          <p class="section__eyebrow">Plan your supply</p>
-          <h3 class="section__title">Tailored for Your Household</h3>
-          <p class="calcE__sub">Tell us how many cats you have and we'll work out exactly how much you'll need each month.</p>
-          <div class="calcE__opts" id="calcEOpts">
-            <button class="calcE__opt" data-k="small" type="button">1 Small Cat</button>
-            <button class="calcE__opt" data-k="medium" type="button">1 Medium Cat</button>
-            <button class="calcE__opt is-active" data-k="two" type="button">2 Cats</button>
-            <button class="calcE__opt" data-k="three" type="button">3 Cats</button>
-          </div>
-          <div class="calcE__stage">
-            <div class="calcE__result">
-              <div>
-                <div class="calcE__line">Absorbent pads</div>
-                <div class="calcE__value" id="calcEPads">6-10 pads (change every 3-5 days)</div>
-              </div>
-              <div>
-                <div class="calcE__line">Zeolite pellets</div>
-                <div class="calcE__value" id="calcEPellets">1 pack per month</div>
-              </div>
-            </div>
-            <div class="calcE__cta calcE__cta--no-price">
-              <p class="calcE__cadence">⏱ Pellets last 30 days. Pads last 7 days.</p>
-              <button class="btn btn--primary" id="calcECta" type="button">Add month supply to basket</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <div class="lab__block-head" style="margin-top:32px;">
-      <p class="lab__eyebrow">Вариант</p>
-    </div>
-    <div class="variants">
       <div class="device device--wide device--headerless">
         <div class="device__body">
           <div class="calcMood">
@@ -1513,108 +1530,6 @@
 
     </div>
   </section>
-  <!-- ============ BLOCK 4: CARE TABS ============ -->
-  <section class="lab__block" id="block-care">
-    <div class="lab__block-head">
-      <h2 class="lab__title">Гайд по уходу</h2>
-    </div>
-    <div class="variants">
-
-      <!-- Variant B -->
-      <div class="device device--wide device--headerless">
-        <div class="device__body">
-          <div class="careD__panel">
-            <h3 class="careD__title">Effortless Care</h3>
-
-            <div class="careD__stage">
-              <div class="careD__tabs">
-                <button class="careD__tab is-active" data-tab="daily" type="button">Daily</button>
-                <button class="careD__tab" data-tab="weekly" type="button">Weekly</button>
-                <button class="careD__tab" data-tab="monthly" type="button">Monthly</button>
-              </div>
-              <div class="careD__cards is-active" data-panel="daily">
-                <div class="careD__card">
-                  <img class="careD__card-photo" src="../assets/product/scoop-zeodeo.webp" alt="">
-                  <b>Scoop any solids</b><span>No fixed schedule - just scoop as needed.</span>
-                </div>
-              </div>
-              <div class="careD__cards" data-panel="weekly">
-                <div class="careD__card">
-                  <img class="careD__card-photo" src="../assets/product/package-absorbing-pads.webp" alt="">
-                  <b>Replace the pad</b><span>Simply swap in a fresh absorbent pad.</span>
-                </div>
-              </div>
-              <div class="careD__cards" data-panel="monthly">
-                <div class="careD__card">
-                  <img class="careD__card-photo" src="../assets/product/pellets-white-bg.webp" alt="">
-                  <b>Replace the granules</b><span>Top up or fully replace the zeolite pellets.</span>
-                </div>
-              </div>
-
-              <div class="careD__benefits">
-                <div class="careD__benefit"><span class="careD__benefit-icon">&#10003;</span>Unlike traditional litter, there's no need to hoover any tracked particles around the house.</div>
-                <div class="careD__benefit"><span class="careD__benefit-icon">&#10003;</span>Enjoy zero litter-tray odour in the room, for a genuinely clean-feeling space.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-  <!-- ============ BLOCK 5: UNBOXING (scroll reveal + parallax) ============ -->
-  <section class="lab__block" id="block-unboxing">
-    <div class="lab__block-head">
-      <h2 class="lab__title">Интерактивная "Распаковка" Стартового набора</h2>
-    </div>
-    <div class="variants">
-      <div class="device device--wide device--headerless" style="max-width:640px;">
-        <div class="device__body">
-          <div class="ubD__panel">
-            <h3 class="ubD__title">Unboxing the Starter Kit</h3>
-            <p class="ubD__sub">Everything in the kit, laid out flat. Tap the + on any piece for why it matters.</p>
-
-            <div class="ubD__stage" id="ubStage">
-              <div class="ubD__grid">
-                <div class="ubD__tile ubD__tile--hero" data-tile="tray">
-                  <div class="ubD__tile-photo">
-                    <img src="../assets/product/render-tray-grey-drawer-open.webp" alt="ZeoDeo tray, drawer open">
-                    <button class="ubD__pin" type="button" aria-label="Tray details"></button>
-                  </div>
-                  <div class="ubD__tile-name">ZeoDeo Tray</div>
-                  <div class="ubD__tile-callout">The reusable base - everything else here just tops it up.</div>
-                </div>
-                <div class="ubD__tile" data-tile="scoop">
-                  <div class="ubD__tile-photo">
-                    <img src="../assets/product/scoop-zeodeo.webp" alt="Scoop">
-                    <button class="ubD__pin" type="button" aria-label="Scoop details"></button>
-                  </div>
-                  <div class="ubD__tile-name">Scoop</div>
-                  <div class="ubD__tile-callout">Included free, sized for the twice-daily scoop.</div>
-                </div>
-                <div class="ubD__tile" data-tile="pellets">
-                  <div class="ubD__tile-photo">
-                    <img src="../assets/product/pellets-white-bg.webp" alt="Zeolite pellets pack">
-                    <button class="ubD__pin" type="button" aria-label="Pellets details"></button>
-                  </div>
-                  <div class="ubD__tile-name">Zeolite Pellets</div>
-                  <div class="ubD__tile-callout">1 pack = about a month of odour-free running.</div>
-                </div>
-                <div class="ubD__tile" data-tile="pads">
-                  <div class="ubD__tile-photo">
-                    <img src="../assets/product/package-absorbing-pads.webp" alt="Absorbing pads pack">
-                    <button class="ubD__pin" type="button" aria-label="Pads details"></button>
-                  </div>
-                  <div class="ubD__tile-name">Absorbent Pads</div>
-                  <div class="ubD__tile-callout">10 pads = 2+ months of cover for one cat.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
   <!-- ============ BLOCK 7: TIMELINE ============ -->
   <section class="lab__block" id="block-timeline">
     <div class="lab__block-head">
@@ -1638,28 +1553,28 @@
             <div class="tlB__cards">
               <button class="tlB__card is-active" type="button" data-step="0">
                 <span class="tlB__card-status">Current step</span>
-                <div class="tlB__card-img"><img src="../assets/product/pellets-macro-1.webp" alt="Close-up of ZeoDeo zeolite granules"></div>
+                <div class="tlB__card-img"><img src="../assets/derived/tray-onboarding-mix-granules.webp" alt="Hand mixing ZeoDeo granules into the old green litter tray"></div>
                 <span class="tlB__card-num">Step 1</span>
                 <strong class="tlB__card-title">Introduce the Texture</strong>
                 <p class="tlB__card-text">Mix a small amount of the new granules into your cat's current litter, in the old tray.</p>
               </button>
               <button class="tlB__card" type="button" data-step="1">
                 <span class="tlB__card-status">Current step</span>
-                <div class="tlB__card-img"><img src="../assets/product/render-tray-grey-angle.webp" alt="ZeoDeo tray placed alongside the old litter tray"></div>
+                <div class="tlB__card-img"><img src="../assets/derived/tray-onboarding-place-alongside.webp" alt="ZeoDeo tray placed alongside the old litter tray"></div>
                 <span class="tlB__card-num">Step 2</span>
                 <strong class="tlB__card-title">Place It Alongside</strong>
                 <p class="tlB__card-text">Put the new tray next to the old one. Remove the high edges if your cat prefers a flatter entrance.</p>
               </button>
               <button class="tlB__card" type="button" data-step="2">
                 <span class="tlB__card-status">Current step</span>
-                <div class="tlB__card-img"><img src="../assets/derived/after-clean-tray.webp" alt="Clean ZeoDeo tray environment"></div>
+                <div class="tlB__card-img"><img src="../assets/derived/tray-onboarding-cat-choosing.webp" alt="Cat stepping into the new ZeoDeo tray next to the old one"></div>
                 <span class="tlB__card-num">Step 3</span>
                 <strong class="tlB__card-title">Let Them Choose</strong>
                 <p class="tlB__card-text">Stop cleaning the old tray. Your cat will naturally prefer the clean new one.</p>
               </button>
               <button class="tlB__card" type="button" data-step="3">
                 <span class="tlB__card-status">Current step</span>
-                <div class="tlB__card-img"><img src="../assets/product/hero-tray-grey-cat.webp" alt="Cat happily using the ZeoDeo tray on its own"></div>
+                <div class="tlB__card-img"><img src="../assets/derived/tray-onboarding-cat-settled.webp" alt="Ginger cat sitting comfortably alone in the ZeoDeo tray"></div>
                 <span class="tlB__card-num">Step 4</span>
                 <strong class="tlB__card-title">Remove the Old Tray</strong>
                 <p class="tlB__card-text">Once your cat uses ZeoDeo consistently, take the old tray away for good.</p>
@@ -1669,10 +1584,6 @@
         </div>
       </div>
 
-    </div>
-    <div class="lab__block-head" style="margin-top:32px;">
-      <p class="lab__eyebrow">Вариант</p>
-      <h3 class="section__title" style="font-size:19px;">"Путь кота" - зигзаг-тропа с котом-маркером вместо прямого трекера</h3>
     </div>
     <div class="variants">
       <div class="device device--wide device--headerless">
@@ -1701,7 +1612,7 @@
             <div class="tlPath__row tlPath__row--right" data-step="0">
               <button class="tlPath__node is-active" type="button" data-step="0" aria-label="Step 1">1</button>
               <button class="tlPath__card is-active" type="button" data-step="0">
-                <div class="tlPath__card-img"><img src="../assets/product/pellets-macro-1.webp" alt="Close-up of ZeoDeo zeolite granules"></div>
+                <div class="tlPath__card-img"><img src="../assets/derived/tray-onboarding-mix-granules.webp" alt="Hand mixing ZeoDeo granules into the old green litter tray"></div>
                 <div class="tlPath__card-body">
                   <span class="tlPath__card-num">Step 1</span>
                   <strong class="tlPath__card-title">Introduce the Texture</strong>
@@ -1711,7 +1622,7 @@
             </div>
             <div class="tlPath__row tlPath__row--left" data-step="1">
               <button class="tlPath__card" type="button" data-step="1">
-                <div class="tlPath__card-img"><img src="../assets/product/render-tray-grey-angle.webp" alt="ZeoDeo tray placed alongside the old litter tray"></div>
+                <div class="tlPath__card-img"><img src="../assets/derived/tray-onboarding-place-alongside.webp" alt="ZeoDeo tray placed alongside the old litter tray"></div>
                 <div class="tlPath__card-body">
                   <span class="tlPath__card-num">Step 2</span>
                   <strong class="tlPath__card-title">Place It Alongside</strong>
@@ -1723,7 +1634,7 @@
             <div class="tlPath__row tlPath__row--right" data-step="2">
               <button class="tlPath__node" type="button" data-step="2" aria-label="Step 3">3</button>
               <button class="tlPath__card" type="button" data-step="2">
-                <div class="tlPath__card-img"><img src="../assets/derived/after-clean-tray.webp" alt="Clean ZeoDeo tray environment"></div>
+                <div class="tlPath__card-img"><img src="../assets/derived/tray-onboarding-cat-choosing.webp" alt="Cat stepping into the new ZeoDeo tray next to the old one"></div>
                 <div class="tlPath__card-body">
                   <span class="tlPath__card-num">Step 3</span>
                   <strong class="tlPath__card-title">Let Them Choose</strong>
@@ -1733,7 +1644,7 @@
             </div>
             <div class="tlPath__row tlPath__row--left" data-step="3">
               <button class="tlPath__card" type="button" data-step="3">
-                <div class="tlPath__card-img"><img src="../assets/product/hero-tray-grey-cat.webp" alt="Cat happily using the ZeoDeo tray on its own"></div>
+                <div class="tlPath__card-img"><img src="../assets/derived/tray-onboarding-cat-settled.webp" alt="Ginger cat sitting comfortably alone in the ZeoDeo tray"></div>
                 <div class="tlPath__card-body">
                   <span class="tlPath__card-num">Step 4</span>
                   <strong class="tlPath__card-title">Remove the Old Tray</strong>
@@ -1747,126 +1658,11 @@
       </div>
     </div>
 
-    <div class="mega-variant-head">
-      <span class="mega-variant-head__tag">Вариант 2</span>
-    </div>
-    <div class="variants">
-      <div class="device device--wide device--headerless">
-        <div class="device__body">
-          <p class="section__eyebrow">Getting started</p>
-          <h3 class="section__title">Helping Your Cat Settle In</h3>
-          <p class="timeline__intro">In 95% of cases there's no fuss at all - your cat simply starts using the new tray as soon as it replaces the old one. If yours is more cautious, follow these steps one at a time, not all at once. Tap any step to preview it.</p>
-
-          <div class="tlBk" id="tlBkStage">
-            <div class="tlBk__row is-active" data-step="0">
-              <div class="tlBk__media">
-                <img src="../assets/product/pellets-macro-1.webp" alt="Close-up of ZeoDeo zeolite granules">
-              </div>
-              <div class="tlBk__body">
-                <div class="tlBk__top">
-                  <span class="tlBk__num">Step 1</span>
-                  <span class="tlBk__tag tlBk__tag--current">Current step</span>
-                  <span class="tlBk__tag tlBk__tag--next">Next step</span>
-                </div>
-                <strong class="tlBk__title">Introduce the Texture</strong>
-                <p class="tlBk__text">Mix a small amount of the new granules into your cat's current litter, in the old tray.</p>
-              </div>
-            </div>
-            <div class="tlBk__row" data-step="1">
-              <div class="tlBk__media">
-                <img src="../assets/product/render-tray-grey-angle.webp" alt="ZeoDeo tray placed alongside the old litter tray">
-              </div>
-              <div class="tlBk__body">
-                <div class="tlBk__top">
-                  <span class="tlBk__num">Step 2</span>
-                  <span class="tlBk__tag tlBk__tag--current">Current step</span>
-                  <span class="tlBk__tag tlBk__tag--next">Next step</span>
-                </div>
-                <strong class="tlBk__title">Place It Alongside</strong>
-                <p class="tlBk__text">Put the new tray next to the old one. Remove the high edges if your cat prefers a flatter entrance.</p>
-              </div>
-            </div>
-            <div class="tlBk__row" data-step="2">
-              <div class="tlBk__media">
-                <img src="../assets/derived/after-clean-tray.webp" alt="Clean ZeoDeo tray environment">
-              </div>
-              <div class="tlBk__body">
-                <div class="tlBk__top">
-                  <span class="tlBk__num">Step 3</span>
-                  <span class="tlBk__tag tlBk__tag--current">Current step</span>
-                  <span class="tlBk__tag tlBk__tag--next">Next step</span>
-                </div>
-                <strong class="tlBk__title">Let Them Choose</strong>
-                <p class="tlBk__text">Stop cleaning the old tray. Your cat will naturally prefer the clean new one.</p>
-              </div>
-            </div>
-            <div class="tlBk__row" data-step="3">
-              <div class="tlBk__media">
-                <img src="../assets/product/hero-tray-grey-cat.webp" alt="Cat happily using the ZeoDeo tray on its own">
-              </div>
-              <div class="tlBk__body">
-                <div class="tlBk__top">
-                  <span class="tlBk__num">Step 4</span>
-                  <span class="tlBk__tag tlBk__tag--current">Current step</span>
-                  <span class="tlBk__tag tlBk__tag--next">Next step</span>
-                </div>
-                <strong class="tlBk__title">Remove the Old Tray</strong>
-                <p class="tlBk__text">Once your cat uses ZeoDeo consistently, take the old tray away for good.</p>
-              </div>
-            </div>
-            <p class="tlBk__footer">Every cat has its own personality, so patience is key.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </section>
   <!-- ============ BLOCK 8: SPECS VISUALIZER ============ -->
   <section class="lab__block" id="block-specs">
     <div class="lab__block-head">
       <h2 class="lab__title">Визуализатор габаритов и цвета</h2>
-    </div>
-    <div class="mega-variant-head">
-      <span class="mega-variant-head__tag">Вариант F</span>
-    </div>
-    <div class="variants">
-      <div class="device device--wide device--headerless">
-        <div class="device__body">
-          <div class="roomMx__wrap">
-            <div class="roomMx__stage">
-              <img id="roomMxImg" src="../new-photos/Gemini_Generated_Image_sh1cm9sh1cm9sh1c.jpg" alt="ZeoDeo tray preview in the chosen room and colour">
-            </div>
-            <div class="roomMx__panel">
-              <p class="section__eyebrow">Colourways</p>
-              <h3 class="roomMx__title">See It In Your Room</h3>
-              <p class="roomMx__text">Pick a tray colour and a room style - the photo updates instantly. Nine ready-made shots, no live rendering.</p>
-
-              <div class="roomMx__group">
-                <span class="roomMx__label">Tray colour</span>
-                <div class="roomMx__swatches" id="roomMxColour">
-                  <button class="roomMx__swatch is-active" data-c="white" style="background:#EDE9DE;" aria-label="Oyster White" type="button"></button>
-                  <button class="roomMx__swatch" data-c="grey" style="background:#9C9691;" aria-label="Stone Grey" type="button"></button>
-                  <button class="roomMx__swatch" data-c="dark" style="background:#2B2C2E;" aria-label="Dark Anthracite" type="button"></button>
-                </div>
-              </div>
-              <div class="roomMx__group">
-                <span class="roomMx__label">Room style</span>
-                <div class="roomMx__rooms" id="roomMxRoom">
-                  <button class="roomMx__room is-active" data-r="grey" type="button">Grey concrete</button>
-                  <button class="roomMx__room" data-r="white" type="button">White &amp; oak</button>
-                  <button class="roomMx__room" data-r="walnut" type="button">Walnut floor</button>
-                </div>
-              </div>
-
-              <div class="roomMx__name" id="roomMxName">Oyster White - Grey concrete room</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mega-variant-head">
-      <span class="mega-variant-head__tag">Вариант G</span>
     </div>
     <div class="variants">
       <div class="device device--wide device--headerless">
@@ -1920,12 +1716,13 @@
             <div class="moistV3__grid">
               <div>
                 <div class="cutaway__stage">
-                  <img src="../assets/derived/tray-cutaway-cross-section.webp" alt="Cross-section showing zeolite pellets on top and the absorbent pad below, with liquid draining through">
+                  <img src="../assets/derived/tray-cutaway-cross-section-v2.webp" alt="Cross-section showing zeolite pellets on top and the absorbent pad below, with liquid draining through">
+                  <div class="moist__drops" id="v3Drops"><span class="moist__drop"></span><span class="moist__drop"></span><span class="moist__drop"></span><span class="moist__drop"></span><span class="moist__drop"></span></div>
+                  <div class="odorC__wisps is-large" id="v3OdorWisps"><span class="odorC__wisp"></span><span class="odorC__wisp"></span><span class="odorC__wisp"></span><span class="odorC__wisp"></span></div>
                   <div class="cutaway__pad-region">
-                    <div class="moist__pad-fill" id="v3Fill"></div>
-                    <div class="moist__flash" id="v3Flash"></div>
+                    <div class="moist__pad-fill" id="v3Fill"><span class="moist__stain"></span><span class="moist__stain"></span><span class="moist__stain"></span><span class="moist__stain"></span><span class="moist__stain"></span></div>
                   </div>
-                  <div class="moist__callout" id="v3Callout">Pad full - time to swap</div>
+                  <div class="moist__callout" id="v3Callout">✓ Pad full - time to swap</div>
                 </div>
                 <div class="moist__ruler">
                   <div class="moist__ruler-track"><div class="moist__ruler-fill" id="v3RulerFill"></div></div>
@@ -1937,7 +1734,7 @@
               </div>
               <div class="moistD__steps" id="v3Steps">
                 <div class="moistD__step" data-s="0"><span class="moistD__step-n">01</span><div><b>Liquid meets the zeolite layer</b><span>It drains straight through the pellets rather than clumping on the surface.</span></div></div>
-                <div class="moistD__step" data-s="1"><span class="moistD__step-n">02</span><div><b>Odour-causing compounds are locked in</b><span>The volcanic mineral structure binds ammonia at a molecular level.</span></div></div>
+                <div class="moistD__step" data-s="1"><span class="moistD__step-n">02</span><div><b>Odour-causing compounds are locked in</b><span>Watch the green wisps rise off the pad and dissolve into the pellets above - that's odour being pulled in and trapped, not masked.</span></div></div>
                 <div class="moistD__step" data-s="2"><span class="moistD__step-n">03</span><div><b>The pad seals it beneath</b><span>Residual moisture is captured below, keeping the pellet layer dry on top.</span></div></div>
               </div>
             </div>
@@ -1946,79 +1743,51 @@
       </div>
     </div>
   </section>
-  <!-- ============ BLOCK 10: VIDEO REVIEWS (shorts carousel) ============ -->
-  <section class="lab__block" id="block-video-reviews">
+  <!-- ============ BLOCK 9B: ODOUR LEVEL CHART ============ -->
+  <section class="lab__block" id="block-odor-chart">
     <div class="lab__block-head">
-      <h2 class="lab__title">Видео-отзывы клиентов</h2>
+      <h2 class="lab__title">Шкала уровня запаха по дням</h2>
     </div>
     <div class="variants">
       <div class="device device--wide device--headerless">
         <div class="device__body">
-          <p class="section__eyebrow">From real households</p>
-          <h3 class="section__title">What Cat Owners Say</h3>
-          <div class="shorts__wrap">
-            <div class="shorts__track" id="shortsTrack">
-              <div class="shorts__card">
-                <img src="../assets/product/hero-tray-white-cat.webp" alt="Заглушка видео-отзыва: Emma и её кот">
-                <span class="shorts__duration">0:18</span>
-                <span class="shorts__play" aria-hidden="true"></span>
-                <div class="shorts__meta">
-                  <span class="shorts__name">Emma, London</span>
-                  <span class="shorts__quote">"No more litter tracked through the kitchen"</span>
-                </div>
-              </div>
-              <div class="shorts__card">
-                <img src="../assets/product/hero-tray-grey-cat.webp" alt="Заглушка видео-отзыва: James и его кот">
-                <span class="shorts__duration">0:24</span>
-                <span class="shorts__play" aria-hidden="true"></span>
-                <div class="shorts__meta">
-                  <span class="shorts__name">James, Manchester</span>
-                  <span class="shorts__quote">"Setup took two minutes, my cat took to it straight away"</span>
-                </div>
-              </div>
-              <div class="shorts__card">
-                <img src="../assets/product/hero-tray-black-cat.webp" alt="Заглушка видео-отзыва: Sophie и её кот">
-                <span class="shorts__duration">0:15</span>
-                <span class="shorts__play" aria-hidden="true"></span>
-                <div class="shorts__meta">
-                  <span class="shorts__name">Sophie, Bristol</span>
-                  <span class="shorts__quote">"Finally no smell in the hallway"</span>
-                </div>
-              </div>
-              <div class="shorts__card">
-                <img src="../assets/product/cats.webp" alt="Заглушка видео-отзыва: Daniel и два кота">
-                <span class="shorts__duration">0:31</span>
-                <span class="shorts__play" aria-hidden="true"></span>
-                <div class="shorts__meta">
-                  <span class="shorts__name">Daniel, Leeds</span>
-                  <span class="shorts__quote">"Two cats, one tray, zero mess - didn't think that was possible"</span>
-                </div>
-              </div>
-              <div class="shorts__card">
-                <img src="../assets/product/hero-lineup-3-colors.webp" alt="Заглушка видео-отзыва: Olivia">
-                <span class="shorts__duration">0:20</span>
-                <span class="shorts__play" aria-hidden="true"></span>
-                <div class="shorts__meta">
-                  <span class="shorts__name">Olivia, Edinburgh</span>
-                  <span class="shorts__quote">"Picked the grey one - matches my bathroom perfectly"</span>
-                </div>
-              </div>
-            </div>
-            <div class="shorts__fade"></div>
+          <div class="odorD__legend">
+            <span class="odorD__legend-item"><span class="odorD__legend-swatch" style="background:var(--accent-color-2);"></span>Обычный наполнитель</span>
+            <span class="odorD__legend-item"><span class="odorD__legend-swatch" style="background:var(--accent-color);"></span>ZeoDeo</span>
           </div>
-          <p class="shorts__hint">← Прокрутите вправо, чтобы посмотреть остальные</p>
+          <div class="odorD__chart-wrap">
+            <svg viewBox="0 0 640 230" role="img" aria-label="Уровень запаха за 7 дней: у обычного наполнителя растёт, у ZeoDeo остаётся у нуля">
+              <line x1="40" y1="147.5" x2="620" y2="147.5" stroke="#E7E2D8" stroke-width="1"/>
+              <line x1="40" y1="105" x2="620" y2="105" stroke="#E7E2D8" stroke-width="1"/>
+              <line x1="40" y1="62.5" x2="620" y2="62.5" stroke="#E7E2D8" stroke-width="1"/>
+              <line x1="40" y1="190" x2="620" y2="190" stroke="#C9D3DE" stroke-width="1.5"/>
+              <polyline points="40,176.4 136.7,162.8 233.3,142.4 330,118.6 426.7,91.4 523.3,64.2 620,37" fill="none" stroke="#FF5B4B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="40,184.9 136.7,183.2 233.3,184.9 330,181.5 426.7,183.2 523.3,181.5 620,183.2" fill="none" stroke="#31ACD8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="40" cy="176.4" r="4" fill="#FF5B4B"/>
+              <circle cx="620" cy="37" r="4" fill="#FF5B4B"/>
+              <circle cx="40" cy="184.9" r="4" fill="#31ACD8"/>
+              <circle cx="620" cy="183.2" r="4" fill="#31ACD8"/>
+              <text x="40" y="210" font-size="11" fill="#7C8698" text-anchor="middle">Day 1</text>
+              <text x="136.7" y="210" font-size="11" fill="#7C8698" text-anchor="middle">Day 2</text>
+              <text x="233.3" y="210" font-size="11" fill="#7C8698" text-anchor="middle">Day 3</text>
+              <text x="330" y="210" font-size="11" fill="#7C8698" text-anchor="middle">Day 4</text>
+              <text x="426.7" y="210" font-size="11" fill="#7C8698" text-anchor="middle">Day 5</text>
+              <text x="523.3" y="210" font-size="11" fill="#7C8698" text-anchor="middle">Day 6</text>
+              <text x="620" y="210" font-size="11" fill="#7C8698" text-anchor="middle">Day 7</text>
+            </svg>
+          </div>
+          <div class="odorD__stat-row">
+            <div class="odorD__stat"><b>~20×</b><span>меньше запаха к 7 дню, чем у обычного наполнителя</span></div>
+            <div class="odorD__stat"><b>Без роста всю неделю</b><span>ZeoDeo держит запах у нуля с 1 по 7 день, без уборки лотка целиком</span></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
   <div class="lab__mega-divider" id="block-pillars">
-    <span class="lab__mega-eyebrow">Новый раздел</span>
-    <h1 class="lab__mega-title">4 Главные Фишки - Новая Подача</h1>
+    <h1 class="lab__mega-title">4 Главные Фишки</h1>
 
     <!-- ============ Вариант C: таблица "мы vs остальные" ============ -->
-    <div class="mega-variant-head">
-      <span class="mega-variant-head__tag">Вариант C</span>
-    </div>
     <div class="variants">
       <div class="device device--wide device--headerless">
         <div class="device__body">
@@ -2186,6 +1955,75 @@
       </div>
     </div>
   </section>
+  <!-- ============ BLOCK 10: VIDEO REVIEWS (shorts carousel) ============ -->
+  <section class="lab__block" id="block-video-reviews">
+    <div class="lab__block-head">
+      <h2 class="lab__title">Видео-отзывы клиентов</h2>
+    </div>
+    <div class="variants">
+      <div class="device device--wide device--headerless">
+        <div class="device__body">
+          <p class="section__eyebrow">From real households</p>
+          <h3 class="section__title">What Cat Owners Say</h3>
+          <div class="shorts__wrap">
+            <div class="shorts__track" id="shortsTrack">
+              <div class="shorts__card" data-yt="Zy-3xSrX9yY" role="button" tabindex="0" aria-label="Play video: Emma, London">
+                <img src="../assets/derived/video-review-emma-london.webp" alt="Видео-отзыв: Emma и её кот">
+                <span class="shorts__play" aria-hidden="true"></span>
+                <div class="shorts__meta">
+                  <span class="shorts__name">Emma, London</span>
+                  <span class="shorts__quote">"No more litter tracked through the kitchen"</span>
+                </div>
+              </div>
+              <div class="shorts__card" data-yt="6vLEuafaz2Q" role="button" tabindex="0" aria-label="Play video: James, Manchester">
+                <img src="../assets/derived/video-review-james-manchester.webp" alt="Видео-отзыв: James и его кот">
+                <span class="shorts__play" aria-hidden="true"></span>
+                <div class="shorts__meta">
+                  <span class="shorts__name">James, Manchester</span>
+                  <span class="shorts__quote">"Setup took two minutes, my cat took to it straight away"</span>
+                </div>
+              </div>
+              <div class="shorts__card" data-yt="W66hgAChB2Y" role="button" tabindex="0" aria-label="Play video: Sophie, Bristol">
+                <img src="../assets/derived/video-review-sophie-bristol.webp" alt="Видео-отзыв: Sophie и её кот">
+                <span class="shorts__play" aria-hidden="true"></span>
+                <div class="shorts__meta">
+                  <span class="shorts__name">Sophie, Bristol</span>
+                  <span class="shorts__quote">"Finally no smell in the hallway"</span>
+                </div>
+              </div>
+              <div class="shorts__card">
+                <img src="../assets/product/cats.webp" alt="Заглушка видео-отзыва: Daniel и два кота">
+                <span class="shorts__duration">0:31</span>
+                <span class="shorts__play" aria-hidden="true"></span>
+                <div class="shorts__meta">
+                  <span class="shorts__name">Daniel, Leeds</span>
+                  <span class="shorts__quote">"Two cats, one tray, zero mess - didn't think that was possible"</span>
+                </div>
+              </div>
+              <div class="shorts__card">
+                <img src="../assets/product/hero-lineup-3-colors.webp" alt="Заглушка видео-отзыва: Olivia">
+                <span class="shorts__duration">0:20</span>
+                <span class="shorts__play" aria-hidden="true"></span>
+                <div class="shorts__meta">
+                  <span class="shorts__name">Olivia, Edinburgh</span>
+                  <span class="shorts__quote">"Picked the grey one - matches my bathroom perfectly"</span>
+                </div>
+              </div>
+            </div>
+            <div class="shorts__fade"></div>
+          </div>
+          <p class="shorts__hint">← Прокрутите вправо, чтобы посмотреть остальные</p>
+        </div>
+      </div>
+    </div>
+    <div class="shortsModal" id="shortsModal" aria-hidden="true">
+      <div class="shortsModal__backdrop" id="shortsModalBackdrop"></div>
+      <div class="shortsModal__box">
+        <button class="shortsModal__close" id="shortsModalClose" type="button" aria-label="Close video">&times;</button>
+        <div class="shortsModal__frame" id="shortsModalFrame"></div>
+      </div>
+    </div>
+  </section>
 
 </div>
 
@@ -2299,34 +2137,6 @@
     });
   })();
 
-  /* ---------- Block 2E: Calculator - real site style, same logic as D ---------- */
-  (function(){
-    var opts = document.querySelectorAll('#calcEOpts .calcE__opt');
-    if(!opts.length) return;
-    var data = {
-      small:  {pads:'4-6 pads (change every 5-7 days)',   pellets:'1 pack per month'},
-      medium: {pads:'6-8 pads (change every 4-6 days)',    pellets:'1 pack per month'},
-      two:    {pads:'6-10 pads (change every 3-5 days)',   pellets:'1 pack per month'},
-      three:  {pads:'10-14 pads (change every 2-4 days)',  pellets:'2 packs per month'}
-    };
-    var padsOut = document.getElementById('calcEPads');
-    var pelletsOut = document.getElementById('calcEPellets');
-    var ctaBtn = document.getElementById('calcECta');
-    function setCalc(k){
-      opts.forEach(function(b){ b.classList.toggle('is-active', b.dataset.k === k); });
-      var d = data[k];
-      padsOut.textContent = d.pads;
-      pelletsOut.textContent = d.pellets;
-    }
-    opts.forEach(function(b){ b.addEventListener('click', function(e){ e.stopPropagation(); setCalc(b.dataset.k); }); });
-    ctaBtn.addEventListener('click', function(e){
-      e.stopPropagation();
-      var original = ctaBtn.textContent;
-      ctaBtn.textContent = 'Added ✓';
-      setTimeout(function(){ ctaBtn.textContent = original; }, 1400);
-    });
-  })();
-
   /* ---------- Block 2, mood-дудл вариант: тот же расчёт, что и в E, просто другая разметка/id ---------- */
   (function(){
     var opts = document.querySelectorAll('#calcMoodOpts .calcMood__opt');
@@ -2422,51 +2232,6 @@
     });
   })();
 
-  /* ---------- Block 4: Care tabs ---------- */
-  (function(){
-    var tabs = document.querySelectorAll('.careD__tab');
-    if(!tabs.length) return;
-    var panels = document.querySelectorAll('.careD__cards');
-    tabs.forEach(function(tab){
-      tab.addEventListener('click', function(e){
-        e.stopPropagation();
-        tabs.forEach(function(t){ t.classList.remove('is-active'); });
-        panels.forEach(function(p){ p.classList.remove('is-active'); });
-        tab.classList.add('is-active');
-        document.querySelector('.careD__cards[data-panel="' + tab.dataset.tab + '"]').classList.add('is-active');
-      });
-    });
-  })();
-
-  /* ---------- Block 5: Unboxing - flat-lay scroll reveal ---------- */
-  (function(){
-    var stage = document.getElementById('ubStage');
-    if(!stage) return;
-    var tiles = stage.querySelectorAll('.ubD__tile');
-
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          tiles.forEach(function(tile, i){
-            setTimeout(function(){ tile.classList.add('in'); }, i * 120);
-          });
-          io.disconnect();
-        }
-      });
-    }, {threshold:.35});
-    io.observe(stage);
-
-    tiles.forEach(function(tile){
-      var pin = tile.querySelector('.ubD__pin');
-      var callout = tile.querySelector('.ubD__tile-callout');
-      if(!pin || !callout) return;
-      pin.addEventListener('click', function(e){
-        e.stopPropagation();
-        callout.classList.toggle('show');
-      });
-    });
-  })();
-
   /* ---------- Block 7: Timeline step tracker ---------- */
   (function(){
     var stage = document.getElementById('tlBStage');
@@ -2543,27 +2308,6 @@
     stage.addEventListener('mouseleave', function(){ show(pinned); });
     window.addEventListener('resize', moveCat);
     window.addEventListener('load', moveCat);
-    render();
-  })();
-
-  /* ---------- Block 7, доп. вариант 2: "Как в буклете" - клик подсвечивает текущий шаг и помечает следующий тегом "Next" ---------- */
-  (function(){
-    var stage = document.getElementById('tlBkStage');
-    if(!stage) return;
-    var rows = stage.querySelectorAll('.tlBk__row');
-    var active = 0;
-    function render(){
-      rows.forEach(function(r){
-        var i = Number(r.dataset.step);
-        r.classList.toggle('is-active', i === active);
-        r.classList.toggle('is-done', i < active);
-        r.classList.toggle('is-next', i === active + 1);
-      });
-    }
-    rows.forEach(function(r){
-      var i = Number(r.dataset.step);
-      r.addEventListener('click', function(){ active = i; render(); });
-    });
     render();
   })();
 
@@ -2655,41 +2399,7 @@
     });
   })();
 
-  /* ---------- Block 8, доп. вариант F: цвет лотка × цвет комнаты - двумя независимыми свотчами выбирается 1 из 9 готовых фото ---------- */
-  (function(){
-    var img = document.getElementById('roomMxImg');
-    if(!img) return;
-    var nameEl = document.getElementById('roomMxName');
-    var colourSwatches = document.querySelectorAll('#roomMxColour .roomMx__swatch');
-    var roomButtons = document.querySelectorAll('#roomMxRoom .roomMx__room');
-
-    function fileFor(i){
-      var base = '../new-photos/Gemini_Generated_Image_sh1cm9sh1cm9sh1c';
-      return i === 0 ? base + '.jpg' : base + '%20(' + i + ').jpg';
-    }
-    // Порядок в папке new-photos: base,1,2 = White(грей,белая,орех); 3,4,5 = Grey; 6,7,8 = Dark - см. каталог фото
-    var order = ['white-grey','white-white','white-walnut','grey-grey','grey-white','grey-walnut','dark-grey','dark-white','dark-walnut'];
-    var files = {};
-    order.forEach(function(key, i){ files[key] = fileFor(i); });
-    order.forEach(function(key){ var pre = new Image(); pre.src = files[key]; });
-
-    var colourNames = { white:'Oyster White', grey:'Stone Grey', dark:'Dark Anthracite' };
-    var roomNames = { grey:'Grey concrete room', white:'White & oak room', walnut:'Walnut floor room' };
-    var colour = 'white';
-    var room = 'grey';
-
-    function render(){
-      img.src = files[colour + '-' + room];
-      nameEl.textContent = colourNames[colour] + ' - ' + roomNames[room];
-      colourSwatches.forEach(function(s){ s.classList.toggle('is-active', s.dataset.c === colour); });
-      roomButtons.forEach(function(b){ b.classList.toggle('is-active', b.dataset.r === room); });
-    }
-    colourSwatches.forEach(function(s){ s.addEventListener('click', function(){ colour = s.dataset.c; render(); }); });
-    roomButtons.forEach(function(b){ b.addEventListener('click', function(){ room = b.dataset.r; render(); }); });
-    render();
-  })();
-
-  /* ---------- Block 8, доп. вариант G: тот же комбинатор цвет × комната, другая серия из 9 фото (room-{room}-tray-{colour}.webp) ---------- */
+  /* ---------- Block 8, доп. вариант G: комбинатор цвет × комната, 9 фото (room-{room}-tray-{colour}.webp) ---------- */
   (function(){
     var img = document.getElementById('roomMx2Img');
     if(!img) return;
@@ -2725,16 +2435,16 @@
   /* ---------- Block 9: real photo pad fill-over-time (Variant C, and reused for V3) - optional steps param drives a step highlight in sync ---------- */
   function setupPadFillDemo(ids){
     var fill = document.getElementById(ids.fill);
-    var flash = document.getElementById(ids.flash);
     var callout = document.getElementById(ids.callout);
     var rulerFill = document.getElementById(ids.rulerFill);
     var rulerCurrent = document.getElementById(ids.rulerCurrent);
     var playPauseBtn = document.getElementById(ids.playPause);
+    var drops = ids.drops ? document.getElementById(ids.drops) : null;
     var steps = ids.steps ? document.querySelectorAll(ids.steps) : null;
     if(!fill || !playPauseBtn) return;
 
     var TOTAL_STEPS = 14, TOTAL_DAYS = 7;
-    var STEP_INTERVAL = 900, FULL_PAUSE = 1600, DRAIN_DURATION = 500, FLASH_DURATION = 450;
+    var STEP_INTERVAL = 900, FULL_PAUSE = 1600, DRAIN_DURATION = 500;
     var progress = 0, mode = 'stepping', timer = null, running = true;
     /* thresholds line the 3 narrative steps up against the same progress that drives the fill/ruler,
        so "liquid meets zeolite" lights immediately and "pad seals it beneath" only once nearly full */
@@ -2742,12 +2452,24 @@
 
     function updateSteps(){
       if(!steps) return;
-      steps.forEach(function(s, i){ s.classList.toggle('on', progress >= stepThresholds[i]); });
+      var currentIndex = -1;
+      steps.forEach(function(s, i){ if(progress >= stepThresholds[i]) currentIndex = i; });
+      steps.forEach(function(s, i){
+        var isDone = i < currentIndex;
+        var isCurrent = i === currentIndex;
+        s.classList.toggle('on', isCurrent);
+        s.classList.toggle('done', isDone);
+        var numEl = s.querySelector('.moistD__step-n');
+        if(numEl){
+          if(!numEl.dataset.orig) numEl.dataset.orig = numEl.textContent;
+          numEl.textContent = isDone ? '✓' : numEl.dataset.orig;
+        }
+      });
     }
 
     function updateProgress(){
       var pct = Math.min(100, (progress / TOTAL_STEPS) * 100);
-      fill.style.height = pct + '%';
+      fill.style.setProperty('--p', (pct / 100).toFixed(3));
       rulerFill.style.width = pct + '%';
       var day = Math.min(TOTAL_DAYS, Math.max(1, Math.round((progress / TOTAL_STEPS) * TOTAL_DAYS)));
       rulerCurrent.textContent = 'Day ' + day;
@@ -2774,26 +2496,16 @@
       callout.classList.remove('is-visible');
       progress = 0;
       updateProgress();
-      timer = setTimeout(flashFn, DRAIN_DURATION);
-    }
-
-    function flashFn(){
-      if(!running) return;
-      mode = 'flash';
-      flash.classList.add('is-visible');
-      timer = setTimeout(function(){
-        flash.classList.remove('is-visible');
-        timer = setTimeout(step, 250);
-      }, FLASH_DURATION);
+      timer = setTimeout(step, DRAIN_DURATION);
     }
 
     playPauseBtn.addEventListener('click', function(e){
       e.stopPropagation();
       running = !running;
       playPauseBtn.textContent = running ? '⏸ Pause' : '▶ Play';
+      if(drops) drops.classList.toggle('is-paused', !running);
       if(running){
         if(mode === 'draining'){ timer = setTimeout(drain, 80); }
-        else if(mode === 'flash'){ timer = setTimeout(flashFn, 80); }
         else { timer = setTimeout(step, 80); }
       } else {
         clearTimeout(timer);
@@ -2804,7 +2516,7 @@
   }
 
   setupPadFillDemo({
-    fill:'cutawayFill', flash:'cutawayFlash', callout:'cutawayCallout',
+    fill:'cutawayFill', callout:'cutawayCallout', drops:'cutawayDrops',
     rulerFill:'cutawayRulerFill', rulerCurrent:'cutawayRulerCurrent', playPause:'cutawayPlayPause'
   });
 
@@ -2835,7 +2547,7 @@
 
   /* ---------- Block 9, V3: merged variant - real photo fill drives the step highlight (scoped to #v3Steps so it doesn't clash with Variant E's steps above) ---------- */
   setupPadFillDemo({
-    fill:'v3Fill', flash:'v3Flash', callout:'v3Callout',
+    fill:'v3Fill', callout:'v3Callout', drops:'v3Drops',
     rulerFill:'v3RulerFill', rulerCurrent:'v3RulerCurrent', playPause:'v3PlayPause',
     steps:'#v3Steps .moistD__step'
   });
@@ -2867,6 +2579,44 @@
     track.addEventListener('pointerup', function(e){
       isDown = false;
       if(moved){ e.stopPropagation(); }
+    });
+  })();
+
+  /* ---------- Block 10: Video reviews - click a card with a real YouTube video to play it in a modal ---------- */
+  (function(){
+    var modal = document.getElementById('shortsModal');
+    var track = document.getElementById('shortsTrack');
+    if(!modal || !track) return;
+    var frame = document.getElementById('shortsModalFrame');
+    var backdrop = document.getElementById('shortsModalBackdrop');
+    var closeBtn = document.getElementById('shortsModalClose');
+
+    function openVideo(id){
+      frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1" title="ZeoDeo video review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal(){
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      frame.innerHTML = '';
+    }
+    track.addEventListener('click', function(e){
+      var card = e.target.closest('.shorts__card');
+      if(!card || !card.dataset.yt) return;
+      openVideo(card.dataset.yt);
+    });
+    track.addEventListener('keydown', function(e){
+      if(e.key !== 'Enter' && e.key !== ' ') return;
+      var card = e.target.closest('.shorts__card');
+      if(!card || !card.dataset.yt) return;
+      e.preventDefault();
+      openVideo(card.dataset.yt);
+    });
+    backdrop.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
     });
   })();
 
