@@ -679,15 +679,15 @@
   .tlB__card.is-active{border-color:var(--new-badge-color);box-shadow:0 8px 20px rgba(147,194,64,0.15);}
   .tlB__card.is-done{opacity:.7;}
   .tlB__card-status{
-    display:none;font-family:var(--font-header);font-weight:700;font-size:10px;text-transform:uppercase;
-    letter-spacing:.04em;color:var(--new-badge-color);
+    display:inline-block;font-family:var(--font-header);font-weight:700;font-size:10.5px;text-transform:uppercase;
+    letter-spacing:.04em;color:var(--text-color);opacity:.55;margin-bottom:4px;
   }
-  .tlB__card.is-active .tlB__card-status{display:inline-block;}
-  .tlB__card-img{width:100%;aspect-ratio:1/1;border-radius:var(--radius-s);overflow:hidden;background:#F4F4F4;}
+  .tlB__card.is-active .tlB__card-status{color:var(--new-badge-color);opacity:1;}
+  .tlB__card-img{width:100%;aspect-ratio:1/1;border-radius:var(--radius-s);overflow:hidden;background:#F4F4F4;margin-top:6px;}
   .tlB__card-img img{width:100%;height:100%;object-fit:cover;}
   .tlB__card-num{font-family:var(--font-header);font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--text-color);opacity:.55;}
   .tlB__card.is-active .tlB__card-num{color:var(--new-badge-color);opacity:1;}
-  .tlB__card-title{font-family:var(--font-header);font-weight:700;font-size:14px;color:var(--text-color);}
+  .tlB__card-title{font-family:var(--font-header);font-weight:700;font-size:14px;color:var(--text-color);display:block;}
   .tlB__card-text{font-size:12px;line-height:1.5;color:var(--text-color);opacity:.75;}
   @media (max-width:680px){
     .tlB__cards{grid-template-columns:repeat(2,1fr);}
@@ -1118,6 +1118,13 @@
   }
   .pillars__card--blue .pillars__icon{background:var(--accent-color);}
   .pillars__icon svg{width:20px;height:20px;display:block;}
+  .pillars__card-img{
+    aspect-ratio:16/10;border-radius:8px 8px 0 0;overflow:hidden;background:#F4F4F4;
+    margin:-20px -20px 16px;
+  }
+  .pillars__card-img img{width:100%;height:100%;object-fit:cover;display:block;}
+  .pillars__card-img--full{aspect-ratio:11/6;}
+  .pillars__card-img--full img{object-fit:contain;}
   .pillars__stat{font-family:var(--font-big-header);font-weight:600;font-size:21px;color:var(--accent-color-2);line-height:1.15;margin-bottom:6px;}
   .pillars__card--blue .pillars__stat{color:var(--accent-color);}
   .pillars__title{font-family:var(--font-header);font-weight:700;font-size:14px;color:var(--text-color);margin-bottom:6px;}
@@ -1359,61 +1366,44 @@
     <div class="variants">
       <div class="device device--wide device--headerless">
         <div class="device__body">
-          <div class="pillarsC__box">
-            <div class="pillarsC__grid">
-              <div class="pillarsC__item">
-                <div class="pillarsC__icon">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M3 8c3-2 4 2 7 0s4 2 7 0" stroke="var(--text-color)" stroke-width="1.6" stroke-linecap="round"/>
-                    <path d="M3 13c3-2 4 2 7 0s4 2 7 0" stroke="var(--text-color)" stroke-width="1.6" stroke-linecap="round" opacity=".6"/>
-                    <circle cx="19" cy="6" r="2" fill="var(--accent-color)" opacity=".25"/>
-                    <line x1="4" y1="4" x2="20" y2="19" stroke="var(--text-color)" stroke-width="1.6" stroke-linecap="round"/>
-                  </svg>
+          <div class="pillars__wrap">
+            <p class="section__eyebrow">Why ZeoDeo</p>
+            <h3 class="section__title">The 4 Things That Actually Matter</h3>
+            <div class="pillars__grid">
+              <div class="pillars__card">
+                <div class="pillars__card-img pillars__card-img--full">
+                  <img src="../assets/derived/pillar-odor-zeolite-technology.webp" alt="Zeolite technology diagram: porous pellets drawing in odour gases H2S and NH3, keeping air fresh for 30 days">
                 </div>
-                <div class="pillarsC__title">700-800 m&sup2;/cm&sup3; Pore Surface</div>
-                <div class="pillarsC__text">Locks away odour, not liquid.</div>
+                <div class="pillars__stat">700-800 m&sup2;/cm&sup3;</div>
+                <div class="pillars__title">Zero odour - trapped, not masked</div>
+                <div class="pillars__text">The pellets repel liquid and only absorb gas - their porous surface is large enough to lock away a huge volume of odour.</div>
               </div>
-              <div class="pillarsC__item">
-                <div class="pillarsC__icon">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" fill="var(--accent-color)" fill-opacity=".18" stroke="var(--text-color)" stroke-width="1.6"/>
-                    <line x1="3.5" y1="10" x2="20.5" y2="10" stroke="var(--text-color)" stroke-width="1.6"/>
-                    <path d="M8.5 14.5l2.3 2.3L16 12.3" stroke="var(--text-color)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+              <div class="pillars__card pillars__card--blue">
+                <div class="pillars__card-img pillars__card-img--full">
+                  <img src="../assets/derived/pillar-cleaning-tray-pad-drawer.webp" alt="Open ZeoDeo tray drawer with pellets and absorbent pad, next to a traditional tray with clumped litter for comparison">
                 </div>
-                <div class="pillarsC__title">1&times; Not 5&times; a Day</div>
-                <div class="pillarsC__text">Only the solids need scooping.</div>
+                <div class="pillars__stat">1&times; vs 5&times; a day</div>
+                <div class="pillars__title">Cleaning, cut down to almost nothing</div>
+                <div class="pillars__text">A normal tray needs scooping after every wee. Ours only needs the solids removed once a day - no more weekly full washes either.</div>
               </div>
-              <div class="pillarsC__item">
-                <div class="pillarsC__icon">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <circle cx="8.5" cy="8.5" r="1.7" fill="var(--accent-color)" fill-opacity=".3"/>
-                    <circle cx="14.5" cy="7" r="1.4" fill="var(--accent-color)" fill-opacity=".3"/>
-                    <circle cx="17" cy="10.8" r="1.4" fill="var(--accent-color)" fill-opacity=".3"/>
-                    <circle cx="6.5" cy="13" r="1.4" fill="var(--accent-color)" fill-opacity=".3"/>
-                    <ellipse cx="11.5" cy="16" rx="4" ry="3" stroke="var(--text-color)" stroke-width="1.6"/>
-                    <line x1="4" y1="4" x2="20" y2="20" stroke="var(--text-color)" stroke-width="1.6" stroke-linecap="round"/>
-                  </svg>
+              <div class="pillars__card pillars__card--blue">
+                <div class="pillars__card-img pillars__card-img--full">
+                  <img src="../assets/derived/pillar-tracking-clean-vs-dirty-paws.webp" alt="Split comparison: clean cat paw with ZeoDeo pellets versus a dirty paw with scattered traditional litter">
                 </div>
-                <div class="pillarsC__title">5-6mm Repelling Pellets</div>
-                <div class="pillarsC__text">Nothing sticks, nothing tracks.</div>
+                <div class="pillars__stat">5-6mm pellets</div>
+                <div class="pillars__title">Nothing tracked around the house</div>
+                <div class="pillars__text">Too big to get stuck between paws, and a water-repellent coating means they don't cling to fur - it stays in the tray.</div>
               </div>
-              <div class="pillarsC__item">
-                <div class="pillarsC__icon">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <circle cx="7" cy="7" r="1" fill="var(--text-color)" opacity=".25"/>
-                    <circle cx="14" cy="5.5" r=".8" fill="var(--text-color)" opacity=".4"/>
-                    <circle cx="17" cy="12" r="1.1" fill="var(--text-color)" opacity=".25"/>
-                    <circle cx="9" cy="15" r=".8" fill="var(--text-color)" opacity=".4"/>
-                    <circle cx="18" cy="17.5" r="1.6" fill="var(--accent-color)" fill-opacity=".2"/>
-                    <path d="M5 19l14-14" stroke="var(--text-color)" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
-                  </svg>
+              <div class="pillars__card">
+                <div class="pillars__card-img pillars__card-img--full">
+                  <img src="../assets/derived/pillar-dustfree-paw-on-furniture.webp" alt="Cat paw stepping onto furniture near the tray with no dust residue">
                 </div>
-                <div class="pillarsC__title">Virtually Dust-Free</div>
-                <div class="pillarsC__text">No paw prints left on furniture.</div>
+                <div class="pillars__stat">Virtually dust-free</div>
+                <div class="pillars__title">No dusty paw prints on furniture</div>
+                <div class="pillars__text">Unlike clumping litter, there's next to no dust kicked up when your cat digs or steps out of the tray.</div>
               </div>
             </div>
-            <p class="pillarsC__footnote">Pellets last 30 days &middot; Pad lasts 7 days</p>
+            <p class="pillars__cadence">🔄 <span>Pellets last</span> 30 days &nbsp;&middot;&nbsp; <span>Pad lasts</span> 7 days</p>
           </div>
         </div>
       </div>
@@ -1553,30 +1543,26 @@
             </div>
             <div class="tlB__cards">
               <button class="tlB__card is-active" type="button" data-step="0">
-                <span class="tlB__card-status">Current step</span>
+                <span class="tlB__card-status">Step 1</span>
                 <div class="tlB__card-img"><img src="../assets/derived/tray-onboarding-mix-granules.webp" alt="Hand mixing ZeoDeo granules into the old green litter tray"></div>
-                <span class="tlB__card-num">Step 1</span>
                 <strong class="tlB__card-title">Introduce the Texture</strong>
                 <p class="tlB__card-text">Mix a small amount of the new granules into your cat's current litter, in the old tray.</p>
               </button>
               <button class="tlB__card" type="button" data-step="1">
-                <span class="tlB__card-status">Current step</span>
+                <span class="tlB__card-status">Step 2</span>
                 <div class="tlB__card-img"><img src="../assets/derived/tray-onboarding-place-alongside.webp" alt="ZeoDeo tray placed alongside the old litter tray"></div>
-                <span class="tlB__card-num">Step 2</span>
                 <strong class="tlB__card-title">Place It Alongside</strong>
                 <p class="tlB__card-text">Put the new tray next to the old one. Remove the high edges if your cat prefers a flatter entrance.</p>
               </button>
               <button class="tlB__card" type="button" data-step="2">
-                <span class="tlB__card-status">Current step</span>
+                <span class="tlB__card-status">Step 3</span>
                 <div class="tlB__card-img"><img src="../assets/derived/tray-onboarding-cat-choosing.webp" alt="Cat stepping into the new ZeoDeo tray next to the old one"></div>
-                <span class="tlB__card-num">Step 3</span>
                 <strong class="tlB__card-title">Let Them Choose</strong>
                 <p class="tlB__card-text">Stop cleaning the old tray. Your cat will naturally prefer the clean new one.</p>
               </button>
               <button class="tlB__card" type="button" data-step="3">
-                <span class="tlB__card-status">Current step</span>
+                <span class="tlB__card-status">Step 4</span>
                 <div class="tlB__card-img"><img src="../assets/derived/tray-onboarding-cat-settled.webp" alt="Ginger cat sitting comfortably alone in the ZeoDeo tray"></div>
-                <span class="tlB__card-num">Step 4</span>
                 <strong class="tlB__card-title">Remove the Old Tray</strong>
                 <p class="tlB__card-text">Once your cat uses ZeoDeo consistently, take the old tray away for good.</p>
               </button>
