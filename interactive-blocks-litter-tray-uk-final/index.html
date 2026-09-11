@@ -50,7 +50,7 @@
   }
   .hero__card{
     background:var(--card-bg);
-    padding:16px 16px 24px;
+    padding:20px 20px 24px;
     text-align:left;
   }
   .hero__breadcrumb{
@@ -421,9 +421,14 @@
     min-height:44px;
   }
 
+  /* ---------- Mobile: unified 16px side gutter (replaces the old 20px) ---------- */
+  @media (max-width:680px){
+    .section__inner{padding-left:16px;padding-right:16px;}
+    .hero__card{padding-left:16px;padding-right:16px;}
+  }
+
   /* ---------- Narrow phones (iPhone SE / small Android, <=374px) ---------- */
   @media (max-width:374px){
-    .section__inner{padding-left:16px;padding-right:16px;}
     .hero__title{font-size:28px;line-height:1.2;}
     .hero__subtitle{font-size:14px;}
     .hero__specs{font-size:14px;}
@@ -431,9 +436,6 @@
     .section__title{font-size:22px;}
     .splitCta__title{font-size:22px;}
     .splitCta__panel{padding:28px 20px;}
-    .pillars__card{padding:16px;}
-    .pillars__card-img{margin:-16px -16px 16px;}
-    .calcMood{padding:24px 16px;}
     .anat3__legend-title{font-size:13px;}
     .tlPath__card-title{font-size:14.5px;}
     .cmpC2 .cmpC__mobile-title{font-size:16px;}
@@ -744,7 +746,7 @@
     .scentAddon{justify-content:center;text-align:center;}
   }
   @media (max-width:680px){
-    .calcMood{padding:28px 20px;}
+    .calcMood{border:none;background:#FAFAFA;padding:0 10px;margin-left:-10px;margin-right:-10px;width:calc(100% + 20px);}
     .calcMood__sub{font-size:13.5px;}
     .calcMood__result{gap:26px;}
   }
@@ -759,6 +761,7 @@
     .calcMood__result .calcMood__stat-raw{font-size:9px;}
     .calcMood__result .calcMood__stat-badge{font-size:11px;padding:5px 9px;right:-6px;bottom:-4px;}
     .calcMood__result .calcMood__addon-btn{font-size:10.5px;padding:6px 10px;margin-top:6px;white-space:nowrap;}
+    .calcMood__cta{width:100%;max-width:340px;min-height:48px;}
   }
 
   /* ---------- Section 1B2: Before/After slider ---------- */
@@ -866,6 +869,9 @@
   .roomMx__stage{position:relative;border-radius:var(--radius-card);overflow:hidden;background:#F4F4F4;aspect-ratio:1/1;}
   .roomMx__stage img{width:100%;height:100%;object-fit:cover;display:block;}
   .roomMx__text{font-size:13px;line-height:1.55;color:var(--text-color);opacity:.75;margin-bottom:18px;max-width:42ch;}
+  @media (max-width:680px){
+    .roomMx__text{display:none;}
+  }
   .roomMx__group{margin-bottom:16px;}
   .roomMx__label{display:block;font-family:var(--font-header);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-color);opacity:.55;margin-bottom:8px;}
   .roomMx__swatches{display:flex;gap:10px;}
@@ -880,6 +886,13 @@
   .roomMx__room:hover{border-color:var(--accent-color-2);}
   .roomMx__room.is-active{background:var(--text-color);border-color:var(--text-color);color:#fff;}
   .roomMx__name{font-family:var(--font-header);font-weight:700;font-size:14px;color:var(--text-color);margin-top:16px;padding-top:14px;border-top:1px solid var(--border-color);}
+  @media (max-width:680px){
+    .roomMx__panel{display:flex;flex-direction:column;}
+    .roomMx__name{order:-1;margin-top:0;margin-bottom:16px;padding-top:0;padding-bottom:14px;border-top:none;border-bottom:1px solid var(--border-color);}
+    .roomMx__rooms{flex-wrap:nowrap;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+    .roomMx__rooms::-webkit-scrollbar{display:none;height:0;}
+    .roomMx__room{font-size:11.5px;padding:7px 10px;white-space:nowrap;flex:0 0 auto;}
+  }
   @media (min-width:768px){
     .roomMx__wrap{grid-template-columns:1.3fr 1fr;padding:32px;gap:32px;}
     .cmpTable__inner .cmpC__frame{padding:32px;}
@@ -962,6 +975,17 @@
     text-align:left;
   }
   .moistD__panel{background:#fff;color:var(--text-color);border:1px solid var(--border-color);border-radius:var(--radius-card);padding:16px 16px;}
+
+  /* ---------- Mobile: unified 10px side padding for all bordered card panels ---------- */
+  @media (max-width:680px){
+    .pillars__card{padding:0 10px;}
+    .pillars__card-img{margin:0 -10px 16px;}
+    .moistVid__panel{padding:0 10px;}
+    .bafReal__panel{padding:0 10px;}
+    .tlPath{padding:0 10px;}
+    .roomMx__wrap{padding:0 10px;}
+    .moistD__panel{padding:0 10px;}
+  }
   .moistD__sub{font-size:11.5px;line-height:1.5;color:var(--text-color);opacity:.7;margin-bottom:14px;max-width:60ch;}
   .moistD__replay{
     margin:12px 0 0;border:1px solid var(--border-color);background:#fff;border-radius:999px;padding:7px 14px;
@@ -1058,7 +1082,8 @@
     position:absolute;inset:0;grid-column:2 / 3;grid-row:1 / 8;background:var(--new-badge-color);
     border-radius:14px;border:2px solid var(--border-color);z-index:0;pointer-events:none;
   }
-  .cmpC2 .cmpC__table--grid > .cmpC__cell{position:relative;z-index:1;}
+  .cmpC2 .cmpC__table--grid > .cmpC__cell{position:relative;z-index:1;border-bottom:1px solid var(--border-color);}
+  .cmpCNoLines .cmpC__table--grid > .cmpC__cell{border-bottom:none;}
   .cmpC2 .cmpC__cell--lab{justify-content:flex-start;text-align:left;color:var(--text-color);opacity:.85;font-size:13px;line-height:1.55;}
   .cmpC3 .cmpC__lab-strong{font-family:var(--font-header);font-weight:700;opacity:1;}
   .cmpC2 .cmpC__cell--us.cmpC__cell--head{color:#fff;font-size:14px;min-height:auto;}
@@ -1098,6 +1123,7 @@
     padding:7px 16px;font-family:var(--font-text);font-size:12.5px;
   }
   .cmpC2 .cmpC__cell--text{border-top:1px solid var(--border-color);padding:14px 8px 18px;margin-top:2px;}
+  .cmpCNoLines .cmpC__cell--text{border-top:none;}
   .cmpC2 .cmpC__mobile-wrap{display:none;}
   @media (max-width:680px){
     .cmpC2 .cmpC__mobile-title{color:#fff;}
@@ -1145,7 +1171,8 @@
   /* ---------- cmpCGridMobile: keep the full grid table (not the stacked card) on small screens ---------- */
   @media (max-width:680px){
     .cmpCGridMobile .cmpC__mobile-wrap{display:none;}
-    .cmpCGridMobile .cmpC__inner{overflow-x:visible;padding:16px 10px;}
+    .cmpCGridMobile .cmpC__frame{border:none;background:#FAFAFA;padding:10px;margin-left:-10px;margin-right:-10px;width:calc(100% + 20px);}
+    .cmpCGridMobile .cmpC__inner{overflow-x:visible;padding:0 0 16px;}
     .cmpCGridMobile .cmpC__table--grid{
       display:grid;min-width:0;
       grid-template-columns:minmax(92px,1.4fr) repeat(4,minmax(0,1fr));
@@ -1153,13 +1180,16 @@
     }
     .cmpCGridMobile .cmpC__cell{font-size:9.5px;padding:0 3px;min-height:32px;}
     .cmpCGridMobile .cmpC__cell--lab{font-size:9.5px;line-height:1.35;padding-top:8px;padding-bottom:8px;}
-    .cmpCGridMobile .cmpC__cell--head{font-size:9.5px;min-height:auto;}
-    .cmpCGridMobile .cmpC__cell--head:not(.cmpC__cell--us):not(.cmpC__cell--blank){padding:5px 6px;font-size:9px;}
+    .cmpCGridMobile .cmpC__cell--head{font-size:9.5px;min-height:auto;align-items:flex-start;padding-top:6px;}
+    .cmpCGridMobile .cmpC__cell--us.cmpC__cell--head{align-items:flex-start;padding-top:6px;}
+    .cmpCGridMobile .cmpC__cell--head:not(.cmpC__cell--us):not(.cmpC__cell--blank){padding:6px 6px 0;font-size:9px;align-items:flex-start;}
     .cmpCGridMobile .cmpC__icon{width:20px;height:20px;}
     .cmpCGridMobile .cmpC__icon svg{width:10px;height:10px;}
-    .cmpCGridMobile .cmpC__cell--text{font-size:9px;}
-    .cmpCGridMobile .cmpC__table-cta{display:block;grid-column:2/3;padding:0 6px 10px;margin-top:8px;min-width:0;}
-    .cmpCGridMobile .cmpC__cta{font-size:9.5px;line-height:1.2;padding:8px 2px;min-width:0;white-space:normal;}
+    .cmpCGridMobile .cmpC__cell--text{font-size:9px;align-items:flex-start;padding-top:8px;}
+    .cmpCGridMobile .cmpC__cell--us.cmpC__cell--text{align-items:flex-start;padding-top:8px;}
+    .cmpCGridMobile .cmpC__cell--lab:has(+ .cmpC__cell--text){align-items:flex-start;padding-top:8px;}
+    .cmpCGridMobile .cmpC__table-cta{display:block;grid-column:1 / -1;max-width:340px;margin:14px auto 0;}
+    .cmpCGridMobile .cmpC__cta{padding:13px 24px 14px;}
     .cmpCGridMobile .cmpC__col-bg--us{border-radius:10px;}
   }
 
@@ -1672,7 +1702,7 @@
 <!-- ================= SECTION 1F-DUP: COMPARISON TABLE (COPY) ================= -->
 <section class="section">
   <div class="section__card">
-   <div class="section__inner cmpTable__inner cmpC2 cmpC3 cmpRedOutline cmpCtaBoxed cmpCZebra cmpCGridMobile cmpCFlatHead">
+   <div class="section__inner cmpTable__inner cmpC2 cmpC3 cmpRedOutline cmpCtaBoxed cmpCGridMobile cmpCFlatHead cmpCZebra cmpCNoLines">
     <p class="section__eyebrow">Why ZeoDeo Wins</p>
     <h2 class="section__title">The Full Comparison</h2>
     <div class="cmpC__frame">
@@ -1748,8 +1778,8 @@
 <!-- ================= SECTION 1F-COMPARE: COMPARISON TABLE (OLD, FOR COMPARISON ONLY) ================= -->
 <section class="section">
   <div class="section__card">
-   <div class="section__inner cmpTable__inner cmpC2 cmpC3 cmpRedOutline cmpCMobileLabels">
-    <p class="section__eyebrow">Why ZeoDeo Wins (old version - CTA outside box)</p>
+   <div class="section__inner cmpTable__inner cmpC2 cmpC3 cmpRedOutline cmpCMobileLabels cmpCNoLines">
+    <p class="section__eyebrow">Why ZeoDeo Wins (2)</p>
     <h2 class="section__title">The Full Comparison</h2>
     <div class="cmpC__frame">
       <div class="cmpC__inner">
