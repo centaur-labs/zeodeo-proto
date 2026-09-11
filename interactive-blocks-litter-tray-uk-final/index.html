@@ -335,6 +335,7 @@
   }
 
   .swatch{
+    position:relative;
     width:27px;
     height:27px;
     border-radius:50%;
@@ -342,6 +343,11 @@
     box-shadow:0px 4px 2px -2px rgba(238,238,238,1);
     cursor:pointer;
     padding:0;
+  }
+  .swatch::before{
+    content:'';
+    position:absolute;
+    inset:-6px;
   }
   .swatch.is-selected{
     border-color:var(--accent-color);
@@ -413,6 +419,25 @@
     padding:12px 20px;
     font-size:13px;
     min-height:44px;
+  }
+
+  /* ---------- Narrow phones (iPhone SE / small Android, <=374px) ---------- */
+  @media (max-width:374px){
+    .section__inner{padding-left:16px;padding-right:16px;}
+    .hero__title{font-size:28px;line-height:1.2;}
+    .hero__subtitle{font-size:14px;}
+    .hero__specs{font-size:14px;}
+    .hero__price{font-size:26px;}
+    .section__title{font-size:22px;}
+    .splitCta__title{font-size:22px;}
+    .splitCta__panel{padding:28px 20px;}
+    .pillars__card{padding:16px;}
+    .pillars__card-img{margin:-16px -16px 16px;}
+    .calcMood{padding:24px 16px;}
+    .anat3__legend-title{font-size:13px;}
+    .tlPath__card-title{font-size:14.5px;}
+    .cmpC2 .cmpC__mobile-title{font-size:16px;}
+    .btn{font-size:13px;padding:12px 18px 13px;}
   }
 
   @media (min-width:768px){
@@ -502,6 +527,9 @@
     box-shadow:0 0 0 0 rgba(255,255,255,.6);
     animation:anat3Pulse 2.4s ease-out infinite;
   }
+  .anat3__pin::after{
+    content:'';position:absolute;inset:-8px;
+  }
   .anat3__pin.is-open::before{animation:none;box-shadow:none;}
   .anat3__pin.is-open{transform:translate(-50%,-50%) scale(1.08);}
   .anat3__pin:focus-visible{outline:2px solid #fff;outline-offset:2px;}
@@ -530,7 +558,7 @@
   .anat3__legend-item--pillar.is-active{background:#E3F1F9;border-color:var(--accent-color);}
   .anat3__legend-item--pillar .anat3__legend-num{background:var(--accent-color);color:#fff;border:none;}
   .anat3__legend-item--pillar img{flex:0 0 auto;width:64px;height:64px;object-fit:contain;object-position:center;align-self:center;}
-  @media (max-width:600px){
+  @media (max-width:680px){
     .anat3__stage{flex:1 1 100%;max-width:none;}
     .anat3__legend-panel{flex:1 1 100%;}
   }
@@ -541,7 +569,7 @@
   .anat3__pillars .anat3__legend-title{font-size:15px;}
   .anat3__pillars .anat3__legend-text{font-size:13px;}
   .anat3__pillars .anat3__legend-item img{flex:0 0 auto;width:180px;height:180px;object-fit:contain;object-position:left center;align-self:center;}
-  @media (max-width:600px){
+  @media (max-width:680px){
     .anat3__pillars{grid-template-columns:1fr;}
     .anat3__pillars .anat3__legend-item img{display:none;}
   }
@@ -712,15 +740,15 @@
     12%{transform:rotate(2deg);}
     14%,100%{transform:rotate(0deg);}
   }
-  @media (max-width:600px){
+  @media (max-width:680px){
     .scentAddon{justify-content:center;text-align:center;}
   }
-  @media (max-width:640px){
+  @media (max-width:680px){
     .calcMood{padding:28px 20px;}
     .calcMood__sub{font-size:13.5px;}
     .calcMood__result{gap:26px;}
   }
-  @media (max-width:600px){
+  @media (max-width:680px){
     .calcMood__opts{display:grid;grid-template-columns:1fr 1fr;justify-items:stretch;}
     .calcMood__opts .calcMood__opt{width:100%;padding:12px 10px;text-align:center;}
     .calcMood__result{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
@@ -795,6 +823,9 @@
     font-family:var(--font-header);font-weight:700;font-size:11.5px;color:var(--text-color);
     display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:all .2s ease;padding:0;
   }
+  .tlPath__node::before{
+    content:'';position:absolute;inset:-8px;
+  }
   .tlPath__node:hover{border-color:var(--accent-color-2);}
   .tlPath__node.is-active{background:transparent;border-color:transparent;box-shadow:none;}
   .tlPath__node.is-done{background:var(--new-badge-color);border-color:var(--new-badge-color);color:#fff;}
@@ -838,7 +869,8 @@
   .roomMx__group{margin-bottom:16px;}
   .roomMx__label{display:block;font-family:var(--font-header);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-color);opacity:.55;margin-bottom:8px;}
   .roomMx__swatches{display:flex;gap:10px;}
-  .roomMx__swatch{width:32px;height:32px;border-radius:50%;border:2px solid var(--border-color);cursor:pointer;padding:0;transition:.2s;}
+  .roomMx__swatch{position:relative;width:32px;height:32px;border-radius:50%;border:2px solid var(--border-color);cursor:pointer;padding:0;transition:.2s;}
+  .roomMx__swatch::before{content:'';position:absolute;inset:-6px;}
   .roomMx__swatch.is-active{border-color:var(--text-color);box-shadow:0 0 0 2px #fff,0 0 0 4px var(--text-color);}
   .roomMx__rooms{display:flex;gap:8px;flex-wrap:wrap;}
   .roomMx__room{
@@ -1010,6 +1042,14 @@
     }
   }
 
+  .cmpCMobileLabels .cmpC__mobile{align-items:stretch;}
+  @media (max-width:680px){
+    .cmpCMobileLabels .cmpC__mobile-row{display:flex;align-items:center;gap:12px;text-align:left;margin-bottom:16px;}
+    .cmpCMobileLabels .cmpC__mobile-check{margin-bottom:0;}
+    .cmpCMobileLabels .cmpC__mobile-label{font-size:13px;line-height:1.4;}
+    .cmpRedOutline.cmpCMobileLabels .cmpC__mobile-label{color:var(--text-color);opacity:.85;}
+  }
+
   .cmpC2 .cmpC__table--grid{
     display:grid;grid-template-columns:minmax(180px,2.1fr) repeat(4,minmax(84px,1fr));
     column-gap:10px;position:relative;min-width:640px;
@@ -1084,6 +1124,46 @@
   }
   .cmpTable__inner .cmpC__frame{border:1px solid var(--border-color);border-radius:var(--radius-card);padding:16px;}
 
+  /* ---------- cmpCtaBoxed: encloses the Add to Basket button inside the ZeoDeo outline box ---------- */
+  .cmpCtaBoxed .cmpC__col-bg--us{grid-row:1 / 9;}
+  .cmpCtaBoxed .cmpC__table-cta{padding:0 14px 18px;}
+
+  /* ---------- cmpCZebra: full-width alternating row bands (dentalfreund reference) ---------- */
+  .cmpCZebra .cmpC__table--grid{column-gap:0;}
+  .cmpCZebra .cmpC__cell{padding:0 10px;}
+  .cmpCZebra .cmpC__cell.is-alt{background:#F5F6F3;}
+  .cmpCZebra .cmpC__cell--lab.is-alt{border-radius:10px 0 0 10px;}
+  .cmpCZebra .cmpC__cell.is-alt:last-child{border-radius:0 10px 10px 0;}
+
+  /* ---------- cmpCFlatHead: plain-text competitor headers, no pill badge (dentalfreund reference) ---------- */
+  .cmpCFlatHead .cmpC__cell--head:not(.cmpC__cell--us):not(.cmpC__cell--blank){
+    background:none;border:none;border-radius:0;box-shadow:none;
+    width:auto;padding:0;font-family:var(--font-header);font-weight:700;font-size:13px;color:var(--text-color);
+  }
+  /* the bold lead-in and the rest of the sentence must flow as one paragraph, not as two side-by-side flex columns */
+  .cmpCFlatHead .cmpC__cell--lab{display:block;padding-top:12px;padding-bottom:12px;}
+
+  /* ---------- cmpCGridMobile: keep the full grid table (not the stacked card) on small screens ---------- */
+  @media (max-width:680px){
+    .cmpCGridMobile .cmpC__mobile-wrap{display:none;}
+    .cmpCGridMobile .cmpC__inner{overflow-x:visible;padding:16px 10px;}
+    .cmpCGridMobile .cmpC__table--grid{
+      display:grid;min-width:0;
+      grid-template-columns:minmax(92px,1.4fr) repeat(4,minmax(0,1fr));
+      column-gap:3px;
+    }
+    .cmpCGridMobile .cmpC__cell{font-size:9.5px;padding:0 3px;min-height:32px;}
+    .cmpCGridMobile .cmpC__cell--lab{font-size:9.5px;line-height:1.35;padding-top:8px;padding-bottom:8px;}
+    .cmpCGridMobile .cmpC__cell--head{font-size:9.5px;min-height:auto;}
+    .cmpCGridMobile .cmpC__cell--head:not(.cmpC__cell--us):not(.cmpC__cell--blank){padding:5px 6px;font-size:9px;}
+    .cmpCGridMobile .cmpC__icon{width:20px;height:20px;}
+    .cmpCGridMobile .cmpC__icon svg{width:10px;height:10px;}
+    .cmpCGridMobile .cmpC__cell--text{font-size:9px;}
+    .cmpCGridMobile .cmpC__table-cta{display:block;grid-column:2/3;padding:0 6px 10px;margin-top:8px;min-width:0;}
+    .cmpCGridMobile .cmpC__cta{font-size:9.5px;line-height:1.2;padding:8px 2px;min-width:0;white-space:normal;}
+    .cmpCGridMobile .cmpC__col-bg--us{border-radius:10px;}
+  }
+
   /* ---------- Section 1G: Path hub banner (split CTA, references Casper.com quiz banner) ---------- */
   .splitCta{display:flex;flex-wrap:wrap;border-radius:var(--radius-card);overflow:hidden;border:1px solid var(--border-color);}
   .splitCta__panel{flex:1 1 320px;background:#EAF6DF;padding:40px 36px;display:flex;flex-direction:column;justify-content:center;}
@@ -1099,7 +1179,7 @@
   .splitCta__photo{flex:1 1 320px;min-height:280px;position:relative;}
   .splitCta__photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;position:absolute;inset:0;}
   .splitCta--v2 .splitCta__photo img{object-fit:cover;object-position:center 55%;}
-  @media (max-width:640px){.splitCta__photo{min-height:220px;}}
+  @media (max-width:680px){.splitCta__photo{min-height:220px;}}
 
   /* ---------- Section 1I: Video reviews (shorts carousel) ---------- */
   .shorts__wrap{display:flex;align-items:center;gap:8px;}
@@ -1119,7 +1199,7 @@
   .shorts__nav:hover{transform:scale(1.06);}
   .shorts__nav svg{width:16px;height:16px;}
   .shorts__nav.is-disabled{opacity:.3;pointer-events:none;}
-  @media (max-width:640px){.shorts__nav{display:none;}}
+  @media (max-width:680px){.shorts__nav{display:none;}}
   .shorts__card{
     flex:0 0 168px;scroll-snap-align:start;position:relative;aspect-ratio:9/16;
     border-radius:14px;overflow:hidden;background:#0F1011;cursor:pointer;
@@ -1278,7 +1358,7 @@
       <h2 class="section__title anatomy__title">The Anatomy of ZeoDeo</h2>
       <div class="anat3__layout">
         <div class="anat3__stage">
-          <img src="../assets/product/anatomy-lifestyle-mockup-v2-dark.webp" alt="ZeoDeo tray in Dark Anthracite exploded in a bright living room, rim, litter tray, base shell and pad drawer separated for a clear view">
+          <img src="../assets/product/anatomy-lifestyle-mockup-v2-dark.webp" alt="ZeoDeo tray in Dark Anthracite exploded in a bright living room, rim, litter tray, base shell and pad drawer separated for a clear view" loading="lazy" decoding="async">
           <button class="anat3__pin" type="button" data-key="rim2" style="left:84%;top:30%;" aria-label="1. No Mess Escapes">1</button>
           <button class="anat3__pin" type="button" data-key="grid2" style="left:83%;top:48%;" aria-label="2. Odour Starts Draining Immediately">2</button>
           <button class="anat3__pin" type="button" data-key="base2" style="left:84%;top:67%;" aria-label="3. Built to Last">3</button>
@@ -1330,7 +1410,7 @@
               <span class="anat3__legend-sub">Zeolite pellets</span>
               <p class="anat3__legend-text">These granules don't absorb liquid - they repel it and trap odour instead, thanks to 700-800 m&sup2; of pore surface per cm&sup3;. At 5-6mm, too big to stick to paws or scatter across the floor.</p>
             </div>
-            <img src="../assets/product/pellets-white-bg-cropped.webp" alt="ZeoDeo zeolite pellets pack">
+            <img src="../assets/product/pellets-white-bg-cropped.webp" alt="ZeoDeo zeolite pellets pack" loading="lazy" decoding="async">
           </div>
           <div class="anat3__legend-item anat3__legend-item--pillar" data-key="pad2">
             <span class="anat3__legend-num anat3__legend-num--product">6</span>
@@ -1339,7 +1419,7 @@
               <span class="anat3__legend-sub">Absorbent pad</span>
               <p class="anat3__legend-text">Forget scooping wet litter or scrubbing the tray. One pad locks away a week's mess - slide it out, drop in a fresh one, done in seconds.</p>
             </div>
-            <img src="../assets/product/package-absorbing-pads-cropped.webp" alt="ZeoDeo absorbent pads pack">
+            <img src="../assets/product/package-absorbing-pads-cropped.webp" alt="ZeoDeo absorbent pads pack" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -1356,7 +1436,7 @@
     <div class="pillars__grid">
       <div class="pillars__card">
         <div class="pillars__card-img">
-          <img src="../assets/derived/pillar-odor-zeolite-technology.webp" alt="Zeolite technology diagram: porous pellets drawing in odour gases H2S and NH3, keeping air fresh for 30 days">
+          <img src="../assets/derived/pillar-odor-zeolite-technology.webp" alt="Zeolite technology diagram: porous pellets drawing in odour gases H2S and NH3, keeping air fresh for 30 days" loading="lazy" decoding="async">
         </div>
         <div class="pillars__stat">700-800 m&sup2;/cm&sup3;</div>
         <div class="pillars__title">Zero odour - trapped, not masked</div>
@@ -1364,7 +1444,7 @@
       </div>
       <div class="pillars__card pillars__card--blue">
         <div class="pillars__card-img">
-          <img src="../assets/derived/pillar-cleaning-tray-pad-drawer.webp" alt="Open ZeoDeo tray drawer with pellets and absorbent pad, next to a traditional tray with clumped litter for comparison">
+          <img src="../assets/derived/pillar-cleaning-tray-pad-drawer.webp" alt="Open ZeoDeo tray drawer with pellets and absorbent pad, next to a traditional tray with clumped litter for comparison" loading="lazy" decoding="async">
         </div>
         <div class="pillars__stat">1&times; vs 5&times; a day</div>
         <div class="pillars__title">Cleaning, cut down to almost nothing</div>
@@ -1372,7 +1452,7 @@
       </div>
       <div class="pillars__card pillars__card--blue">
         <div class="pillars__card-img">
-          <img src="../assets/derived/pillar-tracking-clean-vs-dirty-paws.webp" alt="Split comparison: clean cat paw with ZeoDeo pellets versus a dirty paw with scattered traditional litter">
+          <img src="../assets/derived/pillar-tracking-clean-vs-dirty-paws.webp" alt="Split comparison: clean cat paw with ZeoDeo pellets versus a dirty paw with scattered traditional litter" loading="lazy" decoding="async">
         </div>
         <div class="pillars__stat">5-6mm pellets</div>
         <div class="pillars__title">Nothing tracked around the house</div>
@@ -1380,7 +1460,7 @@
       </div>
       <div class="pillars__card">
         <div class="pillars__card-img">
-          <img src="../assets/derived/pillar-dustfree-paw-on-furniture.webp" alt="Cat paw stepping onto furniture near the tray with no dust residue">
+          <img src="../assets/derived/pillar-dustfree-paw-on-furniture.webp" alt="Cat paw stepping onto furniture near the tray with no dust residue" loading="lazy" decoding="async">
         </div>
         <div class="pillars__stat">Virtually dust-free</div>
         <div class="pillars__title">No dusty paw prints on furniture</div>
@@ -1402,7 +1482,7 @@
       <div class="moistV3__grid">
         <div>
           <div class="cutaway__stage">
-            <img src="../assets/derived/tray-cutaway-cross-section-v2.webp" alt="Cross-section showing zeolite pellets on top and the absorbent pad below, with liquid draining through">
+            <img src="../assets/derived/tray-cutaway-cross-section-v2.webp" alt="Cross-section showing zeolite pellets on top and the absorbent pad below, with liquid draining through" loading="lazy" decoding="async">
             <div class="moist__drops" id="v3Drops"><span class="moist__drop"></span><span class="moist__drop"></span><span class="moist__drop"></span><span class="moist__drop"></span><span class="moist__drop"></span></div>
             <div class="odorC__wisps is-large" id="v3OdorWisps"><span class="odorC__wisp"></span><span class="odorC__wisp"></span><span class="odorC__wisp"></span><span class="odorC__wisp"></span></div>
             <div class="cutaway__pad-region">
@@ -1436,7 +1516,7 @@
     <h2 class="section__title">See Exactly What It's Absorbed</h2>
     <div class="moistVid__panel">
       <div class="moistVid__videoWrap">
-        <video src="../assets/derived/proof-not-promises/see-exactly-what-its-absorbed.mp4" autoplay muted loop playsinline></video>
+        <video id="proofVideo" src="../assets/video/proof/moisture-absorption-cutaway.mp4" muted loop playsinline preload="metadata"></video>
       </div>
     </div>
    </div>
@@ -1453,11 +1533,11 @@
       <div class="bafReal__stage">
         <div class="baf bafReal__slider">
           <div class="baf__after">
-            <img src="../assets/derived/baf-after-cozy-living-room.webp" alt="ZeoDeo tray in a bright, sunlit, cosy living room with a fiddle-leaf fig and pampas grass">
+            <img src="../assets/derived/baf-after-cozy-living-room.webp" alt="ZeoDeo tray in a bright, sunlit, cosy living room with a fiddle-leaf fig and pampas grass" loading="lazy" decoding="async">
           </div>
           <span class="bafReal__tag bafReal__tag--after">ZeoDeo tray</span>
           <div class="baf__before">
-            <img src="../assets/derived/baf-p1-before-messy-floor-dull-light.webp" alt="Cat walking through litter scattered around a conventional open tray">
+            <img src="../assets/derived/baf-p1-before-messy-floor-dull-light.webp" alt="Cat walking through litter scattered around a conventional open tray" loading="lazy" decoding="async">
           </div>
           <span class="bafReal__tag bafReal__tag--before">Typical open tray</span>
           <div class="baf__handle"></div>
@@ -1496,7 +1576,7 @@
       <div class="tlPath__row tlPath__row--right" data-step="0">
         <button class="tlPath__node is-active" type="button" data-step="0" aria-label="Step 1">1</button>
         <button class="tlPath__card is-active" type="button" data-step="0">
-          <div class="tlPath__card-img"><img src="../assets/onboarding/tray-onboarding-mix-granules-v2.webp" alt="Hand mixing ZeoDeo granules into the old green litter tray"></div>
+          <div class="tlPath__card-img"><img src="../assets/onboarding/tray-onboarding-mix-granules-v2.webp" alt="Hand mixing ZeoDeo granules into the old green litter tray" loading="lazy" decoding="async"></div>
           <div class="tlPath__card-body">
             <span class="tlPath__card-num">Step 1</span>
             <strong class="tlPath__card-title">Introduce the Texture</strong>
@@ -1506,7 +1586,7 @@
       </div>
       <div class="tlPath__row tlPath__row--left" data-step="1">
         <button class="tlPath__card" type="button" data-step="1">
-          <div class="tlPath__card-img"><img src="../assets/onboarding/tray-onboarding-place-alongside-v2.webp" alt="ZeoDeo tray placed alongside the old litter tray"></div>
+          <div class="tlPath__card-img"><img src="../assets/onboarding/tray-onboarding-place-alongside-v2.webp" alt="ZeoDeo tray placed alongside the old litter tray" loading="lazy" decoding="async"></div>
           <div class="tlPath__card-body">
             <span class="tlPath__card-num">Step 2</span>
             <strong class="tlPath__card-title">Place It Alongside</strong>
@@ -1518,7 +1598,7 @@
       <div class="tlPath__row tlPath__row--right" data-step="2">
         <button class="tlPath__node" type="button" data-step="2" aria-label="Step 3">3</button>
         <button class="tlPath__card" type="button" data-step="2">
-          <div class="tlPath__card-img"><img src="../assets/onboarding/tray-onboarding-cat-choosing-v2.webp" alt="Cat choosing between the new ZeoDeo tray and the old tray next to it"></div>
+          <div class="tlPath__card-img"><img src="../assets/onboarding/tray-onboarding-cat-choosing-v2.webp" alt="Cat choosing between the new ZeoDeo tray and the old tray next to it" loading="lazy" decoding="async"></div>
           <div class="tlPath__card-body">
             <span class="tlPath__card-num">Step 3</span>
             <strong class="tlPath__card-title">Let Them Choose</strong>
@@ -1528,7 +1608,7 @@
       </div>
       <div class="tlPath__row tlPath__row--left" data-step="3">
         <button class="tlPath__card" type="button" data-step="3">
-          <div class="tlPath__card-img"><img src="../assets/onboarding/tray-onboarding-cat-settled-v2.webp" alt="Ginger cat sitting comfortably in the new ZeoDeo tray, old tray blurred in the background being removed"></div>
+          <div class="tlPath__card-img"><img src="../assets/onboarding/tray-onboarding-cat-settled-v2.webp" alt="Ginger cat sitting comfortably in the new ZeoDeo tray, old tray blurred in the background being removed" loading="lazy" decoding="async"></div>
           <div class="tlPath__card-body">
             <span class="tlPath__card-num">Step 4</span>
             <strong class="tlPath__card-title">Remove the Old Tray</strong>
@@ -1561,7 +1641,7 @@
     <h2 class="section__title">See It In Your Room</h2>
     <div class="roomMx__wrap">
       <div class="roomMx__stage">
-        <img id="roomMx3Img" src="../new-photos/room-grey-tray-oysterwhite.webp" alt="ZeoDeo tray preview in the chosen room and colour">
+        <img id="roomMx3Img" src="../assets/product/lifestyle/room-grey-tray-oysterwhite.webp" alt="ZeoDeo tray preview in the chosen room and colour" loading="lazy" decoding="async">
       </div>
       <div class="roomMx__panel">
         <p class="roomMx__text">Pick a tray colour and a room style - the photo updates instantly. Nine ready-made shots, no live rendering.</p>
@@ -1593,8 +1673,84 @@
 <!-- ================= SECTION 1F-DUP: COMPARISON TABLE (COPY) ================= -->
 <section class="section">
   <div class="section__card">
-   <div class="section__inner cmpTable__inner cmpC2 cmpC3 cmpRedOutline">
+   <div class="section__inner cmpTable__inner cmpC2 cmpC3 cmpRedOutline cmpCtaBoxed cmpCZebra cmpCGridMobile cmpCFlatHead">
     <p class="section__eyebrow">Why ZeoDeo Wins</p>
+    <h2 class="section__title">The Full Comparison</h2>
+    <div class="cmpC__frame">
+      <div class="cmpC__inner">
+        <div class="cmpC__table cmpC__table--grid">
+          <div class="cmpC__col-bg--us" aria-hidden="true"></div>
+
+          <div class="cmpC__cell cmpC__cell--head cmpC__cell--blank">&nbsp;</div>
+          <div class="cmpC__cell cmpC__cell--head cmpC__cell--us">ZeoDeo</div>
+          <div class="cmpC__cell cmpC__cell--head">Standard tray</div>
+          <div class="cmpC__cell cmpC__cell--head">Robot tray</div>
+          <div class="cmpC__cell cmpC__cell--head">Crystals</div>
+
+          <div class="cmpC__cell cmpC__cell--lab is-alt"><strong class="cmpC__lab-strong">No odour</strong> - it absorbs, it doesn't mask</div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+
+          <div class="cmpC__cell cmpC__cell--lab"><strong class="cmpC__lab-strong">Clean once a day</strong>, not five times</div>
+          <div class="cmpC__cell cmpC__cell--us"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+
+          <div class="cmpC__cell cmpC__cell--lab is-alt"><strong class="cmpC__lab-strong">Nothing gets tracked</strong> through the house</div>
+          <div class="cmpC__cell cmpC__cell--us is-alt"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+
+          <div class="cmpC__cell cmpC__cell--lab"><strong class="cmpC__lab-strong">Hardly any dust</strong></div>
+          <div class="cmpC__cell cmpC__cell--us"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+
+          <div class="cmpC__cell cmpC__cell--lab is-alt"><strong class="cmpC__lab-strong">No motors</strong>, WiFi or subscription</div>
+          <div class="cmpC__cell cmpC__cell--us is-alt"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+
+          <div class="cmpC__cell cmpC__cell--lab"><strong class="cmpC__lab-strong">Litter change</strong></div>
+          <div class="cmpC__cell cmpC__cell--us cmpC__cell--text">Pellets last 30 days<br>Pad lasts 7 days</div>
+          <div class="cmpC__cell cmpC__cell--text">Fully, every week</div>
+          <div class="cmpC__cell cmpC__cell--text">Same litter, the whole lot</div>
+          <div class="cmpC__cell cmpC__cell--text">Usually once a month</div>
+
+          <div class="cmpC__table-cta">
+            <button class="cmpC__cta" type="button">Add to Basket</button>
+          </div>
+        </div>
+
+        <div class="cmpC__mobile-wrap">
+          <div class="cmpC__mobile">
+            <div class="cmpC__mobile-title">ZeoDeo</div>
+            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
+            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
+            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
+            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
+            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
+            <div class="cmpC__mobile-cadence">Pellets last 30 days<br>Pad lasts 7 days</div>
+          </div>
+          <button class="cmpC__mobile-cta" type="button">Add to Basket</button>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 1F-COMPARE: COMPARISON TABLE (OLD, FOR COMPARISON ONLY) ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner cmpTable__inner cmpC2 cmpC3 cmpRedOutline cmpCMobileLabels">
+    <p class="section__eyebrow">Why ZeoDeo Wins (old version - CTA outside box)</p>
     <h2 class="section__title">The Full Comparison</h2>
     <div class="cmpC__frame">
       <div class="cmpC__inner">
@@ -1651,11 +1807,26 @@
         <div class="cmpC__mobile-wrap">
           <div class="cmpC__mobile">
             <div class="cmpC__mobile-title">ZeoDeo</div>
-            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
-            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
-            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
-            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
-            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
+            <div class="cmpC__mobile-row">
+              <span class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span>
+              <span class="cmpC__mobile-label"><strong class="cmpC__lab-strong">No odour</strong> - it absorbs, it doesn't mask</span>
+            </div>
+            <div class="cmpC__mobile-row">
+              <span class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span>
+              <span class="cmpC__mobile-label"><strong class="cmpC__lab-strong">Clean once a day</strong>, not five times</span>
+            </div>
+            <div class="cmpC__mobile-row">
+              <span class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span>
+              <span class="cmpC__mobile-label"><strong class="cmpC__lab-strong">Nothing gets tracked</strong> through the house</span>
+            </div>
+            <div class="cmpC__mobile-row">
+              <span class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span>
+              <span class="cmpC__mobile-label"><strong class="cmpC__lab-strong">Hardly any dust</strong></span>
+            </div>
+            <div class="cmpC__mobile-row">
+              <span class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span>
+              <span class="cmpC__mobile-label"><strong class="cmpC__lab-strong">No motors</strong>, WiFi or subscription</span>
+            </div>
             <div class="cmpC__mobile-cadence">Pellets last 30 days<br>Pad lasts 7 days</div>
           </div>
           <button class="cmpC__mobile-cta" type="button">Add to Basket</button>
@@ -1727,21 +1898,21 @@
       <div class="calcMood__result">
         <div class="calcMood__stat calcMood__stat--photo">
           <div class="calcMood__stat-imgwrap">
-            <img src="../assets/derived/calc-pads-cropped.webp" alt="">
+            <img src="../assets/derived/calc-pads-cropped.webp" alt="" loading="lazy" decoding="async">
             <span class="calcMood__stat-badge">x2</span>
           </div>
           <div class="calcMood__stat-label" data-singular="Pack of Pads" data-plural="Packs of Pads">Packs of Pads</div>
         </div>
         <div class="calcMood__stat calcMood__stat--photo">
           <div class="calcMood__stat-imgwrap">
-            <img src="../assets/derived/calc-pellets-cropped.webp" alt="">
+            <img src="../assets/derived/calc-pellets-cropped.webp" alt="" loading="lazy" decoding="async">
             <span class="calcMood__stat-badge">x1</span>
           </div>
           <div class="calcMood__stat-label" data-singular="Pack of Pellets" data-plural="Packs of Pellets">Pack of Pellets</div>
         </div>
         <div class="calcMood__stat calcMood__stat--photo calcMood__stat--addon">
           <div class="calcMood__stat-imgwrap">
-            <img class="scentAddon__img" src="../assets/derived/calc-scentbooster-cropped.webp" alt="">
+            <img class="scentAddon__img" src="../assets/derived/calc-scentbooster-cropped.webp" alt="" loading="lazy" decoding="async">
           </div>
           <div class="calcMood__stat-label">Scent Booster</div>
           <div class="calcMood__stat-freq">Green Tea &middot; optional</div>
@@ -1838,7 +2009,7 @@
    <div class="section__inner scentAddon__inner">
     <div class="splitCta scentAddon">
       <div class="splitCta__photo">
-        <img class="scentAddon__img" src="../assets/derived/calc-scentbooster-cropped.webp" alt="">
+        <img class="scentAddon__img" src="../assets/derived/calc-scentbooster-cropped.webp" alt="" loading="lazy" decoding="async">
       </div>
       <div class="splitCta__panel">
         <div class="splitCta__title">Double Down On Freshness</div>
@@ -1866,7 +2037,7 @@
       <div class="shorts__scroller">
       <div class="shorts__track" id="shortsTrack">
         <div class="shorts__card" data-yt="Zy-3xSrX9yY" role="button" tabindex="0" aria-label="Play video: Emma, London">
-          <img src="../assets/derived/video-review-emma-london.webp" alt="Video review: Emma and her cat">
+          <img src="../assets/derived/video-review-emma-london.webp" alt="Video review: Emma and her cat" loading="lazy" decoding="async">
           <span class="shorts__play" aria-hidden="true"></span>
           <div class="shorts__meta">
             <span class="shorts__name">Emma, London</span>
@@ -1874,7 +2045,7 @@
           </div>
         </div>
         <div class="shorts__card" data-yt="6vLEuafaz2Q" role="button" tabindex="0" aria-label="Play video: James, Manchester">
-          <img src="../assets/derived/video-review-james-manchester.webp" alt="Video review: James and his cat">
+          <img src="../assets/derived/video-review-james-manchester.webp" alt="Video review: James and his cat" loading="lazy" decoding="async">
           <span class="shorts__play" aria-hidden="true"></span>
           <div class="shorts__meta">
             <span class="shorts__name">James, Manchester</span>
@@ -1882,7 +2053,7 @@
           </div>
         </div>
         <div class="shorts__card" data-yt="W66hgAChB2Y" role="button" tabindex="0" aria-label="Play video: Sophie, Bristol">
-          <img src="../assets/derived/video-review-sophie-bristol.webp" alt="Video review: Sophie and her cat">
+          <img src="../assets/derived/video-review-sophie-bristol.webp" alt="Video review: Sophie and her cat" loading="lazy" decoding="async">
           <span class="shorts__play" aria-hidden="true"></span>
           <div class="shorts__meta">
             <span class="shorts__name">Sophie, Bristol</span>
@@ -1890,7 +2061,7 @@
           </div>
         </div>
         <div class="shorts__card" data-yt="IlmNsfKDPt4" role="button" tabindex="0" aria-label="Play video: Daniel, Leeds">
-          <img src="https://i.ytimg.com/vi/IlmNsfKDPt4/hqdefault.jpg" alt="Video review: Daniel and two cats">
+          <img src="https://i.ytimg.com/vi/IlmNsfKDPt4/hqdefault.jpg" alt="Video review: Daniel and two cats" loading="lazy" decoding="async">
           <span class="shorts__play" aria-hidden="true"></span>
           <div class="shorts__meta">
             <span class="shorts__name">Daniel, Leeds</span>
@@ -1898,7 +2069,7 @@
           </div>
         </div>
         <div class="shorts__card">
-          <img src="../assets/product/hero-lineup-3-colors.webp" alt="Video review placeholder: Olivia">
+          <img src="../assets/product/hero-lineup-3-colors.webp" alt="Video review placeholder: Olivia" loading="lazy" decoding="async">
           <span class="shorts__duration">0:20</span>
           <span class="shorts__play" aria-hidden="true"></span>
           <div class="shorts__meta">
@@ -1907,7 +2078,7 @@
           </div>
         </div>
         <div class="shorts__card">
-          <img src="../assets/derived/video-review-priya-leicester.webp" alt="Video review placeholder: exploded tray view">
+          <img src="../assets/derived/video-review-priya-leicester.webp" alt="Video review placeholder: exploded tray view" loading="lazy" decoding="async">
           <span class="shorts__duration">0:25</span>
           <span class="shorts__play" aria-hidden="true"></span>
           <div class="shorts__meta">
@@ -1940,7 +2111,7 @@
         <p class="splitCta__hint">Two 10-second questions - no signup needed.</p>
       </div>
       <div class="splitCta__photo">
-        <img src="../assets/product/hub-tray-cat.webp" alt="Tabby cat stepping into the ZeoDeo tray, close-up shot">
+        <img src="../assets/product/hub-tray-cat.webp" alt="Tabby cat stepping into the ZeoDeo tray, close-up shot" loading="lazy" decoding="async">
       </div>
     </div>
    </div>
@@ -2064,20 +2235,20 @@
     rooms.forEach(function(r){
       colours.forEach(function(c){
         var pre = new Image();
-        pre.src = '../new-photos/room-' + r + '-tray-' + c + '.webp';
+        pre.src = '../assets/product/lifestyle/room-' + r + '-tray-' + c + '.webp';
       });
     });
 
     var colour = 'oysterwhite';
     var room = 'grey';
     var photoOverrides = {
-      'grey|anthracite': '../new-photos/room-grey-tray-anthracite_2.webp',
-      'wood|anthracite': '../new-photos/room-wood-tray-anthracite_2.webp'
+      'grey|anthracite': '../assets/product/lifestyle/room-grey-tray-anthracite-alt.webp',
+      'wood|anthracite': '../assets/product/lifestyle/room-wood-tray-anthracite-alt.webp'
     };
 
     function render(){
       var key = room + '|' + colour;
-      img.src = photoOverrides[key] || ('../new-photos/room-' + room + '-tray-' + colour + '.webp');
+      img.src = photoOverrides[key] || ('../assets/product/lifestyle/room-' + room + '-tray-' + colour + '.webp');
       nameEl.textContent = colourNames[colour] + ' - ' + roomNames[room];
       colourSwatches.forEach(function(s){ s.classList.toggle('is-active', s.dataset.c === colour); });
       roomButtons.forEach(function(b){ b.classList.toggle('is-active', b.dataset.r === room); });
@@ -2423,6 +2594,27 @@
       });
     }, {threshold:0});
     io.observe(hero);
+  })();
+
+  (function(){
+    var video = document.getElementById('proofVideo');
+    if(!video) return;
+
+    if(!('IntersectionObserver' in window)){
+      video.setAttribute('autoplay', '');
+      video.play().catch(function(){});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          video.play().catch(function(){});
+        } else {
+          video.pause();
+        }
+      });
+    }, {threshold:0.4});
+    io.observe(video);
   })();
 </script>
 
