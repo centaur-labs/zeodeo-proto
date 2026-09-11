@@ -1056,7 +1056,7 @@
   }
   .cmpC2 .cmpC__col-bg--us{
     position:absolute;inset:0;grid-column:2 / 3;grid-row:1 / 8;background:var(--new-badge-color);
-    border-radius:14px;border:2px solid var(--border-color);z-index:0;
+    border-radius:14px;border:2px solid var(--border-color);z-index:0;pointer-events:none;
   }
   .cmpC2 .cmpC__table--grid > .cmpC__cell{position:relative;z-index:1;}
   .cmpC2 .cmpC__cell--lab{justify-content:flex-start;text-align:left;color:var(--text-color);opacity:.85;font-size:13px;line-height:1.55;}
@@ -1065,7 +1065,7 @@
   .cmpC2 .cmpC__cell--blank{min-height:auto;}
   .cmpC2 .cmpC__cell--us.cmpC__cell--text{color:#fff;opacity:1;border-top-color:rgba(255,255,255,.35);padding:14px 20px 20px;}
   .cmpC2 .cmpC__cell--us .cmpC__icon--yes{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,.55);}
-  .cmpRedOutline .cmpC__col-bg--us{background:transparent;border-color:#5C8A2E;}
+  .cmpRedOutline .cmpC__col-bg--us{background:transparent;border-color:#5C8A2E;z-index:2;}
   .cmpRedOutline .cmpC__cell--us.cmpC__cell--head{color:#5C8A2E;}
   .cmpRedOutline .cmpC__cell--us.cmpC__cell--text{color:#5C8A2E;border-top-color:rgba(92,138,46,.35);}
   .cmpRedOutline .cmpC__cell--us .cmpC__icon--yes{background:#5C8A2E;border:none;box-shadow:0 2px 8px rgba(30,40,60,.1);}
@@ -1124,9 +1124,8 @@
   }
   .cmpTable__inner .cmpC__frame{border:1px solid var(--border-color);border-radius:var(--radius-card);padding:16px;}
 
-  /* ---------- cmpCtaBoxed: encloses the Add to Basket button inside the ZeoDeo outline box ---------- */
-  .cmpCtaBoxed .cmpC__col-bg--us{grid-row:1 / 9;}
-  .cmpCtaBoxed .cmpC__table-cta{padding:0 14px 18px;}
+  /* ---------- cmpCtaBoxed: ZeoDeo outline wraps only the check rows + litter-change row; header and CTA sit outside it ---------- */
+  .cmpCtaBoxed .cmpC__col-bg--us{grid-row:2 / 8;}
 
   /* ---------- cmpCZebra: full-width alternating row bands (dentalfreund reference) ---------- */
   .cmpCZebra .cmpC__table--grid{column-gap:0;}
