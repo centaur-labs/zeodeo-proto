@@ -508,6 +508,8 @@
   .anatomy__title{
     text-align:left;
   }
+  .anatomy__title{margin-bottom:2px;}
+  .anatomy__subtitle{text-align:left;font-family:var(--font-header);font-weight:300;font-size:18px;color:var(--text-color);margin:2px 0 18px;}
   .anat3__layout{display:flex;flex-wrap:wrap;gap:22px;align-items:stretch;}
   .anat3__stage{
     position:relative;border-radius:var(--radius-card);overflow:hidden;
@@ -541,21 +543,21 @@
     100%{box-shadow:0 0 0 0 rgba(255,255,255,0);}
   }
   .anat3__legend-panel{flex:1 1 260px;display:flex;flex-direction:column;justify-content:center;padding:4px 4px;}
-  .anat3__legend{list-style:none;display:flex;flex-direction:column;gap:10px;margin:0;padding:0;}
+  .anat3__legend{list-style:none;display:flex;flex-direction:column;gap:26px;margin:0;padding:0;}
   .anat3__legend-item{
-    display:flex;align-items:flex-start;gap:10px;padding:9px 10px;border-radius:var(--radius-s);
+    display:flex;align-items:flex-start;gap:14px;padding:10px 12px;border-radius:var(--radius-s);
     border:1px solid transparent;transition:background .18s ease, border-color .18s ease;
   }
   .anat3__legend-item.is-active{background:#F1F8FC;border-color:var(--accent-color);}
   .anat3__legend-num{
-    flex:0 0 auto;width:22px;height:22px;margin-top:1px;border-radius:50%;background:#fff;border:1.5px solid var(--accent-color-2);
-    color:var(--accent-color-2);font-size:11.5px;font-family:var(--font-header);font-weight:700;
+    flex:0 0 auto;width:28px;height:28px;margin-top:1px;border-radius:50%;background:#fff;border:1.5px solid var(--accent-color-2);
+    color:var(--accent-color-2);font-size:14px;font-family:var(--font-header);font-weight:700;
     display:flex;align-items:center;justify-content:center;
   }
   .anat3__legend-num--product{color:var(--accent-color);}
-  .anat3__legend-title{display:block;font-family:var(--font-header);font-weight:700;font-size:13.5px;color:var(--text-color);line-height:1.3;}
-  .anat3__legend-sub{display:block;font-size:11.5px;color:var(--text-color);opacity:.55;margin-top:1px;}
-  .anat3__legend-text{display:block;font-size:12.5px;line-height:1.5;color:var(--text-color);opacity:.8;margin-top:5px;}
+  .anat3__legend-title{display:block;font-family:var(--font-header);font-weight:700;font-size:18px;color:var(--text-color);line-height:1.3;}
+  .anat3__legend-sub{display:block;font-size:14px;color:var(--text-color);opacity:.55;margin-top:2px;}
+  .anat3__legend-text{display:block;font-size:15px;line-height:1.5;color:var(--text-color);opacity:.8;margin-top:8px;}
   .anat3__legend-item--pillar{background:#F1F8FC;border-color:var(--accent-color);}
   .anat3__legend-item--pillar.is-active{background:#E3F1F9;border-color:var(--accent-color);}
   .anat3__legend-item--pillar .anat3__legend-num{background:var(--accent-color);color:#fff;border:none;}
@@ -564,8 +566,8 @@
     .anat3__stage{flex:1 1 100%;max-width:none;}
     .anat3__legend-panel{flex:1 1 100%;}
   }
-  /* ---------- Anatomy variant: pellets/pad (5/6) as a full-width two-card row under the photo ---------- */
-  .anat3__pillars{flex:1 1 100%;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+  /* ---------- Anatomy variant: pellets/pad (1/2) as a full-width two-card row above the photo ---------- */
+  .anat3__pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
   .anat3__pillars .anat3__legend-item{padding:16px 18px;border-radius:var(--radius-card);height:100%;align-items:flex-start;}
   .anat3__pillars .anat3__legend-num{width:28px;height:28px;font-size:13px;}
   .anat3__pillars .anat3__legend-title{font-size:15px;}
@@ -577,6 +579,13 @@
   }
   @media (min-width:768px){
     .anat3__legend-item--pillar img{width:80px;height:80px;}
+  }
+  /* ---------- Anatomy pillars: full-bleed image cards (text baked into the image) ---------- */
+  .anat3__pillars .anat3__legend-item--card{padding:0;overflow:hidden;background:none;border:none;height:auto;transition:box-shadow .18s ease;}
+  .anat3__pillars .anat3__legend-item--card.is-active{box-shadow:0 0 0 3px var(--accent-color);}
+  .anat3__pillars .anat3__legend-item--card img{flex:1 1 auto;width:100%;height:auto;max-width:none;max-height:none;display:block;object-fit:cover;border-radius:var(--radius-card);align-self:stretch;}
+  @media (max-width:680px){
+    .anat3__pillars .anat3__legend-item--card img{display:block;}
   }
 
   /* ---------- Section 1C: Why ZeoDeo (4 things pillars) ---------- */
@@ -1385,20 +1394,29 @@
     <div class="section__inner anatomy__inner">
       <p class="section__eyebrow anatomy__eyebrow">How it works</p>
       <h2 class="section__title anatomy__title">The Anatomy of ZeoDeo</h2>
+      <p class="anatomy__subtitle">Simple replacement routine</p>
+      <div class="anat3__pillars anat3__pillars--cards">
+        <div class="anat3__legend-item anat3__legend-item--pillar anat3__legend-item--card" data-key="pellets2">
+          <img src="../assets/product/anatomy-pillar-pellets-card.webp" alt="Pellets - No More Litter Tray Smell. Replace every 30 days. These granules don't absorb liquid, they repel it and trap odour instead, thanks to 700-800 square metres of pore surface per cubic centimetre. At 5-6mm, too big to stick to paws or scatter across the floor." loading="lazy" decoding="async">
+        </div>
+        <div class="anat3__legend-item anat3__legend-item--pillar anat3__legend-item--card" data-key="pad2">
+          <img src="../assets/product/anatomy-pillar-pad-card.webp" alt="Pad - Cleaning Made Simple. Every 7 days. Forget scooping wet litter or scrubbing the tray. One pad locks away a week's mess, slide it out, drop in a fresh one, done in seconds." loading="lazy" decoding="async">
+        </div>
+      </div>
       <div class="anat3__layout">
         <div class="anat3__stage">
-          <img src="../assets/product/anatomy-lifestyle-mockup-v2-dark.webp" alt="ZeoDeo tray in Dark Anthracite exploded in a bright living room, rim, litter tray, base shell and pad drawer separated for a clear view" loading="lazy" decoding="async">
-          <button class="anat3__pin" type="button" data-key="rim2" style="left:84%;top:30%;" aria-label="1. No Mess Escapes">1</button>
-          <button class="anat3__pin" type="button" data-key="grid2" style="left:83%;top:48%;" aria-label="2. Odour Starts Draining Immediately">2</button>
-          <button class="anat3__pin" type="button" data-key="base2" style="left:84%;top:67%;" aria-label="3. Built to Last">3</button>
-          <button class="anat3__pin" type="button" data-key="drawer2" style="left:53%;top:86%;" aria-label="4. Cleaning in Seconds">4</button>
-          <button class="anat3__pin anat3__pin--product" type="button" data-key="pellets2" style="left:52%;top:47%;" aria-label="5. No More Litter Box Smell">5</button>
-          <button class="anat3__pin anat3__pin--product" type="button" data-key="pad2" style="left:40%;top:78%;" aria-label="6. Cleaning Made Simple">6</button>
+          <img src="../assets/product/anatomy-lifestyle-mockup-v3-dark.webp" alt="ZeoDeo tray in Dark Anthracite exploded in a bright living room, rim, litter tray, base shell and pad drawer separated for a clear view" loading="lazy" decoding="async">
+          <button class="anat3__pin" type="button" data-key="rim2" style="left:76%;top:29%;" aria-label="3. No Mess Escapes">3</button>
+          <button class="anat3__pin" type="button" data-key="grid2" style="left:76%;top:50%;" aria-label="4. Odour Starts Draining Immediately">4</button>
+          <button class="anat3__pin" type="button" data-key="base2" style="left:76%;top:65%;" aria-label="5. Built to Last">5</button>
+          <button class="anat3__pin" type="button" data-key="drawer2" style="left:26%;top:87%;" aria-label="6. Cleaning in Seconds">6</button>
+          <button class="anat3__pin anat3__pin--product" type="button" data-key="pellets2" style="left:47%;top:52%;" aria-label="1. No More Litter Box Smell">1</button>
+          <button class="anat3__pin anat3__pin--product" type="button" data-key="pad2" style="left:34%;top:80%;" aria-label="2. Cleaning Made Simple">2</button>
         </div>
         <div class="anat3__legend-panel">
           <ul class="anat3__legend">
             <li class="anat3__legend-item" data-key="rim2">
-              <span class="anat3__legend-num">1</span>
+              <span class="anat3__legend-num">3</span>
               <div>
                 <span class="anat3__legend-title">No Mess Escapes</span>
                 <span class="anat3__legend-sub">Raised rim</span>
@@ -1406,7 +1424,7 @@
               </div>
             </li>
             <li class="anat3__legend-item" data-key="grid2">
-              <span class="anat3__legend-num">2</span>
+              <span class="anat3__legend-num">4</span>
               <div>
                 <span class="anat3__legend-title">Odour Starts Draining Immediately</span>
                 <span class="anat3__legend-sub">Litter grid</span>
@@ -1414,7 +1432,7 @@
               </div>
             </li>
             <li class="anat3__legend-item" data-key="base2">
-              <span class="anat3__legend-num">3</span>
+              <span class="anat3__legend-num">5</span>
               <div>
                 <span class="anat3__legend-title">Built to Last</span>
                 <span class="anat3__legend-sub">Outer shell</span>
@@ -1422,7 +1440,7 @@
               </div>
             </li>
             <li class="anat3__legend-item" data-key="drawer2">
-              <span class="anat3__legend-num">4</span>
+              <span class="anat3__legend-num">6</span>
               <div>
                 <span class="anat3__legend-title">Cleaning in Seconds</span>
                 <span class="anat3__legend-sub">Pad drawer</span>
@@ -1430,26 +1448,6 @@
               </div>
             </li>
           </ul>
-        </div>
-        <div class="anat3__pillars">
-          <div class="anat3__legend-item anat3__legend-item--pillar" data-key="pellets2">
-            <span class="anat3__legend-num anat3__legend-num--product">5</span>
-            <div>
-              <span class="anat3__legend-title">No More Litter Box Smell</span>
-              <span class="anat3__legend-sub">Zeolite pellets</span>
-              <p class="anat3__legend-text">These granules don't absorb liquid - they repel it and trap odour instead, thanks to 700-800 m&sup2; of pore surface per cm&sup3;. At 5-6mm, too big to stick to paws or scatter across the floor.</p>
-            </div>
-            <img src="../assets/product/pellets-white-bg-cropped.webp" alt="ZeoDeo zeolite pellets pack" loading="lazy" decoding="async">
-          </div>
-          <div class="anat3__legend-item anat3__legend-item--pillar" data-key="pad2">
-            <span class="anat3__legend-num anat3__legend-num--product">6</span>
-            <div>
-              <span class="anat3__legend-title">Cleaning Made Simple</span>
-              <span class="anat3__legend-sub">Absorbent pad</span>
-              <p class="anat3__legend-text">Forget scooping wet litter or scrubbing the tray. One pad locks away a week's mess - slide it out, drop in a fresh one, done in seconds.</p>
-            </div>
-            <img src="../assets/product/package-absorbing-pads-cropped.webp" alt="ZeoDeo absorbent pads pack" loading="lazy" decoding="async">
-          </div>
         </div>
       </div>
     </div>
@@ -2197,10 +2195,10 @@
   })();
 
   (function(){
-    document.querySelectorAll('.anat3__layout').forEach(function(layout){
-      var stage = layout.querySelector('.anat3__stage');
-      var pins = layout.querySelectorAll('.anat3__pin');
-      var items = layout.querySelectorAll('.anat3__legend-item');
+    document.querySelectorAll('.anatomy__inner').forEach(function(container){
+      var stage = container.querySelector('.anat3__stage');
+      var pins = container.querySelectorAll('.anat3__pin');
+      var items = container.querySelectorAll('.anat3__legend-item');
       var pinnedKey = null;
       function setActive(key){
         items.forEach(function(li){ li.classList.toggle('is-active', li.dataset.key === key); });
@@ -2214,6 +2212,11 @@
           pinnedKey = (pinnedKey === pin.dataset.key) ? null : pin.dataset.key;
           setActive(pinnedKey);
         });
+      });
+      items.forEach(function(item){
+        item.addEventListener('mouseenter', function(){ if(!pinnedKey) setActive(item.dataset.key); });
+        item.addEventListener('focus', function(){ if(!pinnedKey) setActive(item.dataset.key); });
+        item.addEventListener('mouseleave', function(){ if(!pinnedKey) setActive(null); });
       });
       if(stage){
         stage.addEventListener('mouseleave', function(){ if(!pinnedKey) setActive(null); });
