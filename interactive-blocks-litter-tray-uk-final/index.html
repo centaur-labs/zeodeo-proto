@@ -579,13 +579,93 @@
   @media (min-width:768px){
     .anat3__legend-item--pillar img{width:80px;height:80px;}
   }
-  /* ---------- Anatomy pillars: full-bleed image cards (text baked into the image) ---------- */
-  .anat3__pillars .anat3__legend-item--card{padding:0;overflow:hidden;background:none;border:none;height:auto;transition:box-shadow .18s ease;}
+  /* ---------- Anatomy pillars: live text + photo cards ---------- */
+  .anat3__pillars .anat3__legend-item--card{padding:0;overflow:hidden;background:#fff;border:1px solid var(--border-color);height:auto;transition:box-shadow .18s ease;align-items:stretch;}
   .anat3__pillars .anat3__legend-item--card.is-active{box-shadow:0 0 0 3px var(--accent-color);}
-  .anat3__pillars .anat3__legend-item--card img{flex:1 1 auto;width:100%;height:auto;max-width:none;max-height:none;display:block;object-fit:cover;border-radius:var(--radius-card);align-self:stretch;}
-  @media (max-width:680px){
-    .anat3__pillars .anat3__legend-item--card img{display:block;}
+  .anatCard{display:flex;flex-direction:column;}
+  .anatCard__body{display:flex;flex-direction:column;gap:14px;padding:22px 20px;}
+  .anatCard__top{display:flex;align-items:flex-start;gap:12px;}
+  .anatCard__num{
+    flex:none;
+    width:44px;height:44px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:20px;
   }
+  .anatCard__head{display:flex;flex-direction:column;gap:2px;}
+  .anatCard__label{
+    font-family:var(--font-header);
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:#8A8F98;
+  }
+  .anatCard__title{
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:22px;
+    line-height:1.15;
+    text-transform:uppercase;
+    color:var(--text-color);
+    margin:0;
+  }
+  .anatCard__badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    align-self:flex-start;
+    border:1.5px solid;
+    border-radius:999px;
+    padding:10px 18px;
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:14px;
+    white-space:nowrap;
+  }
+  .anatCard__icon{flex:none;}
+  .anatCard__text{font-size:13.5px;line-height:1.6;color:var(--text-color);opacity:.75;margin:0;}
+  .anatCard__img{position:relative;aspect-ratio:4/3;overflow:hidden;}
+  .anat3__pillars .anat3__legend-item--card .anatCard__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .anatCard--tan .anatCard__num{background:#A9895F;}
+  .anatCard--tan .anatCard__badge{border-color:#A9895F;color:#A9895F;}
+  .anatCard--blue .anatCard__num{background:var(--accent-color);}
+  .anatCard--blue .anatCard__badge{border-color:var(--accent-color);color:var(--accent-color);}
+  @media (min-width:768px){
+    .anatCard{flex-direction:row;}
+    .anatCard__body{flex:1 1 50%;min-width:0;}
+    .anatCard__img{flex:1 1 50%;aspect-ratio:auto;}
+  }
+
+  /* ---------- Anatomy pillars variant 2: full-bleed background photo, text overlaid ---------- */
+  .anatCardV2__note{font-size:12px;color:var(--text-color);opacity:.5;margin:20px 0 8px;text-align:left;}
+  .anatCardV2__grid{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:32px;}
+  .anatCardV2{
+    position:relative;
+    border-radius:var(--radius-card);
+    border:1px solid var(--border-color);
+    overflow:hidden;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    padding:26px 22px;
+    min-height:280px;
+    display:flex;
+    align-items:center;
+  }
+  .anatCardV2__content{display:flex;flex-direction:column;gap:14px;max-width:62%;}
+  @media (min-width:768px){
+    .anatCardV2__grid{grid-template-columns:1fr 1fr;}
+    .anatCardV2{min-height:340px;padding:32px 28px;}
+    .anatCardV2__content{max-width:56%;}
+  }
+  .anatCardV2--tan .anatCard__num{background:#A9895F;}
+  .anatCardV2--tan .anatCard__badge{border-color:#A9895F;color:#A9895F;}
+  .anatCardV2--blue .anatCard__num{background:var(--accent-color);}
+  .anatCardV2--blue .anatCard__badge{border-color:var(--accent-color);color:var(--accent-color);}
 
   /* ---------- Section 1C: Why ZeoDeo (4 things pillars) ---------- */
   .pillars__inner > .section__eyebrow,
@@ -1551,13 +1631,82 @@
       <h2 class="section__title anatomy__title">The Anatomy of ZeoDeo</h2>
       <p class="anatomy__subtitle">Simple replacement routine</p>
       <div class="anat3__pillars anat3__pillars--cards">
-        <div class="anat3__legend-item anat3__legend-item--pillar anat3__legend-item--card" data-key="pellets2">
-          <img src="../assets/product/anatomy-pillar-pellets-card.webp" alt="Pellets - No More Litter Tray Smell. Replace every 30 days. These granules don't absorb liquid, they repel it and trap odour instead, thanks to 700-800 square metres of pore surface per cubic centimetre. At 5-6mm, too big to stick to paws or scatter across the floor." loading="lazy" decoding="async">
+        <div class="anat3__legend-item anat3__legend-item--pillar anat3__legend-item--card anatCard anatCard--tan" data-key="pellets2">
+          <div class="anatCard__body">
+            <div class="anatCard__top">
+              <span class="anatCard__num">1</span>
+              <div class="anatCard__head">
+                <span class="anatCard__label">Pellets</span>
+                <h3 class="anatCard__title">No More<br>Litter Tray Smell</h3>
+              </div>
+            </div>
+            <span class="anatCard__badge">
+              <svg class="anatCard__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2"/></svg>
+              Replace every 30 days
+            </span>
+            <p class="anatCard__text">These granules don't absorb liquid - they repel it and trap odour instead, thanks to 700-800 m&sup2; of pore surface per cm&sup3;. At 5-6mm, too big to stick to paws or scatter across the floor.</p>
+          </div>
+          <div class="anatCard__img">
+            <img src="../assets/derived/anat-card-pellets-photo.webp" alt="Pile of ZeoDeo zeolite pellets" loading="lazy" decoding="async">
+          </div>
         </div>
-        <div class="anat3__legend-item anat3__legend-item--pillar anat3__legend-item--card" data-key="pad2">
-          <img src="../assets/product/anatomy-pillar-pad-card.webp" alt="Pad - Cleaning Made Simple. Every 7 days. Forget scooping wet litter or scrubbing the tray. One pad locks away a week's mess, slide it out, drop in a fresh one, done in seconds." loading="lazy" decoding="async">
+        <div class="anat3__legend-item anat3__legend-item--pillar anat3__legend-item--card anatCard anatCard--blue" data-key="pad2">
+          <div class="anatCard__body">
+            <div class="anatCard__top">
+              <span class="anatCard__num">2</span>
+              <div class="anatCard__head">
+                <span class="anatCard__label">Pad</span>
+                <h3 class="anatCard__title">Cleaning<br>Made Simple</h3>
+              </div>
+            </div>
+            <span class="anatCard__badge">
+              <svg class="anatCard__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2"/></svg>
+              Every 7 days
+            </span>
+            <p class="anatCard__text">Forget scooping wet litter or scrubbing the tray. One pad locks away a week's mess - slide it out, drop in a fresh one, done in seconds.</p>
+          </div>
+          <div class="anatCard__img">
+            <img src="../assets/derived/anat-card-pad-photo.webp" alt="Close-up of the quilted absorbent pad" loading="lazy" decoding="async">
+          </div>
         </div>
       </div>
+
+      <p class="anatCardV2__note">Variant 2 - for comparison</p>
+      <div class="anatCardV2__grid">
+        <div class="anatCardV2 anatCardV2--tan" style="background-image:url('../assets/derived/anat-card-v2-pellets-bg.webp');">
+          <div class="anatCardV2__content">
+            <div class="anatCard__top">
+              <span class="anatCard__num">1</span>
+              <div class="anatCard__head">
+                <span class="anatCard__label">Pellets</span>
+                <h3 class="anatCard__title">No More<br>Litter Tray Smell</h3>
+              </div>
+            </div>
+            <span class="anatCard__badge">
+              <svg class="anatCard__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2"/></svg>
+              Replace every 30 days
+            </span>
+            <p class="anatCard__text">These granules don't absorb liquid - they repel it and trap odour instead, thanks to 700-800 m&sup2; of pore surface per cm&sup3;. At 5-6mm, too big to stick to paws or scatter across the floor.</p>
+          </div>
+        </div>
+        <div class="anatCardV2 anatCardV2--blue" style="background-image:url('../assets/derived/anat-card-v2-pad-bg.webp');">
+          <div class="anatCardV2__content">
+            <div class="anatCard__top">
+              <span class="anatCard__num">2</span>
+              <div class="anatCard__head">
+                <span class="anatCard__label">Pad</span>
+                <h3 class="anatCard__title">Cleaning<br>Made Simple</h3>
+              </div>
+            </div>
+            <span class="anatCard__badge">
+              <svg class="anatCard__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2"/></svg>
+              Every 7 days
+            </span>
+            <p class="anatCard__text">Forget scooping wet litter or scrubbing the tray. One pad locks away a week's mess - slide it out, drop in a fresh one, done in seconds.</p>
+          </div>
+        </div>
+      </div>
+
       <div class="anat3__layout">
         <div class="anat3__stage">
           <img src="../assets/product/anatomy-lifestyle-mockup-v3-dark.webp" alt="ZeoDeo tray in Dark Anthracite exploded in a bright living room, rim, litter tray, base shell and pad drawer separated for a clear view" loading="lazy" decoding="async">
@@ -1639,7 +1788,7 @@
           <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Pad lasts 7 days &bull; No more weekly full washes</span>
         </div>
         <div class="smartSol__img smartSol__img--photo smartSol__img--inset">
-          <video id="smartSolCleaningVideo" src="../assets/video/proof/moisture-absorption-cutaway.mp4" muted loop playsinline preload="metadata"></video>
+          <video id="smartSolCleaningVideo" src="../assets/video/proof/moisture-absorption-cutaway-v4.mp4" muted loop playsinline preload="metadata"></video>
           <span class="smartSol__tag smartSol__tag--1">The pellets handle odour.</span>
           <span class="smartSol__tag smartSol__tag--2">The pad handles liquid.</span>
         </div>
@@ -1734,7 +1883,7 @@
           <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Pad lasts 7 days &bull; No more weekly full washes</span>
         </div>
         <div class="smartSol__img smartSol__img--photo smartSol__img--inset">
-          <video id="smartSolCleaningVideoV2" src="../assets/video/proof/moisture-absorption-cutaway.mp4" muted loop playsinline preload="metadata"></video>
+          <video id="smartSolCleaningVideoV2" src="../assets/video/proof/moisture-absorption-cutaway-v4.mp4" muted loop playsinline preload="metadata"></video>
           <span class="smartSol__tag smartSol__tag--1">The pellets handle odour.</span>
           <span class="smartSol__tag smartSol__tag--2">The pad handles liquid.</span>
         </div>
@@ -1792,6 +1941,42 @@
             <span class="smartSol__compare-caption smartSol__compare-caption--l">Visible dust clouds</span>
             <span class="smartSol__compare-caption smartSol__compare-caption--r">Clean &amp; fresh air</span>
           </div>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 1B4: MOISTURE PATH ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner moistD__inner">
+    <p class="section__eyebrow">Day By Day</p>
+    <h2 class="section__title">The Path of Moisture &amp; Odour</h2>
+    <div class="moistD__panel">
+      <div class="moistV3__grid">
+        <div>
+          <div class="cutaway__stage">
+            <img src="../assets/derived/tray-cutaway-cross-section-v2.webp" alt="Cross-section showing zeolite pellets on top and the absorbent pad below, with liquid draining through" loading="lazy" decoding="async">
+            <div class="moist__drops" id="v3Drops"><span class="moist__drop"></span><span class="moist__drop"></span><span class="moist__drop"></span><span class="moist__drop"></span><span class="moist__drop"></span></div>
+            <div class="odorC__wisps is-large" id="v3OdorWisps"><span class="odorC__wisp"></span><span class="odorC__wisp"></span><span class="odorC__wisp"></span><span class="odorC__wisp"></span></div>
+            <div class="cutaway__pad-region">
+              <div class="moist__pad-fill" id="v3Fill"><span class="moist__stain"></span><span class="moist__stain"></span><span class="moist__stain"></span><span class="moist__stain"></span><span class="moist__stain"></span></div>
+            </div>
+            <div class="moist__callout" id="v3Callout">✓ Pad full - time to swap</div>
+          </div>
+          <div class="moist__ruler">
+            <div class="moist__ruler-track"><div class="moist__ruler-fill" id="v3RulerFill"></div></div>
+            <div class="moistV3__ruler-labels">
+              <span>Day 1</span><span class="moistV3__ruler-current" id="v3RulerCurrent">Day 1</span><span style="color:#5C8A2E;">Day 7</span>
+            </div>
+          </div>
+        </div>
+        <div class="moistD__steps" id="v3Steps">
+          <div class="moistD__step" data-s="0"><span class="moistD__step-n">01</span><div><b>Liquid meets the zeolite layer</b><span>It drains straight through the pellets rather than clumping on the surface.</span></div></div>
+          <div class="moistD__step" data-s="1"><span class="moistD__step-n">02</span><div><b>Odour-causing compounds are locked in</b><span>Watch the green wisps rise off the pad and dissolve into the pellets above - that's odour being pulled in and trapped, not masked.</span></div></div>
+          <div class="moistD__step" data-s="2"><span class="moistD__step-n">03</span><div><b>The pad seals it beneath</b><span>Residual moisture is captured below, keeping the pellet layer dry on top.</span></div></div>
         </div>
       </div>
     </div>
