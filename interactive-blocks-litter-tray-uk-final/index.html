@@ -580,10 +580,6 @@
     .anat3__legend-item--pillar img{width:80px;height:80px;}
   }
   /* ---------- Anatomy pillars: live text + photo cards ---------- */
-  .anat3__pillars .anat3__legend-item--card{padding:0;overflow:hidden;background:#fff;border:1px solid var(--border-color);height:auto;transition:box-shadow .18s ease;align-items:stretch;}
-  .anat3__pillars .anat3__legend-item--card.is-active{box-shadow:0 0 0 3px var(--accent-color);}
-  .anatCard{display:flex;flex-direction:column;}
-  .anatCard__body{display:flex;flex-direction:column;gap:14px;padding:22px 20px;}
   .anatCard__top{display:flex;align-items:flex-start;gap:12px;}
   .anatCard__num{
     flex:none;
@@ -620,28 +616,16 @@
     align-self:flex-start;
     border:1.5px solid;
     border-radius:999px;
-    padding:10px 18px;
+    padding:7px 16px;
     font-family:var(--font-header);
     font-weight:700;
     font-size:14px;
     white-space:nowrap;
   }
   .anatCard__icon{flex:none;}
-  .anatCard__text{font-size:13.5px;line-height:1.6;color:var(--text-color);opacity:.75;margin:0;}
-  .anatCard__img{position:relative;aspect-ratio:4/3;overflow:hidden;}
-  .anat3__pillars .anat3__legend-item--card .anatCard__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
-  .anatCard--tan .anatCard__num{background:#A9895F;}
-  .anatCard--tan .anatCard__badge{border-color:#A9895F;color:#A9895F;}
-  .anatCard--blue .anatCard__num{background:var(--accent-color);}
-  .anatCard--blue .anatCard__badge{border-color:var(--accent-color);color:var(--accent-color);}
-  @media (min-width:768px){
-    .anatCard{flex-direction:row;}
-    .anatCard__body{flex:1 1 50%;min-width:0;}
-    .anatCard__img{flex:1 1 50%;aspect-ratio:auto;}
-  }
+  .anatCard__text{font-size:13.5px;line-height:1.45;color:var(--text-color);opacity:.75;margin:0;}
 
   /* ---------- Anatomy pillars variant 2: full-bleed background photo, text overlaid ---------- */
-  .anatCardV2__note{font-size:12px;color:var(--text-color);opacity:.5;margin:20px 0 8px;text-align:left;}
   .anatCardV2__grid{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:32px;}
   .anatCardV2{
     position:relative;
@@ -651,21 +635,28 @@
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
-    padding:26px 22px;
-    min-height:280px;
+    padding:18px 20px;
     display:flex;
-    align-items:center;
+    align-items:flex-start;
   }
-  .anatCardV2__content{display:flex;flex-direction:column;gap:14px;max-width:62%;}
+  .anatCardV2__content{display:flex;flex-direction:column;gap:10px;max-width:62%;}
   @media (min-width:768px){
     .anatCardV2__grid{grid-template-columns:1fr 1fr;}
-    .anatCardV2{min-height:340px;padding:32px 28px;}
+    .anatCardV2{padding:20px 24px;}
     .anatCardV2__content{max-width:56%;}
   }
   .anatCardV2--tan .anatCard__num{background:#A9895F;}
   .anatCardV2--tan .anatCard__badge{border-color:#A9895F;color:#A9895F;}
   .anatCardV2--blue .anatCard__num{background:var(--accent-color);}
   .anatCardV2--blue .anatCard__badge{border-color:var(--accent-color);color:var(--accent-color);}
+  .anatCardV2{transition:box-shadow .18s ease, border-color .18s ease;}
+  .anatCardV2.is-active{
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    border-color:var(--accent-color);
+    box-shadow:0 0 0 3px var(--accent-color);
+  }
 
   /* ---------- Section 1C: Why ZeoDeo (4 things pillars) ---------- */
   .pillars__inner > .section__eyebrow,
@@ -693,7 +684,7 @@
   .smartSol__card-body{
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:8px;
   }
   .smartSol__num{
     font-family:var(--font-big-header);
@@ -762,6 +753,7 @@
     align-items:center;
     justify-content:center;
   }
+  .smartSol__img--inset{aspect-ratio:3/4;}
   .smartSol__img > span:first-child{
     font-family:var(--font-header);
     font-weight:600;
@@ -775,6 +767,8 @@
   .smartSol__img--photo{background:#F4F4F4;}
   .smartSol__img--photo img,
   .smartSol__img--photo video{
+    position:absolute;
+    inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
@@ -783,19 +777,21 @@
   }
   .smartSol__tag{
     position:absolute;
-    background:rgba(255,255,255,.95);
-    border-radius:var(--radius-s);
-    padding:8px 12px;
     font-family:var(--font-header);
     font-weight:600;
     font-size:11px;
     color:var(--text-color);
     line-height:1.3;
-    box-shadow:0 2px 8px rgba(0,0,0,.1);
+    text-shadow:0 1px 2px #fff, 0 1px 6px #fff, 0 -1px 6px #fff, 0 1px 12px rgba(255,255,255,.9);
     max-width:120px;
+    opacity:0;
+    transform:translateY(4px);
+    transition:opacity .35s ease, transform .35s ease;
+    pointer-events:none;
   }
-  .smartSol__tag--1{top:10px;right:10px;}
-  .smartSol__tag--2{top:64px;right:26px;}
+  .smartSol__tag.is-visible{opacity:1;transform:translateY(0);}
+  .smartSol__tag--1,
+  .smartSol__tag--2{top:10px;right:10px;}
   .smartSol__compare{
     position:relative;
     aspect-ratio:4/3;
@@ -833,38 +829,27 @@
   }
   .smartSol__compare-photo--diagonal .smartSol__compare-photo-tile:first-child{clip-path:polygon(0 0, 56% 0, 44% 100%, 0 100%);}
   .smartSol__compare-photo--diagonal .smartSol__compare-photo-tile:last-child{clip-path:polygon(56% 0, 100% 0, 100% 100%, 44% 100%);}
-  .smartSol__compare-labels,
-  .smartSol__compare-captions{
+  .smartSol__compare-labels{
     position:absolute;
     left:14px;
     right:14px;
+    top:14px;
     display:flex;
     justify-content:space-between;
     gap:8px;
     z-index:1;
   }
-  .smartSol__compare-labels{top:14px;}
-  .smartSol__compare-captions{bottom:58px;}
   .smartSol__compare-label{
     font-family:var(--font-header);
     font-weight:600;
     font-size:11px;
     line-height:1.3;
-    color:#1C2536;
-    background:rgba(255,255,255,.88);
-    padding:5px 9px;
-    border-radius:6px;
+    color:var(--text-color);
+    text-shadow:0 1px 2px #fff, 0 1px 6px #fff, 0 -1px 6px #fff, 0 1px 12px rgba(255,255,255,.9);
     max-width:48%;
   }
   .smartSol__compare-label--r{text-align:right;margin-left:auto;}
-  .smartSol__compare-caption{
-    font-family:Georgia,serif;
-    font-style:italic;
-    font-size:12px;
-    color:#fff;
-    text-shadow:0 1px 6px rgba(0,0,0,.6);
-  }
-  .smartSol__compare-caption--r{text-align:right;margin-left:auto;}
+  .smartSol__compare-label-sub{display:block;font-weight:500;opacity:.7;font-size:10px;margin-top:1px;}
   .smartSol__compare--photo{display:block;overflow:hidden;background:none;}
   @media (min-width:768px){
     .smartSol__grid{grid-template-columns:repeat(2,1fr);}
@@ -877,7 +862,7 @@
       overflow:hidden;
       position:relative;
     }
-    .smartSol__card-body{justify-content:flex-start;padding:16px 0 64px 16px;}
+    .smartSol__card-body{justify-content:flex-start;padding:16px 0 50px 16px;}
     .smartSol__img,.smartSol__compare{aspect-ratio:auto;height:100%;border-radius:0;}
     .smartSol__img--bleed,
     .smartSol__img--inset{margin:0;border-radius:0;}
@@ -885,36 +870,13 @@
     .smartSol__badge{
       position:absolute;
       left:16px;
-      bottom:20px;
+      bottom:14px;
       margin-top:0;
       z-index:3;
       white-space:nowrap;
       box-shadow:0 6px 20px rgba(0,0,0,.15);
     }
   }
-
-  /* ---------- Reference-font preview variant ---------- */
-  .smartSol--serif .smartSol__num{
-    font-family:'Lora',serif;
-    font-weight:600;
-    font-size:22px;
-    color:var(--text-color);
-  }
-  .smartSol--serif .smartSol__title{
-    font-family:'Lora',serif;
-    font-weight:700;
-    font-size:28px;
-    line-height:1.15;
-  }
-  .smartSol--serif .smartSol__lead{
-    font-family:'Lora',serif;
-    font-weight:700;
-  }
-  .smartSol--serif .smartSol__text{
-    font-family:'Lora',serif;
-    opacity:.85;
-  }
-
 
   /* ---------- Section 1D: Plan Your Supply (mood calculator + Scent Booster upsell) ---------- */
   .calcMood__inner > .section__eyebrow,
@@ -1407,8 +1369,10 @@
   /* ---------- cmpCFlatHead: plain-text competitor headers, no pill badge (dentalfreund reference) ---------- */
   .cmpCFlatHead .cmpC__cell--head:not(.cmpC__cell--us):not(.cmpC__cell--blank){
     background:none;border:none;border-radius:0;box-shadow:none;
-    width:auto;padding:0;font-family:var(--font-header);font-weight:700;font-size:13px;color:var(--text-color);
+    width:auto;padding:0 0 18px;font-family:var(--font-header);font-weight:700;font-size:13px;color:var(--text-color);
   }
+  .cmpCFlatHead .cmpC__cell--head.cmpC__cell--us,
+  .cmpCFlatHead .cmpC__cell--head.cmpC__cell--blank{padding-bottom:18px;}
   /* the bold lead-in and the rest of the sentence must flow as one paragraph, not as two side-by-side flex columns */
   .cmpCFlatHead .cmpC__cell--lab{display:block;padding-top:12px;padding-bottom:12px;}
 
@@ -1630,50 +1594,8 @@
       <p class="section__eyebrow anatomy__eyebrow">How it works</p>
       <h2 class="section__title anatomy__title">The Anatomy of ZeoDeo</h2>
       <p class="anatomy__subtitle">Simple replacement routine</p>
-      <div class="anat3__pillars anat3__pillars--cards">
-        <div class="anat3__legend-item anat3__legend-item--pillar anat3__legend-item--card anatCard anatCard--tan" data-key="pellets2">
-          <div class="anatCard__body">
-            <div class="anatCard__top">
-              <span class="anatCard__num">1</span>
-              <div class="anatCard__head">
-                <span class="anatCard__label">Pellets</span>
-                <h3 class="anatCard__title">No More<br>Litter Tray Smell</h3>
-              </div>
-            </div>
-            <span class="anatCard__badge">
-              <svg class="anatCard__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2"/></svg>
-              Replace every 30 days
-            </span>
-            <p class="anatCard__text">These granules don't absorb liquid - they repel it and trap odour instead, thanks to 700-800 m&sup2; of pore surface per cm&sup3;. At 5-6mm, too big to stick to paws or scatter across the floor.</p>
-          </div>
-          <div class="anatCard__img">
-            <img src="../assets/derived/anat-card-pellets-photo.webp" alt="Pile of ZeoDeo zeolite pellets" loading="lazy" decoding="async">
-          </div>
-        </div>
-        <div class="anat3__legend-item anat3__legend-item--pillar anat3__legend-item--card anatCard anatCard--blue" data-key="pad2">
-          <div class="anatCard__body">
-            <div class="anatCard__top">
-              <span class="anatCard__num">2</span>
-              <div class="anatCard__head">
-                <span class="anatCard__label">Pad</span>
-                <h3 class="anatCard__title">Cleaning<br>Made Simple</h3>
-              </div>
-            </div>
-            <span class="anatCard__badge">
-              <svg class="anatCard__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2"/></svg>
-              Every 7 days
-            </span>
-            <p class="anatCard__text">Forget scooping wet litter or scrubbing the tray. One pad locks away a week's mess - slide it out, drop in a fresh one, done in seconds.</p>
-          </div>
-          <div class="anatCard__img">
-            <img src="../assets/derived/anat-card-pad-photo.webp" alt="Close-up of the quilted absorbent pad" loading="lazy" decoding="async">
-          </div>
-        </div>
-      </div>
-
-      <p class="anatCardV2__note">Variant 2 - for comparison</p>
       <div class="anatCardV2__grid">
-        <div class="anatCardV2 anatCardV2--tan" style="background-image:url('../assets/derived/anat-card-v2-pellets-bg.webp');">
+        <div class="anatCardV2 anatCardV2--tan anat3__legend-item" data-key="pellets2" style="background-image:url('../assets/derived/anat-card-v2-pellets-bg.webp');">
           <div class="anatCardV2__content">
             <div class="anatCard__top">
               <span class="anatCard__num">1</span>
@@ -1689,7 +1611,7 @@
             <p class="anatCard__text">These granules don't absorb liquid - they repel it and trap odour instead, thanks to 700-800 m&sup2; of pore surface per cm&sup3;. At 5-6mm, too big to stick to paws or scatter across the floor.</p>
           </div>
         </div>
-        <div class="anatCardV2 anatCardV2--blue" style="background-image:url('../assets/derived/anat-card-v2-pad-bg.webp');">
+        <div class="anatCardV2 anatCardV2--blue anat3__legend-item" data-key="pad2" style="background-image:url('../assets/derived/anat-card-v2-pad-bg.webp');">
           <div class="anatCardV2__content">
             <div class="anatCard__top">
               <span class="anatCard__num">2</span>
@@ -1771,7 +1693,7 @@
           <span class="smartSol__num">01</span>
           <h3 class="smartSol__title">No More Litter Tray Smell</h3>
           <p class="smartSol__lead">Odour is trapped at the source, not masked.</p>
-          <p class="smartSol__text">ZeoDeo pellets are made from porous zeolite with an enormous microscopic pore structure. Odour-causing molecules are captured inside these pores, providing powerful, long-lasting odour control.</p>
+          <p class="smartSol__text">Odour-causing molecules are captured inside these pores, providing powerful, long-lasting odour control. ZeoDeo pellets are made from porous zeolite with an enormous microscopic pore structure.</p>
           <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>700-800 m&sup2;/cm&sup3; microporous zeolite surface &bull; Long-lasting odour control</span>
         </div>
         <div class="smartSol__img smartSol__img--photo smartSol__img--bleed">
@@ -1783,28 +1705,27 @@
           <span class="smartSol__num">02</span>
           <h3 class="smartSol__title">Cleaning Made Simple</h3>
           <p class="smartSol__lead">No more dealing with urine-soaked litter.</p>
-          <p class="smartSol__text">In ordinary litter, urine stays inside the litter itself, creating wet, dirty material that needs frequent scooping and periodic complete replacement. With ZeoDeo, urine passes through the pellet layer into a separate superabsorbent pad below, keeping liquid away from the upper litter layer.</p>
-          <p class="smartSol__lead">Simply pull out the pad, fold it, dispose of it and insert a fresh one</p>
+          <p class="smartSol__text">In ordinary litter, all of it soaks into the granules, leaving them wet through. With ZeoDeo pellets, liquid passes through the pellet layer into a separate superabsorbent pad, which holds several litres.</p>
           <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Pad lasts 7 days &bull; No more weekly full washes</span>
         </div>
         <div class="smartSol__img smartSol__img--photo smartSol__img--inset">
-          <video id="smartSolCleaningVideo" src="../assets/video/proof/moisture-absorption-cutaway-v4.mp4" muted loop playsinline preload="metadata"></video>
+          <video id="smartSolCleaningVideo" src="../assets/video/proof/moisture-absorption-cutaway-v6-fixed.mp4" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback controlsList="nodownload noplaybackrate nofullscreen noremoteplayback"></video>
           <span class="smartSol__tag smartSol__tag--1">The pellets handle odour.</span>
           <span class="smartSol__tag smartSol__tag--2">The pad handles liquid.</span>
         </div>
       </div>
-      <div class="smartSol__card">
+      <div class="smartSol__card smartSol__card--blue">
         <div class="smartSol__card-body">
           <span class="smartSol__num">03</span>
           <h3 class="smartSol__title">Litter Stays in the Tray</h3>
-          <p class="smartSol__lead">Less litter under your feet. Less mess around your home.</p>
-          <p class="smartSol__text">Large smooth ZeoDeo pellets are much less likely to become trapped between paws or cling to fur than fine traditional litter. Even when an enthusiastic cat kicks a few pellets outside the tray, they stay solid and intact instead of turning into gritty debris when stepped on.</p>
+          <p class="smartSol__lead">There's no litter trodden underfoot, and no mess around the home.</p>
+          <p class="smartSol__text">The large, smooth ZeoDeo granules don't get stuck between paw pads or cling to fur. Even if an energetic cat knocks a few granules out of the tray, they stay whole and dense.</p>
           <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Large 5-6mm pellets &bull; Easy to pick up</span>
         </div>
         <div class="smartSol__compare smartSol__compare--photo">
           <div class="smartSol__compare-labels">
-            <span class="smartSol__compare-label smartSol__compare-label--l">Traditional litter (silica gel)</span>
-            <span class="smartSol__compare-label smartSol__compare-label--r">ZeoDeo pellets (large &amp; smooth)</span>
+            <span class="smartSol__compare-label smartSol__compare-label--l">Tracks everywhere <span class="smartSol__compare-label-sub">(Traditional litter (silica gel))</span></span>
+            <span class="smartSol__compare-label smartSol__compare-label--r">Stays in the tray <span class="smartSol__compare-label-sub">(ZeoDeo pellets (large &amp; smooth))</span></span>
           </div>
           <div class="smartSol__compare-photo smartSol__compare-photo--split">
             <div class="smartSol__compare-photo-tile">
@@ -1814,25 +1735,20 @@
               <img src="../assets/derived/pillar-tracking-clean-paw-floor.webp" alt="Clean paw on bare floor next to the ZeoDeo tray" loading="lazy" decoding="async">
             </div>
           </div>
-          <div class="smartSol__compare-captions">
-            <span class="smartSol__compare-caption smartSol__compare-caption--l">Tracks everywhere</span>
-            <span class="smartSol__compare-caption smartSol__compare-caption--r">Stays in the tray</span>
-          </div>
         </div>
       </div>
-      <div class="smartSol__card smartSol__card--blue">
+      <div class="smartSol__card">
         <div class="smartSol__card-body">
           <span class="smartSol__num">04</span>
           <h3 class="smartSol__title">Virtually Dust-Free</h3>
-          <p class="smartSol__lead">Cleaner paws. Cleaner surfaces. Cleaner home.</p>
-          <p class="smartSol__text">Fine traditional litter can release dust when poured, scratched and carried out of the tray. ZeoDeo's solid pellets create virtually no loose litter dust during everyday use.</p>
-          <p class="smartSol__lead">No clouds of litter dust. No dusty paw prints across your floors and furniture.</p>
+          <p class="smartSol__lead">No dust. Cleaner paws. Cleaner surfaces. Cleaner home.</p>
+          <p class="smartSol__text">Solid ZeoDeo granules hardly produce any loose dust with daily use. Traditional litter can release dust when poured, scratched or carried out of the tray.</p>
           <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Virtually dust-free everyday use</span>
         </div>
         <div class="smartSol__compare smartSol__compare--photo">
           <div class="smartSol__compare-labels">
-            <span class="smartSol__compare-label smartSol__compare-label--l">Traditional litter (silica gel)</span>
-            <span class="smartSol__compare-label smartSol__compare-label--r">ZeoDeo pellets</span>
+            <span class="smartSol__compare-label smartSol__compare-label--l">Visible dust clouds <span class="smartSol__compare-label-sub">(Traditional litter (silica gel))</span></span>
+            <span class="smartSol__compare-label smartSol__compare-label--r">Clean &amp; fresh air <span class="smartSol__compare-label-sub">(ZeoDeo pellets)</span></span>
           </div>
           <div class="smartSol__compare-photo smartSol__compare-photo--split">
             <div class="smartSol__compare-photo-tile">
@@ -1841,105 +1757,6 @@
             <div class="smartSol__compare-photo-tile">
               <img src="../assets/derived/pillar-dustfree-pellets-tray-clean.webp" alt="Clean tray of ZeoDeo pellets with no dust" loading="lazy" decoding="async">
             </div>
-          </div>
-          <div class="smartSol__compare-captions">
-            <span class="smartSol__compare-caption smartSol__compare-caption--l">Visible dust clouds</span>
-            <span class="smartSol__compare-caption smartSol__compare-caption--r">Clean &amp; fresh air</span>
-          </div>
-        </div>
-      </div>
-    </div>
-   </div>
-  </div>
-</section>
-
-<!-- ================= SECTION 1C-V2: WHY ZEODEO (REFERENCE FONT PREVIEW) ================= -->
-<section class="section">
-  <div class="section__card">
-   <div class="section__inner pillars__inner">
-    <p class="section__eyebrow">Smart Solutions &mdash; Reference Font Preview</p>
-    <h2 class="section__title">4 Biggest Litter Tray Problems</h2>
-    <p class="pillars__subtitle">Odour, dirty cleaning, scattered litter and dust - ZeoDeo is designed to solve all four.</p>
-    <div class="smartSol__grid smartSol--serif">
-      <div class="smartSol__card">
-        <div class="smartSol__card-body">
-          <span class="smartSol__num">01</span>
-          <h3 class="smartSol__title">No More Litter Tray Smell</h3>
-          <p class="smartSol__lead">Odour is trapped at the source, not masked.</p>
-          <p class="smartSol__text">ZeoDeo pellets are made from porous zeolite with an enormous microscopic pore structure. Odour-causing molecules are captured inside these pores, providing powerful, long-lasting odour control.</p>
-          <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>700-800 m&sup2;/cm&sup3; microporous zeolite surface &bull; Long-lasting odour control</span>
-        </div>
-        <div class="smartSol__img smartSol__img--photo smartSol__img--bleed">
-          <img src="../assets/derived/pillar-odor-zeolite-pores-molecules.webp" alt="Cross-section of ZeoDeo zeolite pellets showing porous structure trapping odour molecules NH3 and S-VOC" loading="lazy" decoding="async">
-        </div>
-      </div>
-      <div class="smartSol__card smartSol__card--blue">
-        <div class="smartSol__card-body">
-          <span class="smartSol__num">02</span>
-          <h3 class="smartSol__title">Cleaning Made Simple</h3>
-          <p class="smartSol__lead">No more dealing with urine-soaked litter.</p>
-          <p class="smartSol__text">In ordinary litter, urine stays inside the litter itself, creating wet, dirty material that needs frequent scooping and periodic complete replacement. With ZeoDeo, urine passes through the pellet layer into a separate superabsorbent pad below, keeping liquid away from the upper litter layer.</p>
-          <p class="smartSol__lead">Simply pull out the pad, fold it, dispose of it and insert a fresh one</p>
-          <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Pad lasts 7 days &bull; No more weekly full washes</span>
-        </div>
-        <div class="smartSol__img smartSol__img--photo smartSol__img--inset">
-          <video id="smartSolCleaningVideoV2" src="../assets/video/proof/moisture-absorption-cutaway-v4.mp4" muted loop playsinline preload="metadata"></video>
-          <span class="smartSol__tag smartSol__tag--1">The pellets handle odour.</span>
-          <span class="smartSol__tag smartSol__tag--2">The pad handles liquid.</span>
-        </div>
-      </div>
-      <div class="smartSol__card">
-        <div class="smartSol__card-body">
-          <span class="smartSol__num">03</span>
-          <h3 class="smartSol__title">Litter Stays in the Tray</h3>
-          <p class="smartSol__lead">Less litter under your feet. Less mess around your home.</p>
-          <p class="smartSol__text">Large smooth ZeoDeo pellets are much less likely to become trapped between paws or cling to fur than fine traditional litter. Even when an enthusiastic cat kicks a few pellets outside the tray, they stay solid and intact instead of turning into gritty debris when stepped on.</p>
-          <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Large 5-6mm pellets &bull; Easy to pick up</span>
-        </div>
-        <div class="smartSol__compare smartSol__compare--photo">
-          <div class="smartSol__compare-labels">
-            <span class="smartSol__compare-label smartSol__compare-label--l">Traditional litter (silica gel)</span>
-            <span class="smartSol__compare-label smartSol__compare-label--r">ZeoDeo pellets (large &amp; smooth)</span>
-          </div>
-          <div class="smartSol__compare-photo smartSol__compare-photo--split">
-            <div class="smartSol__compare-photo-tile">
-              <img src="../assets/derived/pillar-tracking-silica-scattered-paw.webp" alt="Cat paw stepping through scattered silica gel litter crystals" loading="lazy" decoding="async">
-            </div>
-            <div class="smartSol__compare-photo-tile">
-              <img src="../assets/derived/pillar-tracking-clean-paw-floor.webp" alt="Clean paw on bare floor next to the ZeoDeo tray" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="smartSol__compare-captions">
-            <span class="smartSol__compare-caption smartSol__compare-caption--l">Tracks everywhere</span>
-            <span class="smartSol__compare-caption smartSol__compare-caption--r">Stays in the tray</span>
-          </div>
-        </div>
-      </div>
-      <div class="smartSol__card smartSol__card--blue">
-        <div class="smartSol__card-body">
-          <span class="smartSol__num">04</span>
-          <h3 class="smartSol__title">Virtually Dust-Free</h3>
-          <p class="smartSol__lead">Cleaner paws. Cleaner surfaces. Cleaner home.</p>
-          <p class="smartSol__text">Fine traditional litter can release dust when poured, scratched and carried out of the tray. ZeoDeo's solid pellets create virtually no loose litter dust during everyday use.</p>
-          <p class="smartSol__lead">No clouds of litter dust. No dusty paw prints across your floors and furniture.</p>
-          <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Virtually dust-free everyday use</span>
-        </div>
-        <div class="smartSol__compare smartSol__compare--photo">
-          <div class="smartSol__compare-labels">
-            <span class="smartSol__compare-label smartSol__compare-label--l">Traditional litter (silica gel)</span>
-            <span class="smartSol__compare-label smartSol__compare-label--r">ZeoDeo pellets</span>
-          </div>
-          <div class="smartSol__compare-photo smartSol__compare-photo--split">
-            <div class="smartSol__compare-photo-tile">
-              <img src="../assets/derived/pillar-dustfree-silica-dust-cloud.webp" alt="Dust cloud rising from a tray of traditional silica gel litter" loading="lazy" decoding="async">
-            </div>
-            <div class="smartSol__compare-photo-tile">
-              <img src="../assets/derived/pillar-dustfree-pellets-tray-clean.webp" alt="Clean tray of ZeoDeo pellets with no dust" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="smartSol__compare-captions">
-            <span class="smartSol__compare-caption smartSol__compare-caption--l">Visible dust clouds</span>
-            <span class="smartSol__compare-caption smartSol__compare-caption--r">Clean &amp; fresh air</span>
           </div>
         </div>
       </div>
@@ -3062,9 +2879,20 @@
     io.observe(hero);
   })();
 
-  ['smartSolCleaningVideo', 'smartSolCleaningVideoV2'].forEach(function(id){
+  ['smartSolCleaningVideo'].forEach(function(id){
     var video = document.getElementById(id);
     if(!video) return;
+
+    var wrap = video.parentElement;
+    var tag1 = wrap ? wrap.querySelector('.smartSol__tag--1') : null;
+    var tag2 = wrap ? wrap.querySelector('.smartSol__tag--2') : null;
+    var PELLETS_END = 1.2;
+    var PAD_END = 3.3;
+    video.addEventListener('timeupdate', function(){
+      var t = video.currentTime;
+      if(tag1) tag1.classList.toggle('is-visible', t < PELLETS_END);
+      if(tag2) tag2.classList.toggle('is-visible', t >= PELLETS_END && t < PAD_END);
+    });
 
     if(!('IntersectionObserver' in window)){
       video.setAttribute('autoplay', '');
@@ -3083,32 +2911,10 @@
     io.observe(video);
   });
 
-  (function(){
-    var grids = document.querySelectorAll('.smartSol__grid');
-    if(!grids.length) return;
-    var desktopMq = window.matchMedia('(min-width:768px)');
-
-    function equalize(){
-      grids.forEach(function(grid){
-        var cards = grid.querySelectorAll('.smartSol__card');
-        if(!cards.length) return;
-        cards.forEach(function(c){ c.style.minHeight = ''; });
-        if(!desktopMq.matches) return;
-        var max = 0;
-        cards.forEach(function(c){ max = Math.max(max, c.offsetHeight); });
-        cards.forEach(function(c){ c.style.minHeight = max + 'px'; });
-      });
-    }
-
-    var resizeTimer;
-    window.addEventListener('resize', function(){
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(equalize, 150);
-    });
-    window.addEventListener('load', equalize);
-    if(document.fonts && document.fonts.ready){ document.fonts.ready.then(equalize); }
-    equalize();
-  })();
+  // Row height matching is handled natively by CSS grid's default
+  // align-items:stretch (each row stretches to its own tallest card) -
+  // no JS needed, and forcing a single global max height across all
+  // 4 cards was inflating the shorter row 2 to match the taller row 1.
 </script>
 
 </body>
