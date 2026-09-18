@@ -1060,8 +1060,11 @@
   .tlPath__inner > .section__title{
     text-align:left;
   }
-  .timeline__intro{font-size:13px;line-height:1.5;color:var(--text-color);opacity:.7;margin-bottom:18px;max-width:60ch;}
+  .tlPath__inner > .section__title{margin-bottom:2px;}
+  .timeline__intro{text-align:left;font-family:var(--font-header);font-weight:300;font-size:18px;color:var(--text-color);margin:2px 0 18px;}
   .tlPath{position:relative;margin-top:8px;padding:20px 16px;border:1px solid var(--border-color);border-radius:var(--radius-card);}
+  .tlPath__note{margin-top:8px;padding-top:16px;border-top:1px solid var(--border-color);text-align:center;font-family:var(--font-header);font-weight:700;font-size:15px;color:var(--text-color);}
+  .tlPath__track{position:relative;}
   .tlPath__line{
     position:absolute;top:6px;bottom:6px;left:50%;width:3px;z-index:0;transform:translateX(-50%);
     background-image:linear-gradient(var(--border-color) 60%, transparent 0%);
@@ -1838,10 +1841,11 @@
   <div class="section__card">
    <div class="section__inner tlPath__inner">
     <p class="section__eyebrow">Getting started</p>
-    <h2 class="section__title">Helping Your Cat Settle In</h2>
-    <p class="timeline__intro">In 95% of cases there's no fuss at all - your cat simply starts using the new tray as soon as it replaces the old one. If yours is more cautious, here's the 4-step routine we recommend. Tap any step to preview it.</p>
+    <h2 class="section__title">How to Introduce a Cat to a New Tray</h2>
+    <p class="timeline__intro">Follow these steps sequentially rather than making all changes at once.</p>
 
     <div class="tlPath tlPath--site">
+      <div class="tlPath__track">
       <div class="tlPath__line" aria-hidden="true"></div>
       <svg class="tlPath__cat" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
         <g stroke="var(--accent-color-2)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
@@ -1864,8 +1868,8 @@
           <div class="tlPath__card-img"><img src="../assets/onboarding/tray-onboarding-mix-granules-v2.webp" alt="Hand mixing ZeoDeo granules into the old green litter tray" loading="lazy" decoding="async"></div>
           <div class="tlPath__card-body">
             <span class="tlPath__card-num">Step 1</span>
-            <strong class="tlPath__card-title">Introduce the Texture</strong>
-            <p class="tlPath__card-text">Mix a small amount of the new granules into your cat's current litter, in the old tray.</p>
+            <strong class="tlPath__card-title">Introduce the Cat to the Pellets</strong>
+            <p class="tlPath__card-text">Add an adequate amount of granules into the old tray, mixing them with the old litter filler. Allow the cat to become accustomed to the pellets.</p>
           </div>
         </button>
       </div>
@@ -1874,8 +1878,8 @@
           <div class="tlPath__card-img"><img src="../assets/onboarding/tray-onboarding-place-alongside-v2.webp" alt="ZeoDeo tray placed alongside the old litter tray" loading="lazy" decoding="async"></div>
           <div class="tlPath__card-body">
             <span class="tlPath__card-num">Step 2</span>
-            <strong class="tlPath__card-title">Place It Alongside</strong>
-            <p class="tlPath__card-text">Put the new tray next to the old one. Remove the high edges if your cat prefers a flatter entrance.</p>
+            <strong class="tlPath__card-title">Place the New Tray With Granules Next to the Old One</strong>
+            <p class="tlPath__card-text">You can also remove the top edges of the new tray if your cat prefers the absence of high edges.</p>
           </div>
         </button>
         <button class="tlPath__node" type="button" data-step="1" aria-label="Step 2">2</button>
@@ -1886,8 +1890,8 @@
           <div class="tlPath__card-img"><img src="../assets/onboarding/tray-onboarding-cat-choosing-v2.webp" alt="Cat choosing between the new ZeoDeo tray and the old tray next to it" loading="lazy" decoding="async"></div>
           <div class="tlPath__card-body">
             <span class="tlPath__card-num">Step 3</span>
-            <strong class="tlPath__card-title">Let Them Choose</strong>
-            <p class="tlPath__card-text">Stop cleaning the old tray. Your cat will naturally prefer the clean new one.</p>
+            <strong class="tlPath__card-title">Stop Cleaning the Old Tray</strong>
+            <p class="tlPath__card-text">Eventually, the cat will choose the clean, new tray and start using it.</p>
           </div>
         </button>
       </div>
@@ -1902,6 +1906,8 @@
         </button>
         <button class="tlPath__node" type="button" data-step="3" aria-label="Step 4">4</button>
       </div>
+      </div>
+      <p class="tlPath__note">Every cat has its own unique personality, so patience is the key!</p>
     </div>
    </div>
   </div>
