@@ -519,12 +519,13 @@
   .anat3__pin{
     position:absolute;transform:translate(-50%,-50%);
     width:30px;height:30px;
-    background:var(--accent-color-2);color:#fff;border:2px solid #fff;padding:0;cursor:pointer;z-index:5;
+    background:#5C8A2E;color:#fff;border:2px solid #fff;padding:0;cursor:pointer;z-index:5;
     border-radius:50%;
     display:flex;align-items:center;justify-content:center;
     font-family:var(--font-header);font-weight:700;font-size:12px;line-height:1;
   }
   .anat3__pin.anat3__pin--product{background:var(--accent-color);}
+  .anat3__pin.anat3__pin--tan{background:#A9895F;}
   .anat3__pin::before{
     content:'';position:absolute;inset:-4px;border-radius:50%;
     box-shadow:0 0 0 0 rgba(255,255,255,.6);
@@ -541,6 +542,28 @@
     70%{box-shadow:0 0 0 11px rgba(255,255,255,0);}
     100%{box-shadow:0 0 0 0 rgba(255,255,255,0);}
   }
+  .anat3__tooltip{display:none;}
+  @media (max-width:680px){
+    .anat3__tooltip:not([hidden]){
+      display:flex;align-items:center;gap:6px;
+      position:absolute;z-index:20;
+      top:8px;left:8px;
+    }
+    .anat3__tooltip-num{
+      flex:none;
+      display:inline-flex;align-items:center;justify-content:center;
+      width:19px;height:19px;border-radius:50%;
+      background:#5C8A2E;color:#fff;
+      font-family:var(--font-header);font-weight:700;font-size:10px;
+    }
+    .anat3__tooltip.is-product .anat3__tooltip-num{background:var(--accent-color);}
+    .anat3__tooltip.is-tan .anat3__tooltip-num{background:#A9895F;}
+    .anat3__tooltip-label{
+      font-family:var(--font-header);font-weight:600;font-size:12px;line-height:1.3;
+      color:var(--text-color);white-space:nowrap;
+      text-shadow:0 1px 2px #fff, 0 1px 6px #fff, 0 -1px 6px #fff, 0 1px 12px rgba(255,255,255,.9);
+    }
+  }
   .anat3__legend-panel{flex:1 1 260px;display:flex;flex-direction:column;justify-content:center;padding:4px 4px;}
   .anat3__legend{list-style:none;display:flex;flex-direction:column;gap:26px;margin:0;padding:0;}
   .anat3__legend-item{
@@ -549,8 +572,8 @@
   }
   .anat3__legend-item.is-active{background:#F1F8FC;border-color:var(--accent-color);}
   .anat3__legend-num{
-    flex:0 0 auto;width:28px;height:28px;margin-top:1px;border-radius:50%;background:#fff;border:1.5px solid var(--accent-color-2);
-    color:var(--accent-color-2);font-size:14px;font-family:var(--font-header);font-weight:700;
+    flex:0 0 auto;width:30px;height:30px;margin-top:1px;border-radius:50%;background:#5C8A2E;border:none;
+    color:#fff;font-size:13px;font-family:var(--font-big-header);font-weight:600;
     display:flex;align-items:center;justify-content:center;
   }
   .anat3__legend-num--product{color:var(--accent-color);}
@@ -562,8 +585,17 @@
   .anat3__legend-item--pillar .anat3__legend-num{background:var(--accent-color);color:#fff;border:none;}
   .anat3__legend-item--pillar img{flex:0 0 auto;width:64px;height:64px;object-fit:contain;object-position:center;align-self:center;}
   @media (max-width:680px){
-    .anat3__stage{flex:1 1 100%;max-width:none;}
-    .anat3__legend-panel{flex:1 1 100%;}
+    .anat3__stage{flex:0 0 auto;max-width:none;order:1;margin-bottom:20px;}
+    .anat3__legend-panel{flex:0 0 auto;order:3;}
+    .anatomy__inner{display:flex;flex-direction:column;}
+    .anatomy__inner > .anat3__layout{display:contents;}
+    .anatomy__inner > .anatCardV2__grid{order:2;}
+    .anat3__legend-item.is-active{background:transparent;border-color:transparent;}
+    .anat3__legend{gap:16px;}
+    .anat3__legend-item{gap:10px;padding:4px 0;}
+    .anat3__legend-title{font-size:16px;}
+    .anat3__legend-sub{font-size:12px;margin-top:1px;}
+    .anat3__legend-text{font-size:13px;line-height:1.4;margin-top:5px;}
   }
   /* ---------- Anatomy variant: pellets/pad (1/2) as a full-width two-card row above the photo ---------- */
   .anat3__pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
@@ -583,13 +615,13 @@
   .anatCard__top{display:flex;align-items:flex-start;gap:12px;}
   .anatCard__num{
     flex:none;
-    width:44px;height:44px;
+    width:30px;height:30px;
     border-radius:50%;
     display:flex;align-items:center;justify-content:center;
     color:#fff;
     font-family:var(--font-big-header);
     font-weight:600;
-    font-size:20px;
+    font-size:13px;
   }
   .anatCard__head{display:flex;flex-direction:column;gap:2px;}
   .anatCard__label{
@@ -645,6 +677,18 @@
     .anatCardV2{padding:20px 24px;}
     .anatCardV2__content{max-width:56%;}
   }
+  @media (max-width:680px){
+    .anatCardV2__grid{gap:10px;margin-bottom:24px;}
+    .anatCardV2{padding:14px 16px;}
+    .anatCardV2__content{gap:6px;max-width:68%;}
+    .anatCard__top{gap:10px;}
+    .anatCard__head{gap:1px;}
+    .anatCard__label{font-size:11.5px;}
+    .anatCard__title{font-size:17px;}
+    .anatCard__badge{padding:5px 12px;gap:6px;font-size:12px;}
+    .anatCard__icon{width:14px;height:14px;}
+    .anatCard__text{font-size:12.5px;line-height:1.4;}
+  }
   .anatCardV2--tan .anatCard__num{background:#A9895F;}
   .anatCardV2--tan .anatCard__badge{border-color:#A9895F;color:#A9895F;}
   .anatCardV2--blue .anatCard__num{background:var(--accent-color);}
@@ -654,8 +698,11 @@
     background-position:center;
     background-size:cover;
     background-repeat:no-repeat;
-    border-color:var(--accent-color);
-    box-shadow:0 0 0 3px var(--accent-color);
+  }
+  .anatCardV2--tan.is-active{border-color:#A9895F;box-shadow:0 0 0 3px #A9895F;}
+  .anatCardV2--blue.is-active{border-color:var(--accent-color);box-shadow:0 0 0 3px var(--accent-color);}
+  @media (max-width:680px){
+    .anatCardV2.is-active{border-color:var(--border-color);box-shadow:none;}
   }
 
   /* ---------- Section 1C: Why ZeoDeo (4 things pillars) ---------- */
@@ -663,7 +710,7 @@
   .pillars__inner > .section__title{
     text-align:left;
   }
-  .pillars__inner > .section__title{margin-bottom:2px;}
+  .pillars__inner > .section__title{margin-bottom:24px;}
   .pillars__subtitle{text-align:left;font-family:var(--font-header);font-weight:300;font-size:18px;color:var(--text-color);margin:2px 0 18px;}
   .smartSol__grid{
     display:grid;
@@ -981,6 +1028,7 @@
   .baf__handle{
     position:absolute;top:0;bottom:0;width:3px;background:#fff;left:52%;
     box-shadow:0 0 6px rgba(0,0,0,0.3);z-index:4;cursor:ew-resize;
+    touch-action:none;
   }
   .baf__handle::after{
     content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
@@ -1187,7 +1235,7 @@
   /* ---------- Mobile: unified 10px side padding for all bordered card panels ---------- */
   @media (max-width:680px){
     .smartSol__card{padding:20px 16px;}
-    .bafReal__panel{padding:0 10px;}
+    .bafReal__panel{padding:0;border:none;background:transparent;}
     .tlPath{padding:0 10px;}
     .roomMx__wrap{padding:0 10px;}
     .moistD__panel{padding:0 10px;}
@@ -1628,8 +1676,12 @@
           <button class="anat3__pin" type="button" data-key="grid2" style="left:76%;top:50%;" aria-label="4. Odour Starts Draining Immediately">4</button>
           <button class="anat3__pin" type="button" data-key="base2" style="left:76%;top:65%;" aria-label="5. Built to Last">5</button>
           <button class="anat3__pin" type="button" data-key="drawer2" style="left:26%;top:87%;" aria-label="6. Cleaning in Seconds">6</button>
-          <button class="anat3__pin anat3__pin--product" type="button" data-key="pellets2" style="left:47%;top:52%;" aria-label="1. No More Litter Box Smell">1</button>
+          <button class="anat3__pin anat3__pin--product anat3__pin--tan" type="button" data-key="pellets2" style="left:47%;top:52%;" aria-label="1. No More Litter Box Smell">1</button>
           <button class="anat3__pin anat3__pin--product" type="button" data-key="pad2" style="left:34%;top:80%;" aria-label="2. Cleaning Made Simple">2</button>
+          <div class="anat3__tooltip" role="status" hidden>
+            <span class="anat3__tooltip-num"></span>
+            <span class="anat3__tooltip-label"></span>
+          </div>
         </div>
         <div class="anat3__legend-panel">
           <ul class="anat3__legend">
@@ -1678,7 +1730,6 @@
    <div class="section__inner pillars__inner">
     <p class="section__eyebrow">Smart Solutions</p>
     <h2 class="section__title">4 Biggest Litter Tray Problems</h2>
-    <p class="pillars__subtitle">Odour, dirty cleaning, scattered litter and dust - ZeoDeo is designed to solve all four.</p>
     <div class="smartSol__grid">
       <div class="smartSol__card">
         <div class="smartSol__card-body">
@@ -1861,7 +1912,7 @@
   <div class="section__card final__cta">
    <div class="section__inner">
     <h2 class="section__title" style="margin-bottom:8px;">Ready for a Fresher Home?</h2>
-    <p class="final__price" id="finalPrice">Classic Litter Tray - £69.00 inc. VAT</p>
+    <p class="final__price">Classic Litter Tray - <span id="finalPrice">£69.00</span> inc. VAT</p>
     <button class="btn btn--primary">Add to Basket</button>
    </div>
   </div>
@@ -2034,8 +2085,8 @@
       <p class="calcMood__sub">Your monthly supply kit.</p>
       <div class="calcMood__opts">
         <button class="calcMood__opt" data-k="small" type="button">1 Small Cat</button>
-        <button class="calcMood__opt" data-k="medium" type="button">1 Medium Cat</button>
-        <button class="calcMood__opt is-active" data-k="two" type="button">2 Cats</button>
+        <button class="calcMood__opt is-active" data-k="medium" type="button">1 Medium Cat</button>
+        <button class="calcMood__opt" data-k="two" type="button">2 Cats</button>
         <button class="calcMood__opt" data-k="three" type="button">3 Cats</button>
       </div>
       <div class="calcMood__result">
@@ -2058,7 +2109,7 @@
             <img class="scentAddon__img" src="../assets/derived/calc-scentbooster-cropped.webp" alt="" loading="lazy" decoding="async">
           </div>
           <div class="calcMood__stat-label">Scent Booster</div>
-          <div class="calcMood__stat-freq">Green Tea &middot; optional</div>
+          <div class="calcMood__stat-freq">Green Tea &middot; +&pound;19.90</div>
           <button class="calcMood__addon-btn" type="button">+ Add</button>
         </div>
       </div>
@@ -2124,8 +2175,8 @@
       <p class="calcMood__sub" style="font-weight:700;">Your monthly supply kit.</p>
       <div class="calcMood__opts">
         <button class="calcMood__opt" data-k="small" type="button">1 Small Cat</button>
-        <button class="calcMood__opt" data-k="medium" type="button">1 Medium Cat</button>
-        <button class="calcMood__opt is-active" data-k="two" type="button">2 Cats</button>
+        <button class="calcMood__opt is-active" data-k="medium" type="button">1 Medium Cat</button>
+        <button class="calcMood__opt" data-k="two" type="button">2 Cats</button>
         <button class="calcMood__opt" data-k="three" type="button">3 Cats</button>
       </div>
       <div class="calcMood__result">
@@ -2159,7 +2210,7 @@
         <p class="scentAddon__text">A pinch of Green Tea Scent Booster keeps things smelling fresh even longer between pad changes - completely optional, but your nose will thank you.</p>
         <div class="splitCta__actions">
           <button class="calcMood__addon-btn scentAddon__btn" type="button">+ Add</button>
-          <p class="splitCta__hint">Green Tea &middot; optional</p>
+          <p class="splitCta__hint">Green Tea &middot; +&pound;19.90</p>
         </div>
       </div>
     </div>
@@ -2276,7 +2327,7 @@
   <div class="sticky-cta__info">
     <span class="sticky-cta__heading">Ready for a Fresher Home?</span>
     <span class="sticky-cta__name">Classic Litter Tray</span>
-    <span class="sticky-cta__price" id="stickyPrice">£69.00 inc. VAT</span>
+    <span class="sticky-cta__price"><span id="stickyPrice">£69.00</span> inc. VAT</span>
   </div>
   <button class="btn btn--primary" type="button">Add to Basket</button>
 </div>
@@ -2315,10 +2366,30 @@
       var stage = container.querySelector('.anat3__stage');
       var pins = container.querySelectorAll('.anat3__pin');
       var items = container.querySelectorAll('.anat3__legend-item');
+      var tooltip = stage ? stage.querySelector('.anat3__tooltip') : null;
+      var tipNum = tooltip ? tooltip.querySelector('.anat3__tooltip-num') : null;
+      var tipLabel = tooltip ? tooltip.querySelector('.anat3__tooltip-label') : null;
       var pinnedKey = null;
       function setActive(key){
         items.forEach(function(li){ li.classList.toggle('is-active', li.dataset.key === key); });
         pins.forEach(function(p){ p.classList.toggle('is-open', p.dataset.key === key); });
+      }
+      function hideTooltip(){
+        if(tooltip) tooltip.hidden = true;
+      }
+      function showTooltip(pin){
+        if(!tooltip) return;
+        var key = pin.dataset.key;
+        var source = null;
+        items.forEach(function(li){ if(li.dataset.key === key) source = li; });
+        if(!source) return;
+        var labelEl = source.querySelector('.anatCard__label, .anat3__legend-sub');
+        tipNum.textContent = pin.textContent.trim();
+        tipLabel.textContent = labelEl ? labelEl.textContent.trim() : '';
+        var isTan = pin.classList.contains('anat3__pin--tan');
+        tooltip.classList.toggle('is-tan', isTan);
+        tooltip.classList.toggle('is-product', pin.classList.contains('anat3__pin--product') && !isTan);
+        tooltip.hidden = false;
       }
       pins.forEach(function(pin){
         pin.addEventListener('mouseenter', function(){ if(!pinnedKey) setActive(pin.dataset.key); });
@@ -2327,6 +2398,7 @@
           e.stopPropagation();
           pinnedKey = (pinnedKey === pin.dataset.key) ? null : pin.dataset.key;
           setActive(pinnedKey);
+          if(pinnedKey){ showTooltip(pin); } else { hideTooltip(); }
         });
       });
       items.forEach(function(item){
@@ -2337,9 +2409,13 @@
       if(stage){
         stage.addEventListener('mouseleave', function(){ if(!pinnedKey) setActive(null); });
       }
+      if(tooltip){
+        tooltip.addEventListener('click', function(e){ e.stopPropagation(); });
+      }
       document.addEventListener('click', function(){
         pinnedKey = null;
         setActive(null);
+        hideTooltip();
       });
     });
   })();
@@ -2452,6 +2528,15 @@
     stage.addEventListener('mouseleave', function(){ show(pinned); });
     window.addEventListener('resize', moveCat);
     window.addEventListener('load', moveCat);
+    if(window.IntersectionObserver && window.matchMedia('(max-width: 680px)').matches){
+      var rows = stage.querySelectorAll('.tlPath__row');
+      var scrollObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){ commit(Number(entry.target.dataset.step)); }
+        });
+      }, {rootMargin:'-45% 0px -45% 0px', threshold:0});
+      rows.forEach(function(row){ scrollObserver.observe(row); });
+    }
     render();
   });
 
@@ -2639,19 +2724,34 @@
       var handle = baf.querySelector('.baf__handle');
       if(!before || !handle) return;
       var dragging = false;
-      function setPos(clientX){
-        var rect = baf.getBoundingClientRect();
+      var rect = null;
+      var rafId = null;
+      var pendingX = null;
+      function applyPos(clientX){
         var pct = Math.min(100, Math.max(0, ((clientX - rect.left) / rect.width) * 100));
         before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
         handle.style.left = pct + '%';
       }
-      handle.addEventListener('pointerdown', function(e){ dragging = true; handle.setPointerCapture(e.pointerId); });
-      handle.addEventListener('pointerup', function(){ dragging = false; });
-      handle.addEventListener('pointermove', function(e){ if(dragging){ setPos(e.clientX); } });
+      function scheduleUpdate(clientX){
+        pendingX = clientX;
+        if(rafId) return;
+        rafId = requestAnimationFrame(function(){
+          rafId = null;
+          applyPos(pendingX);
+        });
+      }
+      handle.addEventListener('pointerdown', function(e){
+        dragging = true;
+        rect = baf.getBoundingClientRect();
+        handle.setPointerCapture(e.pointerId);
+      });
+      handle.addEventListener('pointerup', function(){ dragging = false; rect = null; });
+      handle.addEventListener('pointermove', function(e){ if(dragging){ scheduleUpdate(e.clientX); } });
       baf.addEventListener('click', function(e){
         e.stopPropagation();
         if(e.target === handle) return;
-        setPos(e.clientX);
+        rect = baf.getBoundingClientRect();
+        applyPos(e.clientX);
       });
     }
     document.querySelectorAll('.baf').forEach(initBaf);
@@ -2704,6 +2804,7 @@
           c.classList.toggle('is-size-small', k === 'small' && Number(c.dataset.cat) === 1);
         });
       }
+      setCalc('medium');
       opts.forEach(function(b){ b.addEventListener('click', function(e){ e.stopPropagation(); setCalc(b.dataset.k); }); });
       ctaBtn.addEventListener('click', function(e){
         e.stopPropagation();
@@ -2714,13 +2815,36 @@
 
     });
 
-    document.querySelectorAll('.calcMood__addon-btn').forEach(function(addonBtn){
-      addonBtn.addEventListener('click', function(e){
-        e.stopPropagation();
-        var added = addonBtn.classList.toggle('is-added');
-        addonBtn.textContent = added ? '✓ Added' : '+ Add';
+    (function(){
+      var ADDON_PRICE = 19.90;
+      var addonBtns = document.querySelectorAll('.calcMood__addon-btn');
+      var heroPriceEl = document.getElementById('heroPrice');
+      var finalPriceEl = document.getElementById('finalPrice');
+      var stickyPriceEl = document.getElementById('stickyPrice');
+      var basePrice = heroPriceEl ? parseFloat(heroPriceEl.textContent.replace(/[^0-9.]/g, '')) : 0;
+      var isAdded = false;
+      function formatPrice(v){ return '£' + v.toFixed(2); }
+      function updatePrices(){
+        var total = basePrice + (isAdded ? ADDON_PRICE : 0);
+        if(heroPriceEl) heroPriceEl.textContent = formatPrice(total);
+        if(finalPriceEl) finalPriceEl.textContent = formatPrice(total);
+        if(stickyPriceEl) stickyPriceEl.textContent = formatPrice(total);
+      }
+      function setAdded(next){
+        isAdded = next;
+        addonBtns.forEach(function(b){
+          b.classList.toggle('is-added', isAdded);
+          b.textContent = isAdded ? '✓ Added' : '+ Add';
+        });
+        updatePrices();
+      }
+      addonBtns.forEach(function(addonBtn){
+        addonBtn.addEventListener('click', function(e){
+          e.stopPropagation();
+          setAdded(!isAdded);
+        });
       });
-    });
+    })();
   })();
 
   (function(){
