@@ -2377,6 +2377,15 @@
       function hideTooltip(){
         if(tooltip) tooltip.hidden = true;
       }
+      function scrollToActive(key){
+        if(window.matchMedia('(max-width: 680px)').matches) return;
+        var target = null;
+        items.forEach(function(li){ if(li.dataset.key === key) target = li; });
+        if(!target) return;
+        var rect = target.getBoundingClientRect();
+        var fullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+        if(!fullyVisible){ container.scrollIntoView({behavior:'smooth', block:'start'}); }
+      }
       function showTooltip(pin){
         if(!tooltip) return;
         var key = pin.dataset.key;
@@ -2398,7 +2407,7 @@
           e.stopPropagation();
           pinnedKey = (pinnedKey === pin.dataset.key) ? null : pin.dataset.key;
           setActive(pinnedKey);
-          if(pinnedKey){ showTooltip(pin); } else { hideTooltip(); }
+          if(pinnedKey){ showTooltip(pin); scrollToActive(pinnedKey); } else { hideTooltip(); }
         });
       });
       items.forEach(function(item){
