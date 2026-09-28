@@ -150,25 +150,6 @@
     margin-bottom:16px;
   }
   .hero__specs strong{font-weight:700;}
-  .hero__price-row{
-    display:flex;
-    align-items:baseline;
-    gap:8px;
-    margin-bottom:16px;
-  }
-  .hero__price{
-    font-family:var(--font-big-header);
-    font-weight:600;
-    font-size:30px;
-    line-height:30px;
-    color:var(--accent-color-2);
-  }
-  .hero__price-vat{
-    font-family:var(--font-text);
-    font-size:13px;
-    color:var(--text-color);
-    opacity:0.7;
-  }
   .hero__colors{
     display:flex;
     align-items:center;
@@ -407,12 +388,6 @@
     opacity:.65;
     white-space:nowrap;
   }
-  .sticky-cta__price{
-    font-family:var(--font-big-header);
-    font-weight:600;
-    font-size:17px;
-    color:var(--accent-color-2);
-  }
   .sticky-cta .btn{
     width:auto;
     flex:0 0 auto;
@@ -432,7 +407,6 @@
     .hero__title{font-size:28px;line-height:1.2;}
     .hero__subtitle{font-size:14px;}
     .hero__specs{font-size:14px;}
-    .hero__price{font-size:26px;}
     .section__title{font-size:22px;}
     .splitCta__title{font-size:22px;}
     .splitCta__panel{padding:28px 20px;}
@@ -480,7 +454,6 @@
     .hero__title{margin-bottom:16px;}
     .hero__subtitle{font-size:16px;margin-bottom:24px;}
     .hero__specs{font-size:15px;margin-bottom:24px;}
-    .hero__price-row{margin-bottom:24px;}
     .hero__colors{margin-bottom:24px;}
     .swatch{width:32px;height:32px;}
     .anatomy__inner{max-width:none;}
@@ -769,15 +742,27 @@
     align-items:center;
     gap:8px;
     align-self:flex-start;
-    margin-top:auto;
-    background:#F4F4F4;
-    border-radius:999px;
-    padding:8px 14px;
-    font-family:var(--font-header);
+    /* same pill style as .roomMx__room (Room Style buttons) */
+    background:#fff;
+    border:2px solid var(--border-color);
+    border-radius:20px;
+    padding:7px 14px;
+    font-family:var(--font-text);
     font-weight:700;
-    font-size:12px;
+    font-size:12.5px;
     color:var(--text-color);
   }
+  @media (max-width:680px){
+    .smartSol__badge{font-size:11.5px;padding:7px 10px;}
+  }
+  .smartSol__badges{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+    margin-top:auto;
+  }
+  .smartSol__badge{line-height:16px;} /* = check icon height, so badges with and without the icon are equally tall */
   .smartSol__badge-check{
     width:16px;
     height:16px;
@@ -909,20 +894,26 @@
       overflow:hidden;
       position:relative;
     }
-    .smartSol__card-body{justify-content:flex-start;padding:16px 0 50px 16px;}
+    .smartSol__card-body{justify-content:flex-start;padding:16px 0 72px 16px;}
     .smartSol__img,.smartSol__compare{aspect-ratio:auto;height:100%;border-radius:0;}
     .smartSol__img--bleed,
     .smartSol__img--inset{margin:0;border-radius:0;}
     .smartSol__compare--photo{margin:0;}
+    .smartSol__badges{margin-top:0;}
     .smartSol__badge{
       position:absolute;
       left:16px;
       bottom:14px;
-      margin-top:0;
+      max-width:calc(44% - 22px);
       z-index:3;
-      white-space:nowrap;
-      box-shadow:0 6px 20px rgba(0,0,0,.15);
     }
+    /* second badge sits on the photo, bottom-aligned with the first; wraps instead of overflowing */
+    .smartSol__badge--photo{
+      left:auto;
+      right:14px;
+      max-width:calc(56% - 28px);
+    }
+    .smartSol__badge--tile{max-width:calc(28% - 24px);right:12px;}
   }
 
   /* ---------- Section 1D: Plan Your Supply (mood calculator + Scent Booster upsell) ---------- */
@@ -937,12 +928,13 @@
   .calcMood__cat.is-hidden{display:none;}
   .calcMood__sub{font-size:15px;line-height:1.55;color:var(--text-color);opacity:.72;max-width:46ch;margin:0 auto 20px;}
   .calcMood__opts{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:24px;}
+  /* same pill style as .roomMx__room (Room Style buttons) */
   .calcMood__opt{
-    border:none;background:#fff;border-radius:999px;padding:12px 22px;
-    font-family:var(--font-text);font-weight:700;font-size:13.5px;color:var(--text-color);
-    cursor:pointer;box-shadow:0 2px 8px rgba(30,40,60,.1);transition:all .15s ease;
+    font-family:var(--font-text);font-size:12.5px;font-weight:700;color:var(--text-color);
+    background:#fff;border:2px solid var(--border-color);border-radius:20px;padding:7px 14px;cursor:pointer;transition:.2s;
   }
-  .calcMood__opt.is-active{background:var(--text-color);color:#fff;box-shadow:0 4px 12px rgba(30,40,60,.2);}
+  .calcMood__opt:hover{border-color:var(--accent-color-2);}
+  .calcMood__opt.is-active{background:var(--text-color);border-color:var(--text-color);color:#fff;}
   .calcMood__result{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:16px;}
   .calcMood__stat{max-width:230px;}
   .calcMood__stat-label{
@@ -971,8 +963,9 @@
   }
   .calcMood__addon-btn.is-added{background:var(--accent-color);color:#fff;border-color:var(--accent-color);}
   .calcMood__cadence{
-    display:inline-block;font-family:var(--font-header);font-weight:700;font-size:12.5px;
-    color:#3F5A2E;background:#EAF6DF;border-radius:999px;padding:8px 16px;margin-bottom:16px;
+    /* same pill style as .roomMx__room, default state */
+    display:inline-block;font-family:var(--font-text);font-weight:700;font-size:12.5px;
+    color:var(--text-color);background:#fff;border:2px solid var(--border-color);border-radius:20px;padding:7px 14px;margin-bottom:16px;
   }
   .calcMood__cta{
     display:inline-block;background:var(--accent-color-2);color:#fff;text-decoration:none;
@@ -1007,7 +1000,8 @@
   }
   @media (max-width:680px){
     .calcMood__opts{display:grid;grid-template-columns:1fr 1fr;justify-items:stretch;}
-    .calcMood__opts .calcMood__opt{width:100%;padding:12px 10px;text-align:center;}
+    .calcMood__opts .calcMood__opt{width:100%;font-size:11.5px;padding:7px 10px;text-align:center;}
+    .calcMood__cadence{font-size:11.5px;padding:7px 10px;}
     .calcMood__result{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
     .calcMood__result .calcMood__stat--photo{max-width:none;padding:12px 6px 10px;}
     .calcMood__result .calcMood__stat-imgwrap{width:70px;height:108px;}
@@ -1046,12 +1040,15 @@
   .bafReal__slider{aspect-ratio:16/10;border-radius:0;margin-bottom:0;}
   .bafReal__slider .baf__after img{object-position:center 60%;}
   .bafReal__tag{
-    position:absolute;bottom:14px;font-family:var(--font-text);font-weight:700;font-size:11px;
-    letter-spacing:0.02em;text-transform:uppercase;padding:6px 12px;border-radius:999px;z-index:3;
-    box-shadow:0 1px 5px rgba(64,78,101,0.18);
+    /* same pill style as .roomMx__room: before = default state, after = active state */
+    position:absolute;bottom:14px;font-family:var(--font-text);font-weight:700;font-size:12.5px;
+    padding:7px 14px;border:2px solid var(--border-color);border-radius:20px;z-index:3;
   }
-  .bafReal__tag--before{left:14px;background:rgba(255,255,255,0.95);color:var(--text-color);}
-  .bafReal__tag--after{right:14px;background:var(--new-badge-color);color:#fff;}
+  .bafReal__tag--before{left:14px;background:#fff;color:var(--text-color);}
+  .bafReal__tag--after{right:14px;background:var(--text-color);border-color:var(--text-color);color:#fff;}
+  @media (max-width:680px){
+    .bafReal__tag{font-size:11.5px;padding:7px 10px;}
+  }
   .bafReal__caption{margin-top:14px;font-size:14px;line-height:1.5;color:var(--text-color);text-align:center;font-weight:700;max-width:640px;margin-left:auto;margin-right:auto;}
   .bafReal__caption b{color:#5C8A2E;}
 
@@ -1587,11 +1584,6 @@
         <strong>What's in the package:</strong> Litter tray, scoop, zeolite pellets, absorbent pads - enough for 30 days' use
       </p>
 
-      <div class="hero__price-row">
-        <span class="hero__price" id="heroPrice">£69.00</span>
-        <span class="hero__price-vat">inc. VAT</span>
-      </div>
-
       <div class="hero__colors">
         <span class="hero__colors-label">Colour:</span>
         <div class="hero__swatches">
@@ -1638,7 +1630,7 @@
       <h2 class="section__title anatomy__title">The Anatomy of ZeoDeo</h2>
       <p class="anatomy__subtitle">Simple replacement routine</p>
       <div class="anatCardV2__grid">
-        <div class="anatCardV2 anatCardV2--tan anat3__legend-item" data-key="pellets2" style="background-image:url('../assets/derived/anat-card-v2-pellets-bg.webp');">
+        <div class="anatCardV2 anatCardV2--tan anat3__legend-item" data-key="pellets2" style="background-image:url('../assets/derived/anat-card-v2-pellets-bg-v2.webp');">
           <div class="anatCardV2__content">
             <div class="anatCard__top">
               <span class="anatCard__num">1</span>
@@ -1674,7 +1666,7 @@
 
       <div class="anat3__layout">
         <div class="anat3__stage">
-          <img src="../assets/product/anatomy-lifestyle-mockup-v4-dark.webp" alt="ZeoDeo tray in Anthracite Grey exploded in a sunlit room by a garden window: raised rim, Quartz Grey pellet tray with zeolite pellets, base shell and pad drawer, with liquid flowing through to the absorbent pad" loading="lazy" decoding="async">
+          <img src="../assets/product/anatomy-lifestyle-final.webp" alt="ZeoDeo tray in Anthracite Grey exploded in a sunlit room by a garden window: raised rim, Quartz Grey pellet tray with zeolite pellets, base shell and pad drawer, with liquid flowing through to the absorbent pad" loading="lazy" decoding="async">
           <button class="anat3__pin" type="button" data-key="rim2" style="left:79%;top:32%;" aria-label="3. No Mess Escapes">3</button>
           <button class="anat3__pin" type="button" data-key="grid2" style="left:76%;top:49%;" aria-label="4. Odour Starts Draining Immediately">4</button>
           <button class="anat3__pin" type="button" data-key="base2" style="left:70%;top:70%;" aria-label="5. Built to Last">5</button>
@@ -1740,7 +1732,10 @@
           <h3 class="smartSol__title">Smell Trapped, Not Masked</h3>
           <p class="smartSol__lead">Ordinary litter doesn't destroy odour, it just sits on top of it.</p>
           <p class="smartSol__text">ZeoDeo pellets capture odour molecules in their pores, locking them in at the source instead of masking them with fragrance - so there's no smell near the tray, even between changes.</p>
-          <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>700-800 m&sup2;/cm&sup3; microporous zeolite surface &bull; Long-lasting odour control</span>
+          <div class="smartSol__badges">
+            <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>No smell for weeks</span>
+            <span class="smartSol__badge smartSol__badge--photo">700-800 m&sup2;/cm&sup3; pore surface</span>
+          </div>
         </div>
         <div class="smartSol__img smartSol__img--photo smartSol__img--bleed">
           <img src="../assets/derived/pillar-odor-zeolite-pores-molecules.webp" alt="Cross-section of ZeoDeo zeolite pellets showing porous structure trapping odour molecules NH3 and S-VOC" loading="lazy" decoding="async">
@@ -1752,7 +1747,10 @@
           <h3 class="smartSol__title">Tired of Touching Soaked Litter?</h3>
           <p class="smartSol__lead">Scooping wet clumps is the worst part of the job.</p>
           <p class="smartSol__text">Regular litter soaks up every drop, so your scoop - and your hands - end up in it. ZeoDeo splits the job: pellets handle odour, a hidden pad underneath absorbs all the liquid. Slide it out once a week, never touch wet litter again.</p>
-          <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Pad lasts 7 days &bull; No more weekly full washes</span>
+          <div class="smartSol__badges">
+            <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Pad lasts 7 days</span>
+            <span class="smartSol__badge smartSol__badge--photo">No more weekly full washes</span>
+          </div>
         </div>
         <div class="smartSol__img smartSol__img--photo smartSol__img--inset">
           <video id="smartSolCleaningVideo" src="../assets/video/proof/moisture-absorption-cutaway-v6-fixed.mp4" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback controlsList="nodownload noplaybackrate nofullscreen noremoteplayback"></video>
@@ -1766,7 +1764,10 @@
           <h3 class="smartSol__title">Litter Everywhere but the Tray?</h3>
           <p class="smartSol__lead">Tiny granules get carried out on every paw.</p>
           <p class="smartSol__text">Traditional silica crystals are small and jagged enough to wedge between paw pads and scatter across the floor. ZeoDeo's 5-6mm pellets are too large and smooth to stick.</p>
-          <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Large 5-6mm pellets &bull; Won't scatter</span>
+          <div class="smartSol__badges">
+            <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Large 5-6mm pellets</span>
+            <span class="smartSol__badge smartSol__badge--photo smartSol__badge--tile">Won't scatter</span>
+          </div>
         </div>
         <div class="smartSol__compare smartSol__compare--photo">
           <div class="smartSol__compare-labels">
@@ -1789,7 +1790,9 @@
           <h3 class="smartSol__title">Breathing in Litter Dust?</h3>
           <p class="smartSol__lead">Fine dust gets kicked up every time you touch the litter.</p>
           <p class="smartSol__text">It floats into the air, so your cat (and you) breathe it in every day. ZeoDeo's solid granules stay whole, so with daily use, hardly any dust ends up in the air.</p>
-          <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Dust-free with daily use</span>
+          <div class="smartSol__badges">
+            <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Dust-free with daily use</span>
+          </div>
         </div>
         <div class="smartSol__compare smartSol__compare--photo">
           <div class="smartSol__compare-labels">
@@ -1801,7 +1804,7 @@
               <img src="../assets/derived/pillar-dustfree-silica-dust-cloud.webp" alt="Dust cloud rising from a tray of traditional silica gel litter" loading="lazy" decoding="async">
             </div>
             <div class="smartSol__compare-photo-tile">
-              <img src="../assets/derived/pillar-dustfree-pellets-tray-clean.webp" alt="Clean tray of ZeoDeo pellets with no dust" loading="lazy" decoding="async">
+              <img src="../assets/derived/pillar-dustfree-pellets-tray-clean-v2.webp" alt="White tray of light, chalk-like ZeoDeo zeolite pellets with no dust" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -1918,7 +1921,7 @@
   <div class="section__card final__cta">
    <div class="section__inner">
     <h2 class="section__title" style="margin-bottom:8px;">Ready for a Fresher Home?</h2>
-    <p class="final__price">Classic Litter Tray - <span id="finalPrice">£69.00</span> inc. VAT</p>
+    <p class="final__price">Classic Litter Tray</p>
     <button class="btn btn--primary">Add to Basket</button>
    </div>
   </div>
@@ -2126,7 +2129,7 @@
         <p class="scentAddon__text">A pinch of Green Tea Scent Booster keeps things smelling fresh even longer between pad changes - completely optional, but your nose will thank you.</p>
         <div class="splitCta__actions">
           <button class="calcMood__addon-btn scentAddon__btn" type="button">+ Add</button>
-          <p class="splitCta__hint">Green Tea &middot; +&pound;19.90</p>
+          <p class="splitCta__hint">Green Tea</p>
         </div>
       </div>
     </div>
@@ -2243,7 +2246,6 @@
   <div class="sticky-cta__info">
     <span class="sticky-cta__heading">Ready for a Fresher Home?</span>
     <span class="sticky-cta__name">Classic Litter Tray</span>
-    <span class="sticky-cta__price"><span id="stickyPrice">£69.00</span> inc. VAT</span>
   </div>
   <button class="btn btn--primary" type="button">Add to Basket</button>
 </div>
@@ -2741,27 +2743,14 @@
     });
 
     (function(){
-      var ADDON_PRICE = 19.90;
       var addonBtns = document.querySelectorAll('.calcMood__addon-btn');
-      var heroPriceEl = document.getElementById('heroPrice');
-      var finalPriceEl = document.getElementById('finalPrice');
-      var stickyPriceEl = document.getElementById('stickyPrice');
-      var basePrice = heroPriceEl ? parseFloat(heroPriceEl.textContent.replace(/[^0-9.]/g, '')) : 0;
       var isAdded = false;
-      function formatPrice(v){ return '£' + v.toFixed(2); }
-      function updatePrices(){
-        var total = basePrice + (isAdded ? ADDON_PRICE : 0);
-        if(heroPriceEl) heroPriceEl.textContent = formatPrice(total);
-        if(finalPriceEl) finalPriceEl.textContent = formatPrice(total);
-        if(stickyPriceEl) stickyPriceEl.textContent = formatPrice(total);
-      }
       function setAdded(next){
         isAdded = next;
         addonBtns.forEach(function(b){
           b.classList.toggle('is-added', isAdded);
           b.textContent = isAdded ? '✓ Added' : '+ Add';
         });
-        updatePrices();
       }
       addonBtns.forEach(function(addonBtn){
         addonBtn.addEventListener('click', function(e){
