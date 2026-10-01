@@ -1753,7 +1753,7 @@
           </div>
         </div>
         <div class="smartSol__img smartSol__img--photo smartSol__img--inset">
-          <video id="smartSolCleaningVideo" src="../assets/video/proof/moisture-absorption-cutaway-v6-fixed.mp4" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback controlsList="nodownload noplaybackrate nofullscreen noremoteplayback"></video>
+          <video id="smartSolCleaningVideo" src="../assets/video/proof/tray-how-it-works-v1.mp4" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback controlsList="nodownload noplaybackrate nofullscreen noremoteplayback"></video>
           <span class="smartSol__tag smartSol__tag--1">The pellets handle odour.</span>
           <span class="smartSol__tag smartSol__tag--2">The pad handles liquid.</span>
         </div>
@@ -2789,12 +2789,13 @@
     var wrap = video.parentElement;
     var tag1 = wrap ? wrap.querySelector('.smartSol__tag--1') : null;
     var tag2 = wrap ? wrap.querySelector('.smartSol__tag--2') : null;
-    var PELLETS_END = 1.2;
-    var PAD_END = 3.3;
+    // tray-how-it-works-v1.mp4: pellets close-up 1.5-3s, liquid flowing into the pad 4.5-6s
+    var PELLETS_START = 1.5, PELLETS_END = 3.0;
+    var PAD_START = 4.5, PAD_END = 6.0;
     video.addEventListener('timeupdate', function(){
       var t = video.currentTime;
-      if(tag1) tag1.classList.toggle('is-visible', t < PELLETS_END);
-      if(tag2) tag2.classList.toggle('is-visible', t >= PELLETS_END && t < PAD_END);
+      if(tag1) tag1.classList.toggle('is-visible', t >= PELLETS_START && t < PELLETS_END);
+      if(tag2) tag2.classList.toggle('is-visible', t >= PAD_START && t < PAD_END);
     });
 
     if(!('IntersectionObserver' in window)){
