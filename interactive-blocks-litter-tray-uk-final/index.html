@@ -492,13 +492,10 @@
   .anat3__pin{
     position:absolute;transform:translate(-50%,-50%);
     width:30px;height:30px;
-    background:#5C8A2E;color:#fff;border:2px solid #fff;padding:0;cursor:pointer;z-index:5;
-    border-radius:50%;
+    padding:0;cursor:pointer;z-index:5;
     display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-header);font-weight:700;font-size:12px;line-height:1;
+    font-size:15px;line-height:1;
   }
-  .anat3__pin.anat3__pin--product{background:var(--accent-color);}
-  .anat3__pin.anat3__pin--tan{background:#A9895F;}
   .anat3__pin::before{
     content:'';position:absolute;inset:-4px;border-radius:50%;
     box-shadow:0 0 0 0 rgba(255,255,255,.6);
@@ -525,12 +522,9 @@
     .anat3__tooltip-num{
       flex:none;
       display:inline-flex;align-items:center;justify-content:center;
-      width:19px;height:19px;border-radius:50%;
-      background:#5C8A2E;color:#fff;
-      font-family:var(--font-header);font-weight:700;font-size:10px;
+      width:20px;height:20px;
+      font-size:11px;
     }
-    .anat3__tooltip.is-product .anat3__tooltip-num{background:var(--accent-color);}
-    .anat3__tooltip.is-tan .anat3__tooltip-num{background:#A9895F;}
     .anat3__tooltip-label{
       font-family:var(--font-header);font-weight:600;font-size:12px;line-height:1.3;
       color:var(--text-color);white-space:nowrap;
@@ -545,8 +539,8 @@
   }
   .anat3__legend-item.is-active{background:#F1F8FC;border-color:var(--accent-color);}
   .anat3__legend-num{
-    flex:0 0 auto;width:30px;height:30px;margin-top:1px;border-radius:50%;background:#5C8A2E;border:none;
-    color:#fff;font-size:13px;font-family:var(--font-big-header);font-weight:600;
+    flex:0 0 auto;width:30px;height:30px;margin-top:1px;
+    font-size:15px;
     display:flex;align-items:center;justify-content:center;
   }
   .anat3__legend-num--product{color:var(--accent-color);}
@@ -589,12 +583,8 @@
   .anatCard__num{
     flex:none;
     width:30px;height:30px;
-    border-radius:50%;
     display:flex;align-items:center;justify-content:center;
-    color:#fff;
-    font-family:var(--font-big-header);
-    font-weight:600;
-    font-size:13px;
+    font-size:15px;
   }
   .anatCard__head{display:flex;flex-direction:column;gap:2px;}
   .anatCard__label{
@@ -662,10 +652,28 @@
     .anatCard__icon{width:14px;height:14px;}
     .anatCard__text{font-size:12.5px;line-height:1.4;}
   }
-  .anatCardV2--tan .anatCard__num{background:#A9895F;}
   .anatCardV2--tan .anatCard__badge{border-color:#A9895F;color:#A9895F;}
-  .anatCardV2--blue .anatCard__num{background:var(--accent-color);}
   .anatCardV2--blue .anatCard__badge{border-color:var(--accent-color);color:var(--accent-color);}
+  /* ---------- Bubble badge: glossy "glass" number circle (client ref 27.10.2026). Reusable in any block: .bubble (green) + .bubble--tan / .bubble--blue ---------- */
+  .bubble{
+    --bub-rim:#7DD474;--bub-tint:#DDEFE4;--bub-edge:#A6DFA6;
+    border-radius:50%;
+    border:2px solid var(--bub-rim);
+    background:
+      radial-gradient(ellipse 46% 28% at 36% 20%, rgba(255,255,255,.95), rgba(255,255,255,0) 75%),
+      radial-gradient(circle at 50% 36%, #FAFCFD 0%, var(--bub-tint) 36%, var(--bub-edge) 100%);
+    box-shadow:inset 0 -3px 5px rgba(255,255,255,.55), inset 0 2px 3px rgba(255,255,255,.7), 0 2px 6px rgba(20,40,60,.18);
+    color:#17324D;
+    font-family:var(--font-big-header);font-weight:700;
+  }
+  .bubble--tan,
+  .anat3__tooltip.is-tan .bubble{--bub-rim:#B07A45;--bub-tint:#F2E3D0;--bub-edge:#CF9E6A;}
+  .bubble--blue,
+  .anat3__tooltip.is-product .bubble{--bub-rim:#45AEEF;--bub-tint:#CDE8FB;--bub-edge:#86C8F6;}
+  .bubble--red{--bub-rim:#F2585E;--bub-tint:#FCE3E4;--bub-edge:#F5A0A5;}
+  /* check / cross icons inside a bubble: gradient strokes from the #bubGradGreen / #bubGradRed defs in the comparison section */
+  .bubble svg{stroke:url(#bubGradGreen);stroke-width:3.6;}
+  .bubble--red svg{stroke:none;fill:url(#bubGradRed);}
   .anatCardV2{transition:box-shadow .18s ease, border-color .18s ease;}
   .anatCardV2.is-active{
     background-position:center;
@@ -1299,8 +1307,6 @@
     font-family:var(--font-text);font-weight:700;font-size:12.5px;padding:10px 8px;cursor:pointer;
   }
   .cmpC__icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;}
-  .cmpC__icon--yes{background:var(--new-badge-color);}
-  .cmpC__icon--no{background:#E04B3D;}
   .cmpC__icon svg{width:11px;height:11px;}
 
   .cmpC__mobile{display:none;}
@@ -1335,14 +1341,11 @@
   .cmpC2 .cmpC__cell--us.cmpC__cell--head{color:#fff;font-size:14px;min-height:auto;}
   .cmpC2 .cmpC__cell--blank{min-height:auto;}
   .cmpC2 .cmpC__cell--us.cmpC__cell--text{color:#fff;opacity:1;border-top-color:rgba(255,255,255,.35);padding:14px 20px 20px;}
-  .cmpC2 .cmpC__cell--us .cmpC__icon--yes{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,.55);}
   .cmpRedOutline .cmpC__col-bg--us{background:transparent;border-color:#5C8A2E;z-index:2;}
   .cmpRedOutline .cmpC__cell--us.cmpC__cell--head{color:#5C8A2E;}
   .cmpRedOutline .cmpC__cell--us.cmpC__cell--text{color:#5C8A2E;border-top-color:rgba(92,138,46,.35);}
-  .cmpRedOutline .cmpC__cell--us .cmpC__icon--yes{background:#5C8A2E;border:none;box-shadow:0 2px 8px rgba(30,40,60,.1);}
-  .cmpRedOutline .cmpC__cell--us .cmpC__icon--yes svg{stroke:#fff;}
-  .cmpC2 .cmpC__icon{width:32px;height:32px;border:2px solid var(--border-color);box-shadow:none;}
-  .cmpC2 .cmpC__icon svg{width:16px;height:16px;}
+  .cmpC2 .cmpC__icon{width:30px;height:30px;} /* same size as the anatomy bubbles */
+  .cmpC2 .cmpC__icon svg{width:18px;height:18px;}
   @media (max-width:680px){
     .cmpC2 .cmpC__mobile{border:2px solid var(--border-color);}
     .cmpC2 .cmpC__mobile-check{width:32px;height:32px;border:2px solid rgba(255,255,255,.55);box-shadow:none;}
@@ -1382,11 +1385,6 @@
     .cmpRedOutline .cmpC__mobile-check svg{stroke:#fff;}
     .cmpRedOutline .cmpC__mobile-cadence{color:#5C8A2E;border-top-color:rgba(92,138,46,.35);}
   }
-  .cmpC3 .cmpC__icon--no{background:#9AA1AC;}
-  .cmpRedOutline .cmpC__icon--no{background:transparent;border-color:#E04B3D;box-shadow:0 2px 8px rgba(30,40,60,.1);}
-  .cmpRedOutline .cmpC__icon--no svg{stroke:#E04B3D;}
-  .cmpRedOutline .cmpC__icon--yes{background:#5C8A2E;border:none;box-shadow:0 2px 8px rgba(30,40,60,.1);}
-  .cmpRedOutline .cmpC__icon--yes svg{stroke:#fff;}
   .cmpRedOutline .cmpC__cell--head:not(.cmpC__cell--us):not(.cmpC__cell--blank){
     border:none;border-radius:999px;box-shadow:0 2px 8px rgba(30,40,60,.1);
   }
@@ -1431,8 +1429,8 @@
     .cmpCGridMobile .cmpC__cell--head{font-size:9.5px;min-height:auto;align-items:flex-start;padding-top:6px;}
     .cmpCGridMobile .cmpC__cell--us.cmpC__cell--head{align-items:flex-start;padding-top:6px;}
     .cmpCGridMobile .cmpC__cell--head:not(.cmpC__cell--us):not(.cmpC__cell--blank){padding:6px 6px 0;font-size:9px;align-items:flex-start;}
-    .cmpCGridMobile .cmpC__icon{width:20px;height:20px;}
-    .cmpCGridMobile .cmpC__icon svg{width:10px;height:10px;}
+    .cmpCGridMobile .cmpC__icon{width:22px;height:22px;border-width:1.5px;}
+    .cmpCGridMobile .cmpC__icon svg{width:12px;height:12px;}
     .cmpCGridMobile .cmpC__cell--text{font-size:9px;align-items:flex-start;padding-top:8px;}
     .cmpCGridMobile .cmpC__cell--us.cmpC__cell--text{align-items:flex-start;padding-top:8px;}
     .cmpCGridMobile .cmpC__cell--lab:has(+ .cmpC__cell--text){align-items:flex-start;padding-top:8px;}
@@ -1633,7 +1631,7 @@
         <div class="anatCardV2 anatCardV2--tan anat3__legend-item" data-key="pellets2" style="background-image:url('../assets/derived/anat-card-v2-pellets-bg-v2.webp');">
           <div class="anatCardV2__content">
             <div class="anatCard__top">
-              <span class="anatCard__num">1</span>
+              <span class="anatCard__num bubble bubble--tan">1</span>
               <div class="anatCard__head">
                 <span class="anatCard__label">Pellets</span>
                 <h3 class="anatCard__title">No More<br>Litter Tray Smell</h3>
@@ -1649,7 +1647,7 @@
         <div class="anatCardV2 anatCardV2--blue anat3__legend-item" data-key="pad2" style="background-image:url('../assets/derived/anat-card-v2-pad-bg.webp');">
           <div class="anatCardV2__content">
             <div class="anatCard__top">
-              <span class="anatCard__num">2</span>
+              <span class="anatCard__num bubble bubble--blue">2</span>
               <div class="anatCard__head">
                 <span class="anatCard__label">Pad</span>
                 <h3 class="anatCard__title">Cleaning<br>Made Simple</h3>
@@ -1667,21 +1665,21 @@
       <div class="anat3__layout">
         <div class="anat3__stage">
           <img src="../assets/product/anatomy-lifestyle-final.webp" alt="ZeoDeo tray in Anthracite Grey exploded in a sunlit room by a garden window: raised rim, Quartz Grey pellet tray with zeolite pellets, base shell and pad drawer, with liquid flowing through to the absorbent pad" loading="lazy" decoding="async">
-          <button class="anat3__pin" type="button" data-key="rim2" style="left:79%;top:32%;" aria-label="3. No Mess Escapes">3</button>
-          <button class="anat3__pin" type="button" data-key="grid2" style="left:76%;top:49%;" aria-label="4. Odour Starts Draining Immediately">4</button>
-          <button class="anat3__pin" type="button" data-key="base2" style="left:70%;top:70%;" aria-label="5. Built to Last">5</button>
-          <button class="anat3__pin" type="button" data-key="drawer2" style="left:27%;top:87%;" aria-label="6. Cleaning in Seconds">6</button>
-          <button class="anat3__pin anat3__pin--product anat3__pin--tan" type="button" data-key="pellets2" style="left:47%;top:50%;" aria-label="1. No More Litter Box Smell">1</button>
-          <button class="anat3__pin anat3__pin--product" type="button" data-key="pad2" style="left:36%;top:79%;" aria-label="2. Cleaning Made Simple">2</button>
+          <button class="anat3__pin bubble" type="button" data-key="rim2" style="left:79%;top:32%;" aria-label="3. No Mess Escapes">3</button>
+          <button class="anat3__pin bubble" type="button" data-key="grid2" style="left:76%;top:49%;" aria-label="4. Odour Starts Draining Immediately">4</button>
+          <button class="anat3__pin bubble" type="button" data-key="base2" style="left:70%;top:70%;" aria-label="5. Built to Last">5</button>
+          <button class="anat3__pin bubble" type="button" data-key="drawer2" style="left:27%;top:87%;" aria-label="6. Cleaning in Seconds">6</button>
+          <button class="anat3__pin anat3__pin--product anat3__pin--tan bubble bubble--tan" type="button" data-key="pellets2" style="left:47%;top:50%;" aria-label="1. No More Litter Box Smell">1</button>
+          <button class="anat3__pin anat3__pin--product bubble bubble--blue" type="button" data-key="pad2" style="left:36%;top:79%;" aria-label="2. Cleaning Made Simple">2</button>
           <div class="anat3__tooltip" role="status" hidden>
-            <span class="anat3__tooltip-num"></span>
+            <span class="anat3__tooltip-num bubble"></span>
             <span class="anat3__tooltip-label"></span>
           </div>
         </div>
         <div class="anat3__legend-panel">
           <ul class="anat3__legend">
             <li class="anat3__legend-item" data-key="rim2">
-              <span class="anat3__legend-num">3</span>
+              <span class="anat3__legend-num bubble">3</span>
               <div>
                 <span class="anat3__legend-title">No Mess Escapes</span>
                 <span class="anat3__legend-sub">Raised rim</span>
@@ -1689,7 +1687,7 @@
               </div>
             </li>
             <li class="anat3__legend-item" data-key="grid2">
-              <span class="anat3__legend-num">4</span>
+              <span class="anat3__legend-num bubble">4</span>
               <div>
                 <span class="anat3__legend-title">Odour Starts Draining Immediately</span>
                 <span class="anat3__legend-sub">Litter grid</span>
@@ -1697,7 +1695,7 @@
               </div>
             </li>
             <li class="anat3__legend-item" data-key="base2">
-              <span class="anat3__legend-num">5</span>
+              <span class="anat3__legend-num bubble">5</span>
               <div>
                 <span class="anat3__legend-title">Built to Last</span>
                 <span class="anat3__legend-sub">Outer shell</span>
@@ -1705,7 +1703,7 @@
               </div>
             </li>
             <li class="anat3__legend-item" data-key="drawer2">
-              <span class="anat3__legend-num">6</span>
+              <span class="anat3__legend-num bubble">6</span>
               <div>
                 <span class="anat3__legend-title">Cleaning in Seconds</span>
                 <span class="anat3__legend-sub">Pad drawer</span>
@@ -1970,6 +1968,12 @@
    <div class="section__inner cmpTable__inner cmpC2 cmpC3 cmpRedOutline cmpCtaBoxed cmpCGridMobile cmpCFlatHead cmpCZebra cmpCNoLines">
     <p class="section__eyebrow">Why ZeoDeo Wins</p>
     <h2 class="section__title">The Full Comparison</h2>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="bubGradGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#62C925"/><stop offset="1" stop-color="#0B7A0B"/></linearGradient>
+        <linearGradient id="bubGradRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF3A3A"/><stop offset="1" stop-color="#D60000"/></linearGradient>
+      </defs>
+    </svg>
     <div class="cmpC__frame">
       <div class="cmpC__inner">
         <div class="cmpC__table cmpC__table--grid">
@@ -1982,34 +1986,34 @@
           <div class="cmpC__cell cmpC__cell--head">Crystals</div>
 
           <div class="cmpC__cell cmpC__cell--lab is-alt"><strong class="cmpC__lab-strong">No odour</strong> - it absorbs, it doesn't mask</div>
-          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
-          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
-          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
-          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
 
           <div class="cmpC__cell cmpC__cell--lab"><strong class="cmpC__lab-strong">Clean once a day</strong>, not five times</div>
-          <div class="cmpC__cell cmpC__cell--us"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
-          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
-          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
-          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+          <div class="cmpC__cell cmpC__cell--us"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
 
           <div class="cmpC__cell cmpC__cell--lab is-alt"><strong class="cmpC__lab-strong">Nothing gets tracked</strong> through the house</div>
-          <div class="cmpC__cell cmpC__cell--us is-alt"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
-          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
-          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
-          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+          <div class="cmpC__cell cmpC__cell--us is-alt"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
 
           <div class="cmpC__cell cmpC__cell--lab"><strong class="cmpC__lab-strong">Hardly any dust</strong></div>
-          <div class="cmpC__cell cmpC__cell--us"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
-          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
-          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
-          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell cmpC__cell--us"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
 
           <div class="cmpC__cell cmpC__cell--lab is-alt"><strong class="cmpC__lab-strong">No motors</strong>, WiFi or subscription</div>
-          <div class="cmpC__cell cmpC__cell--us is-alt"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
-          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
-          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
-          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell cmpC__cell--us is-alt"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
 
           <div class="cmpC__cell cmpC__cell--lab"><strong class="cmpC__lab-strong">Litter change</strong></div>
           <div class="cmpC__cell cmpC__cell--us cmpC__cell--text">Pellets last 30 days<br>Pad lasts 7 days</div>
