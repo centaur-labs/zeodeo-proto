@@ -1352,6 +1352,14 @@
   .cmpRedOutline .cmpC__cell--us.cmpC__cell--text{color:#5C8A2E;border-top-color:rgba(92,138,46,.35);}
   .cmpC2 .cmpC__icon{width:30px;height:30px;} /* same size as the anatomy bubbles */
   .cmpC2 .cmpC__icon svg{width:18px;height:18px;}
+  /* check / cross buttons: client's glass-bubble pictures (Ilya's ref 22.10.2026), replace the CSS-drawn bubbles in the comparison table */
+  .cmpC__icon--yes.bubble,.cmpC__icon--no.bubble{
+    border:0;box-shadow:none;background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:100% 100%;
+    filter:drop-shadow(0 2px 3px rgba(30,40,60,.22));
+  }
+  .cmpC__icon--yes.bubble{background-image:url(../assets/icons/btn-glass-check-96.webp);}
+  .cmpC__icon--no.bubble{background-image:url(../assets/icons/btn-glass-cross-96.webp);}
+  .cmpC__icon--yes.bubble svg,.cmpC__icon--no.bubble svg{display:none;}
   @media (max-width:680px){
     .cmpC2 .cmpC__mobile{border:2px solid var(--border-color);}
     .cmpC2 .cmpC__mobile-check{width:32px;height:32px;border:2px solid rgba(255,255,255,.55);box-shadow:none;}
