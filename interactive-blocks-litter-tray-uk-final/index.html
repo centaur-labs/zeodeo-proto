@@ -658,18 +658,17 @@
   .bubble{
     --bub-rim:#7DD474;--bub-tint:#DDEFE4;--bub-edge:#A6DFA6;
     border-radius:50%;
-    border:2px solid var(--bub-rim);
-    background:
-      radial-gradient(ellipse 46% 28% at 36% 20%, rgba(255,255,255,.95), rgba(255,255,255,0) 75%),
-      radial-gradient(circle at 50% 36%, #FAFCFD 0%, var(--bub-tint) 36%, var(--bub-edge) 100%);
-    box-shadow:inset 0 -3px 5px rgba(255,255,255,.55), inset 0 2px 3px rgba(255,255,255,.7), 0 2px 6px rgba(20,40,60,.18);
+    /* glass-bubble pictures from the client's reference (22.10.2026); number stays live text on top */
+    border:0;
+    background:url(../assets/icons/btn-glass-orb-green-96.webp) center/100% 100% no-repeat;
+    filter:drop-shadow(0 2px 3px rgba(20,40,60,.22));
     color:#17324D;
     font-family:var(--font-big-header);font-weight:700;
   }
   .bubble--tan,
-  .anat3__tooltip.is-tan .bubble{--bub-rim:#B07A45;--bub-tint:#F2E3D0;--bub-edge:#CF9E6A;}
+  .anat3__tooltip.is-tan .bubble{--bub-rim:#B07A45;--bub-tint:#F2E3D0;--bub-edge:#CF9E6A;background-image:url(../assets/icons/btn-glass-orb-tan-96.webp);}
   .bubble--blue,
-  .anat3__tooltip.is-product .bubble{--bub-rim:#45AEEF;--bub-tint:#CDE8FB;--bub-edge:#86C8F6;}
+  .anat3__tooltip.is-product .bubble{--bub-rim:#45AEEF;--bub-tint:#CDE8FB;--bub-edge:#86C8F6;background-image:url(../assets/icons/btn-glass-orb-blue-96.webp);}
   .bubble--red{--bub-rim:#F2585E;--bub-tint:#FCE3E4;--bub-edge:#F5A0A5;}
   /* check / cross icons inside a bubble: gradient strokes from the #bubGradGreen / #bubGradRed defs in the comparison section */
   .bubble svg{stroke:url(#bubGradGreen);stroke-width:3.6;}
