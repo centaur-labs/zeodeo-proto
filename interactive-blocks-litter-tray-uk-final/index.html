@@ -1134,6 +1134,10 @@
   }
   .roomMx__stage{position:relative;border-radius:var(--radius-card);overflow:hidden;background:#F4F4F4;aspect-ratio:1/1;}
   .roomMx__stage img{width:100%;height:100%;object-fit:cover;display:block;}
+  .roomMx__stage .roomMx__fade{position:absolute;inset:0;opacity:0;transition:opacity .6s cubic-bezier(.4,0,.2,1);pointer-events:none;}
+  .roomMx__name{transition:opacity .25s ease;}
+  .roomMx__name.is-swap{opacity:0;}
+  @media (prefers-reduced-motion:reduce){.roomMx__stage .roomMx__fade,.roomMx__name{transition:none;}}
   .roomMx__text{font-size:13px;line-height:1.55;color:var(--text-color);opacity:.75;margin-bottom:18px;max-width:42ch;}
   @media (max-width:680px){
     .roomMx__text{display:none;}
@@ -2389,25 +2393,85 @@
     var roomNames = { grey:'Grey concrete room', white:'White & oak room', wood:'Walnut floor room' };
     var rooms = ['grey','white','wood'];
     var colours = ['oysterwhite','stonegrey','anthracite'];
-    rooms.forEach(function(r){
-      colours.forEach(function(c){
-        var pre = new Image();
-        pre.src = '../assets/product/lifestyle/room-' + r + '-tray-' + c + '.webp';
-      });
-    });
-
     var colour = 'oysterwhite';
     var room = 'grey';
     var photoOverrides = {
       'grey|anthracite': '../assets/product/lifestyle/room-grey-tray-anthracite-alt.webp',
-      'wood|anthracite': '../assets/product/lifestyle/room-wood-tray-anthracite-alt.webp',
-      'white|anthracite': '../assets/product/lifestyle/room-white-tray-anthracite-alt.webp'
+      'wood|anthracite': '../assets/product/lifestyle/room-wood-tray-anthracite-alt.webp'
     };
+    function urlFor(r, c){
+      return photoOverrides[r + '|' + c] || ('../assets/product/lifestyle/room-' + r + '-tray-' + c + '.webp');
+    }
+
+    // second layer on top of the photo: new picture fades in over the old one
+    var stage = img.parentNode;
+    var fade = img.cloneNode(false);
+    fade.removeAttribute('id');
+    fade.removeAttribute('src');
+    fade.alt = '';
+    fade.setAttribute('aria-hidden', 'true');
+    fade.className = 'roomMx__fade';
+    stage.appendChild(fade);
+
+    // keep references so the browser does not drop preloaded pictures; decode them ahead of the click
+    var loaded = {};
+    function ready(url){
+      if(!loaded[url]){
+        var pre = new Image();
+        pre.src = url;
+        loaded[url] = (pre.decode ? pre.decode() : Promise.resolve()).catch(function(){}).then(function(){ return pre; });
+      }
+      return loaded[url];
+    }
+    var shown = urlFor(room, colour);
+    ready(shown);
+    function preloadRest(){
+      var queue = [];
+      rooms.forEach(function(r){ colours.forEach(function(c){ queue.push(urlFor(r, c)); }); });
+      (function next(){
+        var u = queue.shift();
+        if(!u) return;
+        ready(u).then(function(){ setTimeout(next, 150); });
+      })();
+    }
+    if(window.requestIdleCallback){ requestIdleCallback(preloadRest, { timeout: 2500 }); } else { setTimeout(preloadRest, 1200); }
+
+    var token = 0, settleTimer = null;
+    function swapPhoto(url){
+      var my = ++token;
+      if(url === shown) return;
+      ready(url).then(function(){
+        if(my !== token) return;
+        clearTimeout(settleTimer);
+        // commit a half-finished previous fade so the new one starts from what the eye sees
+        if(fade.getAttribute('src')){ img.src = fade.getAttribute('src'); }
+        fade.style.transition = 'none';
+        fade.style.opacity = 0;
+        fade.src = url;
+        void fade.offsetWidth;
+        fade.style.transition = '';
+        fade.style.opacity = 1;
+        shown = url;
+        settleTimer = setTimeout(function(){
+          if(my !== token) return;
+          img.src = url;
+          var done = function(){ if(my === token){ fade.style.transition = 'none'; fade.style.opacity = 0; fade.removeAttribute('src'); void fade.offsetWidth; fade.style.transition = ''; } };
+          (img.decode ? img.decode() : Promise.resolve()).catch(function(){}).then(done);
+        }, 650);
+      });
+    }
+
+    var nameTimer = null;
+    function setName(text){
+      if(nameEl.textContent === text) return;
+      nameEl.classList.add('is-swap');
+      clearTimeout(nameTimer);
+      nameTimer = setTimeout(function(){ nameEl.textContent = text; nameEl.classList.remove('is-swap'); }, 220);
+    }
 
     function render(){
-      var key = room + '|' + colour;
-      img.src = photoOverrides[key] || ('../assets/product/lifestyle/room-' + room + '-tray-' + colour + '.webp');
-      nameEl.textContent = colourNames[colour] + ' - ' + roomNames[room];
+      swapPhoto(urlFor(room, colour));
+      setName(colourNames[colour] + ' - ' + roomNames[room]);
       colourSwatches.forEach(function(s){ s.classList.toggle('is-active', s.dataset.c === colour); });
       roomButtons.forEach(function(b){ b.classList.toggle('is-active', b.dataset.r === room); });
     }
