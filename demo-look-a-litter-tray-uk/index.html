@@ -1,0 +1,3121 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<base href="../interactive-blocks-litter-tray-uk-final/">
+<meta name="robots" content="noindex,nofollow">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeodeo Classic Litter Tray (demo look A)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Montserrat:wght@700&family=Open+Sans:wght@400;700&family=Playfair+Display:wght@600;700&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Values below match assets/DESIGN.md - real zeodeo.co.uk site style guide */
+  :root{
+    --text-color:#404E65;
+    --accent-color:#31ACD8;
+    --accent-color-2:#FF5B4B;
+    --background-color:#6ECDED;
+    --new-badge-color:#93C240;
+    --border-color:#EAEAEA;
+    --text-color-extra-light:#D5E0EC;
+    --card-bg:#FFFFFF;
+    --font-text:'Open Sans',sans-serif;
+    --font-header:'Montserrat',sans-serif;
+    --font-big-header:'Fredoka',sans-serif;
+    --radius-s:4px;
+    --radius-card:8px;
+    --container:390px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:var(--font-text);
+    background:#fff;
+    color:var(--text-color);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:var(--font-header);
+    line-height:1.15;
+    color:var(--text-color);
+  }
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 20px;}
+
+  /* ---------- Section 1: Hero ---------- */
+  .hero{
+    position:relative;
+    max-width:var(--container);
+    margin:0 auto 16px;
+  }
+  .hero__card{
+    background:var(--card-bg);
+    padding:20px 20px 24px;
+    text-align:left;
+  }
+  .hero__breadcrumb{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    font-family:var(--font-text);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#9A9A9A;
+    margin-bottom:12px;
+  }
+  .hero__breadcrumb-sep{margin:0 4px;}
+  .hero__stock{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    font-size:10px;
+    letter-spacing:0.5px;
+    color:var(--new-badge-color);
+    white-space:nowrap;
+  }
+  .hero__gallery{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:20px;
+  }
+  .hero__main-photo{
+    position:relative;
+    overflow:hidden;
+    border-radius:var(--radius-card);
+    margin-bottom:10px;
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#FAFAFA;
+  }
+  .hero__badge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:var(--new-badge-color);
+    color:#fff;
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:5px 12px;
+    border-radius:999px;
+    z-index:2;
+  }
+  .hero__image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 30%;
+  }
+  .hero__thumbs{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:8px;
+  }
+  .hero__thumb{
+    width:100%;
+    aspect-ratio:1/1;
+    padding:0;
+    border-radius:8px;
+    border:2px solid var(--border-color);
+    background:#FAFAFA;
+    overflow:hidden;
+    cursor:pointer;
+  }
+  .hero__thumb.is-active{border-color:var(--accent-color);}
+  .hero__thumb img{width:100%;height:100%;object-fit:cover;}
+  .hero__title{
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:36px;
+    line-height:41.4px;
+    margin-bottom:10px;
+  }
+  .hero__subtitle{
+    font-family:var(--font-text);
+    font-size:15px;
+    line-height:24px;
+    color:var(--text-color);
+    margin-bottom:16px;
+  }
+  .hero__specs{
+    font-size:15px;
+    line-height:1.7;
+    margin-bottom:16px;
+  }
+  .hero__specs strong{font-weight:700;}
+  .hero__colors{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:16px;
+    flex-wrap:wrap;
+  }
+  .hero__colors-label{
+    font-family:var(--font-text);
+    font-weight:700;
+    font-size:13px;
+    color:var(--text-color);
+  }
+  .hero__swatches{display:flex;gap:8px;}
+  .hero__colors-selected{
+    font-family:var(--font-text);
+    font-size:13px;
+    color:var(--text-color);
+  }
+  .hero__buy-row{
+    display:flex;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .hero__qty{
+    display:flex;
+    align-items:center;
+    border:1px solid var(--border-color);
+    border-radius:var(--radius-s);
+    flex:0 0 auto;
+  }
+  .hero__qty-btn{
+    width:40px;
+    height:48px;
+    border:none;
+    background:none;
+    font-size:18px;
+    color:var(--text-color);
+    cursor:pointer;
+  }
+  .hero__qty-input{
+    width:32px;
+    height:48px;
+    border:none;
+    border-left:1px solid var(--border-color);
+    border-right:1px solid var(--border-color);
+    text-align:center;
+    font-family:var(--font-text);
+    font-size:15px;
+    color:var(--text-color);
+  }
+  .hero__cta{flex:1;}
+  .hero__category{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#9A9A9A;
+    margin-bottom:16px;
+  }
+  .hero__category-link{
+    color:var(--text-color);
+    font-weight:700;
+    text-decoration:none;
+  }
+  .hero__meta-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding-top:12px;
+    border-top:1px solid var(--border-color);
+    flex-wrap:wrap;
+  }
+  .hero__wishlist{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:none;
+    border:none;
+    font-family:var(--font-text);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--text-color);
+    cursor:pointer;
+    padding:0;
+  }
+  .hero__share{display:flex;align-items:center;gap:10px;}
+  .hero__share-label{
+    font-family:var(--font-text);
+    font-size:11px;
+    font-weight:400;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#9A9A9A;
+  }
+  .hero__share a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:28px;
+    height:28px;
+    color:var(--text-color);
+  }
+  .btn{
+    display:inline-block;
+    width:100%;
+    max-width:340px;
+    padding:13px 24px 14px;
+    border:none;
+    border-radius:var(--radius-s);
+    font-family:var(--font-text);
+    font-weight:700;
+    font-size:14px;
+    line-height:16px;
+    cursor:pointer;
+    text-align:center;
+    min-height:48px;
+  }
+  .btn--primary{
+    background:var(--accent-color-2);
+    color:#fff;
+    transition:background 0.15s ease;
+  }
+  .btn--primary:active{
+    background:#E04B3D;
+  }
+
+  /* ---------- Shared section wrapper ---------- */
+  .section{
+    max-width:var(--container);
+    margin:0 auto;
+    padding:8px 0 24px;
+  }
+  .section__card{
+    background:var(--card-bg);
+    padding:24px 0;
+  }
+  .section__inner{
+    max-width:680px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .section__eyebrow{
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--text-color);
+    text-align:center;
+    margin-bottom:8px;
+  }
+  .section__title{
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:36px;
+    line-height:41.4px;
+    text-align:center;
+    color:var(--text-color);
+    margin-bottom:20px;
+  }
+
+  .swatch{
+    position:relative;
+    width:27px;
+    height:27px;
+    border-radius:50%;
+    border:2px solid transparent;
+    box-shadow:0px 4px 2px -2px rgba(238,238,238,1);
+    cursor:pointer;
+    padding:0;
+  }
+  .swatch::before{
+    content:'';
+    position:absolute;
+    inset:-6px;
+  }
+  .swatch.is-selected{
+    border-color:var(--accent-color);
+  }
+
+  /* ---------- Final CTA + sticky bar ---------- */
+  .final__cta{
+    text-align:center;
+  }
+  .final__price{
+    font-family:var(--font-text);
+    font-size:15px;
+    color:var(--text-color);
+    margin:0 auto 18px;
+  }
+  body{
+    padding-bottom:78px;
+  }
+  .sticky-cta{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#fff;
+    border-top:1px solid var(--border-color);
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    transform:translateY(100%);
+    transition:transform 0.25s ease;
+    z-index:50;
+    box-shadow:0 -2px 10px rgba(0,0,0,0.08);
+  }
+  .sticky-cta.is-visible{
+    transform:translateY(0);
+  }
+  .sticky-cta__info{
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+  }
+  .sticky-cta__heading{
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:13px;
+    color:var(--text-color);
+    white-space:nowrap;
+    margin-bottom:2px;
+  }
+  .sticky-cta__name{
+    font-family:var(--font-text);
+    font-weight:400;
+    font-size:11px;
+    color:var(--text-color);
+    opacity:.65;
+    white-space:nowrap;
+  }
+  .sticky-cta .btn{
+    width:auto;
+    flex:0 0 auto;
+    padding:12px 20px;
+    font-size:13px;
+    min-height:44px;
+  }
+
+  /* ---------- Mobile: unified 16px side gutter (replaces the old 20px) ---------- */
+  @media (max-width:680px){
+    .section__inner{padding-left:16px;padding-right:16px;}
+    .hero__card{padding-left:16px;padding-right:16px;}
+  }
+
+  /* ---------- Narrow phones (iPhone SE / small Android, <=374px) ---------- */
+  @media (max-width:374px){
+    .hero__title{font-size:28px;line-height:1.2;}
+    .hero__subtitle{font-size:14px;}
+    .hero__specs{font-size:14px;}
+    .section__title{font-size:22px;}
+    .splitCta__title{font-size:22px;}
+    .splitCta__panel{padding:28px 20px;}
+    .anat3__legend-title{font-size:13px;}
+    .tlPath__card-title{font-size:14.5px;}
+    .cmpC2 .cmpC__mobile-title{font-size:16px;}
+    .btn{font-size:13px;padding:12px 18px 13px;}
+  }
+
+  @media (min-width:768px){
+    :root{--container:1170px;}
+    body{background:var(--background-color);}
+    .page-canvas{
+      max-width:1170px;
+      margin:0 auto;
+      padding:32px;
+      background:var(--card-bg);
+    }
+    .hero{max-width:none;padding:0;margin-bottom:40px;}
+    .section{max-width:none;padding:0;}
+    .hero__card{
+      padding:0;
+      display:grid;
+      grid-template-columns:1fr 488px;
+      gap:32px;
+      align-items:start;
+    }
+    .hero__gallery{
+      flex-direction:row-reverse;
+      gap:16px;
+      margin-bottom:0;
+    }
+    .hero__main-photo{margin-bottom:0;flex:1;}
+    .hero__thumbs{
+      display:flex;
+      flex-direction:column;
+      overflow-y:auto;
+      max-height:530px;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
+    }
+    .hero__thumbs::-webkit-scrollbar{display:none;width:0;height:0;}
+    .hero__thumb{width:80px;height:80px;flex:0 0 auto;aspect-ratio:auto;}
+    .hero__info{padding-top:0;}
+    .hero__title{margin-bottom:16px;}
+    .hero__subtitle{font-size:16px;margin-bottom:24px;}
+    .hero__specs{font-size:15px;margin-bottom:24px;}
+    .hero__colors{margin-bottom:24px;}
+    .swatch{width:32px;height:32px;}
+    .anatomy__inner{max-width:none;}
+    .pillars__inner{max-width:none;}
+    .bafReal__inner{max-width:none;}
+    .calcMood__inner{max-width:none;}
+    .scentAddon__inner{max-width:none;}
+    .tlPath__inner{max-width:none;}
+    .roomMx__inner{max-width:none;}
+    .moistD__inner{max-width:none;}
+    .cmpTable__inner{max-width:none;}
+    .splitCta__inner{max-width:none;}
+    .shorts__inner{max-width:none;}
+    .sticky-cta{
+      max-width:1170px;
+      margin:0 auto;
+      padding-left:32px;
+      padding-right:32px;
+    }
+  }
+
+  /* ---------- Section 1B: Anatomy of ZeoDeo (hotspot photo + legend) ---------- */
+  .anatomy__eyebrow,
+  .anatomy__title{
+    text-align:left;
+  }
+  .anatomy__title{margin-bottom:2px;}
+  .anatomy__subtitle{text-align:left;font-family:var(--font-header);font-weight:300;font-size:18px;color:var(--text-color);margin:2px 0 18px;}
+  .anat3__layout{display:flex;flex-wrap:wrap;gap:22px;align-items:stretch;}
+  .anat3__stage{
+    position:relative;border-radius:var(--radius-card);overflow:hidden;
+    background:#EDEAE3;
+    flex:1.6 1 420px;max-width:680px;
+  }
+  .anat3__stage img{width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;}
+  .anat3__pin{
+    position:absolute;transform:translate(-50%,-50%);
+    width:30px;height:30px;
+    padding:0;cursor:pointer;z-index:5;
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;line-height:1;
+  }
+  .anat3__pin::before{
+    content:'';position:absolute;inset:-4px;border-radius:50%;
+    box-shadow:0 0 0 0 rgba(255,255,255,.6);
+    animation:anat3Pulse 2.4s ease-out infinite;
+  }
+  .anat3__pin::after{
+    content:'';position:absolute;inset:-8px;
+  }
+  .anat3__pin.is-open::before{animation:none;box-shadow:none;}
+  .anat3__pin.is-open{transform:translate(-50%,-50%) scale(1.08);}
+  .anat3__pin:focus-visible{outline:2px solid #fff;outline-offset:2px;}
+  @keyframes anat3Pulse{
+    0%{box-shadow:0 0 0 0 rgba(255,255,255,.6);}
+    70%{box-shadow:0 0 0 11px rgba(255,255,255,0);}
+    100%{box-shadow:0 0 0 0 rgba(255,255,255,0);}
+  }
+  .anat3__tooltip{display:none;}
+  @media (max-width:680px){
+    .anat3__tooltip:not([hidden]){
+      display:flex;align-items:center;gap:6px;
+      position:absolute;z-index:20;
+      top:8px;left:8px;
+    }
+    .anat3__tooltip-num{
+      flex:none;
+      display:inline-flex;align-items:center;justify-content:center;
+      width:20px;height:20px;
+      font-size:11px;
+    }
+    .anat3__tooltip-label{
+      font-family:var(--font-header);font-weight:600;font-size:12px;line-height:1.3;
+      color:var(--text-color);white-space:nowrap;
+      text-shadow:0 1px 2px #fff, 0 1px 6px #fff, 0 -1px 6px #fff, 0 1px 12px rgba(255,255,255,.9);
+    }
+  }
+  .anat3__legend-panel{flex:1 1 260px;display:flex;flex-direction:column;justify-content:center;padding:4px 4px;}
+  .anat3__legend{list-style:none;display:flex;flex-direction:column;gap:26px;margin:0;padding:0;}
+  .anat3__legend-item{
+    display:flex;align-items:flex-start;gap:14px;padding:10px 12px;border-radius:var(--radius-s);
+    border:1px solid transparent;transition:background .18s ease, border-color .18s ease;
+  }
+  .anat3__legend-item.is-active{background:#F1F8FC;border-color:var(--accent-color);}
+  .anat3__legend-num{
+    flex:0 0 auto;width:30px;height:30px;margin-top:1px;
+    font-size:15px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .anat3__legend-num--product{color:var(--accent-color);}
+  .anat3__legend-title{display:block;font-family:var(--font-header);font-weight:700;font-size:18px;color:var(--text-color);line-height:1.3;}
+  .anat3__legend-sub{display:block;font-size:14px;color:var(--text-color);opacity:.55;margin-top:2px;}
+  .anat3__legend-text{display:block;font-size:15px;line-height:1.5;color:var(--text-color);opacity:.8;margin-top:8px;}
+  .anat3__legend-item--pillar{background:#F1F8FC;border-color:var(--accent-color);}
+  .anat3__legend-item--pillar.is-active{background:#E3F1F9;border-color:var(--accent-color);}
+  .anat3__legend-item--pillar .anat3__legend-num{background:var(--accent-color);color:#fff;border:none;}
+  .anat3__legend-item--pillar img{flex:0 0 auto;width:64px;height:64px;object-fit:contain;object-position:center;align-self:center;}
+  @media (max-width:680px){
+    .anat3__stage{flex:0 0 auto;max-width:none;order:1;margin-bottom:20px;}
+    .anat3__legend-panel{flex:0 0 auto;order:3;}
+    .anatomy__inner{display:flex;flex-direction:column;}
+    .anatomy__inner > .anat3__layout{display:contents;}
+    .anatomy__inner > .anatCardV2__grid{order:2;}
+    .anat3__legend-item.is-active{background:transparent;border-color:transparent;}
+    .anat3__legend{gap:16px;}
+    .anat3__legend-item{gap:10px;padding:4px 0;}
+    .anat3__legend-title{font-size:16px;}
+    .anat3__legend-sub{font-size:12px;margin-top:1px;}
+    .anat3__legend-text{font-size:13px;line-height:1.4;margin-top:5px;}
+  }
+  /* ---------- Anatomy variant: pellets/pad (1/2) as a full-width two-card row above the photo ---------- */
+  .anat3__pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
+  .anat3__pillars .anat3__legend-item{padding:16px 18px;border-radius:var(--radius-card);height:100%;align-items:flex-start;}
+  .anat3__pillars .anat3__legend-num{width:28px;height:28px;font-size:13px;}
+  .anat3__pillars .anat3__legend-title{font-size:15px;}
+  .anat3__pillars .anat3__legend-text{font-size:13px;}
+  .anat3__pillars .anat3__legend-item img{flex:0 0 auto;width:180px;height:180px;object-fit:contain;object-position:left center;align-self:center;}
+  @media (max-width:680px){
+    .anat3__pillars{grid-template-columns:1fr;}
+    .anat3__pillars .anat3__legend-item img{display:none;}
+  }
+  @media (min-width:768px){
+    .anat3__legend-item--pillar img{width:80px;height:80px;}
+  }
+  /* ---------- Anatomy pillars: live text + photo cards ---------- */
+  .anatCard__top{display:flex;align-items:flex-start;gap:12px;}
+  .anatCard__num{
+    flex:none;
+    width:30px;height:30px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;
+  }
+  .anatCard__head{display:flex;flex-direction:column;gap:2px;}
+  .anatCard__label{
+    font-family:var(--font-header);
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:#8A8F98;
+  }
+  .anatCard__title{
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:22px;
+    line-height:1.15;
+    text-transform:uppercase;
+    color:var(--text-color);
+    margin:0;
+  }
+  .anatCard__badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    align-self:flex-start;
+    border:1.5px solid;
+    border-radius:999px;
+    padding:7px 16px;
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:14px;
+    white-space:nowrap;
+  }
+  .anatCard__icon{flex:none;}
+  .anatCard__text{font-size:13.5px;line-height:1.45;color:var(--text-color);opacity:.75;margin:0;}
+
+  /* ---------- Anatomy pillars variant 2: full-bleed background photo, text overlaid ---------- */
+  .anatCardV2__grid{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:32px;}
+  .anatCardV2{
+    position:relative;
+    border-radius:var(--radius-card);
+    border:1px solid var(--border-color);
+    overflow:hidden;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    padding:18px 20px;
+    display:flex;
+    align-items:flex-start;
+  }
+  .anatCardV2__content{display:flex;flex-direction:column;gap:10px;max-width:62%;}
+  @media (min-width:768px){
+    .anatCardV2__grid{grid-template-columns:1fr 1fr;}
+    .anatCardV2{padding:20px 24px;}
+    .anatCardV2__content{max-width:56%;}
+  }
+  @media (max-width:680px){
+    .anatCardV2__grid{gap:10px;margin-bottom:24px;}
+    .anatCardV2{padding:14px 16px;}
+    .anatCardV2__content{gap:6px;max-width:68%;}
+    .anatCard__top{gap:10px;}
+    .anatCard__head{gap:1px;}
+    .anatCard__label{font-size:11.5px;}
+    .anatCard__title{font-size:17px;}
+    .anatCard__badge{padding:5px 12px;gap:6px;font-size:12px;}
+    .anatCard__icon{width:14px;height:14px;}
+    .anatCard__text{font-size:12.5px;line-height:1.4;}
+  }
+  .anatCardV2--tan .anatCard__badge{border-color:#A9895F;color:#A9895F;}
+  .anatCardV2--blue .anatCard__badge{border-color:var(--accent-color);color:var(--accent-color);}
+  /* ---------- Bubble badge: glossy "glass" number circle (client ref 27.10.2026). Reusable in any block: .bubble (green) + .bubble--tan / .bubble--blue ---------- */
+  .bubble{
+    --bub-rim:#7DD474;--bub-tint:#DDEFE4;--bub-edge:#A6DFA6;
+    border-radius:50%;
+    /* glass-bubble pictures from the client's reference (22.10.2026); number stays live text on top */
+    border:0;
+    background:url(assets/icons/btn-glass-orb-green-96.webp) center/100% 100% no-repeat;
+    filter:drop-shadow(0 2px 3px rgba(20,40,60,.22));
+    color:#17324D;
+    font-family:var(--font-big-header);font-weight:700;
+  }
+  .bubble--tan,
+  .anat3__tooltip.is-tan .bubble{--bub-rim:#B07A45;--bub-tint:#F2E3D0;--bub-edge:#CF9E6A;background-image:url(assets/icons/btn-glass-orb-tan-96.webp);}
+  .bubble--blue,
+  .anat3__tooltip.is-product .bubble{--bub-rim:#45AEEF;--bub-tint:#CDE8FB;--bub-edge:#86C8F6;background-image:url(assets/icons/btn-glass-orb-blue-96.webp);}
+  .bubble--red{--bub-rim:#F2585E;--bub-tint:#FCE3E4;--bub-edge:#F5A0A5;}
+  /* check / cross icons inside a bubble: gradient strokes from the #bubGradGreen / #bubGradRed defs in the comparison section */
+  .bubble svg{stroke:url(#bubGradGreen);stroke-width:3.6;}
+  .bubble--red svg{stroke:none;fill:url(#bubGradRed);}
+  .anatCardV2{transition:box-shadow .18s ease, border-color .18s ease;}
+  .anatCardV2.is-active{
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+  }
+  .anatCardV2--tan.is-active{border-color:#A9895F;box-shadow:0 0 0 3px #A9895F;}
+  .anatCardV2--blue.is-active{border-color:var(--accent-color);box-shadow:0 0 0 3px var(--accent-color);}
+  @media (max-width:680px){
+    .anatCardV2.is-active{border-color:var(--border-color);box-shadow:none;}
+  }
+
+  /* ---------- Section 1C: Why ZeoDeo (4 things pillars) ---------- */
+  .pillars__inner > .section__eyebrow,
+  .pillars__inner > .section__title{
+    text-align:left;
+  }
+  .pillars__inner > .section__title{margin-bottom:24px;}
+  .pillars__subtitle{text-align:left;font-family:var(--font-header);font-weight:300;font-size:18px;color:var(--text-color);margin:2px 0 18px;}
+  .smartSol__grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+    margin-bottom:18px;
+  }
+  .smartSol__card{
+    background:var(--card-bg);
+    border:1px solid var(--border-color);
+    border-radius:16px;
+    padding:24px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .smartSol__card--blue{background:#F2FAFD;}
+  .smartSol__card-body{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .smartSol__num{
+    font-family:var(--font-big-header);
+    font-weight:600;
+    font-size:24px;
+    line-height:1;
+    color:var(--accent-color-2);
+  }
+  .smartSol__card--blue .smartSol__num{color:var(--accent-color);}
+  .smartSol__title{
+    font-family:var(--font-header);
+    font-weight:800;
+    font-size:22px;
+    line-height:1.15;
+    color:var(--text-color);
+    margin:0;
+  }
+  .smartSol__lead{
+    font-family:var(--font-header);
+    font-weight:700;
+    font-size:13px;
+    line-height:1.5;
+    color:var(--text-color);
+    margin:0;
+  }
+  .smartSol__text{
+    font-size:12px;
+    line-height:1.3;
+    color:var(--text-color);
+    opacity:.75;
+    margin:0;
+  }
+  .smartSol__badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    align-self:flex-start;
+    /* same pill style as .roomMx__room (Room Style buttons) */
+    background:#fff;
+    border:2px solid var(--border-color);
+    border-radius:20px;
+    padding:7px 14px;
+    font-family:var(--font-text);
+    font-weight:700;
+    font-size:12.5px;
+    color:var(--text-color);
+  }
+  @media (max-width:680px){
+    .smartSol__badge{font-size:11.5px;padding:7px 10px;}
+  }
+  .smartSol__badges{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+    margin-top:auto;
+  }
+  .smartSol__badge{line-height:16px;} /* = check icon height, so badges with and without the icon are equally tall */
+  .smartSol__badge-check{
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:#2B2B2B;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:10px;
+    flex:none;
+  }
+  .smartSol__img{
+    position:relative;
+    aspect-ratio:4/3;
+    border-radius:12px;
+    overflow:hidden;
+    background:repeating-linear-gradient(45deg,#F0F0F0,#F0F0F0 10px,#E7E7E7 10px,#E7E7E7 20px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .smartSol__img--inset{aspect-ratio:3/4;}
+  .smartSol__img > span:first-child{
+    font-family:var(--font-header);
+    font-weight:600;
+    font-size:12px;
+    color:#9A9A9A;
+    background:#fff;
+    padding:6px 12px;
+    border-radius:var(--radius-s);
+    border:1px dashed #C9C9C9;
+  }
+  .smartSol__img--photo{background:#F4F4F4;}
+  .smartSol__img--photo img,
+  .smartSol__img--photo video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:65% 40%;
+    display:block;
+  }
+  .smartSol__tag{
+    position:absolute;
+    font-family:var(--font-header);
+    font-weight:600;
+    font-size:11px;
+    color:var(--text-color);
+    line-height:1.3;
+    text-shadow:0 1px 2px #fff, 0 1px 6px #fff, 0 -1px 6px #fff, 0 1px 12px rgba(255,255,255,.9);
+    max-width:120px;
+    opacity:0;
+    transform:translateY(4px);
+    transition:opacity .35s ease, transform .35s ease;
+    pointer-events:none;
+  }
+  .smartSol__tag.is-visible{opacity:1;transform:translateY(0);}
+  .smartSol__tag--1,
+  .smartSol__tag--2{top:10px;right:10px;}
+  .smartSol__compare{
+    position:relative;
+    aspect-ratio:4/3;
+    border-radius:12px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2px;
+    background:var(--border-color);
+  }
+  .smartSol__compare-photo{
+    width:100%;
+    height:100%;
+  }
+  .smartSol__compare-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .smartSol__compare-photo--split{display:flex;gap:8px;}
+  .smartSol__compare-photo-tile{
+    flex:1 1 50%;
+    min-width:0;
+    height:100%;
+    border-radius:12px;
+    overflow:hidden;
+  }
+  .smartSol__compare-photo-tile img{width:100%;height:100%;object-fit:cover;display:block;}
+  .smartSol__compare-photo-tile-img--flip{transform:scaleX(-1);}
+  .smartSol__compare-photo-tile-img--panR{object-position:70% 50%;}
+  .smartSol__compare-photo--diagonal{display:block;position:relative;}
+  .smartSol__compare-photo--diagonal .smartSol__compare-photo-tile{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border-radius:0;
+  }
+  .smartSol__compare-photo--diagonal .smartSol__compare-photo-tile:first-child{clip-path:polygon(0 0, 56% 0, 44% 100%, 0 100%);}
+  .smartSol__compare-photo--diagonal .smartSol__compare-photo-tile:last-child{clip-path:polygon(56% 0, 100% 0, 100% 100%, 44% 100%);}
+  .smartSol__compare-labels{
+    position:absolute;
+    left:14px;
+    right:14px;
+    top:14px;
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    z-index:1;
+  }
+  .smartSol__compare-label{
+    font-family:var(--font-header);
+    font-weight:600;
+    font-size:11px;
+    line-height:1.3;
+    color:var(--text-color);
+    text-shadow:0 1px 2px #fff, 0 1px 6px #fff, 0 -1px 6px #fff, 0 1px 12px rgba(255,255,255,.9);
+    max-width:48%;
+  }
+  .smartSol__compare-label--r{text-align:right;margin-left:auto;}
+  .smartSol__compare-label-sub{display:block;font-weight:500;opacity:.7;font-size:10px;margin-top:1px;}
+  .smartSol__compare--photo{display:block;overflow:hidden;background:none;}
+  @media (min-width:768px){
+    .smartSol__grid{grid-template-columns:repeat(2,1fr);}
+    .smartSol__card{
+      display:grid;
+      grid-template-columns:1fr 56%;
+      align-items:stretch;
+      column-gap:24px;
+      padding:0;
+      overflow:hidden;
+      position:relative;
+    }
+    .smartSol__card-body{justify-content:flex-start;padding:16px 0 72px 16px;}
+    .smartSol__img,.smartSol__compare{aspect-ratio:auto;height:100%;border-radius:0;}
+    .smartSol__img--bleed,
+    .smartSol__img--inset{margin:0;border-radius:0;}
+    .smartSol__compare--photo{margin:0;}
+    .smartSol__badges{margin-top:0;}
+    .smartSol__badge{
+      position:absolute;
+      left:16px;
+      bottom:14px;
+      max-width:calc(44% - 22px);
+      z-index:3;
+    }
+    /* second badge sits on the photo, bottom-aligned with the first; wraps instead of overflowing */
+    .smartSol__badge--photo{
+      left:auto;
+      right:14px;
+      max-width:calc(56% - 28px);
+    }
+    .smartSol__badge--tile{max-width:calc(28% - 24px);right:12px;}
+  }
+
+  /* ---------- Section 1D: Plan Your Supply (mood calculator + Scent Booster upsell) ---------- */
+  .calcMood__inner > .section__eyebrow,
+  .calcMood__inner > .section__title{
+    text-align:left;
+  }
+  .calcMood{background:#fff;border:1px solid var(--border-color);border-radius:var(--radius-card);padding:32px 24px;text-align:center;}
+  .calcMood__cats{display:flex;justify-content:center;align-items:flex-end;gap:10px;margin:0 auto 14px;min-height:56px;}
+  .calcMood__cat{width:64px;height:auto;display:block;transition:width .25s ease;}
+  .calcMood__cat.is-size-small{width:54px;}
+  .calcMood__cat.is-hidden{display:none;}
+  .calcMood__sub{font-size:15px;line-height:1.55;color:var(--text-color);opacity:.72;max-width:46ch;margin:0 auto 20px;}
+  .calcMood__opts{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:24px;}
+  /* same pill style as .roomMx__room (Room Style buttons) */
+  .calcMood__opt{
+    font-family:var(--font-text);font-size:12.5px;font-weight:700;color:var(--text-color);
+    background:#fff;border:2px solid var(--border-color);border-radius:20px;padding:7px 14px;cursor:pointer;transition:.2s;
+  }
+  .calcMood__opt:hover{border-color:var(--accent-color-2);}
+  .calcMood__opt.is-active{background:var(--text-color);border-color:var(--text-color);color:#fff;}
+  .calcMood__result{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:16px;}
+  .calcMood__stat{max-width:230px;}
+  .calcMood__stat-label{
+    font-family:var(--font-header);font-weight:700;font-size:11px;text-transform:uppercase;
+    letter-spacing:.06em;color:var(--text-color);opacity:.55;margin-bottom:6px;
+  }
+  .calcMood__stat--photo{
+    display:flex;flex-direction:column;align-items:center;flex:1 1 200px;max-width:240px;
+    background:#fff;border-radius:20px;padding:10px 10px 12px;
+    box-shadow:0 4px 14px rgba(30,40,60,.1);
+  }
+  .calcMood__stat-imgwrap{position:relative;width:132px;height:204px;margin:0 auto 10px;}
+  .calcMood__stat-imgwrap img{width:100%;height:100%;object-fit:contain;display:block;}
+  .calcMood__stat-badge{
+    position:absolute;right:-12px;bottom:-8px;background:var(--new-badge-color);color:#fff;
+    font-family:var(--font-header);font-weight:700;font-size:14px;line-height:1;
+    padding:7px 13px;border-radius:999px;box-shadow:0 0 0 3px #fff;white-space:nowrap;
+  }
+  .calcMood__stat-freq{display:block;font-size:12px;color:var(--text-color);opacity:.6;margin-top:2px;}
+  .calcMood__stat-raw{display:block;font-size:10.5px;color:var(--text-color);opacity:.4;margin-top:4px;}
+  .calcMood__stat--addon{border:1.5px dashed #C9D3DE;box-shadow:none;background:#FBFCFD;}
+  .calcMood__addon-btn{
+    margin-top:10px;border:1.5px solid var(--accent-color);background:#fff;color:var(--accent-color);
+    font-family:var(--font-header);font-weight:700;font-size:12.5px;padding:8px 16px;border-radius:999px;
+    cursor:pointer;transition:all .15s ease;white-space:nowrap;
+  }
+  .calcMood__addon-btn.is-added{background:var(--accent-color);color:#fff;border-color:var(--accent-color);}
+  .calcMood__cadence{
+    /* same pill style as .roomMx__room, default state */
+    display:inline-block;font-family:var(--font-text);font-weight:700;font-size:12.5px;
+    color:var(--text-color);background:#fff;border:2px solid var(--border-color);border-radius:20px;padding:7px 14px;margin-bottom:16px;
+  }
+  .calcMood__cta{
+    display:inline-block;background:var(--accent-color-2);color:#fff;text-decoration:none;
+    font-family:var(--font-text);font-weight:700;font-size:14px;line-height:16px;padding:13px 24px 14px;border-radius:var(--radius-s);
+    box-shadow:none;border:none;cursor:pointer;
+  }
+  .scentAddon__text{font-size:14px;line-height:1.6;color:var(--text-color);opacity:.8;margin-bottom:12px;}
+  .scentAddon .splitCta__panel{padding:24px 32px;}
+  .scentAddon .splitCta__title{margin-bottom:10px;}
+  .scentAddon .splitCta__actions{margin-bottom:0;align-items:center;}
+  .scentAddon .splitCta__hint{margin:0;}
+  .scentAddon .splitCta__photo{background:#fff;display:flex;align-items:center;justify-content:center;padding:20px;}
+  .scentAddon .splitCta__photo img{position:static;inset:auto;width:auto;height:auto;max-width:200px;max-height:280px;object-fit:contain;}
+  .scentAddon__img{animation:scentWiggle 4.5s ease-in-out infinite;}
+  @keyframes scentWiggle{
+    0%{transform:rotate(0deg);}
+    2%{transform:rotate(-5deg);}
+    4%{transform:rotate(5deg);}
+    6%{transform:rotate(-4deg);}
+    8%{transform:rotate(4deg);}
+    10%{transform:rotate(-2deg);}
+    12%{transform:rotate(2deg);}
+    14%,100%{transform:rotate(0deg);}
+  }
+  @media (max-width:680px){
+    .scentAddon{justify-content:center;text-align:center;}
+  }
+  @media (max-width:680px){
+    .calcMood{border:none;background:#FAFAFA;padding:0 10px;margin-left:-10px;margin-right:-10px;width:calc(100% + 20px);}
+    .calcMood__sub{font-size:13.5px;}
+    .calcMood__result{gap:26px;}
+  }
+  @media (max-width:680px){
+    .calcMood__opts{display:grid;grid-template-columns:1fr 1fr;justify-items:stretch;}
+    .calcMood__opts .calcMood__opt{width:100%;font-size:11.5px;padding:7px 10px;text-align:center;}
+    .calcMood__cadence{font-size:11.5px;padding:7px 10px;}
+    .calcMood__result{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+    .calcMood__result .calcMood__stat--photo{max-width:none;padding:12px 6px 10px;}
+    .calcMood__result .calcMood__stat-imgwrap{width:70px;height:108px;}
+    .calcMood__result .calcMood__stat-label{font-size:9.5px;}
+    .calcMood__result .calcMood__stat-freq{font-size:10px;}
+    .calcMood__result .calcMood__stat-raw{font-size:9px;}
+    .calcMood__result .calcMood__stat-badge{font-size:11px;padding:5px 9px;right:-6px;bottom:-4px;}
+    .calcMood__result .calcMood__addon-btn{font-size:10.5px;padding:6px 10px;margin-top:6px;white-space:nowrap;}
+    .calcMood__cta{width:100%;max-width:340px;min-height:48px;}
+  }
+
+  /* ---------- Section 1B2: Before/After slider ---------- */
+  .baf{position:relative;aspect-ratio:4/3;border-radius:var(--radius-s);overflow:hidden;margin-bottom:10px;user-select:none;}
+  .baf__after{position:absolute;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;}
+  .baf__after img{width:100%;height:100%;object-fit:cover;}
+  .baf__before{position:absolute;inset:0;overflow:hidden;clip-path:inset(0 48% 0 0);}
+  .baf__before img{width:100%;height:100%;object-fit:cover;}
+  .baf__handle{
+    position:absolute;top:0;bottom:0;width:3px;background:#fff;left:52%;
+    box-shadow:0 0 6px rgba(0,0,0,0.3);z-index:4;cursor:ew-resize;
+    touch-action:none;
+  }
+  .baf__handle::after{
+    content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:38px;height:38px;border-radius:50%;background:#fff;
+    box-shadow:0 2px 8px rgba(0,0,0,0.25);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2331ACD8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 8l-4 4 4 4'/%3E%3Cpath d='M16 8l4 4-4 4'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:center;background-size:20px;
+  }
+  .bafReal__inner > .section__eyebrow,
+  .bafReal__inner > .section__title{
+    text-align:left;
+  }
+  .bafReal__panel{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius-card);padding:25px 20px;box-shadow:none;}
+  .bafReal__stage{background:#fff;border:1px solid var(--border-color);border-radius:var(--radius-card);overflow:hidden;max-width:640px;margin:0 auto;}
+  .bafReal__slider{aspect-ratio:16/10;border-radius:0;margin-bottom:0;}
+  .bafReal__slider .baf__after img{object-position:center 60%;}
+  .bafReal__tag{
+    /* same pill style as .roomMx__room: before = default state, after = active state */
+    position:absolute;bottom:14px;font-family:var(--font-text);font-weight:700;font-size:12.5px;
+    padding:7px 14px;border:2px solid var(--border-color);border-radius:20px;z-index:3;
+  }
+  .bafReal__tag--before{left:14px;background:var(--text-color);border-color:var(--text-color);color:#fff;}
+  .bafReal__tag--after{right:14px;background:var(--new-badge-color);border-color:var(--new-badge-color);color:#fff;}
+  .bafReal__tag{transition:opacity .2s ease;}
+  .bafReal__tag.is-hidden{opacity:0;pointer-events:none;}
+  @media (max-width:680px){
+    .bafReal__tag{font-size:11.5px;padding:7px 10px;}
+  }
+  .bafReal__caption{margin-top:14px;font-size:14px;line-height:1.5;color:var(--text-color);text-align:center;font-weight:700;max-width:640px;margin-left:auto;margin-right:auto;}
+  .bafReal__caption b{color:#5C8A2E;}
+
+  /* ---------- Section 1E: Settling In (zigzag timeline, "Путь кота") ---------- */
+  .tlPath__inner > .section__eyebrow,
+  .tlPath__inner > .section__title{
+    text-align:left;
+  }
+  .tlPath__inner > .section__title{margin-bottom:2px;}
+  .timeline__intro{text-align:left;font-family:var(--font-header);font-weight:300;font-size:18px;color:var(--text-color);margin:2px 0 18px;}
+  .tlPath{position:relative;margin-top:8px;padding:20px 16px;border:1px solid var(--border-color);border-radius:var(--radius-card);}
+  .tlPath__note{margin-top:8px;padding-top:16px;border-top:1px solid var(--border-color);text-align:center;font-family:var(--font-header);font-weight:700;font-size:15px;color:var(--text-color);}
+  .tlPath__track{position:relative;}
+  .tlPath__line{
+    position:absolute;top:6px;bottom:6px;left:50%;width:3px;z-index:0;transform:translateX(-50%);
+    background-image:linear-gradient(var(--border-color) 60%, transparent 0%);
+    background-position:top;background-size:3px 12px;background-repeat:repeat-y;
+  }
+  .tlPath__cat{
+    position:absolute;left:50%;top:0;width:50px;height:auto;z-index:3;pointer-events:none;
+    transform:translate(-50%,-50%);transition:top .45s cubic-bezier(.4,0,.2,1), transform .35s ease;
+  }
+  .tlPath__cat.is-flip{transform:translate(-50%,-50%) scaleX(-1);}
+  .tlPath__row{position:relative;display:flex;z-index:1;margin-bottom:16px;}
+  .tlPath__row:last-child{margin-bottom:0;}
+  .tlPath__row--right{justify-content:flex-end;}
+  .tlPath__row--left{justify-content:flex-start;}
+  .tlPath__node{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:28px;height:28px;border-radius:50%;background:#fff;border:2px solid var(--border-color);
+    font-family:var(--font-header);font-weight:700;font-size:11.5px;color:var(--text-color);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:all .2s ease;padding:0;
+  }
+  .tlPath__node::before{
+    content:'';position:absolute;inset:-8px;
+  }
+  .tlPath__node:hover{border-color:var(--accent-color-2);}
+  .tlPath__node.is-active{background:transparent;border-color:transparent;box-shadow:none;}
+  .tlPath__node.is-done{background:var(--new-badge-color);border-color:var(--new-badge-color);color:#fff;}
+  .tlPath__card{
+    width:calc(50% - 34px);min-height:150px;display:flex;align-items:center;gap:12px;text-align:left;
+    background:#fff;border:2px solid var(--border-color);border-radius:var(--radius-card);
+    padding:10px;cursor:pointer;transition:.2s;font-family:var(--font-text);
+  }
+  .tlPath__card:hover{border-color:var(--accent-color-2);transform:translateY(-2px);}
+  .tlPath__card.is-active{border-color:var(--accent-color-2);box-shadow:0 8px 20px rgba(255,91,75,.15);}
+  .tlPath__card-img{width:0;flex:1 1 50%;height:130px;border-radius:var(--radius-s);overflow:hidden;background:#F4F4F4;}
+  .tlPath__card-img img{width:100%;height:100%;object-fit:cover;display:block;}
+  .tlPath__card-body{flex:1 1 50%;min-width:0;}
+  .tlPath__card-num{display:block;font-family:var(--font-header);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-color-2);margin-bottom:2px;}
+  .tlPath__card-title{display:block;font-family:var(--font-header);font-weight:700;font-size:15.5px;color:var(--text-color);margin-bottom:4px;}
+  .tlPath__card-text{font-size:14px;line-height:1.5;color:var(--text-color);opacity:.75;}
+  .tlPath--site .tlPath__card{border-width:1px;}
+  .tlPath--site .tlPath__card.is-active{box-shadow:none;}
+  .tlPath--site .tlPath__card:hover{transform:none;}
+  @media (max-width:680px){
+    .tlPath__line{left:16px;}
+    .tlPath__cat{left:16px;width:38px;}
+    .tlPath__row,.tlPath__row--right,.tlPath__row--left{justify-content:flex-start;padding-left:46px;}
+    .tlPath__node{left:16px;}
+    .tlPath__card{width:100%;}
+    .tlPath__cat.is-flip{transform:translate(-50%,-50%);}
+  }
+
+  /* ---------- Section 1B3: Room Visualizer (colour x room combinator) ---------- */
+  .roomMx__inner > .section__eyebrow,
+  .roomMx__inner > .section__title{
+    text-align:left;
+  }
+  .roomMx__wrap{
+    display:grid;grid-template-columns:1fr;gap:20px;align-items:center;
+    border:1px solid var(--border-color);border-radius:var(--radius-card);padding:16px;
+  }
+  .roomMx__stage{position:relative;border-radius:var(--radius-card);overflow:hidden;background:#F4F4F4;aspect-ratio:1/1;}
+  .roomMx__stage img{width:100%;height:100%;object-fit:cover;display:block;}
+  .roomMx__stage .roomMx__fade{position:absolute;inset:0;opacity:0;transition:opacity .6s cubic-bezier(.4,0,.2,1);pointer-events:none;}
+  .roomMx__name{transition:opacity .25s ease;}
+  .roomMx__name.is-swap{opacity:0;}
+  @media (prefers-reduced-motion:reduce){.roomMx__stage .roomMx__fade,.roomMx__name{transition:none;}}
+  .roomMx__text{font-size:13px;line-height:1.55;color:var(--text-color);opacity:.75;margin-bottom:18px;max-width:42ch;}
+  @media (max-width:680px){
+    .roomMx__text{display:none;}
+  }
+  .roomMx__group{margin-bottom:16px;}
+  .roomMx__label{display:block;font-family:var(--font-header);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-color);opacity:.55;margin-bottom:8px;}
+  .roomMx__swatches{display:flex;gap:10px;}
+  .roomMx__swatch{position:relative;width:32px;height:32px;border-radius:50%;border:2px solid var(--border-color);cursor:pointer;padding:0;transition:.2s;}
+  .roomMx__swatch::before{content:'';position:absolute;inset:-6px;}
+  .roomMx__swatch.is-active{border-color:var(--text-color);box-shadow:0 0 0 2px #fff,0 0 0 4px var(--text-color);}
+  .roomMx__rooms{display:flex;gap:8px;flex-wrap:wrap;}
+  .roomMx__room{
+    font-family:var(--font-text);font-size:12.5px;font-weight:700;color:var(--text-color);
+    background:#fff;border:2px solid var(--border-color);border-radius:20px;padding:7px 14px;cursor:pointer;transition:.2s;
+  }
+  .roomMx__room:hover{border-color:var(--accent-color-2);}
+  .roomMx__room.is-active{background:var(--text-color);border-color:var(--text-color);color:#fff;}
+  .roomMx__name{font-family:var(--font-header);font-weight:700;font-size:14px;color:var(--text-color);margin-top:16px;padding-top:14px;border-top:1px solid var(--border-color);}
+  @media (max-width:680px){
+    .roomMx__panel{display:flex;flex-direction:column;}
+    .roomMx__name{order:-1;margin-top:0;margin-bottom:16px;padding-top:0;padding-bottom:14px;border-top:none;border-bottom:1px solid var(--border-color);}
+    .roomMx__rooms{flex-wrap:nowrap;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+    .roomMx__rooms::-webkit-scrollbar{display:none;height:0;}
+    .roomMx__room{font-size:11.5px;padding:7px 10px;white-space:nowrap;flex:0 0 auto;}
+  }
+  @media (min-width:768px){
+    .roomMx__wrap{grid-template-columns:1.3fr 1fr;padding:32px;gap:32px;}
+    .cmpTable__inner .cmpC__frame{padding:32px;}
+    .tlPath{padding:32px;}
+  }
+
+  /* ---------- Section 1B4: Moisture Path (dark stage, day-by-day pad fill demo) ---------- */
+  .moist__pad-fill{
+    position:absolute;inset:0;overflow:hidden;z-index:1;pointer-events:none;
+    isolation:isolate;
+    mix-blend-mode:multiply;
+    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 101'%3E%3Cfilter id='f'%3E%3CfeGaussianBlur stdDeviation='14'/%3E%3C/filter%3E%3Cpath d='M0,0 L1000,0 L1000,87 A140,14 0 0 1 860,101 L180,101 A180,18 0 0 1 0,83 Z' fill='white' filter='url(%23f)'/%3E%3C/svg%3E");
+    mask-size:100% 100%;
+    mask-repeat:no-repeat;
+    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 101'%3E%3Cfilter id='f'%3E%3CfeGaussianBlur stdDeviation='14'/%3E%3C/filter%3E%3Cpath d='M0,0 L1000,0 L1000,87 A140,14 0 0 1 860,101 L180,101 A180,18 0 0 1 0,83 Z' fill='white' filter='url(%23f)'/%3E%3C/svg%3E");
+    -webkit-mask-size:100% 100%;
+    -webkit-mask-repeat:no-repeat;
+  }
+  .moist__stain{
+    position:absolute;top:-10%;left:var(--sx);width:52%;aspect-ratio:1/1;
+    transform:translate(-50%,-30%) scale(calc(var(--p,0) * var(--m,1)));
+    transform-origin:50% 28%;
+    border-radius:44% 56% 68% 32% / 45% 60% 40% 55%;
+    background:radial-gradient(circle at 50% 38%, rgba(49,172,216,.85), rgba(49,172,216,.62) 34%, rgba(49,172,216,.3) 62%, rgba(49,172,216,0) 88%);
+    filter:blur(calc(3px + var(--p,0) * 4px));
+    opacity:min(1, calc(var(--p,0) * 1.4));
+    transition:transform .6s cubic-bezier(.32,.9,.4,1), opacity .5s ease, filter .6s ease;
+  }
+  .moist__stain:nth-child(1){--sx:8%; --m:.92; transition-delay:0s;}
+  .moist__stain:nth-child(2){--sx:31%; --m:1.1; transition-delay:.05s;}
+  .moist__stain:nth-child(3){--sx:54%; --m:.95; transition-delay:.02s;}
+  .moist__stain:nth-child(4){--sx:77%; --m:1.15; transition-delay:.08s;}
+  .moist__stain:nth-child(5){--sx:95%; --m:.9; transition-delay:.04s;}
+  .moist__callout{
+    position:absolute;left:50%;top:8px;transform:translateX(-50%) translateY(-6px) scale(.85);
+    background:var(--accent-color-2);color:#fff;font-family:var(--font-header);font-weight:700;font-size:11px;
+    padding:6px 12px;border-radius:999px;opacity:0;white-space:nowrap;
+    transition:opacity 0.25s ease, transform 0.35s cubic-bezier(.34,1.56,.64,1);z-index:5;
+  }
+  .moist__callout.is-visible{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}
+  .moist__ruler{margin-bottom:10px;}
+  .moist__ruler-track{
+    position:relative;height:7px;border-radius:4px;overflow:hidden;margin-bottom:5px;
+    background:
+      repeating-linear-gradient(to right, transparent 0, transparent calc(100%/7 - 1px), rgba(255,255,255,.85) calc(100%/7 - 1px), rgba(255,255,255,.85) calc(100%/7)),
+      var(--border-color);
+  }
+  .moist__ruler-fill{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--accent-color);border-radius:4px;transition:width 0.45s cubic-bezier(.3,.9,.4,1);}
+  .cutaway__stage{
+    position:relative;overflow:hidden;border-radius:var(--radius-s);background:#F4F4F4;
+    aspect-ratio:1038/414;margin-bottom:14px;
+  }
+  .cutaway__stage img{width:100%;height:100%;object-fit:cover;display:block;}
+  .cutaway__pad-region{position:absolute;left:6.5%;right:8%;top:65%;height:21%;overflow:hidden;border-radius:0 0 14% 18%;}
+  .moist__drops{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2;}
+  .moist__drop{
+    position:absolute;left:var(--sx);top:49%;width:7px;height:7px;
+    background:linear-gradient(160deg,#B7E7F4,#31ACD8);
+    border-radius:50% 50% 50% 0;
+    box-shadow:0 0 3px rgba(49,141,172,0.45);
+    transform:translate(-50%,0) rotate(45deg) scale(.5);
+    opacity:0;
+    animation:moistDropFall 2s cubic-bezier(.55,0,.85,.4) infinite;
+  }
+  .moist__drops.is-paused .moist__drop{animation-play-state:paused;}
+  .moist__drop:nth-child(1){--sx:13.3%; animation-delay:0s;}
+  .moist__drop:nth-child(2){--sx:32.9%; animation-delay:.5s;}
+  .moist__drop:nth-child(3){--sx:52.7%; animation-delay:1s;}
+  .moist__drop:nth-child(4){--sx:72.3%; animation-delay:1.4s;}
+  .moist__drop:nth-child(5){--sx:87.7%; animation-delay:.25s;}
+  @keyframes moistDropFall{
+    0%{opacity:0; top:48%; transform:translate(-50%,0) rotate(45deg) scale(.5);}
+    14%{opacity:1; transform:translate(-50%,0) rotate(45deg) scale(1);}
+    58%{opacity:1; top:63%;}
+    67%{opacity:0; top:64.5%; transform:translate(-50%,0) rotate(45deg) scale(.6);}
+    100%{opacity:0; top:64.5%;}
+  }
+  .moistD__inner > .section__eyebrow,
+  .moistD__inner > .section__title{
+    text-align:left;
+  }
+  .moistD__panel{background:#fff;color:var(--text-color);border:1px solid var(--border-color);border-radius:var(--radius-card);padding:16px 16px;}
+
+  /* ---------- Mobile: unified 10px side padding for all bordered card panels ---------- */
+  @media (max-width:680px){
+    .smartSol__card{padding:20px 16px;}
+    .bafReal__panel{padding:0;border:none;background:transparent;}
+    .tlPath{padding:0 10px;}
+    .roomMx__wrap{padding:0 10px;}
+    .moistD__panel{padding:0 10px;}
+  }
+  .moistD__sub{font-size:11.5px;line-height:1.5;color:var(--text-color);opacity:.7;margin-bottom:14px;max-width:60ch;}
+  .moistD__replay{
+    margin:12px 0 0;border:1px solid var(--border-color);background:#fff;border-radius:999px;padding:7px 14px;
+    font-family:var(--font-text);font-size:11.5px;color:var(--text-color);opacity:.7;cursor:pointer;
+  }
+  .moistD__steps{padding:0;display:flex;flex-direction:column;}
+  .moistD__step{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--border-color);opacity:.35;transition:opacity .5s ease;}
+  .moistD__step:first-child{border-top:none;}
+  .moistD__step.on{opacity:1;}
+  .moistD__step.done{opacity:.62;}
+  .moistD__step-n{font-family:Consolas,'SFMono-Regular',monospace;font-size:11px;color:var(--accent-color);flex:none;width:18px;transition:color .3s ease, transform .3s ease;}
+  .moistD__step.on .moistD__step-n{color:var(--accent-color-2);transform:scale(1.2);animation:moistStepPop .4s ease;}
+  .moistD__step.done .moistD__step-n{color:var(--new-badge-color);}
+  @keyframes moistStepPop{0%{transform:scale(1);}55%{transform:scale(1.45);}100%{transform:scale(1.2);}}
+  .moistD__step b{display:block;font-size:12.5px;color:var(--text-color);margin-bottom:2px;}
+  .moistD__step span{font-size:11.5px;color:var(--text-color);opacity:.7;line-height:1.4;}
+  .moistV3__grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:start;margin-top:4px;}
+  .moistV3__ruler-labels{display:flex;justify-content:space-between;font-size:9.5px;color:var(--text-color);opacity:.6;margin-bottom:4px;}
+  .moistV3__ruler-labels span.moistV3__ruler-current{font-weight:700;color:var(--accent-color-2);opacity:1;}
+  .odorC__wisps{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2;}
+  .odorC__wisp{
+    position:absolute;width:22px;height:16px;left:var(--sx);top:60%;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 24'%3E%3Cpath d='M2 4 Q8 0 14 4 T26 4' stroke='%2392A84A' stroke-width='2.8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M2 12 Q8 8 14 12 T26 12' stroke='%2392A84A' stroke-width='2.8' fill='none' stroke-linecap='round' opacity='.75'/%3E%3Cpath d='M2 20 Q8 16 14 20 T26 20' stroke='%2392A84A' stroke-width='2.8' fill='none' stroke-linecap='round' opacity='.5'/%3E%3C/svg%3E");
+    background-size:contain;background-repeat:no-repeat;
+    transform:translate(-50%,-50%) scale(1);
+    opacity:0;
+    animation:odorCRise 2.6s ease-out infinite;
+  }
+  .odorC__wisp:nth-child(1){--sx:16%; animation-delay:0s;}
+  .odorC__wisp:nth-child(2){--sx:36%; animation-delay:.6s;}
+  .odorC__wisp:nth-child(3){--sx:58%; animation-delay:1.2s;}
+  .odorC__wisp:nth-child(4){--sx:80%; animation-delay:.3s;}
+  .odorC__wisps.is-large .odorC__wisp{
+    width:42px;height:32px;
+    filter:drop-shadow(0 0 3px rgba(255,255,255,.8));
+  }
+  @keyframes odorCRise{
+    0%{opacity:0; top:62%; transform:translate(-50%,-50%) scale(1);}
+    18%{opacity:1;}
+    55%{opacity:.9; top:38%; transform:translate(-50%,-50%) scale(.75);}
+    100%{opacity:0; top:20%; transform:translate(-50%,-50%) scale(.3);}
+  }
+  @media (min-width:680px){
+    .moistV3__grid{grid-template-columns:1.1fr 1fr;gap:24px;}
+  }
+
+  /* ---------- Section 1F: Comparison table (ZeoDeo vs standard/robot/crystals) ---------- */
+  .cmpC__frame{border-radius:20px;padding:2px;background:linear-gradient(135deg, var(--accent-color-2), var(--accent-color));}
+  .cmpC__inner{background:#fff;border-radius:18px;padding:22px 20px;overflow-x:auto;}
+  .cmpC__table{display:flex;gap:0;min-width:620px;}
+  .cmpC__cell{display:flex;align-items:center;justify-content:center;min-height:44px;font-size:12.5px;padding:0 8px;}
+  .cmpC__cell--head{min-height:50px;font-family:var(--font-header);font-weight:700;font-size:13px;color:var(--text-color);}
+  .cmpC__cell--text{font-weight:700;font-size:11.5px;line-height:1.3;color:var(--text-color);opacity:.8;}
+  .cmpC__cell--cta{min-height:64px;padding:8px 12px;}
+  .cmpC__cta{
+    width:100%;border:none;border-radius:var(--radius-s);background:#fff;color:var(--new-badge-color);
+    font-family:var(--font-text);font-weight:700;font-size:12.5px;padding:10px 8px;cursor:pointer;
+  }
+  .cmpC__icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;}
+  .cmpC__icon svg{width:11px;height:11px;}
+
+  .cmpC__mobile{display:none;}
+  @media (max-width:680px){
+    .cmpC__table{display:none;}
+    .cmpC__mobile{
+      display:flex;flex-direction:column;align-items:center;text-align:center;
+      background:var(--new-badge-color);border-radius:16px;padding:28px 22px 22px;color:#fff;
+    }
+    .cmpC__mobile-title{font-family:var(--font-header);font-weight:700;font-size:17px;margin-bottom:20px;}
+    .cmpC__mobile-check{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+    .cmpC__mobile-check svg{width:16px;height:16px;}
+    .cmpC__mobile-cadence{font-family:var(--font-header);font-weight:700;font-size:13px;line-height:1.5;margin:6px 0 18px;}
+    .cmpC__mobile-cta{
+      width:100%;border:none;border-radius:var(--radius-s);background:#fff;color:var(--new-badge-color);
+      font-family:var(--font-text);font-weight:700;font-size:13px;padding:12px 8px;cursor:pointer;
+    }
+  }
+
+  .cmpC2 .cmpC__table--grid{
+    display:grid;grid-template-columns:minmax(180px,2.1fr) repeat(4,minmax(84px,1fr));
+    column-gap:10px;position:relative;min-width:640px;
+  }
+  .cmpC2 .cmpC__col-bg--us{
+    position:absolute;inset:0;grid-column:2 / 3;grid-row:1 / 8;background:var(--new-badge-color);
+    border-radius:14px;border:2px solid var(--border-color);z-index:0;pointer-events:none;
+  }
+  .cmpC2 .cmpC__table--grid > .cmpC__cell{position:relative;z-index:1;border-bottom:1px solid var(--border-color);}
+  .cmpCNoLines .cmpC__table--grid > .cmpC__cell{border-bottom:none;}
+  .cmpC2 .cmpC__cell--lab{justify-content:flex-start;text-align:left;color:var(--text-color);opacity:.85;font-size:13px;line-height:1.55;}
+  .cmpC3 .cmpC__lab-strong{font-family:var(--font-header);font-weight:700;opacity:1;}
+  .cmpC2 .cmpC__cell--us.cmpC__cell--head{color:#fff;font-size:14px;min-height:auto;}
+  .cmpC2 .cmpC__cell--blank{min-height:auto;}
+  .cmpC2 .cmpC__cell--us.cmpC__cell--text{color:#fff;opacity:1;border-top-color:rgba(255,255,255,.35);padding:14px 20px 20px;}
+  .cmpRedOutline .cmpC__col-bg--us{background:transparent;border-color:#5C8A2E;z-index:2;}
+  .cmpRedOutline .cmpC__cell--us.cmpC__cell--head{color:#5C8A2E;}
+  .cmpRedOutline .cmpC__cell--us.cmpC__cell--text{color:#5C8A2E;border-top-color:rgba(92,138,46,.35);}
+  .cmpC2 .cmpC__icon{width:30px;height:30px;} /* same size as the anatomy bubbles */
+  .cmpC2 .cmpC__icon svg{width:18px;height:18px;}
+  /* check / cross buttons: client's glass-bubble pictures (Ilya's ref 22.10.2026), replace the CSS-drawn bubbles in the comparison table */
+  .cmpC__icon--yes.bubble,.cmpC__icon--no.bubble{
+    border:0;box-shadow:none;background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:100% 100%;
+    filter:drop-shadow(0 2px 3px rgba(30,40,60,.22));
+  }
+  .cmpC__icon--yes.bubble{background-image:url(assets/icons/btn-glass-check-96.webp);}
+  .cmpC__icon--no.bubble{background-image:url(assets/icons/btn-glass-cross-96.webp);}
+  .cmpC__icon--yes.bubble svg,.cmpC__icon--no.bubble svg{display:none;}
+  @media (max-width:680px){
+    .cmpC2 .cmpC__mobile{border:2px solid var(--border-color);}
+    .cmpC2 .cmpC__mobile-check{width:32px;height:32px;border:2px solid rgba(255,255,255,.55);box-shadow:none;}
+  }
+  .cmpC2 .cmpC__cta,
+  .cmpC2 .cmpC__mobile-cta{
+    display:inline-block;width:100%;min-height:48px;
+    background:var(--accent-color-2);color:#fff;
+    font-family:var(--font-text);font-weight:700;font-size:14px;line-height:16px;
+    padding:13px 12px 14px;border-radius:var(--radius-s);border:none;box-shadow:none;
+  }
+  .cmpC2 .cmpC__mobile-cta{max-width:340px;padding:13px 24px 14px;}
+  .cmpC2 .cmpC__table-cta{grid-column:2 / 3;margin-top:16px;}
+  @media (max-width:680px){
+    .cmpC2 .cmpC__table-cta{display:none;}
+    .cmpC2 .cmpC__mobile-wrap{align-items:center;}
+    .cmpC2 .cmpC__table--grid{display:none;}
+  }
+  .cmpC2 .cmpC__frame{background:none;padding:0;border:none;}
+  .cmpC2 .cmpC__inner{background:none;border-radius:0;padding:0;}
+  .cmpC2 .cmpC__cell--head:not(.cmpC__cell--us):not(.cmpC__cell--blank){
+    justify-self:center;width:fit-content;min-height:auto;
+    background:#fff;border:2px solid var(--border-color);border-radius:20px;
+    padding:7px 16px;font-family:var(--font-text);font-size:12.5px;
+  }
+  .cmpC2 .cmpC__cell--text{border-top:1px solid var(--border-color);padding:14px 8px 18px;margin-top:2px;}
+  .cmpCNoLines .cmpC__cell--text{border-top:none;}
+  .cmpC2 .cmpC__mobile-wrap{display:none;}
+  @media (max-width:680px){
+    .cmpC2 .cmpC__mobile-title{color:#fff;}
+    .cmpC2 .cmpC__mobile-cadence{border-top:1px solid rgba(255,255,255,.35);padding-top:14px;margin-top:2px;margin-bottom:0;}
+    .cmpC2 .cmpC__mobile-wrap{display:flex;flex-direction:column;gap:14px;}
+    .cmpC2 .cmpC__mobile{padding:30px 22px 30px;}
+    .cmpRedOutline .cmpC__mobile{background:#fff;border:2px solid #5C8A2E;box-shadow:none;}
+    .cmpRedOutline .cmpC__mobile-title{color:#5C8A2E;}
+    .cmpRedOutline .cmpC__mobile-check{background:#5C8A2E;border:none;box-shadow:0 2px 8px rgba(30,40,60,.1);}
+    .cmpRedOutline .cmpC__mobile-check svg{stroke:#fff;}
+    .cmpRedOutline .cmpC__mobile-cadence{color:#5C8A2E;border-top-color:rgba(92,138,46,.35);}
+  }
+  .cmpRedOutline .cmpC__cell--head:not(.cmpC__cell--us):not(.cmpC__cell--blank){
+    border:none;border-radius:999px;box-shadow:0 2px 8px rgba(30,40,60,.1);
+  }
+  .cmpTable__inner > .section__eyebrow,
+  .cmpTable__inner > .section__title{
+    text-align:left;
+  }
+  .cmpTable__inner .cmpC__frame{border:1px solid var(--border-color);border-radius:var(--radius-card);padding:16px;}
+
+  /* ---------- cmpCtaBoxed: ZeoDeo outline wraps only the check rows + litter-change row; header and CTA sit outside it ---------- */
+  .cmpCtaBoxed .cmpC__col-bg--us{grid-row:2 / 8;}
+
+  /* ---------- cmpCZebra: full-width alternating row bands (dentalfreund reference) ---------- */
+  .cmpCZebra .cmpC__table--grid{column-gap:0;}
+  .cmpCZebra .cmpC__cell{padding:0 10px;}
+  .cmpCZebra .cmpC__cell.is-alt{background:#F5F6F3;}
+  .cmpCZebra .cmpC__cell--lab.is-alt{border-radius:10px 0 0 10px;}
+  .cmpCZebra .cmpC__cell.is-alt:last-child{border-radius:0 10px 10px 0;}
+
+  /* ---------- cmpCFlatHead: plain-text competitor headers, no pill badge (dentalfreund reference) ---------- */
+  .cmpCFlatHead .cmpC__cell--head:not(.cmpC__cell--us):not(.cmpC__cell--blank){
+    background:none;border:none;border-radius:0;box-shadow:none;
+    width:auto;padding:0 0 18px;font-family:var(--font-header);font-weight:700;font-size:13px;color:var(--text-color);
+  }
+  .cmpCFlatHead .cmpC__cell--head.cmpC__cell--us,
+  .cmpCFlatHead .cmpC__cell--head.cmpC__cell--blank{padding-bottom:18px;}
+  /* the bold lead-in and the rest of the sentence must flow as one paragraph, not as two side-by-side flex columns */
+  .cmpCFlatHead .cmpC__cell--lab{display:block;padding-top:12px;padding-bottom:12px;}
+
+  /* ---------- cmpCGridMobile: keep the full grid table (not the stacked card) on small screens ---------- */
+  @media (max-width:680px){
+    .cmpCGridMobile .cmpC__mobile-wrap{display:none;}
+    .cmpCGridMobile .cmpC__frame{border:none;background:#FAFAFA;padding:10px;margin-left:-10px;margin-right:-10px;width:calc(100% + 20px);}
+    .cmpCGridMobile .cmpC__inner{overflow-x:visible;padding:0 0 16px;}
+    .cmpCGridMobile .cmpC__table--grid{
+      display:grid;min-width:0;
+      grid-template-columns:minmax(92px,1.4fr) repeat(4,minmax(0,1fr));
+      column-gap:3px;
+    }
+    .cmpCGridMobile .cmpC__cell{font-size:9.5px;padding:0 3px;min-height:32px;}
+    .cmpCGridMobile .cmpC__cell--lab{font-size:9.5px;line-height:1.35;padding-top:8px;padding-bottom:8px;}
+    .cmpCGridMobile .cmpC__cell--head{font-size:9.5px;min-height:auto;align-items:flex-start;padding-top:6px;}
+    .cmpCGridMobile .cmpC__cell--us.cmpC__cell--head{align-items:flex-start;padding-top:6px;}
+    .cmpCGridMobile .cmpC__cell--head:not(.cmpC__cell--us):not(.cmpC__cell--blank){padding:6px 6px 0;font-size:9px;align-items:flex-start;}
+    .cmpCGridMobile .cmpC__icon{width:22px;height:22px;border-width:1.5px;}
+    .cmpCGridMobile .cmpC__icon svg{width:12px;height:12px;}
+    .cmpCGridMobile .cmpC__cell--text{font-size:9px;align-items:flex-start;padding-top:8px;}
+    .cmpCGridMobile .cmpC__cell--us.cmpC__cell--text{align-items:flex-start;padding-top:8px;}
+    .cmpCGridMobile .cmpC__cell--lab:has(+ .cmpC__cell--text){align-items:flex-start;padding-top:8px;}
+    .cmpCGridMobile .cmpC__table-cta{display:block;grid-column:1 / -1;max-width:340px;margin:14px auto 0;}
+    .cmpCGridMobile .cmpC__cta{padding:13px 24px 14px;}
+    .cmpCGridMobile .cmpC__col-bg--us{border-radius:10px;}
+  }
+
+  /* ---------- Section 1G: Path hub banner (split CTA, references Casper.com quiz banner) ---------- */
+  .splitCta{display:flex;flex-wrap:wrap;border-radius:var(--radius-card);overflow:hidden;border:1px solid var(--border-color);}
+  .splitCta__panel{flex:1 1 320px;background:#EAF6DF;padding:40px 36px;display:flex;flex-direction:column;justify-content:center;}
+  .splitCta__title{font-family:var(--font-big-header);font-weight:600;font-size:28px;line-height:1.2;color:var(--text-color);margin-bottom:20px;max-width:19ch;}
+  .splitCta__actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .splitCta__btn{
+    font-family:var(--font-text);font-weight:700;font-size:13.5px;padding:13px 22px;border-radius:999px;
+    cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;border:1.5px solid transparent;
+  }
+  .splitCta__btn--solid{background:var(--text-color);color:#fff;}
+  .splitCta__btn--ghost{background:#fff;color:var(--text-color);border-color:rgba(64,78,101,0.18);}
+  .splitCta__hint{font-size:12.5px;color:var(--text-color);opacity:.65;}
+  .splitCta__photo{flex:1 1 320px;min-height:280px;position:relative;}
+  .splitCta__photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;position:absolute;inset:0;}
+  .splitCta--v2 .splitCta__photo img{object-fit:cover;object-position:center 55%;}
+  @media (max-width:680px){.splitCta__photo{min-height:220px;}}
+
+  /* ---------- Section 1I: Video reviews (shorts carousel) ---------- */
+  .shorts__wrap{display:flex;align-items:center;gap:8px;}
+  .shorts__scroller{position:relative;flex:1 1 auto;min-width:0;}
+  .shorts__track{
+    display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;
+    padding:4px 4px 14px;margin:0 -4px;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  }
+  .shorts__track::-webkit-scrollbar{display:none;width:0;height:0;}
+  .shorts__nav{
+    flex:none;width:36px;height:36px;border-radius:50%;background:#fff;
+    border:1px solid var(--border-color);padding:0;cursor:pointer;
+    box-shadow:0 2px 8px rgba(0,0,0,0.12);
+    display:flex;align-items:center;justify-content:center;
+    transition:opacity .15s ease, transform .15s ease;
+  }
+  .shorts__nav:hover{transform:scale(1.06);}
+  .shorts__nav svg{width:16px;height:16px;}
+  .shorts__nav.is-disabled{opacity:.3;pointer-events:none;}
+  @media (max-width:680px){.shorts__nav{display:none;}}
+  .shorts__card{
+    flex:0 0 168px;scroll-snap-align:start;position:relative;aspect-ratio:9/16;
+    border-radius:14px;overflow:hidden;background:#0F1011;cursor:pointer;
+  }
+  .shorts__card img{width:100%;height:100%;object-fit:cover;display:block;opacity:.88;}
+  .shorts__card::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 32%, rgba(0,0,0,0.65) 100%);
+  }
+  .shorts__duration{
+    position:absolute;top:8px;right:8px;z-index:2;font-family:var(--font-text);font-weight:700;font-size:10px;
+    color:#fff;background:rgba(0,0,0,0.55);padding:2px 7px;border-radius:999px;
+  }
+  .shorts__play{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
+    width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.92);
+    display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.35);
+    transition:transform .15s ease;
+  }
+  .shorts__play::before{content:'';border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent #17181A;margin-left:3px;}
+  .shorts__card:hover .shorts__play{transform:translate(-50%,-50%) scale(1.08);}
+  .shorts__meta{position:absolute;left:10px;right:10px;bottom:10px;z-index:2;}
+  .shorts__name{display:block;font-family:var(--font-header);font-weight:700;font-size:12px;color:#fff;margin-bottom:2px;}
+  .shorts__quote{display:block;font-size:11px;line-height:1.4;color:rgba(255,255,255,0.85);}
+  .shorts__fade{
+    position:absolute;top:0;right:0;bottom:14px;width:36px;pointer-events:none;
+    background:linear-gradient(90deg, rgba(255,255,255,0), var(--card-bg));
+  }
+  .shortsModal{
+    position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;padding:24px;
+  }
+  .shortsModal.is-open{display:flex;}
+  .shortsModal__backdrop{position:absolute;inset:0;background:rgba(10,10,12,0.82);}
+  .shortsModal__box{position:relative;z-index:1;width:min(360px, 90vw);}
+  .shortsModal__frame{position:relative;width:100%;aspect-ratio:9/16;background:#000;border-radius:14px;overflow:hidden;}
+  .shortsModal__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .shortsModal__close{
+    position:absolute;top:-40px;right:0;width:32px;height:32px;border-radius:50%;border:none;
+    background:rgba(255,255,255,0.12);color:#fff;font-size:22px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:background .15s ease;
+  }
+  .shortsModal__close:hover{background:rgba(255,255,255,0.22);}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style id="demo-look-a">
+/* Demo look A: partner-style design system on top of the existing LP blocks.
+   Tokens measured on zeodeo.pl 2026-11-04, see research/zeodeo-pl-design-patterns_2026-11-04.md.
+   Contrast: button text is dark on brand green (8.6:1); green text on light uses #3E7A0A (5.1:1) or large headings only. */
+:root{
+  --ink:#111111;
+  --body-ink:#4A4A4A;
+  --green:#7BC21E;
+  --green-text:#5C9E14;
+  --green-ink:#3E7A0A;
+  --green-tint:rgba(123,194,30,.14);
+  --cream:#FFFAF3;
+  --shadow-card:0 12px 30px rgba(0,0,0,.06);
+  --text-color:#111111;
+  --accent-color:#7BC21E;
+  --accent-color-2:#7BC21E;
+  --new-badge-color:#7BC21E;
+  --background-color:#FFFFFF;
+  --border-color:rgba(0,0,0,.07);
+  --font-text:'Poppins',sans-serif;
+  --font-header:'Poppins',sans-serif;
+  --font-big-header:'Poppins',sans-serif;
+  --radius-card:24px;
+  --radius-s:14px;
+  --gutter:max(20px, calc((100vw - 1200px) / 2));
+}
+body{font-family:'Poppins',sans-serif;background:#fff;color:var(--body-ink);}
+h1,h2,h3{font-family:'Poppins',sans-serif;color:var(--ink);}
+
+/* ---- canvas: full-bleed sections instead of a white column on a blue page ---- */
+.page-canvas{max-width:none !important;padding:0 !important;background:#fff;margin:0;}
+.hero{background:var(--cream);max-width:none !important;margin:0 !important;padding:36px var(--gutter) 56px !important;}
+.hero__card{background:transparent;padding:0;}
+.section{max-width:none !important;margin:0 !important;padding:64px var(--gutter) !important;background:#fff;}
+.page-canvas > .section:nth-of-type(even){background:var(--cream);}
+.section__card{background:transparent;padding:0;}
+.section__inner{max-width:none !important;padding:0 !important;text-align:left;}
+
+/* ---- headings: tight 800, two-tone ---- */
+.section__eyebrow,.anatomy__eyebrow{
+  display:inline-block;font:800 11px/1 'Poppins',sans-serif;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--green-ink);background:var(--green-tint);padding:7px 12px;border-radius:999px;text-align:left;margin:0 0 14px;
+}
+.section__title,.anatomy__title{
+  font:800 clamp(28px,4.2vw,40px)/1.08 'Poppins',sans-serif;letter-spacing:-.035em;color:var(--ink);
+  text-align:left;margin:0 0 28px !important;
+}
+.section__title + p,.anatomy__title + p{margin:-12px 0 28px !important;}
+.section__title .zk-g,.hero__title .zk-g{color:var(--green-text);}
+.anatomy__subtitle,.pillars__subtitle,.timeline__intro{font-size:17px;line-height:1.6;color:var(--body-ink);text-align:left;margin:-14px 0 28px;}
+
+/* ---- hero / buy box ---- */
+.hero__title{font:800 clamp(34px,4.6vw,52px)/1.04 'Poppins',sans-serif;letter-spacing:-.04em;color:var(--ink);}
+.hero__subtitle{font-size:17px;color:var(--body-ink);}
+.hero__specs{font-size:15px;color:var(--body-ink);}
+.hero__specs strong{color:var(--ink);}
+.hero__breadcrumb{color:#7C7C7C;letter-spacing:.08em;}
+.hero__stock{color:var(--green-ink);}
+.hero__main-photo{border-radius:var(--radius-card);background:#fff;box-shadow:var(--shadow-card);}
+.hero__thumb{border-radius:16px;border:2px solid transparent;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.05);}
+.hero__thumb.is-active{border-color:var(--green);}
+.hero__badge{background:var(--ink);color:#fff;letter-spacing:.08em;font-size:11px;font-weight:800;padding:7px 13px;}
+.hero__qty{border-radius:999px;background:#fff;border:1px solid var(--border-color);overflow:hidden;}
+.hero__qty-input{border-color:var(--border-color);font-weight:700;}
+.hero__category,.hero__colors-label,.hero__share-label,.hero__wishlist{letter-spacing:.08em;}
+.hero__colors-selected{font-weight:600;color:var(--ink);}
+.swatch{box-shadow:0 0 0 1px rgba(0,0,0,.12);}
+.swatch.is-selected{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--green);}
+
+/* ---- buttons: one green pill with glow, dark text ---- */
+.btn{border-radius:999px;font:800 15px/1 'Poppins',sans-serif;padding:16px 28px;min-height:52px;}
+.btn--primary{background:var(--green);color:var(--ink);box-shadow:0 12px 26px rgba(123,194,30,.32);transition:transform .15s ease,box-shadow .15s ease,background .15s ease;}
+.btn--primary:hover{background:#86CB2B;transform:translateY(-1px);}
+.btn--primary:active{background:#6FB51A;transform:none;}
+.final__cta .btn,.final__cta{font-family:'Poppins',sans-serif;}
+.sticky-cta{background:rgba(255,255,255,.96);box-shadow:0 -10px 30px rgba(0,0,0,.08);}
+
+/* ---- cards: 24px radius, soft shadow, no frame ---- */
+.smartSol__card,.cmpC__frame,.roomMx__wrap,.calcMood,.bafReal__panel,.tlPath__card,.scentAddon,.splitCta__panel,.shorts__inner .shorts__card,.anatCardV2{
+  border-radius:var(--radius-card) !important;
+}
+.smartSol__card,.cmpC__frame,.roomMx__wrap,.calcMood,.bafReal__panel,.tlPath__card{
+  border:0 !important;box-shadow:var(--shadow-card) !important;background:#fff;
+}
+.page-canvas > .section:nth-of-type(even) .smartSol__card,
+.page-canvas > .section:nth-of-type(even) .cmpC__frame,
+.page-canvas > .section:nth-of-type(even) .roomMx__wrap,
+.page-canvas > .section:nth-of-type(even) .calcMood,
+.page-canvas > .section:nth-of-type(even) .bafReal__panel,
+.page-canvas > .section:nth-of-type(even) .tlPath__card{background:#fff;}
+.smartSol__card--blue{background:#fff !important;}
+.smartSol__num{font-family:'Poppins',sans-serif;font-weight:800;letter-spacing:-.03em;color:var(--green-text);}
+.smartSol__card--blue .smartSol__num{color:var(--green-text);}
+.smartSol__title{font-weight:800;letter-spacing:-.025em;color:var(--ink);}
+.smartSol__badge,.smartSol__badge--photo,.smartSol__badge--tile{
+  font-family:'Poppins',sans-serif;font-weight:700;border-radius:999px;background:#fff;color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
+.smartSol__badge-check{background:var(--green);color:var(--ink);}
+.smartSol__compare-label{border-radius:999px;font-family:'Poppins',sans-serif;font-weight:700;}
+
+/* ---- anatomy: top cards on neutral tints, pill labels instead of dots ---- */
+.anatCardV2{box-shadow:var(--shadow-card);border:0;}
+.anatCard__label{font-weight:800;letter-spacing:.08em;}
+.anatCard__title{font-weight:800;letter-spacing:-.03em;color:var(--ink);}
+.anatCard__badge{border-radius:999px;font-weight:700;}
+.anatCardV2.is-active{box-shadow:0 0 0 2px var(--green),var(--shadow-card);}
+.anat3__stage{border-radius:var(--radius-card);overflow:visible;}
+.anat3__stage img{border-radius:var(--radius-card);box-shadow:var(--shadow-card);}
+.anat3__legend-item{border-radius:18px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.05);border:1px solid transparent;}
+.anat3__legend-item.is-active{border-color:var(--green);box-shadow:0 8px 22px rgba(123,194,30,.18);}
+.anat3__legend-title{font-weight:800;letter-spacing:-.02em;color:var(--ink);}
+.anat3__legend-sub{font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:11px;color:#7C7C7C;}
+
+/* pins become white pills with a numbered green dot (labels set by script from aria-label) */
+.anat3__pin{
+  width:auto !important;height:auto !important;min-width:0;padding:5px 12px 5px 5px !important;border-radius:999px !important;
+  display:inline-flex;align-items:center;gap:8px;background:#fff !important;background-image:none !important;border:0 !important;
+  box-shadow:0 6px 18px rgba(0,0,0,.16) !important;color:var(--ink) !important;font:800 12px/1 'Poppins',sans-serif !important;
+  white-space:nowrap;transform:translate(-50%,-50%);animation:none !important;
+  font-size:0 !important;line-height:0 !important;
+}
+.anat3__pin::before,.anat3__pin::after{font-size:12px;line-height:1;}
+.anat3__pin.zk-right{transform:translate(-100%,-50%);}
+.anat3__pin::before,.anat3__pin::after{animation:none !important;}
+.anat3__pin::before{
+  content:attr(data-n);position:static !important;inset:auto !important;display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border-radius:50%;background:#EFEAE0 !important;background-image:none !important;border:0 !important;opacity:1 !important;
+  color:var(--ink);font-weight:800;font-size:12px;box-shadow:none !important;transform:none !important;
+}
+.anat3__pin::after{content:attr(data-label);position:static !important;inset:auto !important;background:none !important;border:0 !important;opacity:1 !important;transform:none !important;width:auto;height:auto;}
+.anat3__pin.is-open,.anat3__pin:hover{background:var(--green) !important;}
+.anat3__pin.is-open::before,.anat3__pin:hover::before{background:#fff !important;}
+.anat3__tooltip{display:none !important;}
+@media (max-width:680px){
+  .anat3__pin{padding:4px !important;gap:6px;}
+  .anat3__pin::before{width:22px;height:22px;font-size:12px;}
+  .anat3__pin::after{display:none;font-size:11px;}
+  .anat3__pin.is-open{padding:4px 11px 4px 4px !important;z-index:5;}
+  .anat3__pin.is-open::after{display:block;}
+}
+
+/* ---- comparison table, calculator, room picker, slider ---- */
+.cmpC__cell--head,.cmpC2 .cmpC__cell--us.cmpC__cell--head{font-family:'Poppins',sans-serif;font-weight:800;color:var(--ink);}
+.cmpC2 .cmpC__col-bg--us{border-radius:20px;border-color:var(--green) !important;background:rgba(123,194,30,.07) !important;}
+.cmpC2 .cmpC__cell--lab,.cmpC3 .cmpC__lab-strong{font-family:'Poppins',sans-serif;}
+.calcMood__cat,.calcMood__opt,.roomMx__room{border-radius:999px;font-family:'Poppins',sans-serif;font-weight:700;}
+.calcMood__opt.is-active,.roomMx__room.is-active{background:var(--ink);border-color:var(--ink);color:#fff;}
+.calcMood__stat{border-radius:20px;}
+.calcMood__stat-badge{background:var(--green);color:var(--ink);font-weight:800;}
+.calcMood__addon-btn{border-radius:999px;}
+.roomMx__swatch.is-active{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--green);}
+.roomMx__name{font-family:'Poppins',sans-serif;font-weight:800;letter-spacing:-.02em;color:var(--ink);}
+.roomMx__label,.calcMood__sub{font-weight:700;letter-spacing:.08em;}
+.bafReal__tag{border-radius:999px;font-family:'Poppins',sans-serif;font-weight:700;}
+.bafReal__tag--after{background:var(--green);color:var(--ink);}
+.bafReal__tag--before{background:var(--ink);color:#fff;}
+.baf__handle{box-shadow:0 6px 18px rgba(0,0,0,.2);}
+
+/* ---- timeline ---- */
+.tlPath__card{padding:0;}
+.tlPath__card.is-active{box-shadow:0 0 0 2px var(--green),var(--shadow-card) !important;}
+.tlPath__card-num{font-family:'Poppins',sans-serif;font-weight:800;color:var(--green-text);letter-spacing:.08em;}
+.tlPath__node.is-active,.tlPath__node.is-done{background:var(--green);border-color:var(--green);color:var(--ink);}
+
+/* ---- split CTA / add-on / final ---- */
+.splitCta__panel{background:var(--ink) !important;}
+.splitCta__title{font:800 clamp(26px,3.4vw,36px)/1.1 'Poppins',sans-serif;letter-spacing:-.035em;color:#fff !important;}
+.splitCta__hint{color:rgba(255,255,255,.72) !important;opacity:1 !important;}
+.splitCta__btn{font-family:'Poppins',sans-serif;font-weight:800;font-size:14px;padding:15px 24px;}
+.splitCta__btn--solid{background:var(--green) !important;color:var(--ink) !important;box-shadow:0 12px 26px rgba(123,194,30,.32);}
+.splitCta__btn--ghost{background:transparent !important;color:#fff !important;border-color:rgba(255,255,255,.45) !important;}
+.scentAddon .splitCta__panel{background:var(--green-tint) !important;}
+.scentAddon .splitCta__title{color:var(--ink) !important;}
+.scentAddon .splitCta__hint{color:var(--body-ink) !important;}
+.final__cta h2{margin-bottom:8px;}
+.final__price{font-family:'Poppins',sans-serif;font-weight:800;}
+
+@media (max-width:767px){
+  .hero{padding:24px 20px 40px !important;}
+  .section{padding:44px 20px !important;}
+  .section__title,.anatomy__title{margin-bottom:22px;}
+}
+
+</style>
+</head>
+<body>
+
+<div class="page-canvas">
+
+<!-- ================= SECTION 1: HERO ================= -->
+<header class="hero">
+  <div class="hero__card">
+    <div class="hero__gallery">
+      <div class="hero__main-photo">
+        <span class="hero__badge">New</span>
+        <img
+          class="hero__image"
+          id="heroMainImage"
+          src="assets/product/hero-tray-white-cat.webp"
+          alt="Cat sitting calmly in the Zeodeo Classic Litter Tray"
+          fetchpriority="high"
+          loading="eager"
+        >
+      </div>
+      <div class="hero__thumbs" id="heroThumbs">
+        <button type="button" class="hero__thumb is-active" id="heroThumbColor" data-full="assets/product/hero-tray-white-cat.webp" aria-label="Photo 1: cat in the tray">
+          <img id="heroThumbColorImg" src="assets/product/hero-tray-white-cat.webp" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="assets/infographics/03-dimensions.webp" aria-label="Photo 2: dimensions">
+          <img src="assets/infographics/03-dimensions.webp" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="assets/product/render-tray-oysterwhite-drawer-open.webp" aria-label="Photo 3: drawer open">
+          <img src="assets/product/render-tray-oysterwhite-drawer-open.webp" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="assets/product/render-tray-oysterwhite-exploded.webp" aria-label="Photo 4: two-layer cutaway">
+          <img src="assets/product/render-tray-oysterwhite-exploded.webp" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="assets/product/scoop-zeodeo.webp" aria-label="Photo 5: included scoop">
+          <img src="assets/product/scoop-zeodeo.webp" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="assets/product/hero-lineup-3-colors.webp" aria-label="Photo 6: available colours">
+          <img src="assets/product/hero-lineup-3-colors.webp" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="assets/product/pellets-white-bg.webp" aria-label="Photo 7: zeolite pellets">
+          <img src="assets/product/pellets-white-bg.webp" alt="" loading="lazy">
+        </button>
+        <button type="button" class="hero__thumb" data-full="assets/product/package-absorbing-pads.webp" aria-label="Photo 8: absorbent pads pack">
+          <img src="assets/product/package-absorbing-pads.webp" alt="" loading="lazy">
+        </button>
+      </div>
+    </div>
+
+    <div class="hero__info">
+      <p class="hero__breadcrumb">
+        <span>Shop <span class="hero__breadcrumb-sep">→</span> Cat Litter Tray</span>
+        <span class="hero__stock"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg>In stock</span>
+      </p>
+
+      <h1 class="hero__title">The Litter Tray That <span class="zk-g">Keeps Your Home Fresh</span></h1>
+      <p class="hero__subtitle">Two-layer system traps odours and locks away liquid - no more daily scrubbing.</p>
+
+      <p class="hero__specs">
+        <strong>Type:</strong> Classic open<br>
+        <strong>Dimensions:</strong> 55 × 40 × 26 cm<br>
+        <strong>Ideal for cats weighing:</strong> Up to 8 kg<br>
+        <strong>What's in the package:</strong> Litter tray, scoop, zeolite pellets, absorbent pads - enough for 30 days' use
+      </p>
+
+      <div class="hero__colors">
+        <span class="hero__colors-label">Colour:</span>
+        <div class="hero__swatches">
+          <button class="swatch is-selected" style="background:#EDE8DD" data-color="White" data-image="assets/product/hero-tray-white-cat.webp" aria-label="White" type="button"></button>
+          <button class="swatch" style="background:#9099A1" data-color="Grey" data-image="assets/product/hero-tray-grey-cat.webp" aria-label="Grey" type="button"></button>
+          <button class="swatch" style="background:#3B3F45" data-color="Black" data-image="assets/product/hero-tray-black-cat.webp" aria-label="Black" type="button"></button>
+        </div>
+        <span class="hero__colors-selected" id="colorSelectedLabel">White</span>
+      </div>
+
+      <div class="hero__buy-row">
+        <div class="hero__qty">
+          <button type="button" class="hero__qty-btn" id="heroQtyMinus" aria-label="Decrease quantity">−</button>
+          <input type="text" class="hero__qty-input" id="heroQtyInput" value="1" inputmode="numeric" aria-label="Quantity">
+          <button type="button" class="hero__qty-btn" id="heroQtyPlus" aria-label="Increase quantity">+</button>
+        </div>
+        <button class="btn btn--primary hero__cta" type="button">Add to Basket</button>
+      </div>
+
+      <p class="hero__category">Category: <a href="#" class="hero__category-link">Cat Litter Tray</a></p>
+
+      <div class="hero__meta-row">
+        <button type="button" class="hero__wishlist">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.5 8.4 2.3 5 5.8 5c2 0 3.4 1 4.2 2.3C10.8 6 12.2 5 14.2 5c3.5 0 5.3 3.4 3.8 6.7C19.5 16.4 12 21 12 21z"/></svg>
+          Add to Wishlist
+        </button>
+        <div class="hero__share">
+          <span class="hero__share-label">Share</span>
+          <a href="#" aria-label="Share on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.2-1.5 1.6-1.5h1.6V3.7C15.9 3.6 14.9 3.5 13.7 3.5c-2.5 0-4.2 1.5-4.2 4.3v2.1H6.8V13h2.7v8h4z"/></svg></a>
+          <a href="#" aria-label="Share on Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.3 1.7-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.2 4.6a4.1 4.1 0 0 0 1.3 5.5c-.6 0-1.3-.2-1.8-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.9.1 4.1 4.1 0 0 0 3.9 2.9A8.3 8.3 0 0 1 2 18.6a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg></a>
+          <a href="#" aria-label="Share on Pinterest"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.3c0-.8 0-1.8.2-2.6l1.4-6s-.3-.7-.3-1.7c0-1.6.9-2.8 2.1-2.8 1 0 1.5.7 1.5 1.6 0 1-.6 2.5-1 3.9-.2 1.1.6 2 1.7 2 2 0 3.5-2.1 3.5-5.2 0-2.7-2-4.6-4.7-4.6-3.2 0-5.1 2.4-5.1 4.9 0 1 .3 1.9.9 2.6l-.3 1.2c0 .2-.2.2-.4.1-1.2-.5-1.9-2.1-1.9-3.5 0-2.8 2-5.4 5.9-5.4 3.1 0 5.5 2.2 5.5 5.1 0 3.1-1.9 5.5-4.7 5.5-.9 0-1.8-.5-2.1-1l-.6 2.2c-.2.8-.7 1.9-1.1 2.5A10 10 0 1 0 12 2z"/></svg></a>
+          <a href="#" aria-label="Share on WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18.2a8.1 8.1 0 0 1-4.2-1.2l-.3-.2-3 .9.9-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.5-1.3.1-.1 0-.3 0-.4L9.4 8.4c-.1-.2-.3-.2-.5-.2h-.4c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= SECTION 1B-V2: ANATOMY (SITE-STYLE, PILLARS AS FULL-WIDTH ROW) ================= -->
+<section class="section">
+  <div class="section__card">
+    <div class="section__inner anatomy__inner">
+      <p class="section__eyebrow anatomy__eyebrow">How it works</p>
+      <h2 class="section__title anatomy__title">The Anatomy of <span class="zk-g">ZeoDeo</span></h2>
+      <p class="anatomy__subtitle">Simple replacement routine</p>
+      <div class="anatCardV2__grid">
+        <div class="anatCardV2 anatCardV2--tan anat3__legend-item" data-key="pellets2" style="background-image:url('assets/derived/anat-card-v2-pellets-bg-v2.webp');">
+          <div class="anatCardV2__content">
+            <div class="anatCard__top">
+              <span class="anatCard__num bubble bubble--tan">1</span>
+              <div class="anatCard__head">
+                <span class="anatCard__label">Pellets</span>
+                <h3 class="anatCard__title">No More<br>Litter Tray Smell</h3>
+              </div>
+            </div>
+            <span class="anatCard__badge">
+              <svg class="anatCard__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2"/></svg>
+              Replace every 30 days
+            </span>
+            <p class="anatCard__text">These granules don't absorb liquid - they repel it and trap odour instead, thanks to 700-800 m&sup2; of pore surface per cm&sup3;. At 5-6mm, too big to stick to paws or scatter across the floor.</p>
+          </div>
+        </div>
+        <div class="anatCardV2 anatCardV2--blue anat3__legend-item" data-key="pad2" style="background-image:url('assets/derived/anat-card-v2-pad-bg.webp');">
+          <div class="anatCardV2__content">
+            <div class="anatCard__top">
+              <span class="anatCard__num bubble bubble--blue">2</span>
+              <div class="anatCard__head">
+                <span class="anatCard__label">Pad</span>
+                <h3 class="anatCard__title">Cleaning<br>Made Simple</h3>
+              </div>
+            </div>
+            <span class="anatCard__badge">
+              <svg class="anatCard__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2"/></svg>
+              Every 7 days
+            </span>
+            <p class="anatCard__text">Forget scooping wet litter or scrubbing the tray. One pad locks away a week's mess - slide it out, drop in a fresh one, done in seconds.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="anat3__layout">
+        <div class="anat3__stage">
+          <img src="assets/product/anatomy-lifestyle-final-v5.webp" alt="ZeoDeo tray in Anthracite Grey exploded in a sunlit room by a garden window: raised rim, Quartz Grey pellet tray with zeolite pellets, base shell and pad drawer, with liquid flowing through to the absorbent pad" loading="lazy" decoding="async">
+          <button class="anat3__pin bubble" type="button" data-key="rim2" style="left:79%;top:32%;" aria-label="3. No Mess Escapes">3</button>
+          <button class="anat3__pin bubble" type="button" data-key="grid2" style="left:76%;top:49%;" aria-label="4. Odour Starts Draining Immediately">4</button>
+          <button class="anat3__pin bubble" type="button" data-key="base2" style="left:70%;top:70%;" aria-label="5. Built to Last">5</button>
+          <button class="anat3__pin bubble" type="button" data-key="drawer2" style="left:27%;top:87%;" aria-label="6. Cleaning in Seconds">6</button>
+          <button class="anat3__pin anat3__pin--product anat3__pin--tan bubble bubble--tan" type="button" data-key="pellets2" style="left:47%;top:50%;" aria-label="1. No More Litter Box Smell">1</button>
+          <button class="anat3__pin anat3__pin--product bubble bubble--blue" type="button" data-key="pad2" style="left:36%;top:79%;" aria-label="2. Cleaning Made Simple">2</button>
+          <div class="anat3__tooltip" role="status" hidden>
+            <span class="anat3__tooltip-num bubble"></span>
+            <span class="anat3__tooltip-label"></span>
+          </div>
+        </div>
+        <div class="anat3__legend-panel">
+          <ul class="anat3__legend">
+            <li class="anat3__legend-item" data-key="rim2">
+              <span class="anat3__legend-num bubble">3</span>
+              <div>
+                <span class="anat3__legend-title">No Mess Escapes</span>
+                <span class="anat3__legend-sub">Raised rim</span>
+                <p class="anat3__legend-text">Tall raised sides keep pellets exactly where they belong, even when your cat digs enthusiastically.</p>
+              </div>
+            </li>
+            <li class="anat3__legend-item" data-key="grid2">
+              <span class="anat3__legend-num bubble">4</span>
+              <div>
+                <span class="anat3__legend-title">Odour Starts Draining Immediately</span>
+                <span class="anat3__legend-sub">Litter grid</span>
+                <p class="anat3__legend-text">Liquid passes straight through the grid to the pad below, instead of sitting on top where the smell builds up.</p>
+              </div>
+            </li>
+            <li class="anat3__legend-item" data-key="base2">
+              <span class="anat3__legend-num bubble">5</span>
+              <div>
+                <span class="anat3__legend-title">Built to Last</span>
+                <span class="anat3__legend-sub">Outer shell</span>
+                <p class="anat3__legend-text">A solid, leak-proof shell holds everything securely - sized for cats up to 8kg.</p>
+              </div>
+            </li>
+            <li class="anat3__legend-item" data-key="drawer2">
+              <span class="anat3__legend-num bubble">6</span>
+              <div>
+                <span class="anat3__legend-title">Cleaning in Seconds</span>
+                <span class="anat3__legend-sub">Pad drawer</span>
+                <p class="anat3__legend-text">Slide the drawer out without lifting the whole tray - swap the pad and you're done.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 1C: WHY ZEODEO ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner pillars__inner">
+    <p class="section__eyebrow">Smart Solutions</p>
+    <h2 class="section__title">4 Biggest <span class="zk-g">Litter Tray Problems</span></h2>
+    <div class="smartSol__grid">
+      <div class="smartSol__card">
+        <div class="smartSol__card-body">
+          <span class="smartSol__num">01</span>
+          <h3 class="smartSol__title">Smell Trapped, Not Masked</h3>
+          <p class="smartSol__lead">Ordinary litter doesn't destroy odour, it just sits on top of it.</p>
+          <p class="smartSol__text">ZeoDeo pellets capture odour molecules in their pores, locking them in at the source instead of masking them with fragrance - so there's no smell near the tray, even between changes.</p>
+          <div class="smartSol__badges">
+            <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>No smell for weeks</span>
+            <span class="smartSol__badge smartSol__badge--photo">700-800 m&sup2;/cm&sup3; pore surface</span>
+          </div>
+        </div>
+        <div class="smartSol__img smartSol__img--photo smartSol__img--bleed">
+          <img src="assets/derived/pillar-odor-zeolite-pores-molecules.webp" alt="Cross-section of ZeoDeo zeolite pellets showing porous structure trapping odour molecules NH3 and S-VOC" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="smartSol__card smartSol__card--blue">
+        <div class="smartSol__card-body">
+          <span class="smartSol__num">02</span>
+          <h3 class="smartSol__title">Tired of Touching Soaked Litter?</h3>
+          <p class="smartSol__lead">Scooping wet clumps is the worst part of the job.</p>
+          <p class="smartSol__text">Regular litter soaks up every drop, so your scoop - and your hands - end up in it. ZeoDeo splits the job: pellets handle odour, a hidden pad underneath absorbs all the liquid. Slide it out once a week, never touch wet litter again.</p>
+          <div class="smartSol__badges">
+            <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Pad lasts 7 days</span>
+            <span class="smartSol__badge smartSol__badge--photo">No more weekly full washes</span>
+          </div>
+        </div>
+        <div class="smartSol__img smartSol__img--photo smartSol__img--inset">
+          <video id="smartSolCleaningVideo" src="assets/video/proof/tray-how-it-works-v4.mp4" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback controlsList="nodownload noplaybackrate nofullscreen noremoteplayback"></video>
+          <span class="smartSol__tag smartSol__tag--1">The pellets handle odour.</span>
+          <span class="smartSol__tag smartSol__tag--2">The pad handles liquid.</span>
+        </div>
+      </div>
+      <div class="smartSol__card smartSol__card--blue">
+        <div class="smartSol__card-body">
+          <span class="smartSol__num">03</span>
+          <h3 class="smartSol__title">Litter Everywhere but the Tray?</h3>
+          <p class="smartSol__lead">Tiny granules get carried out on every paw.</p>
+          <p class="smartSol__text">Traditional silica crystals are small and jagged enough to wedge between paw pads and scatter across the floor. ZeoDeo's 5-6mm pellets are too large and smooth to stick.</p>
+          <div class="smartSol__badges">
+            <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Large 5-6mm pellets</span>
+            <span class="smartSol__badge smartSol__badge--photo smartSol__badge--tile">Won't scatter</span>
+          </div>
+        </div>
+        <div class="smartSol__compare smartSol__compare--photo">
+          <div class="smartSol__compare-labels">
+            <span class="smartSol__compare-label smartSol__compare-label--l">Tracks everywhere <span class="smartSol__compare-label-sub">(Traditional litter (silica gel))</span></span>
+            <span class="smartSol__compare-label smartSol__compare-label--r">Stays in the tray <span class="smartSol__compare-label-sub">(ZeoDeo pellets (large &amp; smooth))</span></span>
+          </div>
+          <div class="smartSol__compare-photo smartSol__compare-photo--split">
+            <div class="smartSol__compare-photo-tile">
+              <img src="assets/derived/pillar-tracking-silica-scattered-paw.webp" alt="Cat paw stepping through scattered silica gel litter crystals" loading="lazy" decoding="async">
+            </div>
+            <div class="smartSol__compare-photo-tile">
+              <img src="assets/derived/pillar-tracking-clean-paw-floor.webp" alt="Clean paw on bare floor next to the ZeoDeo tray" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="smartSol__card">
+        <div class="smartSol__card-body">
+          <span class="smartSol__num">04</span>
+          <h3 class="smartSol__title">Breathing in Litter Dust?</h3>
+          <p class="smartSol__lead">Fine dust gets kicked up every time you touch the litter.</p>
+          <p class="smartSol__text">It floats into the air, so your cat (and you) breathe it in every day. ZeoDeo's solid granules stay whole, so with daily use, hardly any dust ends up in the air.</p>
+          <div class="smartSol__badges">
+            <span class="smartSol__badge"><span class="smartSol__badge-check">&check;</span>Dust-free with daily use</span>
+          </div>
+        </div>
+        <div class="smartSol__compare smartSol__compare--photo">
+          <div class="smartSol__compare-labels">
+            <span class="smartSol__compare-label smartSol__compare-label--l">Visible dust clouds <span class="smartSol__compare-label-sub">(Traditional litter (silica gel))</span></span>
+            <span class="smartSol__compare-label smartSol__compare-label--r">Clean &amp; fresh air <span class="smartSol__compare-label-sub">(ZeoDeo pellets)</span></span>
+          </div>
+          <div class="smartSol__compare-photo smartSol__compare-photo--split">
+            <div class="smartSol__compare-photo-tile">
+              <img src="assets/derived/pillar-dustfree-silica-dust-cloud.webp" alt="Dust cloud rising from a tray of traditional silica gel litter" loading="lazy" decoding="async">
+            </div>
+            <div class="smartSol__compare-photo-tile">
+              <img src="assets/derived/pillar-dustfree-pellets-tray-clean-v2.webp" alt="White tray of light, chalk-like ZeoDeo zeolite pellets with no dust" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 1B2: BEFORE/AFTER ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner bafReal__inner">
+    <p class="section__eyebrow">Before &amp; After</p>
+    <h2 class="section__title">The ZeoDeo <span class="zk-g">Difference</span></h2>
+    <div class="bafReal__panel">
+      <div class="bafReal__stage">
+        <div class="baf bafReal__slider">
+          <div class="baf__after">
+            <img src="assets/derived/baf-after-cozy-living-room.webp" alt="ZeoDeo tray in a bright, sunlit, cosy living room with a fiddle-leaf fig and pampas grass" loading="lazy" decoding="async">
+          </div>
+          <span class="bafReal__tag bafReal__tag--after">ZeoDeo tray</span>
+          <div class="baf__before">
+            <img src="assets/derived/baf-before-cozy-living-room-v2.webp" alt="Traditional open litter tray with scattered litter in a cosy living room" loading="lazy" decoding="async">
+          </div>
+          <span class="bafReal__tag bafReal__tag--before">Typical open tray</span>
+          <div class="baf__handle"></div>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 1E: SETTLING IN (TIMELINE) ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner tlPath__inner">
+    <p class="section__eyebrow">Getting started</p>
+    <h2 class="section__title">How to Introduce a Cat to <span class="zk-g">a New Tray</span></h2>
+    <p class="timeline__intro">Follow these steps sequentially rather than making all changes at once.</p>
+
+    <div class="tlPath tlPath--site">
+      <div class="tlPath__track">
+      <div class="tlPath__line" aria-hidden="true"></div>
+      <svg class="tlPath__cat" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="var(--accent-color-2)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <ellipse cx="55" cy="42" rx="30" ry="19" transform="rotate(-12 55 42)"/>
+          <circle cx="90" cy="26" r="13"/>
+          <path d="M80,17 L84,5 L91,16 Z"/>
+          <path d="M92,16 L99,4 L101,17 Z"/>
+          <circle cx="93" cy="25" r="1.6" fill="var(--accent-color-2)" stroke="none"/>
+          <path d="M74,54 L84,70"/>
+          <path d="M64,58 L71,73"/>
+          <path d="M32,50 L20,63"/>
+          <path d="M37,55 L27,69"/>
+          <path d="M26,36 C10,31 4,15 14,7"/>
+        </g>
+      </svg>
+
+      <div class="tlPath__row tlPath__row--right" data-step="0">
+        <button class="tlPath__node is-active" type="button" data-step="0" aria-label="Step 1">1</button>
+        <button class="tlPath__card is-active" type="button" data-step="0">
+          <div class="tlPath__card-img"><img src="assets/onboarding/tray-onboarding-mix-granules-v2.webp" alt="Hand mixing ZeoDeo granules into the old green litter tray" loading="lazy" decoding="async"></div>
+          <div class="tlPath__card-body">
+            <span class="tlPath__card-num">Step 1</span>
+            <strong class="tlPath__card-title">Introduce the Cat to the Pellets</strong>
+            <p class="tlPath__card-text">Add an adequate amount of granules into the old tray, mixing them with the old litter filler. Allow the cat to become accustomed to the pellets.</p>
+          </div>
+        </button>
+      </div>
+      <div class="tlPath__row tlPath__row--left" data-step="1">
+        <button class="tlPath__card" type="button" data-step="1">
+          <div class="tlPath__card-img"><img src="assets/onboarding/tray-onboarding-place-alongside-v2.webp" alt="ZeoDeo tray placed alongside the old litter tray" loading="lazy" decoding="async"></div>
+          <div class="tlPath__card-body">
+            <span class="tlPath__card-num">Step 2</span>
+            <strong class="tlPath__card-title">Place the New Tray With Granules Next to the Old One</strong>
+            <p class="tlPath__card-text">You can also remove the top edges of the new tray if your cat prefers the absence of high edges.</p>
+          </div>
+        </button>
+        <button class="tlPath__node" type="button" data-step="1" aria-label="Step 2">2</button>
+      </div>
+      <div class="tlPath__row tlPath__row--right" data-step="2">
+        <button class="tlPath__node" type="button" data-step="2" aria-label="Step 3">3</button>
+        <button class="tlPath__card" type="button" data-step="2">
+          <div class="tlPath__card-img"><img src="assets/onboarding/tray-onboarding-cat-choosing-v2.webp" alt="Cat choosing between the new ZeoDeo tray and the old tray next to it" loading="lazy" decoding="async"></div>
+          <div class="tlPath__card-body">
+            <span class="tlPath__card-num">Step 3</span>
+            <strong class="tlPath__card-title">Stop Cleaning the Old Tray</strong>
+            <p class="tlPath__card-text">Eventually, the cat will choose the clean, new tray and start using it.</p>
+          </div>
+        </button>
+      </div>
+      <div class="tlPath__row tlPath__row--left" data-step="3">
+        <button class="tlPath__card" type="button" data-step="3">
+          <div class="tlPath__card-img"><img src="assets/onboarding/tray-onboarding-cat-settled-v2.webp" alt="Ginger cat sitting comfortably in the new ZeoDeo tray, old tray blurred in the background being removed" loading="lazy" decoding="async"></div>
+          <div class="tlPath__card-body">
+            <span class="tlPath__card-num">Step 4</span>
+            <strong class="tlPath__card-title">Remove the Old Tray</strong>
+            <p class="tlPath__card-text">Once your cat uses ZeoDeo consistently, take the old tray away for good.</p>
+          </div>
+        </button>
+        <button class="tlPath__node" type="button" data-step="3" aria-label="Step 4">4</button>
+      </div>
+      </div>
+      <p class="tlPath__note">Every cat has its own unique personality, so patience is the key!</p>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="section">
+  <div class="section__card final__cta">
+   <div class="section__inner">
+    <h2 class="section__title" style="margin-bottom:8px;">Ready for <span class="zk-g">a Fresher Home?</span></h2>
+    <p class="final__price">Classic Litter Tray</p>
+    <button class="btn btn--primary">Add to Basket</button>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 1B3: ROOM VISUALIZER ================= -->
+<section class="section" id="room-visualizer">
+  <div class="section__card">
+   <div class="section__inner roomMx__inner">
+    <p class="section__eyebrow">Colourways</p>
+    <h2 class="section__title">See It <span class="zk-g">In Your Room</span></h2>
+    <div class="roomMx__wrap">
+      <div class="roomMx__stage">
+        <img id="roomMx3Img" src="assets/product/lifestyle/room-grey-tray-oysterwhite.webp" alt="ZeoDeo tray preview in the chosen room and colour" loading="lazy" decoding="async">
+      </div>
+      <div class="roomMx__panel">
+        <p class="roomMx__text">Pick a tray colour and a room style - the photo updates instantly. Nine ready-made shots, no live rendering.</p>
+
+        <div class="roomMx__group">
+          <span class="roomMx__label">Tray colour</span>
+          <div class="roomMx__swatches" id="roomMx3Colour">
+            <button class="roomMx__swatch is-active" data-c="oysterwhite" style="background:#EDE9DE;" aria-label="Oyster White" type="button"></button>
+            <button class="roomMx__swatch" data-c="stonegrey" style="background:#9C9691;" aria-label="Stone Grey" type="button"></button>
+            <button class="roomMx__swatch" data-c="anthracite" style="background:#2B2C2E;" aria-label="Dark Anthracite" type="button"></button>
+          </div>
+        </div>
+        <div class="roomMx__group">
+          <span class="roomMx__label">Room style</span>
+          <div class="roomMx__rooms" id="roomMx3Room">
+            <button class="roomMx__room is-active" data-r="grey" type="button">Grey concrete</button>
+            <button class="roomMx__room" data-r="white" type="button">White &amp; oak</button>
+            <button class="roomMx__room" data-r="wood" type="button">Walnut floor</button>
+          </div>
+        </div>
+
+        <div class="roomMx__name" id="roomMx3Name">Oyster White - Grey concrete room</div>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 1F-DUP: COMPARISON TABLE (COPY) ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner cmpTable__inner cmpC2 cmpC3 cmpRedOutline cmpCtaBoxed cmpCGridMobile cmpCFlatHead cmpCZebra cmpCNoLines">
+    <p class="section__eyebrow">Why ZeoDeo Wins</p>
+    <h2 class="section__title">The Full <span class="zk-g">Comparison</span></h2>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="bubGradGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#62C925"/><stop offset="1" stop-color="#0B7A0B"/></linearGradient>
+        <linearGradient id="bubGradRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF3A3A"/><stop offset="1" stop-color="#D60000"/></linearGradient>
+      </defs>
+    </svg>
+    <div class="cmpC__frame">
+      <div class="cmpC__inner">
+        <div class="cmpC__table cmpC__table--grid">
+          <div class="cmpC__col-bg--us" aria-hidden="true"></div>
+
+          <div class="cmpC__cell cmpC__cell--head cmpC__cell--blank">&nbsp;</div>
+          <div class="cmpC__cell cmpC__cell--head cmpC__cell--us">ZeoDeo</div>
+          <div class="cmpC__cell cmpC__cell--head">Standard tray</div>
+          <div class="cmpC__cell cmpC__cell--head">Robot tray</div>
+          <div class="cmpC__cell cmpC__cell--head">Crystals</div>
+
+          <div class="cmpC__cell cmpC__cell--lab is-alt"><strong class="cmpC__lab-strong">No odour</strong> - it absorbs, it doesn't mask</div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+
+          <div class="cmpC__cell cmpC__cell--lab"><strong class="cmpC__lab-strong">Clean once a day</strong>, not five times</div>
+          <div class="cmpC__cell cmpC__cell--us"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+
+          <div class="cmpC__cell cmpC__cell--lab is-alt"><strong class="cmpC__lab-strong">Nothing gets tracked</strong> through the house</div>
+          <div class="cmpC__cell cmpC__cell--us is-alt"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+
+          <div class="cmpC__cell cmpC__cell--lab"><strong class="cmpC__lab-strong">Hardly any dust</strong></div>
+          <div class="cmpC__cell cmpC__cell--us"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+
+          <div class="cmpC__cell cmpC__cell--lab is-alt"><strong class="cmpC__lab-strong">No motors</strong>, WiFi or subscription</div>
+          <div class="cmpC__cell cmpC__cell--us is-alt"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--no bubble bubble--red"><svg viewBox="0 0 24 24"><path d="M4.57 2.32Q13.77 10.23 21.68 19.43A1.59 1.59 0 0 1 19.43 21.68Q10.23 13.77 2.32 4.57A1.59 1.59 0 0 1 4.57 2.32ZM2.32 19.43Q10.23 10.23 19.43 2.32A1.59 1.59 0 0 1 21.68 4.57Q13.77 13.77 4.57 21.68A1.59 1.59 0 0 1 2.32 19.43Z"/></svg></span></div>
+          <div class="cmpC__cell is-alt"><span class="cmpC__icon cmpC__icon--yes bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span></div>
+
+          <div class="cmpC__cell cmpC__cell--lab"><strong class="cmpC__lab-strong">Litter change</strong></div>
+          <div class="cmpC__cell cmpC__cell--us cmpC__cell--text">Pellets last 30 days<br>Pad lasts 7 days</div>
+          <div class="cmpC__cell cmpC__cell--text">Fully, every week</div>
+          <div class="cmpC__cell cmpC__cell--text">Same litter, the whole lot</div>
+          <div class="cmpC__cell cmpC__cell--text">Usually once a month</div>
+
+          <div class="cmpC__table-cta">
+            <button class="cmpC__cta" type="button">Add to Basket</button>
+          </div>
+        </div>
+
+        <div class="cmpC__mobile-wrap">
+          <div class="cmpC__mobile">
+            <div class="cmpC__mobile-title">ZeoDeo</div>
+            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
+            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
+            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
+            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
+            <div class="cmpC__mobile-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></div>
+            <div class="cmpC__mobile-cadence">Pellets last 30 days<br>Pad lasts 7 days</div>
+          </div>
+          <button class="cmpC__mobile-cta" type="button">Add to Basket</button>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 1D: PLAN YOUR SUPPLY ================= -->
+<section class="section" id="supply-calculator">
+  <div class="section__card">
+   <div class="section__inner calcMood__inner">
+    <p class="section__eyebrow">Plan your supply</p>
+    <h2 class="section__title">Know Exactly <span class="zk-g">What You Need</span></h2>
+    <div class="calcMood">
+      <div class="calcMood__cats">
+        <svg class="calcMood__cat" data-cat="1" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="var(--text-color)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <ellipse cx="55" cy="42" rx="30" ry="19" transform="rotate(-12 55 42)"/>
+            <circle cx="90" cy="26" r="13"/>
+            <path d="M80,17 L84,5 L91,16 Z"/>
+            <path d="M92,16 L99,4 L101,17 Z"/>
+            <circle cx="93" cy="25" r="1.6" fill="var(--text-color)" stroke="none"/>
+            <path d="M74,54 L84,70"/>
+            <path d="M64,58 L71,73"/>
+            <path d="M32,50 L20,63"/>
+            <path d="M37,55 L27,69"/>
+            <path d="M26,36 C10,31 4,15 14,7"/>
+          </g>
+        </svg>
+        <svg class="calcMood__cat" data-cat="2" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="var(--text-color)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <ellipse cx="55" cy="42" rx="30" ry="19" transform="rotate(-12 55 42)"/>
+            <circle cx="90" cy="26" r="13"/>
+            <path d="M80,17 L84,5 L91,16 Z"/>
+            <path d="M92,16 L99,4 L101,17 Z"/>
+            <circle cx="93" cy="25" r="1.6" fill="var(--text-color)" stroke="none"/>
+            <path d="M74,54 L84,70"/>
+            <path d="M64,58 L71,73"/>
+            <path d="M32,50 L20,63"/>
+            <path d="M37,55 L27,69"/>
+            <path d="M26,36 C10,31 4,15 14,7"/>
+          </g>
+        </svg>
+        <svg class="calcMood__cat is-hidden" data-cat="3" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="var(--text-color)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <ellipse cx="55" cy="42" rx="30" ry="19" transform="rotate(-12 55 42)"/>
+            <circle cx="90" cy="26" r="13"/>
+            <path d="M80,17 L84,5 L91,16 Z"/>
+            <path d="M92,16 L99,4 L101,17 Z"/>
+            <circle cx="93" cy="25" r="1.6" fill="var(--text-color)" stroke="none"/>
+            <path d="M74,54 L84,70"/>
+            <path d="M64,58 L71,73"/>
+            <path d="M32,50 L20,63"/>
+            <path d="M37,55 L27,69"/>
+            <path d="M26,36 C10,31 4,15 14,7"/>
+          </g>
+        </svg>
+      </div>
+      <p class="calcMood__sub" style="font-weight:700;">Your monthly supply kit.</p>
+      <div class="calcMood__opts">
+        <button class="calcMood__opt" data-k="small" type="button">1 Small Cat</button>
+        <button class="calcMood__opt is-active" data-k="medium" type="button">1 Medium Cat</button>
+        <button class="calcMood__opt" data-k="two" type="button">2 Cats</button>
+        <button class="calcMood__opt" data-k="three" type="button">3 Cats</button>
+      </div>
+      <div class="calcMood__result">
+        <div class="calcMood__stat calcMood__stat--photo">
+          <span class="calcMood__stat-badge" style="position:static;display:block;margin:0 auto 10px;width:fit-content;">x2</span>
+          <div class="calcMood__stat-label" style="opacity:1;" data-singular="Pack of Pads" data-plural="Packs of Pads">Packs of Pads</div>
+        </div>
+        <div class="calcMood__stat calcMood__stat--photo">
+          <span class="calcMood__stat-badge" style="position:static;display:block;margin:0 auto 10px;width:fit-content;">x1</span>
+          <div class="calcMood__stat-label" style="opacity:1;" data-singular="Pack of Pellets" data-plural="Packs of Pellets">Pack of Pellets</div>
+        </div>
+      </div>
+
+      <p class="calcMood__cadence">⏱ Pellets last 30 days. Pads last 7 days.</p>
+      <button class="calcMood__cta" type="button">Add month supply to basket</button>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 1D-ADDON: SCENT BOOSTER (STANDALONE) ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner scentAddon__inner">
+    <div class="splitCta scentAddon">
+      <div class="splitCta__photo">
+        <img class="scentAddon__img" src="assets/derived/calc-scentbooster-cropped.webp" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="splitCta__panel">
+        <div class="splitCta__title">Double Down On Freshness</div>
+        <p class="scentAddon__text">A pinch of Green Tea Scent Booster keeps things smelling fresh even longer between pad changes - completely optional, but your nose will thank you.</p>
+        <div class="splitCta__actions">
+          <button class="calcMood__addon-btn scentAddon__btn" type="button">+ Add</button>
+          <p class="splitCta__hint">Green Tea</p>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 1I: VIDEO REVIEWS ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner shorts__inner">
+    <p class="section__eyebrow" style="text-align:left;">From real households</p>
+    <h2 class="section__title" style="text-align:left;">What <span class="zk-g">Cat Owners Say</span></h2>
+    <div class="shorts__wrap">
+      <button class="shorts__nav shorts__nav--prev is-disabled" id="shortsPrev" type="button" aria-label="Previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#31ACD8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <div class="shorts__scroller">
+      <div class="shorts__track" id="shortsTrack">
+        <div class="shorts__card" data-yt="Zy-3xSrX9yY" role="button" tabindex="0" aria-label="Play video: Emma, London">
+          <img src="assets/derived/video-review-emma-london.webp" alt="Video review: Emma and her cat" loading="lazy" decoding="async">
+          <span class="shorts__play" aria-hidden="true"></span>
+          <div class="shorts__meta">
+            <span class="shorts__name">Emma, London</span>
+            <span class="shorts__quote">"No more litter tracked through the kitchen"</span>
+          </div>
+        </div>
+        <div class="shorts__card" data-yt="6vLEuafaz2Q" role="button" tabindex="0" aria-label="Play video: James, Manchester">
+          <img src="assets/derived/video-review-james-manchester.webp" alt="Video review: James and his cat" loading="lazy" decoding="async">
+          <span class="shorts__play" aria-hidden="true"></span>
+          <div class="shorts__meta">
+            <span class="shorts__name">James, Manchester</span>
+            <span class="shorts__quote">"Setup took two minutes, my cat took to it straight away"</span>
+          </div>
+        </div>
+        <div class="shorts__card" data-yt="W66hgAChB2Y" role="button" tabindex="0" aria-label="Play video: Sophie, Bristol">
+          <img src="assets/derived/video-review-sophie-bristol.webp" alt="Video review: Sophie and her cat" loading="lazy" decoding="async">
+          <span class="shorts__play" aria-hidden="true"></span>
+          <div class="shorts__meta">
+            <span class="shorts__name">Sophie, Bristol</span>
+            <span class="shorts__quote">"Finally no smell in the hallway"</span>
+          </div>
+        </div>
+        <div class="shorts__card" data-yt="IlmNsfKDPt4" role="button" tabindex="0" aria-label="Play video: Daniel, Leeds">
+          <img src="https://i.ytimg.com/vi/IlmNsfKDPt4/hqdefault.jpg" alt="Video review: Daniel and two cats" loading="lazy" decoding="async">
+          <span class="shorts__play" aria-hidden="true"></span>
+          <div class="shorts__meta">
+            <span class="shorts__name">Daniel, Leeds</span>
+            <span class="shorts__quote">"Two cats, one tray, zero mess - didn't think that was possible"</span>
+          </div>
+        </div>
+        <div class="shorts__card">
+          <img src="assets/product/hero-lineup-3-colors.webp" alt="Video review placeholder: Olivia" loading="lazy" decoding="async">
+          <span class="shorts__duration">0:20</span>
+          <span class="shorts__play" aria-hidden="true"></span>
+          <div class="shorts__meta">
+            <span class="shorts__name">Olivia, Edinburgh</span>
+            <span class="shorts__quote">"Picked the grey one - matches my bathroom perfectly"</span>
+          </div>
+        </div>
+        <div class="shorts__card">
+          <img src="assets/derived/video-review-priya-leicester.webp" alt="Video review placeholder: exploded tray view" loading="lazy" decoding="async">
+          <span class="shorts__duration">0:25</span>
+          <span class="shorts__play" aria-hidden="true"></span>
+          <div class="shorts__meta">
+            <span class="shorts__name">Priya, Leicester</span>
+            <span class="shorts__quote">"Loved seeing exactly how it works inside before I bought it"</span>
+          </div>
+        </div>
+      </div>
+      <div class="shorts__fade"></div>
+      </div>
+      <button class="shorts__nav shorts__nav--next" id="shortsNext" type="button" aria-label="Next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#31ACD8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 1G: PATH HUB BANNER ================= -->
+<section class="section">
+  <div class="section__card">
+   <div class="section__inner splitCta__inner">
+    <div class="splitCta splitCta--v2">
+      <div class="splitCta__panel">
+        <div class="splitCta__title">Let's find what your cat needs</div>
+        <div class="splitCta__actions">
+          <a href="#supply-calculator" class="splitCta__btn splitCta__btn--solid">Calculate my supply</a>
+          <a href="#room-visualizer" class="splitCta__btn splitCta__btn--ghost">Find my size &amp; colour</a>
+        </div>
+        <p class="splitCta__hint">Two 10-second questions - no signup needed.</p>
+      </div>
+      <div class="splitCta__photo">
+        <img src="assets/product/hub-tray-cat.webp" alt="Tabby cat stepping into the ZeoDeo tray, close-up shot" loading="lazy" decoding="async">
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<div class="shortsModal" id="shortsModal" aria-hidden="true">
+  <div class="shortsModal__backdrop" id="shortsModalBackdrop"></div>
+  <div class="shortsModal__box">
+    <button class="shortsModal__close" id="shortsModalClose" type="button" aria-label="Close video">&times;</button>
+    <div class="shortsModal__frame" id="shortsModalFrame"></div>
+  </div>
+</div>
+
+</div>
+
+<!-- ================= STICKY ADD-TO-BASKET BAR ================= -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta__info">
+    <span class="sticky-cta__heading">Ready for a Fresher Home?</span>
+    <span class="sticky-cta__name">Classic Litter Tray</span>
+  </div>
+  <button class="btn btn--primary" type="button">Add to Basket</button>
+</div>
+
+<script>
+  (function(){
+    var mainImage = document.getElementById('heroMainImage');
+    var thumbs = document.querySelectorAll('.hero__thumb');
+    thumbs.forEach(function(thumb){
+      thumb.addEventListener('click', function(){
+        thumbs.forEach(function(t){ t.classList.remove('is-active'); });
+        thumb.classList.add('is-active');
+        if(mainImage){ mainImage.src = thumb.dataset.full; }
+      });
+    });
+
+    var qtyInput = document.getElementById('heroQtyInput');
+    var qtyMinus = document.getElementById('heroQtyMinus');
+    var qtyPlus = document.getElementById('heroQtyPlus');
+    function clampQty(value){ return Math.min(99, Math.max(1, value)); }
+    if(qtyMinus && qtyPlus && qtyInput){
+      qtyMinus.addEventListener('click', function(){
+        qtyInput.value = clampQty((parseInt(qtyInput.value, 10) || 1) - 1);
+      });
+      qtyPlus.addEventListener('click', function(){
+        qtyInput.value = clampQty((parseInt(qtyInput.value, 10) || 1) + 1);
+      });
+      qtyInput.addEventListener('change', function(){
+        qtyInput.value = clampQty(parseInt(qtyInput.value, 10) || 1);
+      });
+    }
+  })();
+
+  (function(){
+    document.querySelectorAll('.anatomy__inner').forEach(function(container){
+      var stage = container.querySelector('.anat3__stage');
+      var pins = container.querySelectorAll('.anat3__pin');
+      var items = container.querySelectorAll('.anat3__legend-item');
+      var tooltip = stage ? stage.querySelector('.anat3__tooltip') : null;
+      var tipNum = tooltip ? tooltip.querySelector('.anat3__tooltip-num') : null;
+      var tipLabel = tooltip ? tooltip.querySelector('.anat3__tooltip-label') : null;
+      var pinnedKey = null;
+      function setActive(key){
+        items.forEach(function(li){ li.classList.toggle('is-active', li.dataset.key === key); });
+        pins.forEach(function(p){ p.classList.toggle('is-open', p.dataset.key === key); });
+      }
+      function hideTooltip(){
+        if(tooltip) tooltip.hidden = true;
+      }
+      function scrollToActive(key){
+        if(window.matchMedia('(max-width: 680px)').matches) return;
+        var target = null;
+        items.forEach(function(li){ if(li.dataset.key === key) target = li; });
+        if(!target) return;
+        var rect = target.getBoundingClientRect();
+        var fullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+        if(!fullyVisible){ container.scrollIntoView({behavior:'smooth', block:'start'}); }
+      }
+      function showTooltip(pin){
+        if(!tooltip) return;
+        var key = pin.dataset.key;
+        var source = null;
+        items.forEach(function(li){ if(li.dataset.key === key) source = li; });
+        if(!source) return;
+        var labelEl = source.querySelector('.anatCard__label, .anat3__legend-sub');
+        tipNum.textContent = pin.textContent.trim();
+        tipLabel.textContent = labelEl ? labelEl.textContent.trim() : '';
+        var isTan = pin.classList.contains('anat3__pin--tan');
+        tooltip.classList.toggle('is-tan', isTan);
+        tooltip.classList.toggle('is-product', pin.classList.contains('anat3__pin--product') && !isTan);
+        tooltip.hidden = false;
+      }
+      pins.forEach(function(pin){
+        pin.addEventListener('mouseenter', function(){ if(!pinnedKey) setActive(pin.dataset.key); });
+        pin.addEventListener('focus', function(){ if(!pinnedKey) setActive(pin.dataset.key); });
+        pin.addEventListener('click', function(e){
+          e.stopPropagation();
+          pinnedKey = (pinnedKey === pin.dataset.key) ? null : pin.dataset.key;
+          setActive(pinnedKey);
+          if(pinnedKey){ showTooltip(pin); scrollToActive(pinnedKey); } else { hideTooltip(); }
+        });
+      });
+      items.forEach(function(item){
+        item.addEventListener('mouseenter', function(){ if(!pinnedKey) setActive(item.dataset.key); });
+        item.addEventListener('focus', function(){ if(!pinnedKey) setActive(item.dataset.key); });
+        item.addEventListener('mouseleave', function(){ if(!pinnedKey) setActive(null); });
+      });
+      if(stage){
+        stage.addEventListener('mouseleave', function(){ if(!pinnedKey) setActive(null); });
+      }
+      if(tooltip){
+        tooltip.addEventListener('click', function(e){ e.stopPropagation(); });
+      }
+      document.addEventListener('click', function(){
+        pinnedKey = null;
+        setActive(null);
+        hideTooltip();
+      });
+    });
+  })();
+
+  (function(){
+    var swatches = document.querySelectorAll('.swatch');
+    var colorLabel = document.getElementById('colorSelectedLabel');
+    var mainImage = document.getElementById('heroMainImage');
+    var thumbColor = document.getElementById('heroThumbColor');
+    var thumbColorImg = document.getElementById('heroThumbColorImg');
+    var allThumbs = document.querySelectorAll('.hero__thumb');
+    swatches.forEach(function(sw){
+      sw.addEventListener('click', function(){
+        swatches.forEach(function(s){ s.classList.remove('is-selected'); });
+        sw.classList.add('is-selected');
+        if(colorLabel){ colorLabel.textContent = sw.dataset.color; }
+
+        var image = sw.dataset.image;
+        if(image){
+          if(thumbColor){ thumbColor.dataset.full = image; }
+          if(thumbColorImg){ thumbColorImg.src = image; }
+          if(mainImage){ mainImage.src = image; }
+          allThumbs.forEach(function(t){ t.classList.remove('is-active'); });
+          if(thumbColor){ thumbColor.classList.add('is-active'); }
+        }
+      });
+    });
+  })();
+
+  (function(){
+    var img = document.getElementById('roomMx3Img');
+    if(!img) return;
+    var nameEl = document.getElementById('roomMx3Name');
+    var colourSwatches = document.querySelectorAll('#roomMx3Colour .roomMx__swatch');
+    var roomButtons = document.querySelectorAll('#roomMx3Room .roomMx__room');
+
+    var colourNames = { oysterwhite:'Oyster White', stonegrey:'Stone Grey', anthracite:'Dark Anthracite' };
+    var roomNames = { grey:'Grey concrete room', white:'White & oak room', wood:'Walnut floor room' };
+    var rooms = ['grey','white','wood'];
+    var colours = ['oysterwhite','stonegrey','anthracite'];
+    var colour = 'oysterwhite';
+    var room = 'grey';
+    var photoOverrides = {
+      'grey|anthracite': 'assets/product/lifestyle/room-grey-tray-anthracite-alt.webp',
+      'wood|anthracite': 'assets/product/lifestyle/room-wood-tray-anthracite-alt.webp'
+    };
+    function urlFor(r, c){
+      return photoOverrides[r + '|' + c] || ('assets/product/lifestyle/room-' + r + '-tray-' + c + '.webp');
+    }
+
+    // second layer on top of the photo: new picture fades in over the old one
+    var stage = img.parentNode;
+    var fade = img.cloneNode(false);
+    fade.removeAttribute('id');
+    fade.removeAttribute('src');
+    fade.alt = '';
+    fade.setAttribute('aria-hidden', 'true');
+    fade.className = 'roomMx__fade';
+    stage.appendChild(fade);
+
+    // keep references so the browser does not drop preloaded pictures; decode them ahead of the click
+    var loaded = {};
+    function ready(url){
+      if(!loaded[url]){
+        var pre = new Image();
+        pre.src = url;
+        loaded[url] = (pre.decode ? pre.decode() : Promise.resolve()).catch(function(){}).then(function(){ return pre; });
+      }
+      return loaded[url];
+    }
+    var shown = urlFor(room, colour);
+    ready(shown);
+    function preloadRest(){
+      var queue = [];
+      rooms.forEach(function(r){ colours.forEach(function(c){ queue.push(urlFor(r, c)); }); });
+      (function next(){
+        var u = queue.shift();
+        if(!u) return;
+        ready(u).then(function(){ setTimeout(next, 150); });
+      })();
+    }
+    if(window.requestIdleCallback){ requestIdleCallback(preloadRest, { timeout: 2500 }); } else { setTimeout(preloadRest, 1200); }
+
+    var token = 0, settleTimer = null;
+    function swapPhoto(url){
+      var my = ++token;
+      if(url === shown) return;
+      ready(url).then(function(){
+        if(my !== token) return;
+        clearTimeout(settleTimer);
+        // commit a half-finished previous fade so the new one starts from what the eye sees
+        if(fade.getAttribute('src')){ img.src = fade.getAttribute('src'); }
+        fade.style.transition = 'none';
+        fade.style.opacity = 0;
+        fade.src = url;
+        void fade.offsetWidth;
+        fade.style.transition = '';
+        fade.style.opacity = 1;
+        shown = url;
+        settleTimer = setTimeout(function(){
+          if(my !== token) return;
+          img.src = url;
+          var done = function(){ if(my === token){ fade.style.transition = 'none'; fade.style.opacity = 0; fade.removeAttribute('src'); void fade.offsetWidth; fade.style.transition = ''; } };
+          (img.decode ? img.decode() : Promise.resolve()).catch(function(){}).then(done);
+        }, 650);
+      });
+    }
+
+    var nameTimer = null;
+    function setName(text){
+      if(nameEl.textContent === text) return;
+      nameEl.classList.add('is-swap');
+      clearTimeout(nameTimer);
+      nameTimer = setTimeout(function(){ nameEl.textContent = text; nameEl.classList.remove('is-swap'); }, 220);
+    }
+
+    function render(){
+      swapPhoto(urlFor(room, colour));
+      setName(colourNames[colour] + ' - ' + roomNames[room]);
+      colourSwatches.forEach(function(s){ s.classList.toggle('is-active', s.dataset.c === colour); });
+      roomButtons.forEach(function(b){ b.classList.toggle('is-active', b.dataset.r === room); });
+    }
+    colourSwatches.forEach(function(s){ s.addEventListener('click', function(){ colour = s.dataset.c; render(); }); });
+    roomButtons.forEach(function(b){ b.addEventListener('click', function(){ room = b.dataset.r; render(); }); });
+    render();
+  })();
+
+  document.querySelectorAll('.tlPath').forEach(function(stage){
+    var nodes = stage.querySelectorAll('.tlPath__node');
+    var cards = stage.querySelectorAll('.tlPath__card');
+    var cat = stage.querySelector('.tlPath__cat');
+    var pinned = 0;
+    var active = 0;
+    function moveCat(){
+      var activeNode = stage.querySelector('.tlPath__node[data-step="' + active + '"]');
+      if(!activeNode || !cat) return;
+      var stageRect = stage.getBoundingClientRect();
+      var nodeRect = activeNode.getBoundingClientRect();
+      cat.style.top = (nodeRect.top - stageRect.top + nodeRect.height / 2) + 'px';
+      var row = activeNode.closest('.tlPath__row');
+      var facesLeft = row && row.classList.contains('tlPath__row--left');
+      cat.classList.toggle('is-flip', facesLeft);
+    }
+    function render(){
+      nodes.forEach(function(n){
+        var i = Number(n.dataset.step);
+        n.classList.toggle('is-active', i === active);
+        n.classList.toggle('is-done', i < pinned);
+        n.textContent = i < pinned ? '✓' : (i === active ? '' : (i + 1));
+      });
+      cards.forEach(function(c){
+        var i = Number(c.dataset.step);
+        c.classList.toggle('is-active', i === active);
+      });
+      moveCat();
+    }
+    function show(i){ active = i; render(); }
+    function commit(i){ pinned = i; active = i; render(); }
+    nodes.forEach(function(n){
+      var i = Number(n.dataset.step);
+      n.addEventListener('mouseenter', function(){ show(i); });
+      n.addEventListener('focus', function(){ show(i); });
+      n.addEventListener('click', function(e){ e.stopPropagation(); commit(i); });
+    });
+    cards.forEach(function(c){
+      var i = Number(c.dataset.step);
+      c.addEventListener('mouseenter', function(){ show(i); });
+      c.addEventListener('focus', function(){ show(i); });
+      c.addEventListener('click', function(e){ e.stopPropagation(); commit(i); });
+    });
+    stage.addEventListener('mouseleave', function(){ show(pinned); });
+    window.addEventListener('resize', moveCat);
+    window.addEventListener('load', moveCat);
+    if(window.IntersectionObserver && window.matchMedia('(max-width: 680px)').matches){
+      var rows = stage.querySelectorAll('.tlPath__row');
+      var scrollObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){ commit(Number(entry.target.dataset.step)); }
+        });
+      }, {rootMargin:'-45% 0px -45% 0px', threshold:0});
+      rows.forEach(function(row){ scrollObserver.observe(row); });
+    }
+    render();
+  });
+
+  function setupPadFillDemo(ids){
+    var fill = document.getElementById(ids.fill);
+    var callout = document.getElementById(ids.callout);
+    var rulerFill = document.getElementById(ids.rulerFill);
+    var rulerCurrent = document.getElementById(ids.rulerCurrent);
+    var playPauseBtn = document.getElementById(ids.playPause);
+    var drops = ids.drops ? document.getElementById(ids.drops) : null;
+    var steps = ids.steps ? document.querySelectorAll(ids.steps) : null;
+    if(!fill) return;
+
+    var TOTAL_STEPS = 14, TOTAL_DAYS = 7;
+    var STEP_INTERVAL = 900, FULL_PAUSE = 1600, DRAIN_DURATION = 500;
+    var progress = 0, mode = 'stepping', timer = null, running = true;
+    var stepThresholds = [1, Math.ceil(TOTAL_STEPS * 0.4), Math.ceil(TOTAL_STEPS * 0.75)];
+
+    function updateSteps(){
+      if(!steps) return;
+      var currentIndex = -1;
+      steps.forEach(function(s, i){ if(progress >= stepThresholds[i]) currentIndex = i; });
+      steps.forEach(function(s, i){
+        var isDone = i < currentIndex;
+        var isCurrent = i === currentIndex;
+        s.classList.toggle('on', isCurrent);
+        s.classList.toggle('done', isDone);
+        var numEl = s.querySelector('.moistD__step-n');
+        if(numEl){
+          if(!numEl.dataset.orig) numEl.dataset.orig = numEl.textContent;
+          numEl.textContent = isDone ? '✓' : numEl.dataset.orig;
+        }
+      });
+    }
+
+    function updateProgress(){
+      var pct = Math.min(100, (progress / TOTAL_STEPS) * 100);
+      fill.style.setProperty('--p', (pct / 100).toFixed(3));
+      rulerFill.style.width = pct + '%';
+      var day = Math.min(TOTAL_DAYS, Math.max(1, Math.round((progress / TOTAL_STEPS) * TOTAL_DAYS)));
+      rulerCurrent.textContent = 'Day ' + day;
+      updateSteps();
+    }
+
+    function step(){
+      if(!running) return;
+      mode = 'stepping';
+      progress++;
+      updateProgress();
+      if(progress >= TOTAL_STEPS){
+        mode = 'full-pause';
+        callout.classList.add('is-visible');
+        timer = setTimeout(drain, FULL_PAUSE);
+      } else {
+        timer = setTimeout(step, STEP_INTERVAL);
+      }
+    }
+
+    function drain(){
+      if(!running) return;
+      mode = 'draining';
+      callout.classList.remove('is-visible');
+      progress = 0;
+      updateProgress();
+      timer = setTimeout(step, DRAIN_DURATION);
+    }
+
+    if(playPauseBtn){
+      playPauseBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        running = !running;
+        playPauseBtn.textContent = running ? '⏸ Pause' : '▶ Play';
+        if(drops) drops.classList.toggle('is-paused', !running);
+        if(running){
+          if(mode === 'draining'){ timer = setTimeout(drain, 80); }
+          else { timer = setTimeout(step, 80); }
+        } else {
+          clearTimeout(timer);
+        }
+      });
+    }
+
+    step();
+  }
+
+  setupPadFillDemo({
+    fill:'v3Fill', callout:'v3Callout', drops:'v3Drops',
+    rulerFill:'v3RulerFill', rulerCurrent:'v3RulerCurrent', playPause:'v3PlayPause',
+    steps:'#v3Steps .moistD__step'
+  });
+
+  (function(){
+    var track = document.getElementById('shortsTrack');
+    if(!track) return;
+
+    track.addEventListener('wheel', function(e){
+      if(Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      e.preventDefault();
+      track.scrollLeft += e.deltaY;
+    }, {passive:false});
+
+    var isDown = false, startX = 0, startScroll = 0, moved = false;
+    track.addEventListener('pointerdown', function(e){
+      isDown = true; moved = false;
+      startX = e.clientX;
+      startScroll = track.scrollLeft;
+      track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener('pointermove', function(e){
+      if(!isDown) return;
+      var dx = e.clientX - startX;
+      if(Math.abs(dx) > 4) moved = true;
+      track.scrollLeft = startScroll - dx;
+    });
+    track.addEventListener('pointerup', function(e){
+      isDown = false;
+      track.__dragMoved = moved;
+    });
+  })();
+
+  (function(){
+    var track = document.getElementById('shortsTrack');
+    var prevBtn = document.getElementById('shortsPrev');
+    var nextBtn = document.getElementById('shortsNext');
+    if(!track || !prevBtn || !nextBtn) return;
+
+    function updateNav(){
+      var max = track.scrollWidth - track.clientWidth;
+      prevBtn.classList.toggle('is-disabled', track.scrollLeft <= 4);
+      nextBtn.classList.toggle('is-disabled', track.scrollLeft >= max - 4);
+    }
+    prevBtn.addEventListener('click', function(){
+      track.scrollBy({left:-track.clientWidth * 0.85, behavior:'smooth'});
+    });
+    nextBtn.addEventListener('click', function(){
+      track.scrollBy({left:track.clientWidth * 0.85, behavior:'smooth'});
+    });
+    track.addEventListener('scroll', updateNav, {passive:true});
+    window.addEventListener('resize', updateNav);
+    updateNav();
+  })();
+
+  (function(){
+    var modal = document.getElementById('shortsModal');
+    var track = document.getElementById('shortsTrack');
+    if(!modal || !track) return;
+    var frame = document.getElementById('shortsModalFrame');
+    var backdrop = document.getElementById('shortsModalBackdrop');
+    var closeBtn = document.getElementById('shortsModalClose');
+
+    function openVideo(id){
+      frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1" title="ZeoDeo video review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal(){
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      frame.innerHTML = '';
+    }
+    track.addEventListener('click', function(e){
+      if(track.__dragMoved) return;
+      var real = document.elementFromPoint(e.clientX, e.clientY);
+      var card = real && real.closest('.shorts__card');
+      if(!card || !card.dataset.yt) return;
+      openVideo(card.dataset.yt);
+    });
+    track.addEventListener('keydown', function(e){
+      if(e.key !== 'Enter' && e.key !== ' ') return;
+      var card = e.target.closest('.shorts__card');
+      if(!card || !card.dataset.yt) return;
+      e.preventDefault();
+      openVideo(card.dataset.yt);
+    });
+    backdrop.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  })();
+
+  (function(){
+    function initBaf(baf){
+      var before = baf.querySelector('.baf__before');
+      var handle = baf.querySelector('.baf__handle');
+      if(!before || !handle) return;
+      var dragging = false;
+      var rect = null;
+      var rafId = null;
+      var pendingX = null;
+      function applyPos(clientX){
+        var pct = Math.min(100, Math.max(0, ((clientX - rect.left) / rect.width) * 100));
+        before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+        handle.style.left = pct + '%';
+        updateTags(pct / 100 * rect.width);
+      }
+      // hide the label of the side the handle has covered
+      function updateTags(x){
+        baf.querySelectorAll('.bafReal__tag').forEach(function(tag){
+          var left = tag.offsetLeft, right = left + tag.offsetWidth;
+          var hide = tag.classList.contains('bafReal__tag--before') ? x < right : x > left;
+          tag.classList.toggle('is-hidden', hide);
+        });
+      }
+      function scheduleUpdate(clientX){
+        pendingX = clientX;
+        if(rafId) return;
+        rafId = requestAnimationFrame(function(){
+          rafId = null;
+          applyPos(pendingX);
+        });
+      }
+      handle.addEventListener('pointerdown', function(e){
+        dragging = true;
+        rect = baf.getBoundingClientRect();
+        handle.setPointerCapture(e.pointerId);
+      });
+      handle.addEventListener('pointerup', function(){ dragging = false; rect = null; });
+      handle.addEventListener('pointermove', function(e){ if(dragging){ scheduleUpdate(e.clientX); } });
+      baf.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(e.target === handle) return;
+        rect = baf.getBoundingClientRect();
+        applyPos(e.clientX);
+      });
+    }
+    document.querySelectorAll('.baf').forEach(initBaf);
+  })();
+
+  (function(){
+    var data = {
+      small:  {padsCount:'4',    padsFreq:'Change every 7-8 days', pelletsCount:'1',   pelletsFreq:'Every 30-60 days', cats:1},
+      medium: {padsCount:'4-6',  padsFreq:'Change every 5-7 days', pelletsCount:'1',   pelletsFreq:'Monthly',          cats:1},
+      two:    {padsCount:'6-10', padsFreq:'Change every 3-5 days', pelletsCount:'1',   pelletsFreq:'Monthly',          cats:2},
+      three:  {padsCount:'8-12', padsFreq:'Change every 3-5 days', pelletsCount:'1-2', pelletsFreq:'Every 2-3 weeks',  cats:3}
+    };
+    var PADS_PER_PACK = 5;
+    function rangeMax(str){
+      return Math.max.apply(null, str.split('-').map(Number));
+    }
+    function padsToPacks(padsCount){
+      return String(Math.ceil(rangeMax(padsCount) / PADS_PER_PACK));
+    }
+
+    document.querySelectorAll('.calcMood').forEach(function(root){
+      var opts = root.querySelectorAll('.calcMood__opts .calcMood__opt');
+      if(!opts.length) return;
+      var statCards = root.querySelectorAll('.calcMood__stat--photo');
+      var padsCard = statCards[0], pelletsCard = statCards[1];
+      var padsBadge = padsCard.querySelector('.calcMood__stat-badge');
+      var padsFreq = padsCard.querySelector('.calcMood__stat-freq');
+      var padsRaw = padsCard.querySelector('.calcMood__stat-raw');
+      var padsLabel = padsCard.querySelector('.calcMood__stat-label[data-singular]');
+      var pelletsBadge = pelletsCard.querySelector('.calcMood__stat-badge');
+      var pelletsFreq = pelletsCard.querySelector('.calcMood__stat-freq');
+      var pelletsLabel = pelletsCard.querySelector('.calcMood__stat-label[data-singular]');
+      var ctaBtn = root.querySelector('.calcMood__cta');
+      var cats = root.querySelectorAll('.calcMood__cats .calcMood__cat');
+
+      function setCalc(k){
+        opts.forEach(function(b){ b.classList.toggle('is-active', b.dataset.k === k); });
+        var d = data[k];
+        var padPacks = padsToPacks(d.padsCount);
+        var pelletPacks = rangeMax(d.pelletsCount);
+        if(padsBadge) padsBadge.textContent = 'x' + padPacks;
+        if(padsFreq) padsFreq.textContent = d.padsFreq;
+        if(padsRaw) padsRaw.textContent = '≈' + d.padsCount + ' pads used';
+        if(padsLabel) padsLabel.textContent = Number(padPacks) > 1 ? padsLabel.dataset.plural : padsLabel.dataset.singular;
+        if(pelletsBadge) pelletsBadge.textContent = 'x' + pelletPacks;
+        if(pelletsFreq) pelletsFreq.textContent = d.pelletsFreq;
+        if(pelletsLabel) pelletsLabel.textContent = Number(pelletPacks) > 1 ? pelletsLabel.dataset.plural : pelletsLabel.dataset.singular;
+        cats.forEach(function(c){
+          c.classList.toggle('is-hidden', Number(c.dataset.cat) > d.cats);
+          c.classList.toggle('is-size-small', k === 'small' && Number(c.dataset.cat) === 1);
+        });
+      }
+      setCalc('medium');
+      opts.forEach(function(b){ b.addEventListener('click', function(e){ e.stopPropagation(); setCalc(b.dataset.k); }); });
+      ctaBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var original = ctaBtn.textContent;
+        ctaBtn.textContent = 'Added ✓';
+        setTimeout(function(){ ctaBtn.textContent = original; }, 1400);
+      });
+
+    });
+
+    (function(){
+      var addonBtns = document.querySelectorAll('.calcMood__addon-btn');
+      var isAdded = false;
+      function setAdded(next){
+        isAdded = next;
+        addonBtns.forEach(function(b){
+          b.classList.toggle('is-added', isAdded);
+          b.textContent = isAdded ? '✓ Added' : '+ Add';
+        });
+      }
+      addonBtns.forEach(function(addonBtn){
+        addonBtn.addEventListener('click', function(e){
+          e.stopPropagation();
+          setAdded(!isAdded);
+        });
+      });
+    })();
+  })();
+
+  (function(){
+    var hero = document.querySelector('.hero');
+    var stickyCta = document.getElementById('stickyCta');
+    if(!hero || !stickyCta) return;
+
+    if(!('IntersectionObserver' in window)){
+      stickyCta.classList.add('is-visible');
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          stickyCta.classList.remove('is-visible');
+        } else {
+          stickyCta.classList.add('is-visible');
+        }
+      });
+    }, {threshold:0});
+    io.observe(hero);
+  })();
+
+  ['smartSolCleaningVideo'].forEach(function(id){
+    var video = document.getElementById(id);
+    if(!video) return;
+
+    var wrap = video.parentElement;
+    var tag1 = wrap ? wrap.querySelector('.smartSol__tag--1') : null;
+    var tag2 = wrap ? wrap.querySelector('.smartSol__tag--2') : null;
+    // tray-how-it-works-v4.mp4: pellets close-up 1.5-3s, liquid flowing into the pad 4.5-7s
+    var PELLETS_START = 1.5, PELLETS_END = 3.0;
+    var PAD_START = 4.5, PAD_END = 7.0;
+    video.addEventListener('timeupdate', function(){
+      var t = video.currentTime;
+      if(tag1) tag1.classList.toggle('is-visible', t >= PELLETS_START && t < PELLETS_END);
+      if(tag2) tag2.classList.toggle('is-visible', t >= PAD_START && t < PAD_END);
+    });
+
+    if(!('IntersectionObserver' in window)){
+      video.setAttribute('autoplay', '');
+      video.play().catch(function(){});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          video.play().catch(function(){});
+        } else {
+          video.pause();
+        }
+      });
+    }, {threshold:0.4});
+    io.observe(video);
+  });
+
+  // Row height matching is handled natively by CSS grid's default
+  // align-items:stretch (each row stretches to its own tallest card) -
+  // no JS needed, and forcing a single global max height across all
+  // 4 cards was inflating the shorter row 2 to match the taller row 1.
+</script>
+
+
+<script>
+/* demo helpers: in-page anchors (page uses <base>), pin labels */
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    var id=a.getAttribute('href').slice(1);
+    if(!id) return;
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(id);
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  });
+  document.querySelectorAll('.anat3__pin').forEach(function(p){
+    var m=(p.getAttribute('aria-label')||'').match(/^(\d+)\.\s*(.*)$/);
+    var short={rim2:'Raised rim',grid2:'Litter grid',base2:'Outer shell',drawer2:'Pad drawer',pellets2:'Pellets',pad2:'Pad'};
+    if(m){p.setAttribute('data-n',m[1]);p.setAttribute('data-label',short[p.getAttribute('data-key')]||m[2]);}
+    var left=parseFloat(p.style.left)||0;
+    if(left>60){p.classList.add('zk-right');}
+  });
+})();
+</script>
+</body>
+</html>
