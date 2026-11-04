@@ -1753,6 +1753,27 @@ h1,h2,h3{font-family:'Poppins',sans-serif;color:var(--ink);}
   .zk-strip{padding:12px 20px;}
 }
 
+/* ---- Nadya's review 04.11 ---- */
+/* 1. comparison table: plain check and cross instead of glass bubbles */
+.cmpC__icon--yes.bubble,.cmpC__icon--no.bubble{background-image:none !important;filter:none !important;width:auto !important;height:auto !important;font:800 22px/1 'Poppins',sans-serif;}
+.cmpC__icon--yes.bubble::before{content:"\2713";color:var(--green-text);}
+.cmpC__icon--no.bubble::before{content:"\2715";color:#C9524B;font-weight:700;}
+
+/* 2. timeline: the cat doodle returns to the active step (node stays transparent, as in the original) */
+.tlPath__node.is-active:not(.is-done){background:transparent !important;border-color:transparent !important;box-shadow:none !important;}
+
+@media (max-width:680px){
+  /* 3. anatomy: the two pellet and pad cards sit above the exploded diagram */
+  .anatomy__inner > .anatCardV2__grid{order:0;}
+  .anatomy__inner > .anat3__layout .anat3__stage{order:1;}
+  /* 4. hero: colour and buy button come before the spec list */
+  .hero__info{display:flex;flex-direction:column;}
+  .hero__info > *{order:3;}
+  .hero__info > .hero__breadcrumb,.hero__info > .hero__title,.hero__info > .hero__subtitle{order:0;}
+  .hero__info > .hero__colors,.hero__info > .hero__buy-row,.hero__info > .zk-hero-note{order:1;}
+  .hero__info > .hero__specs{order:2;}
+}
+
 </style>
 </head>
 <body>
