@@ -3274,6 +3274,67 @@ h1,h2,h3{font-family:'Poppins',sans-serif;color:var(--ink);}
     place();
     if(mq.addEventListener){mq.addEventListener('change',place);}
   }
+  /* room visualizer: two stacked layers, the shown picture is never re-assigned, so no flash on iOS */
+  var rsec=document.getElementById('room-visualizer');
+  if(rsec){
+    var rn=rsec.cloneNode(true);rsec.parentNode.replaceChild(rn,rsec);
+    var rstage=rn.querySelector('.roomMx__stage');
+    rstage.querySelectorAll('.roomMx__fade').forEach(function(f){f.remove();});
+    var L1=rstage.querySelector('#roomMx3Img'),nameEl=rn.querySelector('#roomMx3Name');
+    L1.removeAttribute('loading');L1.removeAttribute('id');
+    var L2=L1.cloneNode(false);L2.removeAttribute('src');L2.alt='';L2.setAttribute('aria-hidden','true');
+    rstage.appendChild(L2);
+    var shownL=L1,hiddenL=L2,fading=false,fadeTimer=null,tok=0;
+    [L1,L2].forEach(function(l){l.style.position='absolute';l.style.inset='0';l.style.willChange='opacity';});
+    L1.style.opacity=1;L1.style.zIndex=1;L2.style.opacity=0;L2.style.zIndex=2;
+    var names={oysterwhite:'Oyster White',stonegrey:'Stone Grey',anthracite:'Dark Anthracite'};
+    var roomN={grey:'Grey concrete room',white:'White & oak room',wood:'Walnut floor room'};
+    var alt={'grey|anthracite':'room-grey-tray-anthracite-alt.webp','wood|anthracite':'room-wood-tray-anthracite-alt.webp'};
+    var colour='oysterwhite',room='grey',cur=L1.getAttribute('src');
+    var urlFor=function(r,c){return 'assets/product/lifestyle/'+(alt[r+'|'+c]||('room-'+r+'-tray-'+c+'.webp'));};
+    var kept={};
+    var warm=function(u){if(!kept[u]){var im=new Image();im.src=u;kept[u]=im;if(im.decode){im.decode().catch(function(){});}}return kept[u];};
+    var settle=function(){
+      if(!fading)return;
+      clearTimeout(fadeTimer);
+      hiddenL.style.transition='none';hiddenL.style.opacity=1;
+      shownL.style.transition='none';shownL.style.opacity=0;
+      var t=shownL;shownL=hiddenL;hiddenL=t;fading=false;
+    };
+    var swap=function(u){
+      if(u===cur)return;
+      var my=++tok;
+      settle();
+      hiddenL.style.transition='none';hiddenL.style.opacity=0;hiddenL.style.zIndex=2;shownL.style.zIndex=1;
+      hiddenL.src=u;
+      var go=function(){
+        if(my!==tok)return;
+        void hiddenL.offsetWidth;
+        hiddenL.style.transition='opacity .7s ease';hiddenL.style.opacity=1;
+        fading=true;cur=u;
+        fadeTimer=setTimeout(function(){if(my===tok){settle();}},760);
+      };
+      (hiddenL.decode?hiddenL.decode():Promise.resolve()).catch(function(){}).then(go);
+    };
+    var nameTimer=null;
+    var setName=function(t){
+      if(nameEl.textContent===t)return;
+      nameEl.classList.add('is-swap');clearTimeout(nameTimer);
+      nameTimer=setTimeout(function(){nameEl.textContent=t;nameEl.classList.remove('is-swap');},220);
+    };
+    var sw=rn.querySelectorAll('#roomMx3Colour .roomMx__swatch'),rb=rn.querySelectorAll('#roomMx3Room .roomMx__room');
+    var rr=function(){
+      swap(urlFor(room,colour));
+      setName(names[colour]+' - '+roomN[room]);
+      sw.forEach(function(s){s.classList.toggle('is-active',s.dataset.c===colour);});
+      rb.forEach(function(b){b.classList.toggle('is-active',b.dataset.r===room);});
+    };
+    sw.forEach(function(s){s.addEventListener('click',function(){colour=s.dataset.c;rr();});});
+    rb.forEach(function(b){b.addEventListener('click',function(){room=b.dataset.r;rr();});});
+    var rest=function(){var q=[];['grey','white','wood'].forEach(function(r){['oysterwhite','stonegrey','anthracite'].forEach(function(c){q.push(urlFor(r,c));});});
+      (function nx(){var u=q.shift();if(!u)return;warm(u);setTimeout(nx,200);})();};
+    if(window.requestIdleCallback){requestIdleCallback(rest,{timeout:2500});}else{setTimeout(rest,1200);}
+  }
   var old=document.querySelector('.tlPath');
   if(old){
     var st=old.cloneNode(true);old.parentNode.replaceChild(st,old);
