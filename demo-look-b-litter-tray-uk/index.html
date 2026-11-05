@@ -3256,6 +3256,14 @@ h1,h2,h3{font-family:'Poppins',sans-serif;color:var(--ink);}
       svg.appendChild(ln);
     });
   }
+  var CN={White:'Oyster white (RAL 1013)',Grey:'Stone grey (RAL 7030)',Black:'Anthracite grey (RAL 7016)'};
+  var lab=document.getElementById('colorSelectedLabel');
+  if(lab){
+    var rename=function(){var t=lab.textContent.trim();if(CN[t]){lab.textContent=CN[t];}};
+    new MutationObserver(rename).observe(lab,{childList:true,characterData:true,subtree:true});
+    rename();
+    document.querySelectorAll('.swatch').forEach(function(s){var n=CN[s.getAttribute('data-color')];if(n){s.setAttribute('aria-label',n);}});
+  }
   var colors=document.querySelector('.hero__colors'),thumbs=document.querySelector('.hero__thumbs');
   if(colors&&thumbs){
     var home=colors.parentNode,after=colors.nextElementSibling,mq=window.matchMedia('(max-width:680px)');
